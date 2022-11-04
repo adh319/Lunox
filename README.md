@@ -70,9 +70,3 @@ After installation or finish all the configuration needed, you can use `npm star
 - [Adivise](https://github.com/Adivise)
 - [AADI0009](https://github.com/AADI0009)
 - [RainyXeon](https://github.com/RainyXeon)
-
-## ❣ Contributors
-
-<a href="https://github.com/adh319/Lunox/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=adh319/Lunox" />
-</a>
