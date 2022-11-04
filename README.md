@@ -62,7 +62,7 @@ NODE_PORT = 2333
 NODE_PASSWORD = youshallnotpass
 NODE_SECURE = false
 ```
-After installation or finishes all you can use `npm start` or `node manager.js` to start the bot.
+After installation or finish all the configuration needed, you can use `npm start` or `node manager.js` to start the bot.
 
 ## 👏 Special Thanks
 
