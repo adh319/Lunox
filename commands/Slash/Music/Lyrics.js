@@ -31,7 +31,7 @@ module.exports = {
         optimizeQuery: true,
       }).then((lyrics) => {
         if (lyrics == null) {
-          return interaction.reply({ content: 'Lyrics are being fetched from the Genius API.\nThe user input is being used to search lyrics.\nTry to search more specifically next time.' });
+          return interaction.reply({ content: 'Lyrics was not found.', ephemeral: true });
         }
         lyricsEmbed.setTitle(lyrics.title);
         lyricsEmbed.setURL(lyrics.url);
@@ -42,11 +42,11 @@ module.exports = {
             embeds: [lyricsEmbed],
           });
         } catch (e) {
-          return interaction.reply({ content: `There was an error getting lyrics for the song.\nError: The lyrics are way too long for a discord message. (${lyrics.lyrics.length} > 4096)` });
+          return interaction.reply({ content: `The lyrics are way too long display. (${lyrics.lyrics.length} > 4096)`, ephemeral: true });
         }
       });
     } catch (e) {
-      return interaction.reply({ content: 'There was an error getting lyrics for the song.' });
+      return interaction.reply({ content: 'There was an error getting lyrics for the song.', ephemeral: true });
     }
   },
 };
