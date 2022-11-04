@@ -20,8 +20,7 @@ module.exports = {
       lyricsEmbed.setColor(client.color);
       lyricsEmbed.setFooter({
         text: 'Powered by Genius Lyrics',
-        iconURL:
-          'https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/v1435674560/mjmgr50tv69vt5pmzeib.png',
+        iconURL: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/v1435674560/mjmgr50tv69vt5pmzeib.png',
       });
       lyricsEmbed.setTimestamp();
 
@@ -32,10 +31,7 @@ module.exports = {
         optimizeQuery: true,
       }).then((lyrics) => {
         if (lyrics == null) {
-          return interaction.reply({
-            content:
-              'Lyrics are being fetched from the Genius API.\nThe user input is being used to search lyrics.\nTry to search more specifically next time.',
-          });
+          return interaction.reply({ content: 'Lyrics are being fetched from the Genius API.\nThe user input is being used to search lyrics.\nTry to search more specifically next time.' });
         }
         lyricsEmbed.setTitle(lyrics.title);
         lyricsEmbed.setURL(lyrics.url);
@@ -46,15 +42,11 @@ module.exports = {
             embeds: [lyricsEmbed],
           });
         } catch (e) {
-          return interaction.reply({
-            content: `There was an error getting lyrics for the song.\nError: The lyrics are way too long for a discord message. (${lyrics.lyrics.length} > 4096)`,
-          });
+          return interaction.reply({ content: `There was an error getting lyrics for the song.\nError: The lyrics are way too long for a discord message. (${lyrics.lyrics.length} > 4096)` });
         }
       });
     } catch (e) {
-      return interaction.reply({
-        content: 'There was an error getting lyrics for the song.',
-      });
+      return interaction.reply({ content: 'There was an error getting lyrics for the song.' });
     }
   },
 };
