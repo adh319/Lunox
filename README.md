@@ -25,7 +25,7 @@
 - Node.js v16+ **[Download](https://nodejs.org/en/download/)**
 - Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
 - LavaLink **[Guide](https://github.com/freyacodes/lavalink)** (*Dev Version!* **[Download](https://ci.fredboat.com/repository/downloadAll/Lavalink_Build/9311:id/artifacts.zip)** )
-- Genius Token **[Crete Genius Access Token](https://genius.com/api-clients)**
+- Genius Token **[Create Genius Access Token](https://genius.com/api-clients)**
 
 ## 🛑 Super Requirements 
 
