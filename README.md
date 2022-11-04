@@ -78,7 +78,3 @@ I really appreciated if you guys can contribute to this project. So don't hesita
 <a href="https://github.com/adh319/Lunox/graphs/contributors">
   <img src="https://contributors-img.web.app/image?repo=adh319/Lunox" />
 </a>
-
-<a href="https://github.com/adh319/Lunox/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=adh319/Lunox" />
-</a>
