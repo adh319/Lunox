@@ -15,6 +15,7 @@
 - [x] Youtube
 - [x] SoundCloud
 - [x] Spotify
+- [x] Deezer (Configurate in ***Play.js*** | Not supported for playing from Deezer link)
 - [x] Twitch
 - [x] Bandcamp
 - [x] Vimeo
