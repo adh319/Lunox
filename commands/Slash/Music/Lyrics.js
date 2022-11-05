@@ -14,7 +14,6 @@ module.exports = {
     
     try {
       const songName = player.currentTrack.info.title;
-      const songArtist = player.currentTrack.info.author;
 
       let lyricsEmbed = new EmbedBuilder();
       lyricsEmbed.setColor(client.color);
