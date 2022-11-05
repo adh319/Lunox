@@ -115,7 +115,7 @@ module.exports.run = async (client, player, track, interaction) => {
             .setColor(client.color)
             .setDescription(`\`⏮️\` | Track has been: \`Previous\``);
           
-          await nplaying.delete();
+          await nplaying.edit({ embeds: [embed2], components: [] });
           interaction.reply({ embeds: [embed], ephemeral: true })
       }
     } else if (interaction.customId === "stop") {
@@ -130,7 +130,7 @@ module.exports.run = async (client, player, track, interaction) => {
             .setColor(client.color)
             .setDescription(`\`👋\` | Player has been: \`Disconnected\``);
           
-          await nplaying.delete();
+          await nplaying.edit({ embeds: [embed2], components: [] });
           interaction.reply({ embeds: [embed], ephemeral: true })
       }
     } else if (interaction.customId === "pause") {
@@ -174,14 +174,14 @@ module.exports.run = async (client, player, track, interaction) => {
             .setColor(client.color)
             .setDescription(`\`⏭\` | Track has been: \`Skipped\``);
           
-          await nplaying.delete();
+          await nplaying.edit({ embeds: [embed2], components: [] });
           interaction.reply({ embeds: [embed], ephemeral: true })
       }
     }
   });
   collector.on('end', async (collected, reason) => {
     if(reason === "time") {
-      nplaying.delete();
+      await nplaying.edit({ embeds: [embed2], components: [] });
     }
   });
 };
