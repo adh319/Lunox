@@ -44,7 +44,7 @@ class MainClient extends Client {
 		reconnectTime: 0,
 		resumeKey: "Lunox",
 		resumeTimeout : 60,
-		defaultPlatform: "scsearch", // you can change it to "ytmseacrh", "scsearch", "ytsearch".
+		defaultPlatform: "ytmsearch", // you can change it to "ytmseacrh", "scsearch", "ytsearch".
 		spotify: {
 			clientID: this.config.spotifyId,
 			clientSecret: this.config.spotifySecret,
