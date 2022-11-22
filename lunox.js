@@ -41,18 +41,21 @@ class MainClient extends Client {
     process.on('uncaughtException', error => console.log(error));
         
     this.poru = new Poru(this, this.config.nodes, {
-      defaultPlatform: "ytsearch", // you can change it to "ytmseacrh" for Youtube Music or  "scsearch" for SoundCloud.
-      spotify: {
-        clientID: this.config.spotifyId,
-        clientSecret: this.config.spotifySecret,
-        playlistLimit: 10,
-      },
-      deezer: {
-        playlistLimit: 10,
-      },
-      apple: {
-        playlistLimit: 10,
-      },
+		reconnectTime: 0,
+		resumeKey: "Lunox",
+		resumeTimeout : 60,
+		defaultPlatform: "spsearch", // you can change it to "ytmseacrh", "scsearch", "ytsearch".
+		spotify: {
+			clientID: this.config.spotifyId,
+			clientSecret: this.config.spotifySecret,
+			playlistLimit: 10,
+		},
+		deezer: {
+			playlistLimit: 10,
+		},
+		apple: {
+			playlistLimit: 10,
+		},
     });
         
     this.commands = new Collection();

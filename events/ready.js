@@ -7,8 +7,11 @@ module.exports.run = (client) => {
   );
 
   setInterval(() => {
-    const statuses = [`/help`];
+    const statuses = [
+		`/help`,
+		`/play`,
+	];
     const status = statuses[Math.floor(Math.random() * statuses.length)];
     client.user.setActivity(status, { type: ActivityType.Listening });
-  }, 60000);
+  }, 6000);
 };
