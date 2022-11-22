@@ -6,7 +6,7 @@ module.exports = {
 	category: 'Information',
     run: async (client, interaction) => {
         
-        const all = client.poru.nodes.map(node => 
+        const lavalink = client.poru.node.map(node => 
             `Node EPlay Connected` +
             `\nPlayer: ${node.stats.players}` +
             `\nPlaying Players: ${node.stats.playingPlayers}` +
@@ -24,7 +24,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setAuthor({ name: `${interaction.guild.members.me.displayName} Node Info!`, iconURL: interaction.guild.iconURL({ dynamic: true }) })
-            .setDescription(`\`\`\`${all}\`\`\``)
+            .setDescription(`\`\`\`${lavalink}\`\`\``)
             .setColor(client.color)
             .setTimestamp(Date.now());
             
