@@ -36,7 +36,7 @@ module.exports = {
       
       const embed = new EmbedBuilder()
         .setColor(client.color)
-        .setDescription(`**Added:** [${playlistInfo.name}](${song}) • \`${tracks.length}\` tracks • ${track.info.requester}`);
+        .setDescription(`☑️ **[${playlistInfo.name}](${song})** • \`${tracks.length}\` tracks • ${track.info.requester}`);
 
       await interaction.reply({ embeds: [embed] });
       if (!player.isPlaying && !player.isPaused) return player.play();
@@ -48,7 +48,7 @@ module.exports = {
 
       const embed = new EmbedBuilder()
         .setColor(client.color)
-        .setDescription(`**Added:** [${track.info.title}](${track.info.uri}) • \`${formatDuration(track.info.length)}\` • ${track.info.requester}`);
+        .setDescription(`☑️ **[${track.info.title}](${track.info.uri})** • \`${formatDuration(track.info.length)}\` • ${track.info.requester}`);
 
       await interaction.reply({ embeds: [embed] });
       if (!player.isPlaying && !player.isPaused) return player.play();
