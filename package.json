@@ -1,6 +1,6 @@
 {
   "name": "lunox",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Lunox Bot",
   "main": "manager.js",
   "scripts": {
@@ -9,6 +9,7 @@
   "dependencies": {
     "ascii-table": "^0.0.9",
     "axios": "^1.1.3",
+	"chalk": "^4.1.2",
     "cpu-stat": "^2.0.1",
     "discord.js": "^14.6.0",
     "delay": "^5.0.0",

@@ -4,7 +4,8 @@ const { Poru } = require('poru');
 class MainClient extends Client {     
   constructor() {
     super({
-      messageCacheLifetime: 60,
+      shards: "auto",
+	  messageCacheLifetime: 60,
       fetchAllMembers: false,
       messageCacheMaxSize: 10,
       restTimeOffset: 0,
@@ -42,8 +43,9 @@ class MainClient extends Client {
         
     this.poru = new Poru(this, this.config.nodes, {
 		reconnectTime: 0,
-		resumeKey: "Lunox",
+		resumeKey: "MyPlayers",
 		resumeTimeout : 60,
+		reconnectTries: 5,
 		defaultPlatform: "ytmsearch", // you can change it to "ytmseacrh", "scsearch", "ytsearch".
 		spotify: {
 			clientID: this.config.spotifyId,
@@ -55,6 +57,10 @@ class MainClient extends Client {
 		},
 		apple: {
 			playlistLimit: 10,
+		},
+		send(id, payload) {
+			const guild = client.guilds.cache.get(id);
+			if (guild) guild.shard.send(payload);
 		},
     });
         

@@ -16,15 +16,18 @@ module.exports = {
     },
   ],
   run: async (client, interaction) => {
-    const player = client.poru.createConnection({
-      guildId: interaction.guildId,
-      voiceChannel: interaction.member.voice.channelId,
-      textChannel: interaction.channel.id,
-      deaf: true,
-    });
+    let player = client.poru.players.get(interaction.guild.id);
+	if (!player) {
+		player = await client.poru.createConnection({
+			guildId: interaction.guildId,
+			voiceChannel: interaction.member.voice.channelId,
+			textChannel: interaction.channel.id,
+			deaf: true,
+		});
+	}
 
     const song = interaction.options.getString('query');
-    const resolve = await client.poru.resolve(song, 'spotify'); // You can remove 'spotify' for default Or change it to 'deezer' or 'apple' (currently maintenance).
+    const resolve = await client.poru.resolve(song, 'ytmsearch'); // You can remove 'spotify' for default Or change it to 'deezer' or 'apple' (currently maintenance).
     const { loadType, tracks, playlistInfo } = resolve;
     
     if (loadType === 'PLAYLIST_LOADED') {

@@ -1,6 +1,6 @@
 const { ActivityType } = require('discord.js');
 
-module.exports.run = (client) => {
+module.exports.run = async (client) => {
   client.poru.init(client);
   console.log(
     `[API] ${client.user.username} is ready with ${client.guilds.cache.size} server`,
