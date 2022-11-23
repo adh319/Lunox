@@ -14,12 +14,33 @@
 ## 🎶 Support Source
 - [x] Youtube
 - [x] SoundCloud
-- [x] Spotify
-- [x] Deezer (Configurate in ***Play.js*** | Not supported for playing from Deezer link)
 - [x] Twitch
 - [x] Bandcamp
 - [x] Vimeo
 - [x] Https (Radio)
+
+<details><summary>➕ More Support Source [CLICK ME]</summary>
+<p>
+
+## 🎶 More Support Source (Require: LavaLink v3.6.x)
+- [x] [LavaSrc](https://github.com/TopiSenpai/LavaSrc)
+- Spotify
+- Deezer (Configurate in ***Play.js*** | Not supported for playing from Deezer link)
+- Apple
+- Yandex
+
+- [x] [skybot-lavalink-plugin](https://github.com/DuncteBot/skybot-lavalink-plugin)
+- Mixcloud
+- Ocremix
+- Clyp
+- Reddit
+- Getyarn
+- TikTok
+- PornHub
+- Soundgasm
+
+</p>
+</details>
 
 ## 📎 Requirements
 
