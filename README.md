@@ -72,6 +72,8 @@ PREFIX = YOUR_BOT_PREFIX
 EMBED_COLOR = YOUR_PREFERED_EMBED_COLOR
 OWNER_ID = YOUR_DISCORD_ID
 GENIUS_TOKEN = YOUR_GENIUS_CLIENT_ACCESS_TOKEN
+DEFAULT_SOURCE = ytmsearch
+PLAY_SOURCE = ytmsearch
 
 #Spotify
 SPOTIFY_ID = YOUR_SPOTIFY_CLIENT_ID
@@ -90,7 +92,6 @@ After installation or finish all the configuration needed, you can use `npm star
 
 - [Parasop](https://github.com/parasop)
 - [Adivise](https://github.com/Adivise)
-- [AADI0009](https://github.com/AADI0009)
 - [RainyXeon](https://github.com/RainyXeon)
 
 ## ❣ Contributors
