@@ -25,8 +25,8 @@
 ## 🎶 More Support Source (Require: LavaLink v3.6.x)
 - [x] [LavaSrc](https://github.com/TopiSenpai/LavaSrc)
 - Spotify
-- Deezer (Configurate in ***Play.js*** | Not supported for playing from Deezer link)
-- Apple
+- Deezer (Still Maintenance)
+- Apple (Still Maintenance)
 - Yandex
 
 - [x] [skybot-lavalink-plugin](https://github.com/DuncteBot/skybot-lavalink-plugin)
