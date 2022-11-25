@@ -5,6 +5,8 @@ module.exports = {
   prefix: process.env.PREFIX || " ",  // your bot prefix "for owner message command"
   color: process.env.EMBED_COLOR || " ", // your embeded hex color
   owner: process.env.OWNER_ID || " ", // your bot Owners ID
+  defaultSource: process.env.DEFAULT_SOURCE || "ytmsearch", // default search engine & "ytmsearch" / "ytsearch" / "scsearch" / "spsearch"
+  playSource: process.env.PLAY_SOURCE || "ytmsearch", // default search engine & "ytmsearch" / "spotify" / "deezer" / "apple"
   geniusToken: process.env.GENIUS_TOKEN || " ", // your genius client access token
   spotifyId: process.env.SPOTIFY_ID || " ", // your Spotify Client ID
   spotifySecret: process.env.SPOTIFY_SECRET || " ", // your Spotify Client Secret

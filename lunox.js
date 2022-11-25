@@ -1,16 +1,10 @@
 const { Client, Collection, GatewayIntentBits, Partials } = require('discord.js');
 const { Poru } = require('poru');
 
-class MainClient extends Client {     
+class MainClient extends Client {
   constructor() {
     super({
       shards: "auto",
-	  messageCacheLifetime: 60,
-      fetchAllMembers: false,
-      messageCacheMaxSize: 10,
-      restTimeOffset: 0,
-      restWsBridgetimeout: 100,
-      failIfNotExists: true,
       allowedMentions: {
         parse: ['roles', 'users', 'everyone'],
         repliedUser: false,
@@ -42,11 +36,7 @@ class MainClient extends Client {
     process.on('uncaughtException', error => console.log(error));
         
     this.poru = new Poru(this, this.config.nodes, {
-		reconnectTime: 0,
-		resumeKey: "MyPlayers",
-		resumeTimeout : 60,
-		reconnectTries: 5,
-		defaultPlatform: "ytmsearch", // you can change it to "ytmseacrh", "scsearch", "ytsearch".
+		defaultPlatform: client.config.defaultSource, // you can change it to "ytmseacrh", "scsearch", "ytsearch".
 		spotify: {
 			clientID: this.config.spotifyId,
 			clientSecret: this.config.spotifySecret,
@@ -73,8 +63,9 @@ class MainClient extends Client {
     });
         
   }
-    connect() {
-    return super.login(this.token);
-  }
+	connect() {
+		return super.login(this.token);
+	}
 };
+
 module.exports = MainClient;

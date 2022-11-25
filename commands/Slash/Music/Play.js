@@ -25,43 +25,47 @@ module.exports = {
 			deaf: true,
 		});
 	}
-
+	
     const song = interaction.options.getString('query');
-    const resolve = await client.poru.resolve(song, 'ytmsearch'); // You can remove 'spotify' for default Or change it to 'deezer' or 'apple' (currently maintenance).
-    const { loadType, tracks, playlistInfo } = resolve;
+	const source = client.config.playSource;
+	
+    const res = await client.poru.resolve(song, source); // You can remove 'spotify' for default Or change it to 'deezer' or 'apple' (currently maintenance).
+    const { loadType, tracks, playlistInfo } = res;
+	
+	if (player.state !== "CONNECTED") player.connect();
     
-    if (loadType === 'PLAYLIST_LOADED') {
-      for (const track of resolve.tracks) {
-        track.info.requester = interaction.member;
-        await player.queue.add(track);
-      }
-      const track = tracks.shift();
-      
-      const embed = new EmbedBuilder()
-        .setColor(client.color)
-        .setDescription(`☑️ **[${playlistInfo.name}](${song})** • \`${tracks.length}\` tracks • ${track.info.requester}`);
+	if (loadType === 'PLAYLIST_LOADED') {
+		for (const track of res.tracks) {
+			track.info.requester = interaction.member;
+			await player.queue.add(track);
+		}
+		const track = tracks.shift();
+	
+		const embed = new EmbedBuilder()
+			.setColor(client.color)
+			.setDescription(`☑️ **[${playlistInfo.name}](${song})** • \`${tracks.length}\` tracks • ${track.info.requester}`);
 
-      await interaction.reply({ embeds: [embed] });
-      if (!player.isPlaying && !player.isPaused) return player.play();
-    } else if (loadType === 'SEARCH_RESULT' || loadType === 'TRACK_LOADED') {
-      const track = tracks.shift();
-      
-      track.info.requester = interaction.member;
-      await player.queue.add(track);
+		await interaction.reply({ embeds: [embed] });
+		if (!player.isPlaying && !player.isPaused) return player.play();
+	} else if (loadType === 'SEARCH_RESULT' || loadType === 'TRACK_LOADED') {
+		const track = tracks.shift();
+	  
+		track.info.requester = interaction.member;
+		await player.queue.add(track);
 
-      const embed = new EmbedBuilder()
-        .setColor(client.color)
-        .setDescription(`☑️ **[${track.info.title}](${track.info.uri})** • \`${formatDuration(track.info.length)}\` • ${track.info.requester}`);
+		const embed = new EmbedBuilder()
+			.setColor(client.color)
+			.setDescription(`☑️ **[${track.info.title}](${track.info.uri})** • \`${formatDuration(track.info.length)}\` • ${track.info.requester}`);
 
-      await interaction.reply({ embeds: [embed] });
-      if (!player.isPlaying && !player.isPaused) return player.play();
-    } else {
-        
-      const embed = new EmbedBuilder()
-        .setColor(client.color)
-        .setDescription(`\`❌\` | No results found!`);
-        
-      return interaction.reply({ embeds: [embed], ephemeral: true });
-    }
+		await interaction.reply({ embeds: [embed] });
+		if (!player.isPlaying && !player.isPaused) return player.play();
+	} else if (loadType === 'LOAD_FAILED') {
+		const embed = new EmbedBuilder()
+			.setColor(client.color)
+			.setDescription(`\`❌\` | Failed to load track!`);
+		
+		return interaction.reply({ embeds: [embed], ephemeral: true });
+		player.destroy();
+	}
   },
 };
