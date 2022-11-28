@@ -18,7 +18,7 @@ module.exports = {
   run: async (client, interaction) => {
     await interaction.deferReply({ ephemeral: false });
 
-    const player = client.poru.players.get(interaction.guild.id);
+    let player = client.poru.players.get(interaction.guild.id);
     if (!player) {
       player = await client.poru.createConnection({
         guildId: interaction.guildId,

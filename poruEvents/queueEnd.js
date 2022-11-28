@@ -6,7 +6,7 @@ module.exports.run = async (client, player) => {
   await player.destroy();
 
   const embed = new EmbedBuilder()
-    .setDescription(`\`📛\` | Queue ended: \`Disconnected\``)
+    .setDescription(`\`📛\` | Queue empty: \`Disconnected\``)
     .setColor(client.color);
 
   return channel.send({ embeds: [embed] });
