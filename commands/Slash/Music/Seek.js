@@ -19,6 +19,7 @@ module.exports = {
     },
   ],
   run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: false });
     const player = client.poru.players.get(interaction.guild.id);
 
     const position = interaction.options.getNumber("seconds", true);
@@ -29,7 +30,7 @@ module.exports = {
         .setColor(client.color)
         .setDescription(`\`❌\` | Song is not seekable`);
 
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     } else {
       await player.seekTo(position * 1000);
 
@@ -37,7 +38,7 @@ module.exports = {
         .setColor(client.color)
         .setDescription(`\`⏩\` | Song seeked to: \`${Duration}\``);
 
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
   },
 };

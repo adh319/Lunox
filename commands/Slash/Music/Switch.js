@@ -24,6 +24,8 @@ module.exports = {
     },
   ],
   run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: false });
+    
     function moveArrayElement(arr, fromIndex, toIndex) {
       arr.splice(toIndex, 0, arr.splice(fromIndex, 1)[0]);
       return arr;
@@ -43,7 +45,7 @@ module.exports = {
       to < 1 ||
       to > player.queue.length
     )
-      return interaction.reply("That song does not exist in the queue.");
+      return interaction.editReply("That song does not exist in the queue.");
 
     const moved = player.queue[from - 1];
     await moveArrayElement(player.queue, from - 1, to - 1);
@@ -52,6 +54,6 @@ module.exports = {
       .setColor(client.color)
       .setDescription(`Moved \`${moved.info.title}\` to \`${to}\`.`);
 
-    return interaction.reply({ embeds: [embed], ephemeral: true });
+    return interaction.editReply({ embeds: [embed] });
   },
 };

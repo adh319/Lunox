@@ -7,6 +7,8 @@ module.exports = {
   description: "Displays the bot status.",
   category: "Information",
   run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: false });
+
     let uptime = await os.uptime();
 
     let d = Math.floor(uptime / (3600 * 24));
@@ -74,7 +76,7 @@ module.exports = {
         .setColor(client.color)
         .setTimestamp(Date.now());
 
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     });
   },
 };

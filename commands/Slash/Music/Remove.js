@@ -17,6 +17,8 @@ module.exports = {
     },
   ],
   run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: false });
+    
     const player = client.poru.players.get(interaction.guild.id);
 
     const track = interaction.options.getNumber("song");
@@ -26,7 +28,7 @@ module.exports = {
         .setColor(client.color)
         .setDescription(`\`❌\` | Song was not found`);
 
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
     await player.queue.remove(track - 1);
 
@@ -34,6 +36,6 @@ module.exports = {
       .setColor(client.color)
       .setDescription(`\`✅\` | Song has been: \`Removed\``);
 
-    return interaction.reply({ embeds: [embed], ephemeral: true });
+    return interaction.editReply({ embeds: [embed] });
   },
 };

@@ -8,7 +8,9 @@ module.exports = {
   inVc: true,
   sameVc: true,
   player: true,
-  run: (client, interaction) => {
+  run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: false });
+    
     const player = client.poru.players.get(interaction.guild.id);
 
     const currentDuration = formatDuration(player.currentTrack.info.length);
@@ -45,6 +47,6 @@ module.exports = {
         },
       ]);
 
-    return interaction.reply({ embeds: [embed] });
+    return interaction.editReply({ embeds: [embed] });
   },
 };

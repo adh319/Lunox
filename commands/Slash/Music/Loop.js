@@ -28,6 +28,8 @@ module.exports = {
   ],
 
   run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: false });
+    
     const player = client.poru.players.get(interaction.guild.id);
 
     const input = interaction.options.getString("mode");
@@ -40,7 +42,7 @@ module.exports = {
           .setColor(client.color)
           .setDescription(`\`🔂\` | Loop mode has been: \`Disabled\``);
 
-        return interaction.reply({ embeds: [embed], ephemeral: true });
+        return interaction.editReply({ embeds: [embed] });
       } else {
         await player.setLoop("TRACK");
 
@@ -48,7 +50,7 @@ module.exports = {
           .setColor(client.color)
           .setDescription(`\`🔂\` | Loop mode has been set to: \`Current\``);
 
-        return interaction.reply({ embeds: [embed], ephemeral: true });
+        return interaction.editReply({ embeds: [embed] });
       }
     } else if (input === "queue") {
       if (player.loop === "QUEUE") {
@@ -58,7 +60,7 @@ module.exports = {
           .setColor(client.color)
           .setDescription(`\`🔁\` | Loop mode has been: \`Disabled\``);
 
-        return interaction.reply({ embeds: [embed], ephemeral: true });
+        return interaction.editReply({ embeds: [embed] });
       } else {
         player.setLoop("QUEUE");
 
@@ -66,7 +68,7 @@ module.exports = {
           .setColor(client.color)
           .setDescription(`\`🔁\` | Loop mode has been set to: \`Queue\``);
 
-        return interaction.reply({ embeds: [embed], ephemeral: true });
+        return interaction.editReply({ embeds: [embed] });
       }
     }
   },

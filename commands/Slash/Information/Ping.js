@@ -5,10 +5,12 @@ module.exports = {
   description: "Check latency of bot!",
   category: "Information",
   run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: false });
+    
     const embed = new EmbedBuilder()
       .setDescription(`\`🏓\` | **Pong:** \`${Math.round(client.ws.ping)}ms\``)
       .setColor(client.color);
 
-    return interaction.reply({ embeds: [embed], ephemeral: true });
+    return interaction.editReply({ embeds: [embed] });
   },
 };

@@ -10,7 +10,9 @@ module.exports = {
   sameVc: true,
   player: true,
   current: true,
-  run: (client, interaction) => {
+  run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: false });
+
     const player = client.poru.players.get(interaction.guildId);
 
     const sources = capital(player.currentTrack.info.sourceName);
@@ -63,6 +65,6 @@ module.exports = {
       .setColor(client.color)
       .setTimestamp();
 
-    return interaction.reply({ embeds: [embed] });
+    return interaction.editReply({ embeds: [embed] });
   },
 };

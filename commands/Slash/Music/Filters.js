@@ -81,6 +81,8 @@ module.exports = {
     },
   ],
   run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: false });
+
     const player = client.poru.players.get(interaction.guild.id);
 
     if (interaction.options.getSubcommand() === "clear") {
@@ -92,7 +94,7 @@ module.exports = {
         .setColor(client.color);
 
       await delay(2000);
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
 
     if (interaction.options.getSubcommand() === "8d") {
@@ -103,7 +105,7 @@ module.exports = {
         .setColor(client.color);
 
       await delay(2000);
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
 
     if (interaction.options.getSubcommand() === "bassboost") {
@@ -114,7 +116,7 @@ module.exports = {
         .setColor(client.color);
 
       await delay(2000);
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
 
     if (interaction.options.getSubcommand() === "earrape") {
@@ -125,7 +127,7 @@ module.exports = {
         .setColor(client.color);
 
       await delay(2000);
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
 
     if (interaction.options.getSubcommand() === "karaoke") {
@@ -136,7 +138,7 @@ module.exports = {
         .setColor(client.color);
 
       await delay(2000);
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
 
     if (interaction.options.getSubcommand() === "timescale") {
@@ -147,7 +149,7 @@ module.exports = {
         .setColor(client.color);
 
       await delay(2000);
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
 
     if (interaction.options.getSubcommand() === "tremelo") {
@@ -158,7 +160,7 @@ module.exports = {
         .setColor(client.color);
 
       await delay(2000);
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
 
     if (interaction.options.getSubcommand() === "vibrato") {
@@ -169,7 +171,7 @@ module.exports = {
         .setColor(client.color);
 
       await delay(2000);
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
 
     if (interaction.options.getSubcommand() === "rotation") {
@@ -180,7 +182,7 @@ module.exports = {
         .setColor(client.color);
 
       await delay(2000);
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
 
     if (interaction.options.getSubcommand() === "distortion") {
@@ -191,7 +193,7 @@ module.exports = {
         .setColor(client.color);
 
       await delay(2000);
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
 
     if (interaction.options.getSubcommand() === "channelmix") {
@@ -202,7 +204,7 @@ module.exports = {
         .setColor(client.color);
 
       await delay(2000);
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
 
     if (interaction.options.getSubcommand() === "lowpass") {
@@ -213,7 +215,7 @@ module.exports = {
         .setColor(client.color);
 
       await delay(2000);
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
 
     if (interaction.options.getSubcommand() === "nightcore") {
@@ -224,7 +226,7 @@ module.exports = {
         .setColor(client.color);
 
       await delay(2000);
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
 
     if (interaction.options.getSubcommand() === "vaporwave") {
@@ -235,7 +237,7 @@ module.exports = {
         .setColor(client.color);
 
       await delay(2000);
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
   },
 };

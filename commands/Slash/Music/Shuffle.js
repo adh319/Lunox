@@ -8,6 +8,8 @@ module.exports = {
   sameVc: true,
   player: true,
   run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: false });
+    
     const player = client.poru.players.get(interaction.guild.id);
 
     if (!player.queue.length) {
@@ -15,7 +17,7 @@ module.exports = {
         .setColor(client.color)
         .setDescription(`\`❌\` | Queue is: \`Empty\``);
 
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     } else {
       await player.queue.shuffle();
 
@@ -23,7 +25,7 @@ module.exports = {
         .setColor(client.color)
         .setDescription(`\`🔀\` | Queue has been: \`Shuffled\``);
 
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
   },
 };

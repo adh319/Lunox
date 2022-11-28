@@ -19,6 +19,8 @@ module.exports = {
     },
   ],
   run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: false });
+
     const player = client.poru.players.get(interaction.guild.id);
 
     const value = interaction.options.getNumber("amount");
@@ -30,7 +32,7 @@ module.exports = {
           `\`🔊\` | Current player volume: \`${player.filters.volume * 100}%\``
         );
 
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     } else {
       await player.setVolume(value / 100);
 
@@ -41,7 +43,7 @@ module.exports = {
         );
 
       await delay(2000);
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
   },
 };

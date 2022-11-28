@@ -16,7 +16,9 @@ module.exports = {
     },
   ],
   run: async (client, interaction) => {
-    let player = client.poru.players.get(interaction.guild.id);
+    await interaction.deferReply({ ephemeral: false });
+
+    const player = client.poru.players.get(interaction.guild.id);
     if (!player) {
       player = await client.poru.createConnection({
         guildId: interaction.guildId,
@@ -47,7 +49,7 @@ module.exports = {
           `☑️ **[${playlistInfo.name}](${song})** • \`${tracks.length}\` tracks • ${track.info.requester}`
         );
 
-      await interaction.reply({ embeds: [embed] });
+      await interaction.editReply({ embeds: [embed] });
       if (!player.isPlaying && !player.isPaused) return player.play();
     } else if (loadType === "SEARCH_RESULT" || loadType === "TRACK_LOADED") {
       const track = tracks.shift();
@@ -63,14 +65,14 @@ module.exports = {
           )}\` • ${track.info.requester}`
         );
 
-      await interaction.reply({ embeds: [embed] });
+      await interaction.editReply({ embeds: [embed] });
       if (!player.isPlaying && !player.isPaused) return player.play();
     } else if (loadType === "LOAD_FAILED") {
       const embed = new EmbedBuilder()
         .setColor(client.color)
         .setDescription(`\`❌\` | Failed to load track!`);
 
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
       player.destroy();
     }
   },

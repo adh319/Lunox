@@ -9,6 +9,8 @@ module.exports = {
   player: true,
   current: true,
   run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: false });
+    
     const player = client.poru.players.get(interaction.guild.id);
 
     if (!player.previousTrack) {
@@ -16,7 +18,7 @@ module.exports = {
         .setDescription(`\`❌\` | Previous song was: \`Not found\``)
         .setColor(client.color);
 
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed] });
     }
     await player.queue.unshift(player.previousTrack);
     await player.stop();
@@ -25,6 +27,6 @@ module.exports = {
       .setColor(client.color)
       .setDescription(`\`⏮️\` | Song has been: \`Previous\``);
 
-    return interaction.reply({ embeds: [embed], ephemeral: true });
+    return interaction.editReply({ embeds: [embed] });
   },
 };

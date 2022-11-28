@@ -6,6 +6,8 @@ module.exports = {
   category: "Music",
   inVc: true,
   run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: false });
+    
     client.poru.createConnection({
       guildId: interaction.guild.id,
       voiceChannel: interaction.member.voice.channel.id,
@@ -19,6 +21,6 @@ module.exports = {
         `\`✅\` | Joined ${interaction.member.voice.channel.toString()}`
       );
 
-    return interaction.reply({ embeds: [embed] });
+    return interaction.editReply({ embeds: [embed] });
   },
 };

@@ -10,6 +10,8 @@ module.exports = {
   sameVc: true,
   player: true,
   run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: false });
+    
     const player = client.poru.players.get(interaction.guildId);
 
     await player.destroy();
@@ -18,6 +20,6 @@ module.exports = {
       .setColor(client.color)
       .setDescription(`\`👋\` | Player has been: \`Disconnected\``);
 
-    return interaction.reply({ embeds: [embed] });
+    return interaction.editReply({ embeds: [embed] });
   },
 };

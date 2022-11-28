@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, ApplicationCommandOptionType } = require("discord.js");
 const { getSong } = require("genius-lyrics-api");
 
 module.exports = {
@@ -10,51 +10,48 @@ module.exports = {
   player: true,
   current: true,
   run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: false });
+
     const player = client.poru.players.get(interaction.guild.id);
 
     try {
       const songName = player.currentTrack.info.title;
+      const songArtist = player.currentTrack.info.author;
 
       let lyricsEmbed = new EmbedBuilder();
       lyricsEmbed.setColor(client.color);
       lyricsEmbed.setFooter({
         text: "Powered by Genius Lyrics",
-        iconURL:
-          "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/v1435674560/mjmgr50tv69vt5pmzeib.png",
+        iconURL: client.user.displayAvatarURL({ dynamic: true }),
       });
       lyricsEmbed.setTimestamp();
 
       getSong({
         apiKey: client.config.geniusToken,
         title: songName,
-        artist: " ",
+        artist: songArtist,
         optimizeQuery: true,
       }).then((lyrics) => {
         if (lyrics == null) {
-          return interaction.reply({
-            content: "Lyrics was not found.",
-            ephemeral: true,
-          });
+          return interaction.editReply({ content: "Lyrics was not found." });
         }
         lyricsEmbed.setTitle(lyrics.title);
         lyricsEmbed.setURL(lyrics.url);
         lyricsEmbed.setThumbnail(lyrics.albumArt);
         try {
           lyricsEmbed.setDescription(lyrics.lyrics);
-          return interaction.reply({
+          return interaction.editReply({
             embeds: [lyricsEmbed],
           });
         } catch (e) {
-          return interaction.reply({
+          return interaction.editReply({
             content: `The lyrics are way too long display. (${lyrics.lyrics.length} > 4096)`,
-            ephemeral: true,
           });
         }
       });
     } catch (e) {
-      return interaction.reply({
+      return interaction.editReply({
         content: "There was an error getting lyrics for the song.",
-        ephemeral: true,
       });
     }
   },

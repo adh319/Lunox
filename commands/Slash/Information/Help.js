@@ -6,6 +6,8 @@ module.exports = {
   description: "Display all commands of the bot.",
   category: "Information",
   run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: false });
+
     const embed = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
@@ -38,6 +40,6 @@ module.exports = {
       }
     });
 
-    return interaction.reply({ embeds: [embed], ephemeral: true });
+    return interaction.editReply({ embeds: [embed] });
   },
 };
