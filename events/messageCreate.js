@@ -29,22 +29,22 @@ module.exports.run = (client, message) => {
   //Voice Channel only
   if (command.inVc && !memberChannel) {
     return message.channel.send(
-      'You must be in a Voice Channel to use this Command!',
+      "You must be in a Voice Channel to use this Command!"
     );
   }
 
   //Same Voice Channel only
   if (command.sameVc && player && botChannel !== memberChannel) {
-    return message.channel.send('You must be in the same Voice Channel as me!');
+    return message.channel.send("You must be in the same Voice Channel as me!");
   }
 
   //Player required
   if (command.player && !player) {
-    return message.channel.send('No player exists for this server.');
+    return message.channel.send("No player exists for this server.");
   }
 
   if (command.current && !player.currentTrack) {
-    message.channel.send('There is nothing playing right now.');
+    message.channel.send("There is nothing playing right now.");
   }
 
   //args

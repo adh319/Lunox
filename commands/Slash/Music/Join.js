@@ -1,9 +1,9 @@
-const { EmbedBuilder } = require('discord.js');
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
-  name: 'join',
-  description: 'Invite bot to your voice channel.',
-  category: 'Music',
+  name: "join",
+  description: "Invite bot to your voice channel.",
+  category: "Music",
   inVc: true,
   run: async (client, interaction) => {
     client.poru.createConnection({
@@ -15,7 +15,9 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setColor(client.color)
-      .setDescription(`\`✅\` | Joined ${interaction.member.voice.channel.toString()}`);
+      .setDescription(
+        `\`✅\` | Joined ${interaction.member.voice.channel.toString()}`
+      );
 
     return interaction.reply({ embeds: [embed] });
   },

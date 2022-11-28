@@ -1,7 +1,7 @@
-const { ShardingManager } = require('discord.js'); //imports the sharding manager
+const { ShardingManager } = require("discord.js"); //imports the sharding manager
 require("dotenv").config();
 
-const manager = new ShardingManager('./index.js', { 
+const manager = new ShardingManager("./index.js", {
   token: process.env.TOKEN || "YOUR_BOT_TOKEN", //paste your token here
   respawn: true,
   autoSpawn: true,

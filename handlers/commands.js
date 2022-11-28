@@ -1,12 +1,12 @@
-const { readdirSync } = require('fs');
-const Ascii = require('ascii-table');
-const table = new Ascii('Commands');
-table.setHeading('Command', 'Load status');
+const { readdirSync } = require("fs");
+const Ascii = require("ascii-table");
+const table = new Ascii("Commands");
+table.setHeading("Command", "Load status");
 
 module.exports = (client) => {
-  readdirSync('./commands/Message/').forEach((dir) => {
+  readdirSync("./commands/Message/").forEach((dir) => {
     const commands = readdirSync(`./commands/Message/${dir}/`).filter((file) =>
-      file.endsWith('.js'),
+      file.endsWith(".js")
     );
 
     for (const file of commands) {
@@ -14,11 +14,11 @@ module.exports = (client) => {
 
       if (command.name) {
         client.commands.set(command.name, command);
-        table.addRow(file, '✅');
+        table.addRow(file, "✅");
       } else {
         table.addRow(
           file,
-          `❌ -> Missing a command name, or command name is not a string.`,
+          `❌ -> Missing a command name, or command name is not a string.`
         );
         continue;
       }

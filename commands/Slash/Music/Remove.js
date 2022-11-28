@@ -1,16 +1,16 @@
-const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
+const { ApplicationCommandOptionType, EmbedBuilder } = require("discord.js");
 
 module.exports = {
-  name: 'remove',
-  description: 'Remove a song from the queue.',
-  category: 'Music',
+  name: "remove",
+  description: "Remove a song from the queue.",
+  category: "Music",
   inVc: true,
   sameVc: true,
   player: true,
   options: [
     {
-      name: 'song',
-      description: 'Position of the song.',
+      name: "song",
+      description: "Position of the song.",
       type: ApplicationCommandOptionType.Number,
       required: true,
       min_value: 1,
@@ -19,10 +19,9 @@ module.exports = {
   run: async (client, interaction) => {
     const player = client.poru.players.get(interaction.guild.id);
 
-    const track = interaction.options.getNumber('song');
-    
+    const track = interaction.options.getNumber("song");
+
     if (track > player.queue.length) {
-        
       const embed = new EmbedBuilder()
         .setColor(client.color)
         .setDescription(`\`❌\` | Song was not found`);

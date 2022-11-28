@@ -1,6 +1,6 @@
-const { EmbedBuilder, InteractionType } = require('discord.js');
+const { EmbedBuilder, InteractionType } = require("discord.js");
 
-module.exports.run = async (client, interaction) => {  
+module.exports.run = async (client, interaction) => {
   if (interaction.type === InteractionType.ApplicationCommand) {
     const command = client.slashCommands.get(interaction.commandName);
     if (!command) return;
@@ -11,39 +11,39 @@ module.exports.run = async (client, interaction) => {
 
     //Voice Channel only
     if (command.inVc && !memberChannel) {
-      
       const embed = new EmbedBuilder()
         .setColor(client.color)
-        .setDescription(`\`❌\` | You must be in a Voice channel to use this command.`);
-        
+        .setDescription(
+          `\`❌\` | You must be in a Voice channel to use this command.`
+        );
+
       return interaction.reply({ embeds: [embed], ephmeral: true });
     }
     //Same Voice Channel only
     if (command.sameVc && player && botChannel !== memberChannel) {
-      
       const embed = new EmbedBuilder()
         .setColor(client.color)
-        .setDescription(`\`❌\` | You must be in the same Voice channel as mine to use this command.`);
-        
+        .setDescription(
+          `\`❌\` | You must be in the same Voice channel as mine to use this command.`
+        );
+
       return interaction.reply({ embeds: [embed], ephmeral: true });
     }
 
     //Player check
     if (command.player && !player) {
-      
       const embed = new EmbedBuilder()
         .setColor(client.color)
         .setDescription(`\`❌\` | No player exists for this server.`);
-        
+
       return interaction.reply({ embeds: [embed], ephmeral: true });
     }
 
     if (command.current && !player.currentTrack) {
-      
       const embed = new EmbedBuilder()
         .setColor(client.color)
         .setDescription(`\`❌\` | There is nothing playing right now.`);
-        
+
       return interaction.reply({ embeds: [embed], ephmeral: true });
     }
 
@@ -52,8 +52,11 @@ module.exports.run = async (client, interaction) => {
     try {
       command.run(client, interaction);
     } catch (error) {
-      console.log(error)
-      await interaction.reply({ content: `Something went wrong.`, ephmeral: true });
+      console.log(error);
+      await interaction.reply({
+        content: `Something went wrong.`,
+        ephmeral: true,
+      });
     }
   }
 };

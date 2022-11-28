@@ -1,9 +1,9 @@
-const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
+const { ApplicationCommandOptionType, EmbedBuilder } = require("discord.js");
 
 module.exports = {
-  name: 'replay',
-  description: 'Replay the current song.',
-  category: 'Music',
+  name: "replay",
+  description: "Replay the current song.",
+  category: "Music",
   inVc: true,
   sameVc: true,
   player: true,
@@ -12,7 +12,6 @@ module.exports = {
     const player = client.poru.players.get(interaction.guild.id);
 
     if (!player.currentTrack.info.isSeekable) {
-        
       const embed = new EmbedBuilder()
         .setColor(client.color)
         .setDescription(`\`❌\` | Song can't be replay`);
