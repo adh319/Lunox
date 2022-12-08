@@ -1,5 +1,5 @@
 const { EmbedBuilder, ApplicationCommandOptionType } = require("discord.js");
-const lyricsfinder = require("lyrics-searcher");
+const lyricsfinder = require("lyrics-finder");
 
 module.exports = {
   name: "lyrics",
