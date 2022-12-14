@@ -42,17 +42,7 @@ class MainClient extends Client {
     process.on("unhandledRejection", (error) => console.log(error));
     process.on("uncaughtException", (error) => console.log(error));
 
-    this.poru = new Poru(this, this.config.nodes, {
-      reconnectTime: 0,
-      resumeKey: "Lunox",
-      resumeTimeout: 60,
-      defaultPlatform: client.config.defaultSource, // you can change it to "ytmseacrh", "scsearch", "ytsearch".
-      clientID: this.config.spotifyId,
-      clientSecret: this.config.spotifySecret,
-      playlistLimit: 10,
-      albumLimit: 10,
-      artistLimit: 10,
-      searchMarket: "us",
+    this.poru = new Poru(this, this.config.nodes, this.config.poruOptions, {
       send(id, payload) {
         const guild = client.guilds.cache.get(id);
         if (guild) guild.shard.send(payload);
