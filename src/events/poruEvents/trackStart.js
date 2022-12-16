@@ -5,7 +5,7 @@ const capital = require("node-capitalize");
 
 module.exports.run = async (client, player, track) => {
 	let Control = await GControl.findOne({ guild: player.guildId });
-	
+
 	// This is the default setting for button control
 	if (!Control) {
 		Control = await GControl.create({
@@ -71,7 +71,7 @@ module.exports.run = async (client, player, track) => {
 		if (message.guild.members.me.voice.channel && message.guild.members.me.voice.channelId === message.member.voice.channelId) return true;
 		else {
 			message.reply({
-				content: `You need to be in a same/voice channel to use this button.`,
+				content: `\`❌\` | You need to be in a same/voice channel to use this button.`,
 				ephemeral: true,
 			});
 		}
@@ -84,7 +84,9 @@ module.exports.run = async (client, player, track) => {
 
 	collector.on("collect", async (interaction) => {
 		if (interaction.customId === "loop") {
-			if (!player) {
+			if (interaction.user.id !== player.currentTrack.info.requester.id) {
+				return interaction.reply({ content: `\`❌\` | You are not allowed to use buttons for this message!`, ephemeral: true });
+			} else if (!player) {
 				collector.stop();
 			} else if (player.loop === "NONE") {
 				player.setLoop("TRACK");
@@ -112,7 +114,9 @@ module.exports.run = async (client, player, track) => {
 				interaction.deferUpdate();
 			}
 		} else if (interaction.customId === "replay") {
-			if (!player) {
+			if (interaction.user.id !== player.currentTrack.info.requester.id) {
+				return interaction.reply({ content: `\`❌\` | You are not allowed to use buttons for this message!`, ephemeral: true });
+			} else if (!player) {
 				collector.stop();
 			} else if (!player.currentTrack.info.isSeekable) {
 				const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Song can't be replay`);
@@ -124,7 +128,9 @@ module.exports.run = async (client, player, track) => {
 				interaction.deferUpdate();
 			}
 		} else if (interaction.customId === "stop") {
-			if (!player) {
+			if (interaction.user.id !== player.currentTrack.info.requester.id) {
+				return interaction.reply({ content: `\`❌\` | You are not allowed to use buttons for this message!`, ephemeral: true });
+			} else if (!player) {
 				collector.stop();
 			} else {
 				if (player.message) await player.message.delete();
@@ -134,7 +140,9 @@ module.exports.run = async (client, player, track) => {
 				interaction.deferUpdate();
 			}
 		} else if (interaction.customId === "pause") {
-			if (!player) {
+			if (interaction.user.id !== player.currentTrack.info.requester.id) {
+				return interaction.reply({ content: `\`❌\` | You are not allowed to use buttons for this message!`, ephemeral: true });
+			} else if (!player) {
 				collector.stop();
 			} else if (player.isPaused) {
 				player.pause(false);
@@ -162,7 +170,9 @@ module.exports.run = async (client, player, track) => {
 				interaction.deferUpdate();
 			}
 		} else if (interaction.customId === "skip") {
-			if (!player) {
+			if (interaction.user.id !== player.currentTrack.info.requester.id) {
+				return interaction.reply({ content: `\`❌\` | You are not allowed to use buttons for this message!`, ephemeral: true });
+			} else if (!player) {
 				collector.stop();
 			} else if (!player || player.queue.size == 0) {
 				const embed = new EmbedBuilder().setDescription(`\`❌\` | Queue was: \`Empty\``).setColor(client.color);
