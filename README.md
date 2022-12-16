@@ -6,12 +6,20 @@
   <a href="https://ko-fi.com/adh319" target="_blank"> <img src="https://ko-fi.com/img/githubbutton_sm.svg"/> </a> 
 </p>
 
-## 📑 Feature
+## `📑` Feature
+- [x] Slash Commands
+- [x] Prefix Commands [Owner Only]
 - [x] Music System
 - [x] Custom Filters
+- [x] Simpy DJ System [Maybe]
+- [x] Clean UI
 - [x] Easy to use
+- [x] And Many More...!
 
-## 🎶 Support Source
+## `🖼️` Screenshots
+- [x] Coming Soon...!
+
+## `🎶` Support Source
 - [x] Youtube
 - [x] SoundCloud
 - [x] Twitch
@@ -22,11 +30,11 @@
 <details><summary>➕ More Support Source [CLICK ME]</summary>
 <p>
 
-## 🎶 More Support Source (Require: LavaLink v3.6.x)
+## `🎶` More Support Source (Require: LavaLink v3.6.x)
 - [x] [LavaSrc](https://github.com/TopiSenpai/LavaSrc)
-- Spotify
-- Deezer (Still Maintenance)
-- Apple (Still Maintenance)
+- Spotify 
+- Deezer [Still Maintenance]
+- Apple [Fixed]
 - Yandex
 
 - [x] [skybot-lavalink-plugin](https://github.com/DuncteBot/skybot-lavalink-plugin)
@@ -42,18 +50,17 @@
 </p>
 </details>
 
-## 📎 Requirements
+## `📎` Requirements
 
-- Node.js v16+ **[Download](https://nodejs.org/en/download/)**
+- Node.js v16+ **[Download](https://nodejs.org/en/download/)** 
 - Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
-- LavaLink **[Guide](https://github.com/freyacodes/lavalink)** (*Dev Version!* **[Download](https://ci.fredboat.com/repository/downloadAll/Lavalink_Build/9311:id/artifacts.zip)** )
-- Genius Token **[Create Genius Access Token](https://genius.com/api-clients)**
+- LavaLink **[Guide](https://github.com/freyacodes/lavalink)**
 
-## 🛑 Super Requirements 
+## `🛑` Super Requirements 
 
 - Java 11-13 **[Download JDK13](http://www.mediafire.com/file/m6gk7aoq96db8g0/file)** (i use this version) for LAVALINK!
 
-## 📚 Installation
+## `📚` Installation
 
 ```
 git clone https://github.com/adh319/Lunox
@@ -61,41 +68,53 @@ cd Lunox
 npm install
 ```
 
-## 📄 Configuration
+## `📄` Configuration
 
-Rename `.env.example` to `.env` and fill out the values:
+Rename `.env.example` to `.env` and fill out these values. You can find the details on `/src/settings/config.js`:
 
-```.env
-# Bot
-TOKEN = YOUR_BOT_TOKEN
-PREFIX = YOUR_BOT_PREFIX
-EMBED_COLOR = YOUR_PREFERED_EMBED_COLOR
-OWNER_ID = YOUR_DISCORD_ID
-DEFAULT_SOURCE = ytmsearch
-PLAY_SOURCE = ytmsearch
+```#########################################
+## SEE THE DETAILS ON "CONFIG.JS" FILE ##
+#########################################
 
-#Spotify
-SPOTIFY_ID = YOUR_SPOTIFY_CLIENT_ID
-SPOTIFY_SECRET = YOUR_SPOTIFY_CLIENT_SECRET
+#BOT DETAILS
+TOKEN = 
+PREFIX = 
+EMBED_COLOR = 
+OWNER_ID = 
+ERROR_LOGS = 
+GUILD_LOGS = 
+LEAVE_TIMEOUT = 
 
-# Nodes
-NODE_NAME = Main
-NODE_HOST = localhost 
-NODE_PORT = 2333
-NODE_PASSWORD = youshallnotpass
-NODE_SECURE = false
+#PORU DETAILS
+PLAY_SOURCE = 
+DEFAULT_SOURCE = 
+SPOTIFY_ID = 
+SPOTIFY_SECRET = 
+NODE_NAME = 
+NODE_HOST = 
+NODE_PORT = 
+NODE_PASSWORD = 
+NODE_SECURE = 
+
+#LINK DETAILS
+MONGO_URI = 
+SUPPORT_URL = 
+VOTE_URL = 
+INVITE_URL = 
+IMAGE_URL = 
 ```
-After installation or finish all the configuration needed, you can use `npm start` or `node manager.js` to start the bot.
+After installation & finished all needed configuration, you can start the bot by either using `npm start` or `node sharder.js`.
 
-## 👏 Special Thanks
+## `👏` Special Thanks
 
 - [Parasop](https://github.com/parasop)
 - [Adivise](https://github.com/Adivise)
 - [RainyXeon](https://github.com/RainyXeon)
+- [Blacky](https://github.com/brblacky)
 
-## ❣ Contributors
+## `❣` Contributors
 
-I really appreciated if you guys can contribute to this project. So don't hesitate to make a pull request if you guys has any suggestions or want to add more features.
+I really appreciated if you guys can contribute to this project. So don't hesitate to make a pull request if you guys has any suggestions, fixing bugs or want to add more features.
 
 <a href="https://github.com/adh319/Lunox/graphs/contributors">
   <img src="https://contributors-img.web.app/image?repo=adh319/Lunox" />
