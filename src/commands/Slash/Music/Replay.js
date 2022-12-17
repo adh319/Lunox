@@ -2,45 +2,45 @@ const { EmbedBuilder } = require("discord.js");
 const GControl = require("../../../settings/models/Control.js");
 
 module.exports = {
-	name: "replay",
-	description: "Replay the current song.",
-	category: "Music",
-	permissions: {
-		bot: [],
-		user: [],
-	},
-	settings: {
-		inVc: true,
-		sameVc: true,
-		player: true,
-		current: true,
-		owner: false,
-	},
-	run: async (client, interaction) => {
-		await interaction.deferReply({ ephemeral: true });
+  name: "replay",
+  description: "Replay the current song.",
+  category: "Music",
+  permissions: {
+    bot: [],
+    user: [],
+  },
+  settings: {
+    inVc: true,
+    sameVc: true,
+    player: true,
+    current: true,
+    owner: false,
+  },
+  run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: true });
 
-		const Control = await GControl.findOne({ guild: interaction.guildId });
+    const Control = await GControl.findOne({ guild: interaction.guildId });
 
-		// When button control "enable", this will make command unable to use. You can delete this
-		if (Control.playerControl === "enable") {
-			const ctrl = new EmbedBuilder()
-				.setColor(client.color)
-				.setDescription(`\`❌\` | You can't use this command as the player control was enable!`);
-			return interaction.editReply({ embeds: [ctrl] });
-		}
+    // When button control "enable", this will make command unable to use. You can delete this
+    if (Control.playerControl === "enable") {
+      const ctrl = new EmbedBuilder()
+        .setColor(client.color)
+        .setDescription(`\`❌\` | You can't use this command as the player control was enable!`);
+      return interaction.editReply({ embeds: [ctrl] });
+    }
 
-		const player = client.poru.players.get(interaction.guild.id);
+    const player = client.poru.players.get(interaction.guild.id);
 
-		if (!player.currentTrack.info.isSeekable) {
-			const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Song can't be replay`);
+    if (!player.currentTrack.info.isSeekable) {
+      const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Song can't be replay`);
 
-			return interaction.editReply({ embeds: [embed] });
-		} else {
-			await player.seekTo(0);
+      return interaction.editReply({ embeds: [embed] });
+    } else {
+      await player.seekTo(0);
 
-			const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`⏪\` | Song has been: \`Replayed\``);
+      const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`⏪\` | Song has been: \`Replayed\``);
 
-			return interaction.editReply({ embeds: [embed] });
-		}
-	},
+      return interaction.editReply({ embeds: [embed] });
+    }
+  },
 };

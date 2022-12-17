@@ -1,45 +1,45 @@
 const { ApplicationCommandOptionType, EmbedBuilder } = require("discord.js");
 
 module.exports = {
-	name: "remove",
-	description: "Remove a song from the queue.",
-	category: "Music",
-	options: [
-		{
-			name: "position",
-			description: "Position of the song.",
-			type: ApplicationCommandOptionType.Number,
-			required: true,
-			min_value: 1,
-		},
-	],
-	permissions: {
-		bot: [],
-		user: [],
-	},
-	settings: {
-		inVc: true,
-		sameVc: true,
-		player: true,
-		current: false,
-		owner: false,
-	},
-	run: async (client, interaction) => {
-		await interaction.deferReply({ ephemeral: true });
+  name: "remove",
+  description: "Remove a song from the queue.",
+  category: "Music",
+  options: [
+    {
+      name: "position",
+      description: "Position of the song.",
+      type: ApplicationCommandOptionType.Number,
+      required: true,
+      min_value: 1,
+    },
+  ],
+  permissions: {
+    bot: [],
+    user: [],
+  },
+  settings: {
+    inVc: true,
+    sameVc: true,
+    player: true,
+    current: false,
+    owner: false,
+  },
+  run: async (client, interaction) => {
+    await interaction.deferReply({ ephemeral: true });
 
-		const player = client.poru.players.get(interaction.guild.id);
-		const track = interaction.options.getNumber("song");
+    const player = client.poru.players.get(interaction.guild.id);
+    const track = interaction.options.getNumber("song");
 
-		if (track > player.queue.length) {
-			const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Song was not found`);
+    if (track > player.queue.length) {
+      const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Song was not found`);
 
-			return interaction.editReply({ embeds: [embed] });
-		}
+      return interaction.editReply({ embeds: [embed] });
+    }
 
-		await player.queue.remove(track - 1);
+    await player.queue.remove(track - 1);
 
-		const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`☑️\` | Song has been: \`Removed\``);
+    const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`☑️\` | Song has been: \`Removed\``);
 
-		return interaction.editReply({ embeds: [embed] });
-	},
+    return interaction.editReply({ embeds: [embed] });
+  },
 };
