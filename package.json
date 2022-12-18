@@ -17,7 +17,8 @@
     "lyrics-finder": "^21.7.0",
     "mongoose": "^6.8.0",
     "node-capitalize": "^1.0.0",
-    "poru": "^3.7.3"
+    "poru": "^3.7.3",
+    "pretty-ms": "^7.0.1"
   },
   "author": "adh319",
   "license": "MIT",
