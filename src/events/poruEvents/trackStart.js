@@ -21,14 +21,13 @@ module.exports.run = async (client, player, track) => {
   const trackDuration = track.info.isStream ? "LIVE" : formatDuration(track.info.length);
   const trackAuthor = track.info.author ? authors : "Unknown";
   const trackTitle = track.info.title ? titles : "Unknown";
-  const trackImage = track.info.image ? client.user.displayAvatarURL({ dynamic: true, size: 2048 }) : track.info.image;
 
   const Started = new EmbedBuilder()
     .setAuthor({
       name: `Started Playing`,
       iconURL: "https://cdn.discordapp.com/attachments/1014342568554811443/1025740239236517908/music-disc.gif",
     })
-    .setThumbnail(trackImage)
+    .setThumbnail(track.info.image)
     .setDescription(`**[${trackTitle}](${track.info.uri})**`)
     .addFields([
       { name: `Author:`, value: `${trackAuthor}`, inline: true },

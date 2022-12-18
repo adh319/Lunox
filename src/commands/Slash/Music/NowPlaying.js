@@ -33,9 +33,6 @@ module.exports = {
       const currentPosition = formatDuration(player.position);
       const trackDuration = formatDuration(player.currentTrack.info.length);
       const playerDuration = player.currentTrack.info.isStream ? "LIVE" : trackDuration;
-      const currentImage = player.currentTrack.info.image
-        ? client.user.displayAvatarURL({ dynamic: true, size: 2048 })
-        : player.currentTrack.info.image;
       const currentAuthor = player.currentTrack.info.author ? Author : "Unknown";
       const currentTitle = player.currentTrack.info.title ? Titles : "Unknown";
       //const Part = Math.floor((player.position / player.currentTrack.info.length) * 30);
@@ -47,7 +44,7 @@ module.exports = {
           name: player.isPlaying ? `Now Playing` : `Song Paused`,
           iconURL: "https://cdn.discordapp.com/attachments/1014342568554811443/1025740239236517908/music-disc.gif",
         })
-        .setThumbnail(currentImage)
+        .setThumbnail(player.currentTrack.info.image)
         .setDescription(`**[${currentTitle}](${player.currentTrack.info.uri})**`)
         .addFields([
           { name: `Author:`, value: `${currentAuthor}`, inline: true },

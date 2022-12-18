@@ -4,7 +4,6 @@ const { supportUrl } = require("../../../settings/config.js");
 module.exports.run = async (client, interaction) => {
   if (interaction.type === InteractionType.ApplicationCommand) {
     const command = client.slashCommands.get(interaction.commandName);
-
     if (!command) return;
 
     const msg_cmd = [
@@ -92,18 +91,13 @@ module.exports.run = async (client, interaction) => {
 
     //Error handling
     try {
-      await command.run(client, interaction);
+      command.run(client, interaction);
     } catch (error) {
       console.log(error);
-      if (interaction.reply) {
-        await warning.setDescription(`\`❌\` | Something went wrong.`);
-
-        return interaction.editReply({ embeds: [warning], components: [row], ephmeral: true });
-      } else {
-        await warning.setDescription(`\`❌\` | Something went wrong.`);
-
-        return interaction.followUp({ embeds: [warning], components: [row], ephmeral: true });
-      }
+	  
+      await warning.setDescription(`\`❌\` | Something went wrong.`);
+	  
+      return interaction.editReply({ embeds: [warning], components: [row], ephmeral: true });
     }
   }
 };
