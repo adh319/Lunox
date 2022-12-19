@@ -103,7 +103,7 @@ VOTE_URL =
 INVITE_URL = 
 IMAGE_URL = 
 ```
-After installation & finished all needed configuration, you can start the bot by either using `npm start` or `node sharder.js`.
+After installation & finished all needed configuration, you can start the bot by either using `npm start` or `node src/sharder.js`.
 
 ## `👏` Special Thanks
 
