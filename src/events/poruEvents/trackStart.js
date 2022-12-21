@@ -81,69 +81,74 @@ module.exports.run = async (client, player, track) => {
     time: 180000,
   });
 
-  collector.on("collect", async (interaction) => {
-    if (interaction.customId === "loop") {
-      if (interaction.user.id !== player.currentTrack.info.requester.id) {
-        return interaction.reply({ content: `\`❌\` | You are not allowed to use buttons for this message!`, ephemeral: true });
+  collector.on("collect", async (message) => {
+    if (message.customId === "loop") {
+      if (message.user.id !== player.currentTrack.info.requester.id) {
+        return message.reply({ content: `\`❌\` | You are not allowed to use buttons for this message!`, ephemeral: true });
       } else if (!player) {
         collector.stop();
       } else if (player.loop === "NONE") {
+        message.deferUpdate();
+
         player.setLoop("TRACK");
 
         Started.setFooter({ text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length}` });
         bLoop.setLabel("Queue").setStyle(ButtonStyle.Success);
 
         await nplaying.edit({ embeds: [Started], components: [button] });
-        interaction.deferUpdate();
       } else if (player.loop === "TRACK") {
+        message.deferUpdate();
+
         player.setLoop("QUEUE");
 
         Started.setFooter({ text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length}` });
         bLoop.setLabel("Disable").setStyle(ButtonStyle.Danger);
 
         await nplaying.edit({ embeds: [Started], components: [button] });
-        interaction.deferUpdate();
       } else if (player.loop === "QUEUE") {
+        message.deferUpdate();
+
         player.setLoop("NONE");
 
         Started.setFooter({ text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length}` });
         bLoop.setLabel("Loop").setStyle(ButtonStyle.Primary);
 
         await nplaying.edit({ embeds: [Started], components: [button] });
-        interaction.deferUpdate();
       }
-    } else if (interaction.customId === "replay") {
-      if (interaction.user.id !== player.currentTrack.info.requester.id) {
-        return interaction.reply({ content: `\`❌\` | You are not allowed to use buttons for this message!`, ephemeral: true });
+    } else if (message.customId === "replay") {
+      if (message.user.id !== player.currentTrack.info.requester.id) {
+        return message.reply({ content: `\`❌\` | You are not allowed to use buttons for this message!`, ephemeral: true });
       } else if (!player) {
         collector.stop();
       } else if (!player.currentTrack.info.isSeekable) {
         const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Song can't be replay`);
 
-        return interaction.reply({ embeds: [embed], ephemeral: true });
+        return message.reply({ embeds: [embed], ephemeral: true });
       } else {
-        await player.seekTo(0);
+        message.deferUpdate();
 
-        interaction.deferUpdate();
+        await player.seekTo(0);
       }
-    } else if (interaction.customId === "stop") {
-      if (interaction.user.id !== player.currentTrack.info.requester.id) {
-        return interaction.reply({ content: `\`❌\` | You are not allowed to use buttons for this message!`, ephemeral: true });
+    } else if (message.customId === "stop") {
+      if (message.user.id !== player.currentTrack.info.requester.id) {
+        return message.reply({ content: `\`❌\` | You are not allowed to use buttons for this message!`, ephemeral: true });
       } else if (!player) {
         collector.stop();
       } else {
+        message.deferUpdate();
+
         if (player.message) await player.message.delete();
 
         await player.destroy();
-
-        interaction.deferUpdate();
       }
-    } else if (interaction.customId === "pause") {
-      if (interaction.user.id !== player.currentTrack.info.requester.id) {
-        return interaction.reply({ content: `\`❌\` | You are not allowed to use buttons for this message!`, ephemeral: true });
+    } else if (message.customId === "pause") {
+      if (message.user.id !== player.currentTrack.info.requester.id) {
+        return message.reply({ content: `\`❌\` | You are not allowed to use buttons for this message!`, ephemeral: true });
       } else if (!player) {
         collector.stop();
       } else if (player.isPaused) {
+        message.deferUpdate();
+
         player.pause(false);
 
         Started.setAuthor({
@@ -154,8 +159,9 @@ module.exports.run = async (client, player, track) => {
         bPause.setLabel("Pause").setStyle(ButtonStyle.Primary);
 
         await nplaying.edit({ embeds: [Started], components: [button] });
-        interaction.deferUpdate();
       } else {
+        message.deferUpdate();
+
         player.pause(true);
 
         Started.setAuthor({
@@ -166,21 +172,20 @@ module.exports.run = async (client, player, track) => {
         bPause.setLabel("Resume").setStyle(ButtonStyle.Success);
 
         await nplaying.edit({ embeds: [Started], components: [button] });
-        interaction.deferUpdate();
       }
-    } else if (interaction.customId === "skip") {
-      if (interaction.user.id !== player.currentTrack.info.requester.id) {
-        return interaction.reply({ content: `\`❌\` | You are not allowed to use buttons for this message!`, ephemeral: true });
+    } else if (message.customId === "skip") {
+      if (message.user.id !== player.currentTrack.info.requester.id) {
+        return message.reply({ content: `\`❌\` | You are not allowed to use buttons for this message!`, ephemeral: true });
       } else if (!player) {
         collector.stop();
       } else if (!player || player.queue.size == 0) {
         const embed = new EmbedBuilder().setDescription(`\`❌\` | Queue was: \`Empty\``).setColor(client.color);
 
-        return interaction.reply({ embeds: [embed], ephemeral: true });
+        return message.reply({ embeds: [embed], ephemeral: true });
       } else {
-        await player.stop();
+        message.deferUpdate();
 
-        interaction.deferUpdate();
+        await player.stop();
       }
     }
   });
