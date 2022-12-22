@@ -21,7 +21,7 @@ module.exports = {
     inVc: true,
     sameVc: true,
     player: true,
-    current: false,
+    current: true,
     owner: false,
   },
   run: async (client, interaction) => {
