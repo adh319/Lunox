@@ -32,7 +32,7 @@ module.exports = {
       .setAuthor({ name: `Queue List`, iconURL: interaction.guild.iconURL({ dynamic: true }) })
       .setColor(client.color)
       .setThumbnail(npSong.image)
-      .setDescription(`\`__Now Playing__\`\n**[${npTitle}](${npsong.uri})** • \`${npDuration}\` • ${npSong.requester}`)
+      .setDescription(`\`__Now Playing__\`\n**[${npTitle}](${npSong.uri})** • \`${npDuration}\` • ${npSong.requester}`)
       .setFooter({ text: `Total Queued • ${player.queue.length} tracks`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) })
       .setTimestamp();
 

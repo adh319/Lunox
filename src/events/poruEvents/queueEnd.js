@@ -1,8 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
 
 module.exports.run = async (client, player) => {
-  let data = await GData.findOne({ guild: player.guildId });
-
   const channel = client.channels.cache.get(player.textChannel);
   if (!channel) return;
 
