@@ -37,7 +37,7 @@ module.exports = {
   supportUrl: process.env.SUPPORT_URL || "", // your Support Server Link
   inviteUrl: process.env.INVITE_URL || " ", // your Bot Invite Link
   voteUrl: process.env.VOTE_URL || "https://top.gg/bot/1022221914145566815/vote", // your Bot Vote Link [DONT FORGER TO VOTE MY BOT :)]
-  imageUrl: process.env.IMAGE_URL || "https://cdn.discordapp.com/attachments/1014342568554811443/1051586923942117427/LUNOX.png", // your Bot Banner Imange Link to use on "help" & "about" command
+  imageUrl: process.env.IMAGE_URL || " ", // your Bot Banner Imange Link to use on "help" & "about" command
 };
 
 function parseBoolean(value) {
