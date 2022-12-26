@@ -54,15 +54,15 @@ module.exports.run = async (client, interaction) => {
       return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
     }
 
-    //Voice Channel only
+    //In Voice Channel Check
     if (command.settings.inVc && !memberChannel) {
       await warning.setDescription(`\`❌\` | You must be in a Voice channel to use this command.`);
 
       return interaction.reply({ embeds: [warning], ephemeral: true });
     }
 
-    //Same Voice Channel only
-    if (command.settings.sameVc && player && botChannel !== memberChannel) {
+    //In Same Voice  Check
+    if (command.settings.sameVc && botChannel !== memberChannel) {
       await warning.setDescription(`\`❌\` | You must be in the same Voice channel as mine to use this command.`);
 
       return interaction.reply({ embeds: [warning], ephemeral: true });
@@ -82,7 +82,7 @@ module.exports.run = async (client, interaction) => {
       return interaction.reply({ embeds: [warning], ephemeral: true });
     }
 
-    //Check Owner Only
+    //Check Owner
     if (command.settings.owner && interaction.user.id !== client.owner) {
       await warning.setDescription(`\`❌\` | Only my owner can use this command!`);
 
@@ -94,9 +94,9 @@ module.exports.run = async (client, interaction) => {
       command.run(client, interaction);
     } catch (error) {
       console.log(error);
-	  
+
       await warning.setDescription(`\`❌\` | Something went wrong.`);
-	  
+
       return interaction.editReply({ embeds: [warning], components: [row], ephmeral: true });
     }
   }

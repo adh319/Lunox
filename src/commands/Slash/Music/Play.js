@@ -19,7 +19,7 @@ module.exports = {
   },
   settings: {
     inVc: true,
-    sameVc: true,
+    sameVc: false,
     player: false,
     current: false,
     owner: false,
