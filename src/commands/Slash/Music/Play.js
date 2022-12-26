@@ -41,7 +41,7 @@ module.exports = {
     const song = interaction.options.getString("query");
     let source = client.config.playSource;
 
-    const res = await client.poru.resolve(song, source);
+    const res = await client.poru.resolve(song, source); // <<== you can remove this "source" property for default ytsearch source. see config.js for details.
     const { loadType, tracks, playlistInfo } = res;
 
     if (player.state !== "CONNECTED") player.connect();
