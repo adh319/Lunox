@@ -6,12 +6,13 @@ module.exports = {
   category: "Music",
   permissions: {
     bot: [],
+    channel: [],
     user: ["ManageGuild"],
   },
   settings: {
-    inVc: true,
+    inVc: false,
     sameVc: true,
-    player: false,
+    player: true,
     current: false,
     owner: false,
   },

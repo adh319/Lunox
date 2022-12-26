@@ -15,6 +15,7 @@ module.exports = {
   ],
   permissions: {
     bot: ["Speak", "Connect"],
+    channel: ["Speak", "Connect"],
     user: [],
   },
   settings: {
@@ -28,6 +29,15 @@ module.exports = {
     await interaction.deferReply({ ephemeral: false });
 
     let player = client.poru.players.get(interaction.guild.id);
+
+    if (player && interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
+      const embed = new EmbedBuilder()
+        .setColor(client.color)
+        .setDescription(`\`❌\` | You must be on the same voice channel as mine to use this command.`)
+        .setTimestamp();
+
+      return interaction.editReply({ embeds: [embed] });
+    }
 
     if (!player) {
       player = await client.poru.createConnection({

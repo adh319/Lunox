@@ -70,7 +70,7 @@ module.exports.run = async (client, player, track) => {
     if (message.guild.members.me.voice.channel && message.guild.members.me.voice.channelId === message.member.voice.channelId) return true;
     else {
       message.reply({
-        content: `\`❌\` | You need to be in a same/voice channel to use this button.`,
+        content: `\`❌\` | You must be on the same voice channel as mine to use this button.`,
         ephemeral: true,
       });
     }

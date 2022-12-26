@@ -16,10 +16,11 @@ module.exports = {
   ],
   permissions: {
     bot: [],
+    channel: [],
     user: [],
   },
   settings: {
-    inVc: true,
+    inVc: false,
     sameVc: true,
     player: true,
     current: true,
