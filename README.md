@@ -11,6 +11,7 @@
 - [x] Prefix Commands [Owner Only]
 - [x] Music System
 - [x] Premium System
+- [x] [Owner Only] (Slash Commands)
 - [x] Custom Filters
 - [x] Simpy DJ System [Maybe]
 - [x] Clean UI
