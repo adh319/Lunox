@@ -11,9 +11,9 @@ module.exports = {
   leaveTimeout: process.env.LEAVE_TIMEOUT || "60000", // set leave TimeOut when bot was alone 1000 = 1sec
 
   // PORU DETAILS
-  playSource: process.env.PLAY_SOURCE || "spotify", // default search engine & "ytmsearch" / "spotify" / "deezer" / "apple"
+  playSource: process.env.PLAY_SOURCE || "ytmsearch", // "ytmsearch" / "spotify" / "deezer" / "applemusic". Configuration for "PLAY" command!
   poruOptions: {
-    defaultPlatform: process.env.DEFAULT_SOURCE || "ytmsearch", // "ytserach" / "ytmsearch" / "ytsearch" / "scsearch" / "spsearch"
+    defaultPlatform: process.env.DEFAULT_SOURCE || "ytsearch", // default is = "ytserach", you can change this to "ytmsearch" / "ytsearch" / "scsearch" / "spsearch"
     clientID: process.env.SPOTIFY_ID || " ", // your Spotify Client ID
     clientSecret: process.env.SPOTIFY_SECRET || " ", // your Spotify Client Secret
     reconnectTries: 5, // total attemps to try if reconnect failed. you can change it to "Infinity" for unlimited attemps.
@@ -34,12 +34,10 @@ module.exports = {
 
   // LINK DETAILS
   mongoUri: process.env.MONGO_URI || " ", // your MongoDB Url
-  supportUrl: process.env.SUPPORT_URL || "https://discord.gg/kNdSkHchzH", // your Support Server Link [DONT FORGET TO JOIN :)]
-  inviteUrl:
-    process.env.INVITE_URL ||
-    "https://discord.com/api/oauth2/authorize?client_id=1022221914145566815&permissions=294208797777&scope=bot%20applications.commands", // your Bot Invite Link [DONT FORGET TO INVITE MY BOT :)]
+  supportUrl: process.env.SUPPORT_URL || "", // your Support Server Link
+  inviteUrl: process.env.INVITE_URL || " ", // your Bot Invite Link
   voteUrl: process.env.VOTE_URL || "https://top.gg/bot/1022221914145566815/vote", // your Bot Vote Link [DONT FORGER TO VOTE MY BOT :)]
-  imageUrl: process.env.IMAGE_URL || "https://cdn.discordapp.com/attachments/1014342568554811443/1051586923942117427/LUNOX.png", // your Bot Banner Imange Link to use on "help" & "about" command
+  imageUrl: process.env.IMAGE_URL || " ", // your Bot Banner Imange Link to use on "help" & "about" command
 };
 
 function parseBoolean(value) {

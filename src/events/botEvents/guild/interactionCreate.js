@@ -14,10 +14,6 @@ module.exports.run = async (client, interaction) => {
 
     console.log(`${msg_cmd.join(" ")}`);
 
-    const player = client.poru.players.get(interaction.guild.id);
-    const memberChannel = interaction.member.voice.channelId;
-    const botChannel = interaction.guild.members.me.voice.channelId;
-
     const warning = new EmbedBuilder().setColor(client.color).setTimestamp();
     const row = new ActionRowBuilder().addComponents(new ButtonBuilder().setLabel("Support").setURL(supportUrl).setStyle(ButtonStyle.Link));
 
@@ -32,11 +28,11 @@ module.exports.run = async (client, interaction) => {
     }
 
     if (botMissingPermissions.length > 0) {
-      await warning.setDescription(
-        `\`❌\` | I don't have one of these permissions \`ViewChannel\`, \`SendMessages\`, \`ManageMessages\`, \`EmbedLinks\`.\nPlease double check them in your server role & channel settings.`
-      );
-
-      return interaction.reply({ embed: [warning], components: [row], ephemeral: true });
+      return interaction.reply({
+        content: `\`❌\` | I don't have one of these permissions \`ViewChannel\`, \`SendMessages\`, \`ManageMessages\`, \`EmbedLinks\`.\nPlease double check them in your server role & channel settings.`,
+        components: [row],
+        ephemeral: true,
+      });
     }
 
     //Check Bot Command Permissions
@@ -55,35 +51,69 @@ module.exports.run = async (client, interaction) => {
       return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
     }
 
-    //Voice Channel only
-    if (command.settings.inVc && !memberChannel) {
-      await warning.setDescription(`\`❌\` | You must be in a Voice channel to use this command.`);
+    // Check In Voice & Same Voice Channel
+    const { channel } = interaction.member.voice;
+    //In Voice Channel Check
+    if (command.settings.inVc) {
+      if (!channel) {
+        await warning.setDescription(`\`❌\` | You must be in a voice channel to use this command.`);
 
-      return interaction.reply({ embeds: [warning], ephemeral: true });
+        return interaction.reply({ embeds: [warning], ephemeral: true });
+      }
+
+      if (
+        !interaction.guild.members.cache
+          .get(client.user.id)
+          .permissionsIn(channel)
+          .has(command.permissions.channel || [])
+      ) {
+        await warning.setDescription(
+          `\`❌\` | I don't have permission \`${command.permissions.channel.join(", ")}\` to execute this command in this channel.`
+        );
+
+        return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
+      }
     }
 
-    //Same Voice Channel only
-    if (command.settings.sameVc && player && botChannel !== memberChannel) {
-      await warning.setDescription(`\`❌\` | You must be in the same Voice channel as mine to use this command.`);
+    //Same Voice Channel Check
+    if (command.settings.sameVc) {
+      if (!channel || interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
+        await warning.setDescription(`\`❌\` | You must be on the same voice channel as mine to use this command.`);
 
-      return interaction.reply({ embeds: [warning], ephemeral: true });
+        return interaction.reply({ embeds: [warning], ephemeral: true });
+      }
+
+      if (
+        !interaction.guild.members.cache
+          .get(client.user.id)
+          .permissionsIn(channel)
+          .has(command.permissions.channel || [])
+      ) {
+        await warning.setDescription(
+          `\`❌\` | I don't have permission \`${command.permissions.channel.join(", ")}\` to execute this command in this channel.`
+        );
+
+        return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
+      }
     }
 
+    // Check Player & Current Playing
+    let player = client.poru.players.get(interaction.guild.id);
     //Player check
     if (command.settings.player && !player) {
-      await warning.setDescription(`\`❌\` | No player exists for this server.`);
+      await warning.setDescription(`\`❌\` | There isn't player exists for this server.`);
 
       return interaction.reply({ embeds: [warning], ephemeral: true });
     }
 
-    //Current Player Check
+    //Current Playing Check
     if (command.settings.current && !player.currentTrack) {
-      await warning.setDescription(`\`❌\` | There is nothing playing right now.`);
+      await warning.setDescription(`\`❌\` | There isn't any current playing right now.`);
 
       return interaction.reply({ embeds: [warning], ephemeral: true });
     }
 
-    //Check Owner Only
+    //Check Owner
     if (command.settings.owner && interaction.user.id !== client.owner) {
       await warning.setDescription(`\`❌\` | Only my owner can use this command!`);
 
@@ -110,12 +140,12 @@ module.exports.run = async (client, interaction) => {
 
     //Error handling
     try {
-      command.run(client, interaction);
+      command.run(client, interaction, player);
     } catch (error) {
       console.log(error);
-	  
+
       await warning.setDescription(`\`❌\` | Something went wrong.`);
-	  
+
       return interaction.editReply({ embeds: [warning], components: [row], ephmeral: true });
     }
   }

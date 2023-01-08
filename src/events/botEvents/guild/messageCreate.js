@@ -33,8 +33,6 @@ module.exports.run = async (client, message) => {
   const player = client.poru.players.get(message.guild.id);
   const memberChannel = message.member.voice.channelId;
   const botChannel = message.guild.members.me.voice.channelId;
-  const user = client.premiums.get(message.author.id);
-  const guild = client.gpremiums.get(message.guild.id);
 
   if (!command) return;
 
@@ -70,36 +68,46 @@ module.exports.run = async (client, message) => {
     });
   }
 
-  //Voice Channel only
+  //In Voice Channel Check
   if (command.settings.inVc && !memberChannel) {
     return message.reply(`\`❌\` | You must be in a Voice channel to use this command.`);
   }
 
-  //Same Voice Channel only
-  if (command.settings.sameVc && player && botChannel !== memberChannel) {
+  //In Same Voice Channel Check
+  if (command.settings.sameVc && botChannel !== memberChannel) {
     return message.reply(`\`❌\` | You must be in the same Voice channel as mine to use this command.`);
   }
 
-  //Player required
+  //Player Check
   if (command.settings.player && !player) {
     return message.reply(`\`❌\` | No player exists for this server.`);
   }
 
+  //Current Player Check
   if (command.settings.current && !player.currentTrack) {
     return message.reply(`\`❌\` | There is nothing playing right now.`);
   }
 
-  //Check Owner Only
+  //Check Owner
   if (command.settings.owner && message.author.id !== client.owner) {
     return message.reply({
       content: `\`❌\` | Only my owner can use this command!`,
     });
   }
 
-  //args
+  //Args Check
   if (command.settings.args && !args.length) {
     return message.reply(`\`❌\` | You didn't provide any valid arguments.`);
   }
 
-  command.run(client, message, args);
+  //Error handling
+  try {
+    command.run(client, message, args);
+  } catch (error) {
+    console.log(error);
+
+    await warning.setDescription(`\`❌\` | Something went wrong.`);
+
+    return message.edit({ embeds: [warning], components: [row] });
+  }
 };

@@ -15,6 +15,7 @@ module.exports = {
   category: "Information",
   permissions: {
     bot: [],
+    channel: [],
     user: [],
   },
   settings: {

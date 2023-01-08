@@ -15,11 +15,12 @@ module.exports = {
   ],
   permissions: {
     bot: ["Speak", "Connect"],
+    channel: ["Speak", "Connect"],
     user: [],
   },
   settings: {
     inVc: true,
-    sameVc: true,
+    sameVc: false,
     player: false,
     current: false,
     owner: false,
@@ -28,6 +29,15 @@ module.exports = {
     await interaction.deferReply({ ephemeral: false });
 
     let player = client.poru.players.get(interaction.guild.id);
+
+    if (player && interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
+      const embed = new EmbedBuilder()
+        .setColor(client.color)
+        .setDescription(`\`❌\` | You must be on the same voice channel as mine to use this command.`)
+        .setTimestamp();
+
+      return interaction.editReply({ embeds: [embed] });
+    }
 
     if (!player) {
       player = await client.poru.createConnection({
@@ -41,7 +51,7 @@ module.exports = {
     const song = interaction.options.getString("query");
     let source = client.config.playSource;
 
-    const res = await client.poru.resolve(song, source);
+    const res = await client.poru.resolve(song, source); // <<== you can remove this "source" property for default ytsearch source. see config.js for details.
     const { loadType, tracks, playlistInfo } = res;
 
     if (player.state !== "CONNECTED") player.connect();
