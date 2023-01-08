@@ -1,4 +1,5 @@
 const { ActivityType } = require("discord.js");
+const User = require("../../../settings/models/User.js");
 
 module.exports.run = async (client) => {
   client.poru.init(client);
@@ -17,4 +18,10 @@ module.exports.run = async (client) => {
 
     client.user.setActivity(status[index].name, { type: status[index].type });
   }, 5000);
+
+  const users = await User.find();
+  for (let user of users) {
+    client.userSettings.set(user.Id, user);
+  }
+
 };
