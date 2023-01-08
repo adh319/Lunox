@@ -90,6 +90,7 @@ module.exports.run = async (client, interaction) => {
       return interaction.reply({ embeds: [warning], ephemeral: true });
     }
 
+    // Premium Check
     let user = client.userSettings.get(interaction.user.id);
   // If there is no user, create it in the Database as "newUser"
   if (!user) {
@@ -102,8 +103,10 @@ module.exports.run = async (client, interaction) => {
   }
 
   if (command.settings.premium && user && !user.isPremium) {
-    interaction.reply(`You are not premium user`);
+     await warning.setDescription(`\`❌\` | You're not premium user!`);
+    interaction.reply({ embeds: [warning], ephemeral: true });
   }
+  
 
     //Error handling
     try {
