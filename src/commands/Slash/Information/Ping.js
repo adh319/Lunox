@@ -15,6 +15,7 @@ module.exports = {
     player: false,
     current: false,
     owner: false,
+    premium: false,
   },
   run: async (client, interaction) => {
     await interaction.deferReply({ ephemeral: true });

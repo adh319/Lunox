@@ -7,7 +7,6 @@ module.exports = {
   // options
   name: "gencode",
   description: `gen premium codes`,
-  
   category: "Premium",
   
   options: [
@@ -53,6 +52,7 @@ module.exports = {
     player: false,
     current: false,
     owner: true,
+    premium: false,
   },
 
   // command start
