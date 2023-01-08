@@ -1,5 +1,7 @@
 const { EmbedBuilder } = require("discord.js");
 
+const GData = require("../../settings/models/Control.js");
+
 module.exports.run = async (client, player) => {
   const channel = client.channels.cache.get(player.textChannel);
   if (!channel) return;

@@ -18,7 +18,10 @@
     "mongoose": "^6.8.0",
     "node-capitalize": "^1.0.0",
     "poru": "^3.7.3",
-    "pretty-ms": "^7.0.1"
+    "pretty-ms": "^7.0.1",
+    "voucher-code-generator": "^1.3.0",
+    "moment": "^2.29.4",
+    "node-cron": "^3.0.2"
   },
   "author": "adh319",
   "license": "MIT",

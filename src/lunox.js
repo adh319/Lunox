@@ -46,8 +46,9 @@ class MainClient extends Client {
     this.commands = new Collection();
     this.aliases = new Collection();
     this.slashCommands = new Collection();
+    client.userSettings = new Collection();
 
-    ["Commands", "Database", "Events", "Slash", "Poru", "ErrorHandler"].forEach((handler) => {
+    ["Commands", "Database", "Events", "Slash", "Poru", "ErrorHandler", "Premium"].forEach((handler) => {
       require(`./handlers/${handler}`)(this);
     });
 

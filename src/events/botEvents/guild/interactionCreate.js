@@ -1,5 +1,6 @@
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, InteractionType } = require("discord.js");
 const { supportUrl } = require("../../../settings/config.js");
+const User = require("../../../settings/models/User.js");
 
 module.exports.run = async (client, interaction) => {
   if (interaction.type === InteractionType.ApplicationCommand) {
@@ -118,6 +119,24 @@ module.exports.run = async (client, interaction) => {
 
       return interaction.reply({ embeds: [warning], ephemeral: true });
     }
+
+    // Premium Check
+    let user = client.userSettings.get(interaction.user.id);
+  // If there is no user, create it in the Database as "newUser"
+  if (!user) {
+    const findUser = await User.findOne({ Id: interaction.user.id });
+    if (!findUser) {
+      const newUser = await User.create({ Id: interaction.user.id });
+      client.userSettings.set(interaction.user.id, newUser);
+      user = newUser;
+    } else return;
+  }
+
+  if (command.settings.premium && user && !user.isPremium) {
+     await warning.setDescription(`\`❌\` | You're not premium user!`);
+    interaction.reply({ embeds: [warning], ephemeral: true });
+  }
+  
 
     //Error handling
     try {
