@@ -10,6 +10,7 @@
 - [x] Slash Commands
 - [x] Prefix Commands [Owner Only]
 - [x] Music System
+- [x] Premium System
 - [x] Custom Filters
 - [x] Simpy DJ System [Maybe]
 - [x] Clean UI
