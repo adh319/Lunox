@@ -1,113 +1,113 @@
 const { EmbedBuilder } = require("discord.js");
 
 module.exports.run = async (client, message) => {
-  //Ignoring bot, system, dm and webhook messages
-  if (message.author.bot || !message.guild || message.system || message.webhookId) return;
+    //Ignoring bot, system, dm and webhook messages
+    if (message.author.bot || !message.guild || message.system || message.webhookId) return;
 
-  let prefix = client.prefix;
-  const mention = new RegExp(`^<@!?${client.user.id}>( |)$`);
+    let prefix = client.prefix;
+    const mention = new RegExp(`^<@!?${client.user.id}>( |)$`);
 
-  if (message.content.match(mention)) {
-    const embed = new EmbedBuilder().setColor(client.color).setDescription(`My prefix for this server is: \`/\``);
+    if (message.content.match(mention)) {
+        const embed = new EmbedBuilder().setColor(client.color).setDescription(`My prefix for this server is: \`/\``);
 
-    message.reply({ embeds: [embed] });
-  }
-
-  //remove prefix for owner
-  if (client.owner.includes(message.member.id) && !client.owner.includes(client.user.id) && !message.content.startsWith(prefix)) {
-    prefix = "";
-  }
-
-  const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`);
-  if (!prefixRegex.test(message.content)) return;
-  const [matchedPrefix] = message.content.match(prefixRegex);
-  const args = message.content.slice(matchedPrefix.length).trim().split(/ +/g);
-
-  const cmd = args.shift().toLowerCase();
-  if (cmd.length === 0) return;
-  let command = client.commands.get(cmd);
-
-  //Finding command from aliases
-  if (!command) command = client.commands.get(client.aliases.get(cmd));
-  const player = client.poru.players.get(message.guild.id);
-  const memberChannel = message.member.voice.channelId;
-  const botChannel = message.guild.members.me.voice.channelId;
-
-  if (!command) return;
-
-  console.log(
-    `[COMMAND] - ${command.name} executed by ${message.author.tag} | ${client.user.username} in ${message.guild.name} (${message.guild.id})`
-  );
-
-  //Default Permission
-  const botPermissions = ["ViewChannel", "SendMessages", "ManageMessages", "EmbedLinks"];
-  const botMissingPermissions = [];
-
-  for (const perm of botPermissions) {
-    if (!message.channel.permissionsFor(message.guild.members.me).has(perm)) {
-      botMissingPermissions.push(perm);
+        message.reply({ embeds: [embed] });
     }
-  }
-  if (botMissingPermissions.length > 0)
-    return message.reply(
-      `\`❌\` | I don't have one of these permissions \`ViewChannel\`, \`SendMessages\`, \`ManageMessages\`, \`EmbedLinks\`.\nPlease double check them in your server role & channel settings.`
+
+    //remove prefix for owner
+    if (client.owner.includes(message.member.id) && !client.owner.includes(client.user.id) && !message.content.startsWith(prefix)) {
+        prefix = "";
+    }
+
+    const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`);
+    if (!prefixRegex.test(message.content)) return;
+    const [matchedPrefix] = message.content.match(prefixRegex);
+    const args = message.content.slice(matchedPrefix.length).trim().split(/ +/g);
+
+    const cmd = args.shift().toLowerCase();
+    if (cmd.length === 0) return;
+    let command = client.commands.get(cmd);
+
+    //Finding command from aliases
+    if (!command) command = client.commands.get(client.aliases.get(cmd));
+    const player = client.poru.players.get(message.guild.id);
+    const memberChannel = message.member.voice.channelId;
+    const botChannel = message.guild.members.me.voice.channelId;
+
+    if (!command) return;
+
+    console.log(
+        `[COMMAND] - ${command.name} executed by ${message.author.tag} | ${client.user.username} in ${message.guild.name} (${message.guild.id})`
     );
 
-  //Check Bot Command Permissions
-  if (!message.guild.members.cache.get(client.user.id).permissions.has(command.permissions.bot || [])) {
-    return message.reply({
-      content: `\`❌\` | I don't have permission \`${command.permissions.bot.join(", ")}\` to execute this command.`,
-    });
-  }
+    //Default Permission
+    const botPermissions = ["ViewChannel", "SendMessages", "ManageMessages", "EmbedLinks"];
+    const botMissingPermissions = [];
 
-  //Check User Permissions
-  if (!message.member.permissions.has(command.permissions.user || [])) {
-    return message.reply({
-      content: `\`❌\` | You don't have permission \`${command.permissions.user.join(", ")}\` to execute this command.`,
-    });
-  }
+    for (const perm of botPermissions) {
+        if (!message.channel.permissionsFor(message.guild.members.me).has(perm)) {
+            botMissingPermissions.push(perm);
+        }
+    }
+    if (botMissingPermissions.length > 0)
+        return message.reply(
+            `\`❌\` | I don't have one of these permissions \`ViewChannel\`, \`SendMessages\`, \`ManageMessages\`, \`EmbedLinks\`.\nPlease double check them in your server role & channel settings.`
+        );
 
-  //In Voice Channel Check
-  if (command.settings.inVc && !memberChannel) {
-    return message.reply(`\`❌\` | You must be in a Voice channel to use this command.`);
-  }
+    //Check Bot Command Permissions
+    if (!message.guild.members.cache.get(client.user.id).permissions.has(command.permissions.bot || [])) {
+        return message.reply({
+            content: `\`❌\` | I don't have permission \`${command.permissions.bot.join(", ")}\` to execute this command.`,
+        });
+    }
 
-  //In Same Voice Channel Check
-  if (command.settings.sameVc && botChannel !== memberChannel) {
-    return message.reply(`\`❌\` | You must be in the same Voice channel as mine to use this command.`);
-  }
+    //Check User Permissions
+    if (!message.member.permissions.has(command.permissions.user || [])) {
+        return message.reply({
+            content: `\`❌\` | You don't have permission \`${command.permissions.user.join(", ")}\` to execute this command.`,
+        });
+    }
 
-  //Player Check
-  if (command.settings.player && !player) {
-    return message.reply(`\`❌\` | No player exists for this server.`);
-  }
+    //In Voice Channel Check
+    if (command.settings.inVc && !memberChannel) {
+        return message.reply(`\`❌\` | You must be in a Voice channel to use this command.`);
+    }
 
-  //Current Player Check
-  if (command.settings.current && !player.currentTrack) {
-    return message.reply(`\`❌\` | There is nothing playing right now.`);
-  }
+    //In Same Voice Channel Check
+    if (command.settings.sameVc && botChannel !== memberChannel) {
+        return message.reply(`\`❌\` | You must be in the same Voice channel as mine to use this command.`);
+    }
 
-  //Check Owner
-  if (command.settings.owner && message.author.id !== client.owner) {
-    return message.reply({
-      content: `\`❌\` | Only my owner can use this command!`,
-    });
-  }
+    //Player Check
+    if (command.settings.player && !player) {
+        return message.reply(`\`❌\` | No player exists for this server.`);
+    }
 
-  //Args Check
-  if (command.settings.args && !args.length) {
-    return message.reply(`\`❌\` | You didn't provide any valid arguments.`);
-  }
+    //Current Player Check
+    if (command.settings.current && !player.currentTrack) {
+        return message.reply(`\`❌\` | There is nothing playing right now.`);
+    }
 
-  //Error handling
-  try {
-    command.run(client, message, args);
-  } catch (error) {
-    console.log(error);
+    //Check Owner
+    if (command.settings.owner && message.author.id !== client.owner) {
+        return message.reply({
+            content: `\`❌\` | Only my owner can use this command!`,
+        });
+    }
 
-    await warning.setDescription(`\`❌\` | Something went wrong.`);
+    //Args Check
+    if (command.settings.args && !args.length) {
+        return message.reply(`\`❌\` | You didn't provide any valid arguments.`);
+    }
 
-    return message.edit({ embeds: [warning], components: [row] });
-  }
+    //Error handling
+    try {
+        command.run(client, message, args);
+    } catch (error) {
+        console.log(error);
+
+        await warning.setDescription(`\`❌\` | Something went wrong.`);
+
+        return message.edit({ embeds: [warning], components: [row] });
+    }
 };

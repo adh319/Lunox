@@ -2,22 +2,27 @@ const fs = require("fs");
 const chalk = require("chalk");
 
 module.exports = (client) => {
-  fs.readdirSync("./src/events/botEvents/").forEach((dir) => {
-    const files = fs.readdirSync(`./src/events/botEvents/${dir}`).filter((file) => file.endsWith(".js"));
-    for (const file of files) {
-      try {
-        const event = require(`../events/botEvents/${dir}/${file}`);
+    fs.readdirSync("./src/events/botEvents/").forEach((dir) => {
+        const files = fs.readdirSync(`./src/events/botEvents/${dir}`).filter((file) => file.endsWith(".js"));
+        for (const file of files) {
+            try {
+                const event = require(`../events/botEvents/${dir}/${file}`);
 
-        const eventName = event.event || file.replace(".js", "");
-        client.on(eventName, event.run.bind(null, client));
-      } catch (err) {
-        console.log(`Error while loading event: \n${err}`);
-        console.log(err);
-      }
-    }
-  });
+                const eventName = event.event || file.replace(".js", "");
+                client.on(eventName, event.run.bind(null, client));
+            } catch (err) {
+                console.log(`Error while loading event: \n${err}`);
+                console.log(err);
+            }
+        }
+    });
 
-  console.log(
-    chalk.white("[") + chalk.green("INFO") + chalk.white("] ") + chalk.green("Client ") + chalk.white("Events") + chalk.green(" Loaded!")
-  );
+    console.log(
+        chalk.white("[") +
+            chalk.green("INFO") +
+            chalk.white("] ") +
+            chalk.green("Client ") +
+            chalk.white("Events") +
+            chalk.green(" Loaded!")
+    );
 };

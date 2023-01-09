@@ -1,3 +1,3 @@
 module.exports.run = (client, node, error) => {
-  console.log(`Node ${node.name} is reconnecting.`);
+    console.log(`Node ${node.name} is reconnecting.`);
 };
