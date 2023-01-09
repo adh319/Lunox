@@ -118,6 +118,6 @@ After installation & finished all needed configuration, you can start the bot by
 
 I really appreciated if you guys can contribute to this project. So don't hesitate to make a pull request if you guys has any suggestions, fixing bugs or want to add more features.
 
-<a href="https://github.com/adh319/Lunox/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=adh319/Lunox" />
+<a href="https://github.com/remarkablemark/html-react-parser/graphs/contributors">
+  <img src="https://opencollective.com/html-react-parser/contributors.svg?width=890&button=false">
 </a>
