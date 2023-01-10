@@ -4,16 +4,15 @@ const { inspect } = require("util");
 module.exports = {
     name: "eval",
     description: "Developer Command!",
-
+    category: "Owner",
     options: [
         {
             name: "code",
-            description: "Text to exeute",
+            description: "Code to exeute.",
             type: ApplicationCommandOptionType.String,
             required: true,
         },
     ],
-
     permissions: {
         bot: [],
         channel: [],
@@ -29,9 +28,9 @@ module.exports = {
     },
 
     run: async (client, interaction) => {
-        await interaction.deferReply({ ephemeral: false });
+        await interaction.deferReply({ ephemeral: true });
 
-        const code = interaction.options.get("code").value;
+        const code = interaction.options.getString("code");
 
         try {
             const result = await eval(code);
@@ -45,16 +44,19 @@ module.exports = {
                     new EmbedBuilder()
                         .setAuthor({ name: "Prompt:" })
                         .setDescription("```js\n" + output + "\n```")
-                        .setColor("Green"),
+                        .setColor(client.color),
                 ],
-                ephemeral: true,
             });
         } catch (e) {
+            console.log(e);
+
             interaction.editReply({
                 embeds: [
-                    new EmbedBuilder().setAuthor({ name: "Error!" }).setDescription("An error occured! Check console...").setColor("Red"),
+                    new EmbedBuilder()
+                        .setAuthor({ name: "Error!" })
+                        .setDescription("An error occured! Check console...")
+                        .setColor(client.color),
                 ],
-                ephemeral: true,
             });
         }
     },
