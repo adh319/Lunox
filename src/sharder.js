@@ -1,7 +1,7 @@
-const Cluster = require("discord-hybrid-sharding"); //imports the sharding manager
+const { ClusterManager } = require("discord-hybrid-sharding"); //imports the sharding manager
 require("dotenv").config();
 
-const manager = new Cluster.Manager(`${__dirname}/index.js`, {
+const manager = new ClusterManager(`${__dirname}/index.js`, {
   totalShards: "auto", // you can set to every number you want but for save mode, use "auto" option
   shardsPerClusters: 2, // Default is 2, you can any bigger number you want
   totalClusters: "auto", // you can set to every number you want but for save mode, use "auto" option
