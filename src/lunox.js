@@ -1,12 +1,12 @@
 const { Client, Collection, GatewayIntentBits, Partials } = require("discord.js");
 const { Poru } = require("poru");
-const Cluster = require("discord-hybrid-sharding");
+const { ClusterClient, getInfo } = require("discord-hybrid-sharding");
 
 class MainClient extends Client {
   constructor() {
     super({
-      shards: Cluster.data.SHARD_LIST,
-      shardCount: Cluster.data.TOTAL_SHARDS,
+      shards: getInfo().SHARD_LIST,
+      shardCount: getInfo().TOTAL_SHARDS,
       messageCacheLifetime: 60,
       fetchAllMembers: false,
       messageCacheMaxSize: 10,
@@ -52,7 +52,7 @@ class MainClient extends Client {
       require(`./handlers/${handler}`)(this);
     });
 
-    this.cluster = new Cluster.Client(this);
+    this.cluster = new ClusterClient(this);
   }
   connect() {
     return super.login(this.token);
