@@ -145,6 +145,17 @@ module.exports.run = async (client, interaction) => {
             interaction.reply({ embeds: [warning], ephemeral: true });
         }
 
+        // Vote Only
+
+        if (command.settings.voteOnly) {
+            vote = await client.topgg.hasVoted(interaction.user.id);
+
+            if (!vote) {
+                await warning.setDescription(`\`❌\` | Sorry, Only bot voters can run this command! To vote, ${voteUrl}`);
+                return interaction.reply({ embeds: [warning], ephemeral: true });
+            }
+        }
+
         //Error handling
         try {
             command.run(client, interaction, player);
