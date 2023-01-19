@@ -9,7 +9,7 @@ module.exports = {
     errorLogs: process.env.ERROR_LOGS || " ", // your error logs Channel ID
     guildLogs: process.env.GUILD_LOGS || " ", // your server join left logs Channel ID
     leaveTimeout: process.env.LEAVE_TIMEOUT || "60000", // set leave TimeOut when bot was alone 1000 = 1sec
-    topggToken: process.env.topggToken || "", your topgg bot token for (voteOnly commands)
+    topggToken: process.env.topggToken || "", // your topgg bot token for (voteOnly commands)
 
     // PORU DETAILS
     playSource: process.env.PLAY_SOURCE || "ytsearch", // "ytmsearch" / "spotify" / "deezer" / "applemusic". Configuration for "PLAY" command!
