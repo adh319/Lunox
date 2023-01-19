@@ -27,11 +27,11 @@ module.exports = {
         const ytUri = /^(https?:\/\/)?(www\.)?(m\.)?(music\.)?(youtube\.com|youtu\.?be)\/.+$/gi.test(currentsong.uri);
 
         if (!ytUri) {
-            const errplay = new EmbedBuilder()
+            const embed = new EmbedBuilder()
                 .setDescription(`\`❌\` | Autoplay feature only support YouTube!`)
                 .setColor(client.color);
 
-            return interaction.reply({ embeds: [errplay] });
+            return interaction.editReply({ embeds: [embed] });
         }
 
         if (player.autoplay === true) {

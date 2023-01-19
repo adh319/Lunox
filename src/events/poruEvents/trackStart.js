@@ -91,7 +91,7 @@ module.exports.run = async (client, player, track) => {
                 Started.setFooter({
                     text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length} • Volume: ${player.volume}%`,
                 });
-                bLoop.setLabel("Queue").setStyle(ButtonStyle.Success);
+                bLoop.setLabel("Track").setStyle(ButtonStyle.Success);
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
             } else if (player.loop === "TRACK") {
@@ -102,7 +102,7 @@ module.exports.run = async (client, player, track) => {
                 Started.setFooter({
                     text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length} • Volume: ${player.volume}%`,
                 });
-                bLoop.setLabel("Disable").setStyle(ButtonStyle.Danger);
+                bLoop.setLabel("Queue").setStyle(ButtonStyle.Danger);
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
             } else if (player.loop === "QUEUE") {
