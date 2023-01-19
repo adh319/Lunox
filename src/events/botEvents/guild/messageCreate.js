@@ -1,6 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message) => {
     //Ignoring bot, system, dm and webhook messages
     if (message.author.bot || !message.guild || message.system || message.webhookId) return;
 
@@ -59,11 +59,6 @@ module.exports.run = async (client, message, args) => {
         return message.reply({
             content: `\`❌\` | Only my owner can use this command!`,
         });
-    }
-
-    //Args Check
-    if (command.settings.args && !args.length) {
-        return message.reply(`\`❌\` | You didn't provide any valid arguments.`);
     }
 
     //Error handling
