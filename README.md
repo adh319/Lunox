@@ -6,7 +6,6 @@
   <a href="https://ko-fi.com/adh319" target="_blank"> <img src="https://ko-fi.com/img/githubbutton_sm.svg"/> </a> 
 </p>
 
-[![Version][version-shield]](version-url)
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -133,8 +132,6 @@ I really appreciated if you guys can contribute to this project. So don't hesita
   <img src="https://contributors-img.web.app/image?repo=adh319/Lunox" />
 </a>
 
-[version-shield]: https://img.shields.io/github/package-json/v/adh319/Lunox?style=for-the-badge
-[version-url]: https://github.com/adh319/Lunox
 [contributors-shield]: https://img.shields.io/github/contributors/adh319/Lunox.svg?style=for-the-badge
 [contributors-url]: https://github.com/adh319/Lunox/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/adh319/Lunox.svg?style=for-the-badge
