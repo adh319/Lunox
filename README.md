@@ -18,8 +18,8 @@
 - [x] Music System
 - [x] Premium System
 - [x] Custom Filters
-- [x] 247 Voice
-- [x] AutoPlay
+- [x] 24/7 Voice
+- [x] AutoPlay [YouTube Only]
 - [x] Clean UI
 - [x] Easy to use
 - [x] And Many More...!
