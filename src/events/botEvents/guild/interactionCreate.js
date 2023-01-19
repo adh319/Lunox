@@ -151,7 +151,7 @@ module.exports.run = async (client, interaction) => {
             vote = await client.topgg.hasVoted(interaction.user.id);
 
             if (!vote) {
-                await warning.setDescription(`\`❌\` | Sorry, Only bot voters can run this command! To vote, ${voteUrl}`);
+                await warning.setDescription(`\`❌\` | Sorry, Only bot voters can run this command! To vote, (client.voteUrl)`);
                 return interaction.reply({ embeds: [warning], ephemeral: true });
             }
         }
