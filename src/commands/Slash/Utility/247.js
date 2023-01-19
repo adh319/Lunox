@@ -38,14 +38,14 @@ module.exports = {
 
             let expired = Date.now() + user.premium.expiresAt; // this will make the command activated til the user premium expired
 
-            data = new Reconnect({
+            const newData = await Reconnect.create({
                 guild: player.guildId,
-                text: player.textId,
-                voice: player.voiceId,
+                text: player.textChannel,
+                voice: player.voiceChannel,
                 time: expired,
             });
 
-            await data.save();
+            await newData.save();
 
             const on = new EmbedBuilder().setDescription(`\`🔵\` | 247 Mode has been: \`Enabled\``).setColor(client.color);
 
@@ -53,13 +53,13 @@ module.exports = {
             ///
 
             /// This will execute when premium settings is set to "false" [Disable code on line 37 to 52 to use this!!!]
-            /*data = new Reconnect({
+            /*const newData = await Reconnect.create({
                 guild: player.guildId,
                 text: player.textId,
                 voice: player.voiceId,
             });
 
-            await data.save();
+            await newData.save();
 
             const on = new EmbedBuilder().setDescription(`\`🔵\` | 247 Mode has been: \`Enabled\``).setColor(client.color);
 
