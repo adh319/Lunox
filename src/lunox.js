@@ -1,6 +1,7 @@
 const { Client, Collection, GatewayIntentBits, Partials } = require("discord.js");
 const { Poru } = require("poru");
 const { ClusterClient, getInfo } = require("discord-hybrid-sharding");
+const Topgg = require('@top-gg/sdk');
 
 class MainClient extends Client {
     constructor() {
@@ -47,6 +48,7 @@ class MainClient extends Client {
         this.aliases = new Collection();
         this.slashCommands = new Collection();
         this.userSettings = new Collection();
+        this.topgg = new Topgg.Api(process.env.topggToken || this.config.topggToken);
 
         ["Commands", "Database", "Events", "Slash", "Poru", "ErrorHandler", "Premium"].forEach((handler) => {
             require(`./handlers/${handler}`)(this);
