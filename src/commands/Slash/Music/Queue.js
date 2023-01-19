@@ -11,7 +11,7 @@ module.exports = {
         user: [],
     },
     settings: {
-        inVc: false,
+        inVc: true,
         sameVc: true,
         player: true,
         current: true,
@@ -62,7 +62,7 @@ module.exports = {
                 },
             ]);
         } else {
-            embed.addFields({ name: "`_Up Next__`", value: "**Queue was empty!**" });
+            embed.addFields({ name: "`_Up Next__`", value: "**Queue is empty!**" });
         }
 
         return interaction.editReply({ embeds: [embed] });

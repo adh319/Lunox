@@ -23,7 +23,7 @@ module.exports = {
         const player = client.poru.players.get(interaction.guild.id);
 
         if (!player.queue.length) {
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Queue was: \`Empty\``);
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Queue is: \`Empty\``);
 
             return interaction.editReply({ embeds: [embed] });
         } else {

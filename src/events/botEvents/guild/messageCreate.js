@@ -1,8 +1,10 @@
 const { EmbedBuilder } = require("discord.js");
 
-module.exports.run = async (client, message) => {
+module.exports.run = async (client, message, args) => {
     //Ignoring bot, system, dm and webhook messages
     if (message.author.bot || !message.guild || message.system || message.webhookId) return;
+
+    await client.createMessage(message);
 
     let prefix = client.prefix;
     const mention = new RegExp(`^<@!?${client.user.id}>( |)$`);
@@ -30,9 +32,6 @@ module.exports.run = async (client, message) => {
 
     //Finding command from aliases
     if (!command) command = client.commands.get(client.aliases.get(cmd));
-    const player = client.poru.players.get(message.guild.id);
-    const memberChannel = message.member.voice.channelId;
-    const botChannel = message.guild.members.me.voice.channelId;
 
     if (!command) return;
 
@@ -41,7 +40,7 @@ module.exports.run = async (client, message) => {
     );
 
     //Default Permission
-    const botPermissions = ["ViewChannel", "SendMessages", "ManageMessages", "EmbedLinks"];
+    const botPermissions = ["ViewChannel", "SendMessages", "EmbedLinks"];
     const botMissingPermissions = [];
 
     for (const perm of botPermissions) {
@@ -49,47 +48,14 @@ module.exports.run = async (client, message) => {
             botMissingPermissions.push(perm);
         }
     }
+
     if (botMissingPermissions.length > 0)
         return message.reply(
-            `\`❌\` | I don't have one of these permissions \`ViewChannel\`, \`SendMessages\`, \`ManageMessages\`, \`EmbedLinks\`.\nPlease double check them in your server role & channel settings.`
+            `\`❌\` | I don't have one of these permissions \`ViewChannel\`, \`SendMessages\`, \`EmbedLinks\`.\nPlease double check them in your server role & channel settings.`
         );
 
-    //Check Bot Command Permissions
-    if (!message.guild.members.cache.get(client.user.id).permissions.has(command.permissions.bot || [])) {
-        return message.reply({
-            content: `\`❌\` | I don't have permission \`${command.permissions.bot.join(", ")}\` to execute this command.`,
-        });
-    }
-
-    //Check User Permissions
-    if (!message.member.permissions.has(command.permissions.user || [])) {
-        return message.reply({
-            content: `\`❌\` | You don't have permission \`${command.permissions.user.join(", ")}\` to execute this command.`,
-        });
-    }
-
-    //In Voice Channel Check
-    if (command.settings.inVc && !memberChannel) {
-        return message.reply(`\`❌\` | You must be in a Voice channel to use this command.`);
-    }
-
-    //In Same Voice Channel Check
-    if (command.settings.sameVc && botChannel !== memberChannel) {
-        return message.reply(`\`❌\` | You must be in the same Voice channel as mine to use this command.`);
-    }
-
-    //Player Check
-    if (command.settings.player && !player) {
-        return message.reply(`\`❌\` | No player exists for this server.`);
-    }
-
-    //Current Player Check
-    if (command.settings.current && !player.currentTrack) {
-        return message.reply(`\`❌\` | There is nothing playing right now.`);
-    }
-
     //Check Owner
-    if (command.settings.owner && message.author.id !== client.owner) {
+    if (command.owner && message.author.id !== client.owner) {
         return message.reply({
             content: `\`❌\` | Only my owner can use this command!`,
         });

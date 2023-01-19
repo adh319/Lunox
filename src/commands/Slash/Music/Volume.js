@@ -21,7 +21,7 @@ module.exports = {
         user: [],
     },
     settings: {
-        inVc: false,
+        inVc: true,
         sameVc: true,
         player: true,
         current: false,
@@ -35,20 +35,15 @@ module.exports = {
         const value = interaction.options.getNumber("amount");
 
         if (!value) {
-            const embed = new EmbedBuilder()
-                .setColor(client.color)
-                .setDescription(`\`🔊\` | Current player volume: \`${player.filters.volume * 100}%\``);
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`🔊\` | Current player volume: \`${player.volume}%\``);
 
-            return interaction.editReply({ embeds: [embed] });
+            return interaction.editReply({ embeds: [embed], ephemeral: true });
         } else {
-            await player.setVolume(value / 100);
+            await player.setVolume(value);
 
-            const embed = new EmbedBuilder()
-                .setColor(client.color)
-                .setDescription(`\`🔊\` | Volume has been set to: \`${player.filters.volume * 100}%\``);
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`🔊\` | Volume has been set to: \`${value}%\``);
 
-            await delay(4000);
-            return interaction.editReply({ embeds: [embed] });
+            return interaction.editReply({ embeds: [embed], ephemeral: true });
         }
     },
 };

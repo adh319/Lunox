@@ -4,7 +4,7 @@ const GControl = require("../../../settings/models/Control.js");
 module.exports = {
     name: "control",
     description: "Display or hide the player control button. [Premium]",
-    category: "Settings",
+    category: "Utility",
     options: [
         {
             name: "mode",

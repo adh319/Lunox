@@ -7,11 +7,6 @@ class MainClient extends Client {
         super({
             shards: getInfo().SHARD_LIST,
             shardCount: getInfo().TOTAL_SHARDS,
-            messageCacheLifetime: 60,
-            fetchAllMembers: false,
-            messageCacheMaxSize: 10,
-            restTimeOffset: 0,
-            restWsBridgetimeout: 100,
             failIfNotExists: true,
             allowedMentions: {
                 parse: ["roles", "users", "everyone"],
@@ -46,9 +41,9 @@ class MainClient extends Client {
         this.commands = new Collection();
         this.aliases = new Collection();
         this.slashCommands = new Collection();
-        this.userSettings = new Collection();
+        this.premium = new Collection();
 
-        ["Commands", "Database", "Events", "Slash", "Poru", "ErrorHandler", "Premium"].forEach((handler) => {
+        ["Commands", "Database", "Events", "Slash", "Poru", "ErrorHandler"].forEach((handler) => {
             require(`./handlers/${handler}`)(this);
         });
 

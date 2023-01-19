@@ -1,3 +1,3 @@
 module.exports.run = (client, node, error) => {
-    console.log(`Node ${node.name} got error!`);
+    console.log(`[ERROR] Node ${node.name} Error!`);
 };

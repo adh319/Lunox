@@ -10,7 +10,7 @@ module.exports = {
         user: ["ManageGuild"],
     },
     settings: {
-        inVc: false,
+        inVc: true,
         sameVc: true,
         player: true,
         current: false,

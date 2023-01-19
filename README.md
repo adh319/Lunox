@@ -6,13 +6,21 @@
   <a href="https://ko-fi.com/adh319" target="_blank"> <img src="https://ko-fi.com/img/githubbutton_sm.svg"/> </a> 
 </p>
 
+[![Version][version-shield]](version-url)
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+
 ## `📑` Feature
 - [x] Slash Commands
 - [x] Prefix Commands [Owner Only]
 - [x] Music System
 - [x] Premium System
 - [x] Custom Filters
-- [x] Simpy DJ System [Maybe]
+- [x] 247 Voice
+- [x] AutoPlay
 - [x] Clean UI
 - [x] Easy to use
 - [x] And Many More...!
@@ -106,6 +114,10 @@ IMAGE_URL =
 ```
 After installation & finished all needed configuration, you can start the bot by either using `npm start` or `node src/sharder.js`.
 
+## `❣` Licensed
+
+Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/Lunox/blob/main/LICENSE) for more information.
+
 ## `👏` Special Thanks
 
 - [Parasop](https://github.com/parasop)
@@ -120,3 +132,17 @@ I really appreciated if you guys can contribute to this project. So don't hesita
 <a href="https://github.com/adh319/Lunox/graphs/contributors">
   <img src="https://contributors-img.web.app/image?repo=adh319/Lunox" />
 </a>
+
+[version-shield]: https://img.shields.io/github/package-json/v/adh319/Lunox?style=for-the-badge
+[version-url]: https://github.com/adh319/Lunox
+[contributors-shield]: https://img.shields.io/github/contributors/adh319/Lunox.svg?style=for-the-badge
+[contributors-url]: https://github.com/adh319/Lunox/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/adh319/Lunox.svg?style=for-the-badge
+[forks-url]: https://github.com/adh319/Lunox/network/members
+[stars-shield]: https://img.shields.io/github/stars/adh319/Lunox.svg?style=for-the-badge
+[stars-url]: https://github.com/adh319/Lunox/stargazers
+[issues-shield]: https://img.shields.io/github/issues/adh319/Lunox.svg?style=for-the-badge
+[issues-url]: https://github.com/adh319/Lunox/issues
+[license-shield]: https://img.shields.io/github/license/adh319/Lunox.svg?style=for-the-badge
+[license-url]: https://github.com/adh319/Lunox/blob/main/LICENSE
+[spon-img]: https://media.discordapp.net/attachments/979364157541462066/982734017671606322/Vultr_Logo_Download_Vector.png

@@ -73,12 +73,5 @@ module.exports = async (client) => {
     //console.log(chalk.yellow("☆・[AntiCrash] | [SIGINT]・☆"));
     //});
 
-    console.log(
-        chalk.white("[") +
-            chalk.green("INFO") +
-            chalk.white("] ") +
-            chalk.green("ErrorHandler ") +
-            chalk.white("Events") +
-            chalk.green(" Loaded!")
-    );
+    console.log("[INFO] ErrorHandler Events Loaded!");
 };

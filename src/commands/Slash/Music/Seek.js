@@ -20,7 +20,7 @@ module.exports = {
         user: [],
     },
     settings: {
-        inVc: false,
+        inVc: true,
         sameVc: true,
         player: true,
         current: true,

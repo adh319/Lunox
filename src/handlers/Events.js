@@ -1,5 +1,4 @@
 const fs = require("fs");
-const chalk = require("chalk");
 
 module.exports = (client) => {
     fs.readdirSync("./src/events/botEvents/").forEach((dir) => {
@@ -17,12 +16,5 @@ module.exports = (client) => {
         }
     });
 
-    console.log(
-        chalk.white("[") +
-            chalk.green("INFO") +
-            chalk.white("] ") +
-            chalk.green("Client ") +
-            chalk.white("Events") +
-            chalk.green(" Loaded!")
-    );
+    console.log("[INFO] Client Events Loaded!");
 };

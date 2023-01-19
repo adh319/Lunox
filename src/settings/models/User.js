@@ -12,4 +12,5 @@ const user = mongoose.Schema({
         plan: { type: mongoose.SchemaTypes.String, default: null },
     },
 });
+
 module.exports = mongoose.model("user", user);

@@ -8,7 +8,11 @@ module.exports.run = async (client) => {
         clientId: client.user.id,
     });
 
-    console.log(`[INFO] ${client.user.username} is ready with ${client.guilds.cache.size} server`);
+    const users = await User.find();
+
+    for (let user of users) {
+        client.premium.set(user.Id, user);
+    }
 
     const status = [
         { type: ActivityType.Listening, name: "Lunox" },
@@ -23,8 +27,5 @@ module.exports.run = async (client) => {
         client.user.setActivity(status[index].name, { type: status[index].type });
     }, 5000);
 
-    const users = await User.find();
-    for (let user of users) {
-        client.userSettings.set(user.Id, user);
-    }
+    console.log(`[INFO] ${client.user.username} is ready with ${client.guilds.cache.size} server`);
 };

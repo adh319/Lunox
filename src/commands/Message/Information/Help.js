@@ -14,17 +14,7 @@ module.exports = {
     description: "Display all commands of the bot.",
     category: "Information",
     aliases: ["h", "halp"],
-    permissions: {
-        bot: [],
-        user: [],
-    },
-    settings: {
-        inVc: false,
-        sameVc: false,
-        player: false,
-        current: false,
-        owner: false,
-    },
+    owner: false,
     run: async (client, message, args) => {
         const row2 = new ActionRowBuilder()
             .addComponents(new ButtonBuilder().setLabel("Support").setURL(supportUrl).setStyle(ButtonStyle.Link))

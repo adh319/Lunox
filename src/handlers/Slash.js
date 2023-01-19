@@ -1,6 +1,5 @@
 const { readdirSync } = require("node:fs");
 const path = require("node:path");
-const chalk = require("chalk");
 
 module.exports = (client) => {
     const data = [];
@@ -22,13 +21,7 @@ module.exports = (client) => {
 
     client.on("ready", async () => {
         await client.application.commands.set(data);
-        console.log(
-            chalk.white("[") +
-                chalk.green("INFO") +
-                chalk.white("] ") +
-                chalk.green(`${client.slashCommands.size} `) +
-                chalk.white("SlashCommands") +
-                chalk.green(" Loaded!")
-        );
+
+        console.log(`[INFO] ${client.slashCommands.size} SlashCommands Loaded!`);
     });
 };

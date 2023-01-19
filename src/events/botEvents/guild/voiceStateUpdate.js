@@ -1,10 +1,12 @@
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField, EmbedBuilder } = require("discord.js");
+const { supportUrl } = require("../../../settings/config.js");
+const Reconnect = require("../../../settings/models/247.js");
 const delay = require("delay");
-const { supportUrl, voteUrl } = require("../../../settings/config.js");
 
 module.exports.run = async (client, oldState, newState) => {
-    const player = client.poru.players.get(newState.guild.id);
+    const data = await Reconnect.findOne({ guild: newState.guild.id });
 
+    const player = client.poru.players.get(newState.guild.id);
     if (!player) return;
 
     if (!newState.guild.members.cache.get(client.user.id).voice.channelId) player.destroy();
@@ -17,6 +19,11 @@ module.exports.run = async (client, oldState, newState) => {
             newState.guild.members.me.voice.setSuppressed(false);
         }
     }
+
+    // this will make the bot will not be disconneted/destroyed when lefted alone in voice channel if 247 activated.
+    if (data && Date.now() >= data.time) await data.delete(); // Enable this only When 247 command settings premium is set to true.
+    if (data) return;
+    //
 
     if (oldState.id === client.user.id) return;
     if (!oldState.guild.members.cache.get(client.user.id).voice.channelId) return;
@@ -36,12 +43,14 @@ module.exports.run = async (client, oldState, newState) => {
                 if (!player) return;
                 await player.destroy();
 
-                const row = new ActionRowBuilder()
-                    .addComponents(new ButtonBuilder().setLabel("Support").setURL(supportUrl).setStyle(ButtonStyle.Link))
-                    .addComponents(new ButtonBuilder().setLabel("Vote").setURL(voteUrl).setStyle(ButtonStyle.Link));
+                const row = new ActionRowBuilder().addComponents(
+                    new ButtonBuilder().setLabel("Support").setURL(supportUrl).setStyle(ButtonStyle.Link)
+                );
 
                 const TimeoutEmbed = new EmbedBuilder()
-                    .setDescription(`\`👋\` | Disconnected...!!! Because I was left alone in <#${vcRoom}>.`)
+                    .setDescription(
+                        `\`👋\` | Disconnected...!!! Because I was left alone in <#${vcRoom}>. This can be disable by using \`247\` command.`
+                    )
                     .setColor(client.color);
 
                 try {

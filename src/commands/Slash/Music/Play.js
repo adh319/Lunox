@@ -87,15 +87,10 @@ module.exports = {
 
             await interaction.editReply({ embeds: [embed] });
             if (!player.isPlaying && !player.isPaused) return player.play();
-        } else if (loadType === "LOAD_FAILED") {
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Failed to load track!`);
+        } else if (loadType === "LOAD_FAILED" || loadType === "NO_MATCHES") {
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Song was no found or Failed to load song!`);
 
-            await interaction.editReply({ embeds: [embed] }).then((msg) => {
-                setTimeout(() => {
-                    msg.delete();
-                }, 12000);
-            });
-            player.destroy();
+            return interaction.editReply({ embeds: [embed] });
         }
     },
 };

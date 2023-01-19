@@ -1,19 +1,9 @@
 module.exports = {
     name: "eval",
     description: "Bot eval.",
-    category: "Owner",
+    category: "Utility",
     aliases: [],
-    permissions: {
-        bot: [],
-        user: [],
-    },
-    settings: {
-        inVc: false,
-        sameVc: false,
-        player: false,
-        current: false,
-        owner: true,
-    },
+    owner: true,
     run: (client, message) => {
         const content = message.content.split(" ").slice(1).join(" ");
 

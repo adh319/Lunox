@@ -6,18 +6,8 @@ module.exports = {
     name: "stats",
     description: "Displays the bot status.",
     category: "Information",
-    aliases: ["bot", "status"],
-    permissions: {
-        bot: [],
-        user: [],
-    },
-    settings: {
-        inVc: false,
-        sameVc: false,
-        player: false,
-        current: false,
-        owner: true,
-    },
+    aliases: ["status"],
+    owner: true,
     run: async (client, message) => {
         let uptime = await os.uptime();
 

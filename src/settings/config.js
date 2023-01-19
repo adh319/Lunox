@@ -11,15 +11,15 @@ module.exports = {
     leaveTimeout: process.env.LEAVE_TIMEOUT || "60000", // set leave TimeOut when bot was alone 1000 = 1sec
 
     // PORU DETAILS
-    playSource: process.env.PLAY_SOURCE || "ytsearch", // "ytmsearch" / "spotify" / "deezer" / "applemusic". Configuration for "PLAY" command!
+    playSource: process.env.PLAY_SOURCE || "ytmsearch", // "ytseach", "ytmsearch" / "spotify" / "deezer" / "applemusic". Configuration for "PLAY" command!
     poruOptions: {
-        defaultPlatform: process.env.DEFAULT_SOURCE || "ytsearch", // default is = "ytserach", you can change this to "ytmsearch" / "ytsearch" / "scsearch" / "spsearch"
+        defaultPlatform: process.env.DEFAULT_SOURCE || "ytmsearch", // default is = "ytserach", you can change this to "ytmsearch" / "ytsearch" / "scsearch" / "spsearch"
         clientID: process.env.SPOTIFY_ID || " ", // your Spotify Client ID
         clientSecret: process.env.SPOTIFY_SECRET || " ", // your Spotify Client Secret
         reconnectTries: 5, // total attemps to try if reconnect failed. you can change it to "Infinity" for unlimited attemps.
-        playlistLimit: 10,
-        albumLimit: 10,
-        artistLimit: 10,
+        playlistLimit: 2, // 1 = 100 tracks
+        albumLimit: 2,
+        artistLimit: 2,
         searchMarket: "us",
     },
     nodes: [
