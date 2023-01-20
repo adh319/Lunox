@@ -24,7 +24,7 @@ module.exports = {
         const player = client.poru.players.get(interaction.guild.id);
 
         await player.filters.clearFilters();
-        await player.setVolume(1.0);
+        await player.setVolume(100);
 
         const embed = new EmbedBuilder().setDescription(`\`☑️\` | Filters has been: \`Cleared\``).setColor(client.color);
 
