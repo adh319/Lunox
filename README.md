@@ -18,12 +18,12 @@
 
 ## `📑` Feature
 - [x] Slash Commands
-- [x] Prefix Commands [Owner Only]
+- [x] Prefix Commands [*Owner Only*]
 - [x] Music System
 - [x] Premium System
 - [x] Custom Filters
-- [x] 24/7 Voice
-- [x] AutoPlay [YouTube Only]
+- [x] 24/7 Voice [*Make Sure You Read This [Note](https://github.com/adh319/Lunox/commit/b4880fb419d9136f96c90411e9b9c2c3c984b384)*]
+- [x] AutoPlay [*YouTube Only*]
 - [x] Clean UI
 - [x] Easy to use
 - [x] And Many More...!
@@ -37,7 +37,7 @@
 - [x] Twitch
 - [x] Bandcamp
 - [x] Vimeo
-- [x] Https (Radio)
+- [x] Https [*Radio*]
 
 <details><summary>➕ More Support Source [CLICK ME]</summary>
 <p>
