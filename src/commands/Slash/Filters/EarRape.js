@@ -23,7 +23,7 @@ module.exports = {
 
         const player = client.poru.players.get(interaction.guild.id);
 
-        await player.setVolume(5.0);
+        await player.setVolume(500);
 
         const embed = new EmbedBuilder().setDescription(`\`🔩\` | Filter has been set to: \`EarRape\``).setColor(client.color);
 
