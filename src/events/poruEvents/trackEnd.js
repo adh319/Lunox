@@ -1,14 +1,16 @@
 module.exports.run = async (client, player) => {
+    if (!player) return;
+    
     if (player.message) await player.message.delete();
+    
+    if (!player.currentTrack) return;
 
     if (player.autoplay === true) {
         const trackSearch = player.currentTrack.info;
 
         const ytUri = /^(https?:\/\/)?(www\.)?(m\.)?(music\.)?(youtube\.com|youtu\.?be)\/.+$/gi.test(trackSearch.uri);
 
-        if (!ytUri) {
-            player.stop();
-        } else {
+        if (ytUri) {
             try {
                 const source = client.config.playSource;
                 const identifier = trackSearch.identifier;
@@ -23,6 +25,8 @@ module.exports.run = async (client, player) => {
             } catch (error) {
                 ///
             }
+        } else {
+            player.stop();
         }
     }
 };
