@@ -21,7 +21,7 @@ module.exports.run = async (client, player, track) => {
 
     const Started = new EmbedBuilder()
         .setAuthor({
-            name: `Started Playing`,
+            name: `Now Playing`,
             iconURL: "https://cdn.discordapp.com/attachments/1014342568554811443/1025740239236517908/music-disc.gif",
         })
         .setThumbnail(track.info.image)
@@ -34,15 +34,15 @@ module.exports.run = async (client, player, track) => {
         .setColor(client.color)
         .setFooter({ text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length} • Volume: ${player.volume}%` });
 
-    const bReplay = new ButtonBuilder().setCustomId("replay").setLabel("Replay").setStyle(ButtonStyle.Primary);
-    const bPrev = new ButtonBuilder().setCustomId("prev").setLabel("Prev").setStyle(ButtonStyle.Primary);
-    const bPause = new ButtonBuilder().setCustomId("pause").setLabel("Pause").setStyle(ButtonStyle.Primary);
-    const bSkip = new ButtonBuilder().setCustomId("skip").setLabel("Skip").setStyle(ButtonStyle.Primary);
-    const bLoop = new ButtonBuilder().setCustomId("loop").setLabel("Loop").setStyle(ButtonStyle.Primary);
-    const bShuffle = new ButtonBuilder().setCustomId("shuffle").setLabel("Shuffle").setStyle(ButtonStyle.Primary);
-    const bVDown = new ButtonBuilder().setCustomId("voldown").setLabel("Vol-").setStyle(ButtonStyle.Primary);
+    const bReplay = new ButtonBuilder().setCustomId("replay").setLabel("Replay").setStyle(ButtonStyle.Secondary);
+    const bPrev = new ButtonBuilder().setCustomId("prev").setLabel("Prev").setStyle(ButtonStyle.Secondary);
+    const bPause = new ButtonBuilder().setCustomId("pause").setLabel("Pause").setStyle(ButtonStyle.Secondary);
+    const bSkip = new ButtonBuilder().setCustomId("skip").setLabel("Skip").setStyle(ButtonStyle.Secondary);
+    const bLoop = new ButtonBuilder().setCustomId("loop").setLabel("Loop").setStyle(ButtonStyle.Secondary);
+    const bShuffle = new ButtonBuilder().setCustomId("shuffle").setLabel("Shuffle").setStyle(ButtonStyle.Secondary);
+    const bVDown = new ButtonBuilder().setCustomId("voldown").setLabel("Vol-").setStyle(ButtonStyle.Secondary);
     const bStop = new ButtonBuilder().setCustomId("stop").setLabel("Stop").setStyle(ButtonStyle.Danger);
-    const bVUp = new ButtonBuilder().setCustomId("volup").setLabel("Vol+").setStyle(ButtonStyle.Primary);
+    const bVUp = new ButtonBuilder().setCustomId("volup").setLabel("Vol+").setStyle(ButtonStyle.Secondary);
     const bInfo = new ButtonBuilder().setCustomId("info").setLabel("Info").setStyle(ButtonStyle.Primary);
 
     const button = new ActionRowBuilder().addComponents(bReplay, bPrev, bPause, bSkip, bLoop);
@@ -91,7 +91,7 @@ module.exports.run = async (client, player, track) => {
                 Started.setFooter({
                     text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length} • Volume: ${player.volume}%`,
                 });
-                bLoop.setLabel("Track").setStyle(ButtonStyle.Success);
+                bLoop.setLabel("Track").setStyle(ButtonStyle.Primary);
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
             } else if (player.loop === "TRACK") {
@@ -102,7 +102,7 @@ module.exports.run = async (client, player, track) => {
                 Started.setFooter({
                     text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length} • Volume: ${player.volume}%`,
                 });
-                bLoop.setLabel("Queue").setStyle(ButtonStyle.Danger);
+                bLoop.setLabel("Queue").setStyle(ButtonStyle.Success);
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
             } else if (player.loop === "QUEUE") {
@@ -113,7 +113,7 @@ module.exports.run = async (client, player, track) => {
                 Started.setFooter({
                     text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length} • Volume: ${player.volume}%`,
                 });
-                bLoop.setLabel("Loop").setStyle(ButtonStyle.Primary);
+                bLoop.setLabel("Loop").setStyle(ButtonStyle.Secondary);
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
             }
@@ -148,11 +148,11 @@ module.exports.run = async (client, player, track) => {
                 player.pause(false);
 
                 Started.setAuthor({
-                    name: `Started Playing`,
+                    name: `Now Playing`,
                     iconURL: "https://cdn.discordapp.com/attachments/1014342568554811443/1025740239236517908/music-disc.gif",
                 });
 
-                bPause.setLabel("Pause").setStyle(ButtonStyle.Primary);
+                bPause.setLabel("Pause").setStyle(ButtonStyle.Secondary);
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
             } else {
@@ -165,7 +165,7 @@ module.exports.run = async (client, player, track) => {
                     iconURL: "https://cdn.discordapp.com/attachments/1014342568554811443/1025740239236517908/music-disc.gif",
                 });
 
-                bPause.setLabel("Resume").setStyle(ButtonStyle.Success);
+                bPause.setLabel("Resume").setStyle(ButtonStyle.Primary);
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
             }
