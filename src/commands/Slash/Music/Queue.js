@@ -34,7 +34,7 @@ module.exports = {
             .setAuthor({ name: `Queue List`, iconURL: interaction.guild.iconURL({ dynamic: true }) })
             .setColor(client.color)
             .setThumbnail(npSong.image)
-            .setDescription(`\`__Now Playing__\`\n**[${npTitle}](${npSong.uri})** • \`${npDuration}\` • ${npSong.requester}`)
+            .setDescription(`**__Now Playing__**\n**[${npTitle}](${npSong.uri})** • \`${npDuration}\` • ${npSong.requester}`)
             .setFooter({
                 text: `Total Queued • ${player.queue.length} tracks`,
                 iconURL: interaction.user.displayAvatarURL({ dynamic: true }),
@@ -44,14 +44,14 @@ module.exports = {
         if (queue.length) {
             embed.addFields([
                 {
-                    name: "`__Up Next:__`",
+                    name: "__Up Next:__",
                     value: queue
                         .map(
                             (track, index) =>
                                 `**${index + 1}. [${
                                     track.info.title
-                                        ? track.info.title.length > 20
-                                            ? track.info.title.substr(0, 20) + "..."
+                                        ? track.info.title.length > 15
+                                            ? track.info.title.substr(0, 15) + "..."
                                             : track.info.title
                                         : "Unknown"
                                 }](${track.info.uri})** • \`${track.info.isStream ? "LIVE" : formatDuration(track.info.length)}\` • ${
@@ -62,7 +62,7 @@ module.exports = {
                 },
             ]);
         } else {
-            embed.addFields({ name: "`_Up Next__`", value: "**Queue is empty!**" });
+            embed.addFields({ name: "__Up Next:__", value: "**Queue is empty!**" });
         }
 
         return interaction.editReply({ embeds: [embed] });
