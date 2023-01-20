@@ -7,11 +7,12 @@
 </p>
 
 <p align="center"> 
-  <a href="https://discord.gg/kNdSkHchzH" target="_blank"> <img src="https://discordapp.com/api/guilds/1025846112399138917/widget.png?style=banner4"/> </a> 
+  <a href="https://discord.gg/kNdSkHchzH" target="_blank"> <img src="https://discordapp.com/api/guilds/1025846112399138917/widget.png?style=banner2"/> </a> 
 </p>
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
+[![Watchers][watchers-shield]][watchers-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
@@ -140,6 +141,8 @@ I really appreciated if you guys can contribute to this project. So don't hesita
 [contributors-url]: https://github.com/adh319/Lunox/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/adh319/Lunox.svg?style=for-the-badge
 [forks-url]: https://github.com/adh319/Lunox/network/members
+[watchers-shield]: https://img.shields.io/github/watchers/adh319/Lunox?style=for-the-badge
+[watchers-url]: https://github.com/adh319/Lunox
 [stars-shield]: https://img.shields.io/github/stars/adh319/Lunox.svg?style=for-the-badge
 [stars-url]: https://github.com/adh319/Lunox/stargazers
 [issues-shield]: https://img.shields.io/github/issues/adh319/Lunox.svg?style=for-the-badge
