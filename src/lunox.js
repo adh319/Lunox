@@ -26,6 +26,7 @@ class MainClient extends Client {
         const client = this;
 
         this.config = require("./settings/config.js");
+        this.emoji = require("./settings/emoji.js");
         this.color = this.config.color;
         this.prefix = this.config.prefix;
         this.owner = this.config.owner;

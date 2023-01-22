@@ -34,16 +34,18 @@ module.exports.run = async (client, player, track) => {
         .setColor(client.color)
         .setFooter({ text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length} • Volume: ${player.volume}%` });
 
-    const bReplay = new ButtonBuilder().setCustomId("replay").setLabel("Replay").setStyle(ButtonStyle.Secondary);
-    const bPrev = new ButtonBuilder().setCustomId("prev").setLabel("Prev").setStyle(ButtonStyle.Secondary);
-    const bPause = new ButtonBuilder().setCustomId("pause").setLabel("Pause").setStyle(ButtonStyle.Secondary);
-    const bSkip = new ButtonBuilder().setCustomId("skip").setLabel("Skip").setStyle(ButtonStyle.Secondary);
-    const bLoop = new ButtonBuilder().setCustomId("loop").setLabel("Loop").setStyle(ButtonStyle.Secondary);
-    const bShuffle = new ButtonBuilder().setCustomId("shuffle").setLabel("Shuffle").setStyle(ButtonStyle.Secondary);
-    const bVDown = new ButtonBuilder().setCustomId("voldown").setLabel("Vol-").setStyle(ButtonStyle.Secondary);
-    const bStop = new ButtonBuilder().setCustomId("stop").setLabel("Stop").setStyle(ButtonStyle.Danger);
-    const bVUp = new ButtonBuilder().setCustomId("volup").setLabel("Vol+").setStyle(ButtonStyle.Secondary);
-    const bInfo = new ButtonBuilder().setCustomId("info").setLabel("Info").setStyle(ButtonStyle.Primary);
+    const emoji = client.emoji.button;
+
+    const bReplay = new ButtonBuilder().setCustomId("replay").setEmoji(emoji.replay).setStyle(ButtonStyle.Secondary);
+    const bPrev = new ButtonBuilder().setCustomId("prev").setEmoji(emoji.previous).setStyle(ButtonStyle.Secondary);
+    const bPause = new ButtonBuilder().setCustomId("pause").setEmoji(emoji.pause).setStyle(ButtonStyle.Secondary);
+    const bSkip = new ButtonBuilder().setCustomId("skip").setEmoji(emoji.skip).setStyle(ButtonStyle.Secondary);
+    const bLoop = new ButtonBuilder().setCustomId("loop").setEmoji(emoji.loop.none).setStyle(ButtonStyle.Secondary);
+    const bShuffle = new ButtonBuilder().setCustomId("shuffle").setEmoji(emoji.shuffle).setStyle(ButtonStyle.Secondary);
+    const bVDown = new ButtonBuilder().setCustomId("voldown").setEmoji(emoji.voldown).setStyle(ButtonStyle.Secondary);
+    const bStop = new ButtonBuilder().setCustomId("stop").setEmoji(emoji.stop).setStyle(ButtonStyle.Danger);
+    const bVUp = new ButtonBuilder().setCustomId("volup").setEmoji(emoji.volup).setStyle(ButtonStyle.Secondary);
+    const bInfo = new ButtonBuilder().setCustomId("info").setEmoji(emoji.info).setStyle(ButtonStyle.Secondary);
 
     const button = new ActionRowBuilder().addComponents(bReplay, bPrev, bPause, bSkip, bLoop);
     const button2 = new ActionRowBuilder().addComponents(bShuffle, bVDown, bStop, bVUp, bInfo);
@@ -56,10 +58,10 @@ module.exports.run = async (client, player, track) => {
             .then((x) => (player.message = x));
     }
 
-    // When player is playing stream this button disabled
+    /* When player is playing stream this button disabled
     if (track.info.isStream) {
         bInfo.setDisabled(true);
-    }
+    }*/
 
     const nplaying = await client.channels.cache
         .get(player.textChannel)
@@ -91,7 +93,8 @@ module.exports.run = async (client, player, track) => {
                 Started.setFooter({
                     text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length} • Volume: ${player.volume}%`,
                 });
-                bLoop.setLabel("Track").setStyle(ButtonStyle.Primary);
+
+                bLoop.setEmoji(emoji.loop.track).setStyle(ButtonStyle.Primary);
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
             } else if (player.loop === "TRACK") {
@@ -102,7 +105,8 @@ module.exports.run = async (client, player, track) => {
                 Started.setFooter({
                     text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length} • Volume: ${player.volume}%`,
                 });
-                bLoop.setLabel("Queue").setStyle(ButtonStyle.Success);
+
+                bLoop.setEmoji(emoji.loop.queue).setStyle(ButtonStyle.Success);
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
             } else if (player.loop === "QUEUE") {
@@ -113,7 +117,8 @@ module.exports.run = async (client, player, track) => {
                 Started.setFooter({
                     text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length} • Volume: ${player.volume}%`,
                 });
-                bLoop.setLabel("Loop").setStyle(ButtonStyle.Secondary);
+
+                bLoop.setEmoji(emoji.loop.none).setStyle(ButtonStyle.Secondary);
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
             }
@@ -152,7 +157,7 @@ module.exports.run = async (client, player, track) => {
                     iconURL: "https://cdn.discordapp.com/attachments/1014342568554811443/1025740239236517908/music-disc.gif",
                 });
 
-                bPause.setLabel("Pause").setStyle(ButtonStyle.Secondary);
+                bPause.setEmoji(emoji.pause).setStyle(ButtonStyle.Secondary);
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
             } else {
@@ -165,7 +170,7 @@ module.exports.run = async (client, player, track) => {
                     iconURL: "https://cdn.discordapp.com/attachments/1014342568554811443/1025740239236517908/music-disc.gif",
                 });
 
-                bPause.setLabel("Resume").setStyle(ButtonStyle.Primary);
+                bPause.setEmoji(emoji.resume).setStyle(ButtonStyle.Primary);
 
                 await nplaying.edit({ embeds: [Started], components: [button, button2] });
             }
