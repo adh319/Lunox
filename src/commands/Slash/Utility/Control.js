@@ -39,13 +39,13 @@ module.exports = {
     run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: true });
 
-        const Control = await GControl.findOne({ guild: interaction.guildId });
+        const Control = await GControl.findOne({ guild: interaction.guild.id });
         const choice = interaction.options.getString("mode");
 
         if (choice === "display") {
             if (!Control) {
                 const Control = new GControl({
-                    guild: interaction.guildId,
+                    guild: interaction.guild.id,
                     playerControl: "enable",
                 });
                 Control.save()
@@ -78,7 +78,7 @@ module.exports = {
         } else if (choice === "hide") {
             if (!Control) {
                 const Control = new GControl({
-                    guild: interaction.guildId,
+                    guild: interaction.guild.id,
                     playerControl: "disable",
                 });
                 Control.save()

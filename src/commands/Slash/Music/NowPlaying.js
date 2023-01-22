@@ -1,5 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
 const formatDuration = require("../../../structures/FormatDuration.js");
+const GControl = require("../../../settings/models/Control.js");
 const capital = require("node-capitalize");
 
 module.exports = {
@@ -20,11 +21,22 @@ module.exports = {
         premium: false,
     },
     run: async (client, interaction) => {
+        await interaction.deferReply({ ephemeral: false });
+
+        const Control = await GControl.findOne({ guild: interaction.guild.id });
+
+        // When button control "enable", this will make command unable to use. You can delete this
+        if (Control.playerControl === "enable") {
+            const ctrl = new EmbedBuilder()
+                .setColor(client.color)
+                .setDescription(`\`❌\` | You can't use this command as the player control was enable!`);
+            return interaction.editReply({ embeds: [ctrl] });
+        }
+
+        const player = client.poru.players.get(interaction.guild.id);
+        if (!player.currentTrack) return;
+
         try {
-            await interaction.deferReply({ ephemeral: false });
-
-            const player = client.poru.players.get(interaction.guildId);
-
             const sources = capital(player.currentTrack.info.sourceName);
             const Titles =
                 player.currentTrack.info.title.length > 20

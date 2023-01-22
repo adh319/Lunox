@@ -21,7 +21,7 @@ module.exports = {
     run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: true });
 
-        const Control = await GControl.findOne({ guild: interaction.guildId });
+        const Control = await GControl.findOne({ guild: interaction.guild.id });
 
         // When button control "enable", this will make command unable to use. You can delete this
         if (Control.playerControl === "enable") {

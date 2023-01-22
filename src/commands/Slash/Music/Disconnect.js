@@ -20,7 +20,7 @@ module.exports = {
     run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: true });
 
-        const player = client.poru.players.get(interaction.guildId);
+        const player = client.poru.players.get(interaction.guild.id);
 
         if (player.message) await player.message.delete();
 

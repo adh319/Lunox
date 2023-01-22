@@ -3,9 +3,9 @@ const moment = require("moment");
 const User = require("../../../settings/models/User.js");
 
 module.exports = {
-    name: "profile",
-    description: "Show you profile info.",
-    category: "Information",
+    name: "status",
+    description: "Show you premium status info.",
+    category: "Premium",
     permissions: {
         bot: [],
         channel: [],

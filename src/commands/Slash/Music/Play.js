@@ -42,8 +42,8 @@ module.exports = {
 
         if (!player) {
             player = await client.poru.createConnection({
-                guildId: interaction.guildId,
-                voiceChannel: interaction.member.voice.channelId,
+                guildId: interaction.guild.id,
+                voiceChannel: interaction.member.voice.channel.id,
                 textChannel: interaction.channel.id,
                 deaf: true,
             });

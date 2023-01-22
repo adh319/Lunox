@@ -20,16 +20,14 @@ module.exports = {
     run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: true });
 
-        const player = client.poru.players.get(interaction.guildId);
+        const player = client.poru.players.get(interaction.guild.id);
 
         const currentsong = player.currentTrack.info;
 
         const ytUri = /^(https?:\/\/)?(www\.)?(m\.)?(music\.)?(youtube\.com|youtu\.?be)\/.+$/gi.test(currentsong.uri);
 
         if (!ytUri) {
-            const embed = new EmbedBuilder()
-                .setDescription(`\`❌\` | Autoplay feature only support YouTube!`)
-                .setColor(client.color);
+            const embed = new EmbedBuilder().setDescription(`\`❌\` | Autoplay feature only support YouTube!`).setColor(client.color);
 
             return interaction.editReply({ embeds: [embed] });
         }
