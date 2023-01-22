@@ -76,6 +76,7 @@ module.exports = {
                         r.info.author
                     }`
             )
+            .join("\n");
 
         const selectMenuArray = [];
 
