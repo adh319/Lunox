@@ -144,7 +144,7 @@ module.exports = {
                     const tplay = new EmbedBuilder()
                         .setColor(client.color)
                         .setDescription(
-                            `\`➕\` | **${trackTitle ? trackTitle : "Unknown"}** • \`${
+                            `\`➕\` | **[${trackTitle ? trackTitle : "Unknown"}](track.info.uri)** • \`${
                                 track.info.isStream ? "LIVE" : formatDuration(track.info.length)
                             }\` • ${interaction.member}`
                         );
