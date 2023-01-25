@@ -9,7 +9,7 @@ module.exports = {
         voldown: "🔉",
         volup: "🔊",
         shuffle: "🔀",
-        add: "ℹ️",
+        info: "ℹ️",
         loop: {
             none: "🔁",
             track: "🔂",

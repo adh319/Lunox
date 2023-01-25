@@ -30,7 +30,7 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
 
         const player = client.poru.players.get(interaction.guild.id);
-        const track = interaction.options.getNumber("song");
+        const track = interaction.options.getNumber("position");
 
         if (track > player.queue.length) {
             const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Song was not found`);
