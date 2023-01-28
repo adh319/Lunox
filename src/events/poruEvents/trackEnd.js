@@ -1,8 +1,8 @@
 module.exports.run = async (client, player) => {
     if (!player) return;
-    
+
     if (player.message) await player.message.delete();
-    
+
     if (!player.currentTrack) return;
 
     if (player.autoplay === true) {
@@ -25,8 +25,6 @@ module.exports.run = async (client, player) => {
             } catch (error) {
                 ///
             }
-        } else {
-            player.stop();
         }
     }
 };

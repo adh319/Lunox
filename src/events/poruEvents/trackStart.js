@@ -58,11 +58,6 @@ module.exports.run = async (client, player, track) => {
             .then((x) => (player.message = x));
     }
 
-    /* When player is playing stream this button disabled
-    if (track.info.isStream) {
-        bInfo.setDisabled(true);
-    }*/
-
     const nplaying = await client.channels.cache
         .get(player.textChannel)
         .send({ embeds: [Started], components: [button, button2] })

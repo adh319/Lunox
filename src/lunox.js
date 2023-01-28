@@ -31,8 +31,8 @@ class MainClient extends Client {
         if (!this.token) this.token = this.config.token;
 
         this.poru = new Poru(this, this.config.nodes, this.config.poruOptions, {
-            send(guildId, payload) {
-                const guild = client.guilds.cache.get(guildId);
+            send: (guildId, payload) => {
+                const guild = this.guilds.cache.get(guildId);
                 if (guild) guild.shard.send(payload);
             },
         });
