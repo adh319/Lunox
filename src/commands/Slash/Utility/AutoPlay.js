@@ -43,20 +43,22 @@ module.exports = {
         } else {
             player.autoplay = true;
 
-            const source = client.config.playSource;
-            const identifier = currentsong.identifier;
-            const search = `https://music.youtube.com/watch?v=${identifier}&list=RD${identifier}`;
-            const res = await client.poru.resolve(search, source);
+            if (ytUri) {
+                const source = client.config.playSource;
+                const identifier = currentsong.identifier;
+                const search = `https://music.youtube.com/watch?v=${identifier}&list=RD${identifier}`;
+                const res = await client.poru.resolve(search, source);
 
-            for (const track of res.tracks) {
-                track.info.requester = currentsong.requester;
+                for (const track of res.tracks) {
+                    track.info.requester = currentsong.requester;
+                }
+
+                await player.queue.add(res.tracks[Math.floor(Math.random() * res.tracks.length) ?? 1]);
+
+                const embed = new EmbedBuilder().setDescription(`\`🔵\` | Autoplay has been: \`Enabled\``).setColor(client.color);
+
+                return interaction.editReply({ embeds: [embed] });
             }
-
-            await player.queue.add(res.tracks[Math.floor(Math.random() * res.tracks.length) ?? 1]);
-
-            const embed = new EmbedBuilder().setDescription(`\`🔵\` | Autoplay has been: \`Enabled\``).setColor(client.color);
-
-            return interaction.editReply({ embeds: [embed] });
         }
     },
 };

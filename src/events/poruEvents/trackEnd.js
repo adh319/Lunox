@@ -6,12 +6,12 @@ module.exports.run = async (client, player) => {
     if (!player.currentTrack) return;
 
     if (player.autoplay === true) {
-        const trackSearch = player.currentTrack.info;
+        try {
+            const trackSearch = player.currentTrack.info;
 
-        const ytUri = /^(https?:\/\/)?(www\.)?(m\.)?(music\.)?(youtube\.com|youtu\.?be)\/.+$/gi.test(trackSearch.uri);
+            const ytUri = /^(https?:\/\/)?(www\.)?(m\.)?(music\.)?(youtube\.com|youtu\.?be)\/.+$/gi.test(trackSearch.uri);
 
-        if (ytUri) {
-            try {
+            if (ytUri) {
                 const source = client.config.playSource;
                 const identifier = trackSearch.identifier;
                 const search = `https://music.youtube.com/watch?v=${identifier}&list=RD${identifier}`;
@@ -22,9 +22,9 @@ module.exports.run = async (client, player) => {
                 }
 
                 await player.queue.add(res.tracks[Math.floor(Math.random() * res.tracks.length) ?? 2]);
-            } catch (error) {
-                ///
             }
+        } catch (error) {
+            ///
         }
     }
 };
