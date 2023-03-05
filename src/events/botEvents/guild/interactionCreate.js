@@ -59,6 +59,22 @@ module.exports.run = async (client, interaction) => {
             return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
         }
 
+        // Check Player & Current Playing
+        let player = client.poru.players.get(interaction.guild.id);
+        //Player check
+        if (command.settings.player && !player) {
+            await warning.setDescription(`\`❌\` | There isn't player exists for this server.`);
+
+            return interaction.reply({ embeds: [warning], ephemeral: true });
+        }
+
+        //Current Playing Check
+        if (command.settings.current && !player.currentTrack) {
+            await warning.setDescription(`\`❌\` | There isn't any current playing right now.`);
+
+            return interaction.reply({ embeds: [warning], ephemeral: true });
+        }
+
         // Check In Voice & Same Voice Channel
         const { channel } = interaction.member.voice;
         //In Voice Channel Check
@@ -109,22 +125,6 @@ module.exports.run = async (client, interaction) => {
 
                 return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
             }
-        }
-
-        // Check Player & Current Playing
-        let player = client.poru.players.get(interaction.guild.id);
-        //Player check
-        if (command.settings.player && !player) {
-            await warning.setDescription(`\`❌\` | There isn't player exists for this server.`);
-
-            return interaction.reply({ embeds: [warning], ephemeral: true });
-        }
-
-        //Current Playing Check
-        if (command.settings.current && !player.currentTrack) {
-            await warning.setDescription(`\`❌\` | There isn't any current playing right now.`);
-
-            return interaction.reply({ embeds: [warning], ephemeral: true });
         }
 
         // Premium User Check
