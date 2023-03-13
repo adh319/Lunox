@@ -16,4 +16,10 @@ module.exports = {
             queue: "♾️",
         },
     },
+
+    queue: {
+        back: "⬅️",
+        next: "➡️",
+        cancel: "◻️",
+    },
 };

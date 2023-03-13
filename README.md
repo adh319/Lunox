@@ -34,6 +34,8 @@
 
 ## `🎶` Support Source
 - [x] Youtube
+- [x] Youtube Music
+- [x] Spotify
 - [x] SoundCloud
 - [x] Twitch
 - [x] Bandcamp
@@ -43,11 +45,11 @@
 <details><summary>➕ More Support Source [CLICK ME]</summary>
 <p>
 
-## `🎶` More Support Source (Require: LavaLink v3.6.x)
+## `🎶` More Support **Audio** Source (Require: LavaLink v3.6.x [Recomended v3.6.2])
 - [x] [LavaSrc](https://github.com/TopiSenpai/LavaSrc)
 - Spotify 
-- Deezer [Still Maintenance]
-- Apple [Fixed]
+- Deezer
+- Apple
 - Yandex
 
 - [x] [skybot-lavalink-plugin](https://github.com/DuncteBot/skybot-lavalink-plugin)
@@ -118,9 +120,15 @@ IMAGE_URL =
 ```
 After installation & finished all needed configuration, you can start the bot by either using `npm start` or `node src/sharder.js`.
 
-## `❣` Licensed
+## `🪪` Licensed
 
 Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/Lunox/blob/main/LICENSE) for more information.
+
+## `❣` Support Me
+
+- [Github Sponsor](https://github.com/sponsors/adh319)
+- [PayPal](https://paypal.me/adh3192)
+- [Ko-Fi](https://ko-fi.com/adh319)
 
 ## `👏` Special Thanks
 
@@ -129,7 +137,7 @@ Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/L
 - [RainyXeon](https://github.com/RainyXeon)
 - [Blacky](https://github.com/brblacky)
 
-## `❣` Contributors
+## `🫂` Contributors
 
 I really appreciated if you guys can contribute to this project. So don't hesitate to make a pull request if you guys has any suggestions, fixing bugs or want to add more features.
 
