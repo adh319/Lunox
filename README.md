@@ -127,7 +127,7 @@ Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/L
 ## `❣` Support Me
 
 - [Github Sponsor](https://github.com/sponsors/adh319)
-- [PayPal](https://paypal.me/adh3192)
+- [PayPal](https://paypal.me/dh319)
 - [Ko-Fi](https://ko-fi.com/adh319)
 
 ## `👏` Special Thanks
