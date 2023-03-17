@@ -33,14 +33,14 @@ module.exports = {
 
         const player = client.poru.players.get(interaction.guild.id);
 
-        if (!player.isPaused) {
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Song is not: \`Paused\``);
-
-            return interaction.editReply({ embeds: [embed] });
-        } else {
+        if (player.isPaused) {
             await player.pause(false);
 
             const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`▶️\` | Song has been: \`Resumed\``);
+
+            return interaction.editReply({ embeds: [embed] });
+        } else {
+            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Song is not: \`Paused\``);
 
             return interaction.editReply({ embeds: [embed] });
         }
