@@ -20,7 +20,7 @@
     "mongoose": "^6.10.3",
     "node-capitalize": "^1.0.0",
     "node-cron": "^3.0.2",
-    "poru": "github:adh319/poru#v3-dev",
+    "poru": "github:adh319/poru",
     "pretty-ms": "^7.0.1",
     "voucher-code-generator": "^1.3.0"
   },
