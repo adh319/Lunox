@@ -1,27 +1,27 @@
-const config = require("../settings/config.js");
 const { EmbedBuilder } = require("discord.js");
-const chalk = require("chalk");
+const channels = require("../settings/config.js");
 
 module.exports = async (client) => {
     process.on("beforeExit", (code) => {
-        console.log(chalk.yellow.dim("[AntiCrash] | [BeforeExit_Logs] | [Start] : ==============="));
+        console.log("[AntiCrash] | [BeforeExit_Logs] | [Start] : ===============");
         console.log(code);
-        console.log(chalk.yellow("[AntiCrash] | [BeforeExit_Logs] | [End] : ==============="));
+        console.log("[AntiCrash] | [BeforeExit_Logs] | [End] : ===============");
     });
 
     process.on("exit", (error) => {
-        console.log(chalk.yellow("[AntiCrash] | [Exit_Logs] | [Start]  : ==============="));
+        console.log("[AntiCrash] | [Exit_Logs] | [Start]  : ===============");
         console.log(error);
-        console.log(chalk.yellow("[AntiCrash] | [Exit_Logs] | [End] : ==============="));
+        console.log("[AntiCrash] | [Exit_Logs] | [End] : ===============");
     });
 
     process.on("unhandledRejection", async (reason, promise) => {
-        console.log(chalk.yellow("[AntiCrash] | [UnhandledRejection_Logs] | [start] : ==============="));
-        console.log(reason);
-        console.log(chalk.yellow("[AntiCrash] | [UnhandledRejection_Logs] | [end] : ==============="));
+        console.log("[AntiCrash] | [UnhandledRejection_Logs] | [start] : ===============");
+        console.log(reason, promise);
+        console.log("[AntiCrash] | [UnhandledRejection_Logs] | [end] : ===============");
 
-        let errorLogsChannel = client.channels.cache.get(config.errorLogs);
-        if (!errorLogsChannel) errorLogsChannel = await client.channels.fetch(config.errorLogs);
+        let errorLogsChannel = client.channels.cache.get(channels.errorLogs);
+
+        if (!errorLogsChannel) errorLogsChannel = await client.channels.fetch(channels.errorLogs);
         const errEmbed = new EmbedBuilder()
             .setColor(client.color)
             .setTitle(`An error was occured with "unhandledRejection":`)
@@ -34,18 +34,19 @@ module.exports = async (client) => {
     });
 
     process.on("rejectionHandled", (promise) => {
-        console.log(chalk.yellow("[AntiCrash] | [RejectionHandled_Logs] | [Start] : ==============="));
+        console.log("[AntiCrash] | [RejectionHandled_Logs] | [Start] : ===============");
         console.log(promise);
-        console.log(chalk.yellow("[AntiCrash] | [RejectionHandled_Logs] | [End] : ==============="));
+        console.log("[AntiCrash] | [RejectionHandled_Logs] | [End] : ===============");
     });
 
     process.on("uncaughtException", async (err, origin) => {
-        console.log(chalk.yellow("[AntiCrash] | [UncaughtException_Logs] | [Start] : ==============="));
-        console.log(err);
-        console.log(chalk.yellow("[AntiCrash] | [UncaughtException_Logs] | [End] : ==============="));
+        console.log("[AntiCrash] | [UncaughtException_Logs] | [Start] : ===============");
+        console.log(err, origin);
+        console.log("[AntiCrash] | [UncaughtException_Logs] | [End] : ===============");
 
-        let errorLogsChannel = client.channels.cache.get(config.errorLogs);
-        if (!errorLogsChannel) errorLogsChannel = await client.channels.fetch(config.errorLogs);
+        let errorLogsChannel = client.channels.cache.get(channels.errorLogs);
+
+        if (!errorLogsChannel) errorLogsChannel = await client.channels.fetch(channels.errorLogs);
         const errEmbed = new EmbedBuilder()
             .setColor(client.color)
             .setTitle(`An error was occured with "uncaughtException":`)
@@ -58,19 +59,19 @@ module.exports = async (client) => {
     });
 
     process.on("uncaughtExceptionMonitor", (err, origin) => {
-        console.log(chalk.yellow("[AntiCrash] | [UncaughtExceptionMonitor_Logs] | [Start] : ==============="));
-        console.log(err);
-        console.log(chalk.yellow("[AntiCrash] | [UncaughtExceptionMonitor_Logs] | [End] : ==============="));
+        console.log("[AntiCrash] | [UncaughtExceptionMonitor_Logs] | [Start] : ===============");
+        console.log(err, origin);
+        console.log("[AntiCrash] | [UncaughtExceptionMonitor_Logs] | [End] : ===============");
     });
 
     process.on("warning", (warning) => {
-        console.log(chalk.yellow("[AntiCrash] | [Warning_Logs] | [Start] : ==============="));
+        console.log("[AntiCrash] | [Warning_Logs] | [Start] : ===============");
         console.log(warning);
-        console.log(chalk.yellow("[AntiCrash] | [Warning_Logs] | [End] : ==============="));
+        console.log("[AntiCrash] | [Warning_Logs] | [End] : ===============");
     });
 
     //process.on("SIGINT", () => {
-    //console.log(chalk.yellow("☆・[AntiCrash] | [SIGINT]・☆"));
+    //console.log("☆・[AntiCrash] | [SIGINT]・☆");
     //});
 
     console.log("[INFO] ErrorHandler Events Loaded!");
