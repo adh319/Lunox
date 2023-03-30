@@ -1,6 +1,6 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
-const formatDuration = require("../../structures/FormatDuration.js");
-const GControl = require("../../settings/models/Control.js");
+const formatDuration = require("../../../structures/FormatDuration.js");
+const GControl = require("../../../settings/models/Control.js");
 const capital = require("node-capitalize");
 
 module.exports.run = async (client, player, track) => {

@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require("discord.js");
-const Reconnect = require("../../settings/models/247.js");
+const Reconnect = require("../../../settings/models/247.js");
 
 module.exports.run = async (client, player) => {
     const data = await Reconnect.findOne({ guild: player.guildId });

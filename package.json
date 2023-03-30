@@ -1,23 +1,21 @@
 {
   "name": "lunox",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Lunox by @adh319#9370",
   "main": "sharder.js",
   "scripts": {
     "start": "node ./src/sharder.js"
   },
   "dependencies": {
-    "chalk": "^4.1.2",
     "common-tags": "^1.8.2",
     "cpu-stat": "^2.0.1",
     "delay": "^5.0.0",
     "discord-hybrid-sharding": "^2.1.1",
     "discord.js": "^14.8.0",
     "dotenv": "^16.0.3",
-    "lyrics-finder": "^21.7.0",
     "moment": "^2.29.4",
     "moment-duration-format": "^2.3.2",
-    "mongoose": "^6.10.3",
+    "mongoose": "^6.10.4",
     "node-capitalize": "^1.0.0",
     "node-cron": "^3.0.2",
     "poru": "github:adh319/poru",
@@ -35,6 +33,6 @@
   },
   "homepage": "https://github.com/adh319/Lunox/#readme",
   "devDependencies": {
-    "node": "^17.9.1"
+    "node": "^19.8.1"
   }
 }

@@ -1,4 +1,4 @@
-const Reconnect = require("../../settings/models/247.js");
+const Reconnect = require("../../../settings/models/247.js");
 
 module.exports.run = async (client, node) => {
     console.log(`[INFO] Node ${node.name} Ready!`);
