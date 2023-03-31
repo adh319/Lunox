@@ -27,6 +27,8 @@ module.exports = {
         premium: false,
     },
     run: async (client, interaction) => {
+		await interaction.deferReply({ ephemeral: false });
+		
         const player = client.poru.players.get(interaction.guild.id);
 
         const value = interaction.options.getString("search");
@@ -50,7 +52,7 @@ module.exports = {
                             .setColor(client.color)
                             .setDescription(`\`❌\` | Lyrics was not found.`);
 
-                        return interaction.reply({ embeds: [lyricError], ephemeral: true });
+                        return interaction.editReply({ embeds: [lyricError] });
                     }
 
                     
@@ -72,7 +74,7 @@ module.exports = {
                             iconURL: interaction.user.displayAvatarURL({ dynamic: true }),
                         });
 
-                    return interaction.reply({ embeds: [lyricEmbed] });
+                    return interaction.editReply({ embeds: [lyricEmbed] });
                 });
         } catch (err) {
             console.log(err);
@@ -81,7 +83,7 @@ module.exports = {
                 .setColor(client.color)
                 .setDescription(`\`❌\` | Lyrics was not found.`);
 
-            return interaction.reply({ embeds: [lyricError], ephemeral: true });
+            return interaction.editReply({ embeds: [lyricError] });
         }
     },
 };
