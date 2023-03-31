@@ -130,7 +130,7 @@ Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/L
 - [PayPal](https://paypal.me/dh319)
 - [Ko-Fi](https://ko-fi.com/adh319)
 
-Also make sure to give a **⭐ STAR** to this project if you like it 😉!
+Also make sure to give a **⭐** to this project if you like it 😉!
 
 ## `👏` Special Thanks
 
