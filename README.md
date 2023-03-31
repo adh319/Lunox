@@ -23,7 +23,7 @@
 - [x] Music System
 - [x] Premium System
 - [x] Custom Filters
-- [x] 24/7 Voice [Make Sure You Read This **[Note](https://github.com/adh319/Lunox/commit/b4880fb419d9136f96c90411e9b9c2c3c984b384)]**
+- [x] 24/7 Voice [Make Sure You Read This **[Note](https://github.com/adh319/Lunox/commit/b4880fb419d9136f96c90411e9b9c2c3c984b384)**]
 - [x] AutoPlay [YouTube Only]
 - [x] Clean UI
 - [x] Easy to use
@@ -130,7 +130,7 @@ Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/L
 - [PayPal](https://paypal.me/dh319)
 - [Ko-Fi](https://ko-fi.com/adh319)
 
-Also make sure to give a **STAR** to this project if you like it 😉!
+Also make sure to give a **⭐ STAR** to this project if you like it 😉!
 
 ## `👏` Special Thanks
 
