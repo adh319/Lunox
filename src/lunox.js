@@ -1,6 +1,7 @@
 const { Client, Collection, GatewayIntentBits, Partials } = require("discord.js");
 const { Poru } = require("poru");
 const { ClusterClient, getInfo } = require("discord-hybrid-sharding");
+const GSearch = require("google-search-url");
 
 class MainClient extends Client {
     constructor() {
@@ -28,6 +29,7 @@ class MainClient extends Client {
         this.color = this.config.color;
         this.prefix = this.config.prefix;
         this.owner = this.config.owner;
+        this.gsearch = GSearch;
         if (!this.token) this.token = this.config.token;
 
         this.poru = new Poru(this, this.config.nodes, this.config.poruOptions, {
