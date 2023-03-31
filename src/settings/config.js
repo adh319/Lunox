@@ -6,7 +6,6 @@ module.exports = {
     prefix: process.env.PREFIX || "!", // your bot prefix "for owner message command"
     color: process.env.EMBED_COLOR || " ", // your embeded hex color
     owner: process.env.OWNER_ID || " ", // your bot Owners ID
-    errorLogs: process.env.ERROR_LOGS || " ", // your error logs Channel ID
     guildLogs: process.env.GUILD_LOGS || " ", // your server join left logs Channel ID
     leaveTimeout: process.env.LEAVE_TIMEOUT || "60000", // set leave TimeOut when bot was alone 1000 = 1sec
 
