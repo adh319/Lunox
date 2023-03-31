@@ -54,8 +54,8 @@ module.exports = {
 
                         return interaction.editReply({ embeds: [lyricError] });
                     }
-
                     
+                    const lyrics = lyricSong.length > 3905 ? lyricSong.substr(0, 3900) + "....." : lyricSong;
                     const titleSong = data.title;
                     const authorSong = data.author;
                     const gSearch = { query: `${titleSong} by ${authorSong} lyrics` };
@@ -67,7 +67,7 @@ module.exports = {
                             iconURL: client.user.displayAvatarURL({ dynamic: true }),
                         })
                         .setColor(client.color)
-                        .setDescription(`${lyricSong}\n**[Click Here For More](${linkSong})**`)
+                        .setDescription(`${lyrics}\n**[Click Here For More](${linkSong})**`)
                         .setThumbnail(CurrentSong.image)
                         .setFooter({
                             text: `Requested by ${interaction.user.username}`,
