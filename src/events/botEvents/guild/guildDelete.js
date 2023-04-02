@@ -1,18 +1,16 @@
-const { ChannelType, EmbedBuilder } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const moment = require("moment");
 
 module.exports.run = async (client, guild) => {
     const channel = client.channels.cache.get(client.config.guildLogs);
 
     let own = await guild?.fetchOwner();
-    let text;
-
-    guild.channels.cache.forEach((c) => {
-        if (c.type === ChannelType.GuildText && !text) text = c;
-    });
 
     const embed = new EmbedBuilder()
-        .setTitle(`\`📤\` Lefted a server!`)
+        .setAuthor({
+            name: `Lefted a Server!`,
+            iconURL: client.user.displayAvatarURL({ dynamic: true }),
+        })
         .addFields([
             { name: "Name", value: `\`\`\`${guild.name}\`\`\``, inline: true },
             { name: "ID", value: `\`\`\`${guild.id}\`\`\``, inline: true },
@@ -38,7 +36,7 @@ module.exports.run = async (client, guild) => {
     if (guild.bannerURL()) {
         embed.setImage(guild.bannerURL());
     } else {
-        embed.setImage(client.config.imageUrl);
+        embed.setImage(client.config.bannerUrl);
     }
 
     channel.send({ embeds: [embed] });
