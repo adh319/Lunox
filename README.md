@@ -3,11 +3,11 @@
 </p>
 
 <p align="center"> 
-  <a href="https://ko-fi.com/adh319" target="_blank"> <img src="https://ko-fi.com/img/githubbutton_sm.svg"/>
+  <a href="https://ko-fi.com/adh319" target="_blank"> <img src="https://ko-fi.com/img/githubbutton_sm.svg"/> </a>
 </p>
 
 <p align="center"> 
-  <a href="https://discord.gg/kNdSkHchzH" target="_blank"> <img src="https://discordapp.com/api/guilds/1025846112399138917/widget.png?style=banner2"/>
+  <a href="https://discord.gg/kNdSkHchzH" target="_blank"> <img src="https://discordapp.com/api/guilds/1025846112399138917/widget.png?style=banner2"/> </a>
 </p>
 
 [![Version][version-shield]](version-url)
