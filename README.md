@@ -1,15 +1,16 @@
 <p align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=Lunox&fontSize=80&fontAlignY=35&animation=twinkling&fontColor=gradient"/> </a> 
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=Lunox&fontSize=80&fontAlignY=35&animation=twinkling&fontColor=gradient"/> 
 </p>
 
 <p align="center"> 
-  <a href="https://ko-fi.com/adh319" target="_blank"> <img src="https://ko-fi.com/img/githubbutton_sm.svg"/> </a> 
+  <a href="https://ko-fi.com/adh319" target="_blank"> <img src="https://ko-fi.com/img/githubbutton_sm.svg"/>
 </p>
 
 <p align="center"> 
-  <a href="https://discord.gg/kNdSkHchzH" target="_blank"> <img src="https://discordapp.com/api/guilds/1025846112399138917/widget.png?style=banner2"/> </a> 
+  <a href="https://discord.gg/kNdSkHchzH" target="_blank"> <img src="https://discordapp.com/api/guilds/1025846112399138917/widget.png?style=banner2"/>
 </p>
 
+[![Version][version-shield]](version-url)
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Watchers][watchers-shield]][watchers-url]
@@ -17,42 +18,49 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-## `📑` Feature
-- [x] Slash Commands
-- [x] Prefix Commands [Owner Only]
-- [x] Music System
-- [x] Premium System
-- [x] Custom Filters
-- [x] 24/7 Voice [Make Sure You Read This **[Note](https://github.com/adh319/Lunox/commit/b4880fb419d9136f96c90411e9b9c2c3c984b384)**]
-- [x] AutoPlay [YouTube Only]
-- [x] Clean UI
-- [x] Easy to use
-- [x] And Many More...!
+## 📢 Feature
+- [x]  Slash Commands
+- [x]  Prefix Commands **[Owner Only]**
+- [x]  Music System
+- [x]  Premium System
+- [x]  Custom Filters
+- [x]  24/7 Voice **[Make Sure You Read This [Note](https://github.com/adh319/Lunox/commit/b4880fb419d9136f96c90411e9b9c2c3c984b384)]**
+- [x]  AutoPlay **[YouTube Only]**
+- [x]  Clean UI
+- [x]  Easy to use
+- [x]  And Many More...!
 
-## `🖼️` Screenshots
+## 🖼️ Screenshots
 - [x] Coming Soon...!
 
-## `🎶` Support Source
-- [x] Youtube
-- [x] Youtube Music
-- [x] Spotify
-- [x] SoundCloud
-- [x] Twitch
-- [x] Bandcamp
-- [x] Vimeo
-- [x] Https [Radio]
+## 🎵 Support Source
+- [x]  Youtube
+- [x]  Youtube Music
+- [x]  Spotify
+- [x]  SoundCloud
+- [x]  Twitch
+- [x]  Bandcamp
+- [x]  Vimeo
+- [x]  Https **[Radio]**
 
-<details><summary>➕ More Support Audio Source [CLICK ME]</summary>
-<p>
+## 📌 Requirements
 
-## `🎶` More Support **Audio** Source (Require: LavaLink v3.6.x [Recomended v3.6.2])
-- [x] [LavaSrc](https://github.com/TopiSenpai/LavaSrc)
+- Node.js v17 or higher **[Download](https://nodejs.org/en/download/)**
+- MongoDB v5.0.x or higher **[Download](https://www.mongodb.com/try/download/community-edition)**
+- Java 13+ or higher **[Download JDK13](http://www.mediafire.com/file/m6gk7aoq96db8g0/file)** (i used this version) for LAVALINK!
+- Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
+- LavaLink **[Guide](https://github.com/freyacodes/lavalink)**
+
+## 🎶 More Audio Support Sources
+**Require: LavaLink v3.6.x (Recomended v3.6.2)**
+
+- [x]  **[LavaSrc](https://github.com/TopiSenpai/LavaSrc)**
 - Spotify 
 - Deezer
 - Apple
 - Yandex
 
-- [x] [skybot-lavalink-plugin](https://github.com/DuncteBot/skybot-lavalink-plugin)
+- [x]  **[skybot-lavalink-plugin](https://github.com/DuncteBot/skybot-lavalink-plugin)**
 - Mixcloud
 - Ocremix
 - Clyp
@@ -65,17 +73,7 @@
 </p>
 </details>
 
-## `📎` Requirements
-
-- Node.js v16+ **[Download](https://nodejs.org/en/download/)** 
-- Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
-- LavaLink **[Guide](https://github.com/freyacodes/lavalink)**
-
-## `🛑` Super Requirements 
-
-- Java 11-13 **[Download JDK13](http://www.mediafire.com/file/m6gk7aoq96db8g0/file)** (i used this version) for LAVALINK!
-
-## `📚` Installation
+## 📝 Installation
 
 ```
 git clone https://github.com/adh319/Lunox
@@ -83,7 +81,7 @@ cd Lunox
 npm install
 ```
 
-## `📄` Configuration & Starting
+## 🚀 Configuration & Starting
 
 Rename `.env.example` to `.env` and fill out these values. You can find the details on `/src/settings/config.js`:
 
@@ -119,11 +117,11 @@ IMAGE_URL =
 ```
 After installation & finished all needed configuration, you can start the bot by either using `npm start` or `node src/sharder.js`.
 
-## `🪪` Licensed
+## 🔐 Licensed
 
 Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/Lunox/blob/main/LICENSE) for more information.
 
-## `❣` Support Me
+## 💝 Support Me
 
 - [Github Sponsor](https://github.com/sponsors/adh319)
 - [PayPal](https://paypal.me/dh319)
@@ -131,14 +129,14 @@ Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/L
 
 Also make sure to give a **⭐** to this project if you like it 😉!
 
-## `👏` Special Thanks
+## 🙏🏻 Special Thanks
 
 - [Parasop](https://github.com/parasop)
 - [Adivise](https://github.com/Adivise)
 - [RainyXeon](https://github.com/RainyXeon)
 - [Blacky](https://github.com/brblacky)
 
-## `🫂` Contributors
+## 👥 Contributors
 
 I really appreciated if you guys can contribute to this project. So don't hesitate to make a pull request if you guys has any suggestions, fixing bugs or want to add more features.
 
@@ -146,6 +144,7 @@ I really appreciated if you guys can contribute to this project. So don't hesita
   <img src="https://contributors-img.web.app/image?repo=adh319/Lunox" />
 </a>
 
+[version-shield]: https://img.shields.io/github/package-json/v/adh319/Lunox?style=for-the-badge
 [contributors-shield]: https://img.shields.io/github/contributors/adh319/Lunox.svg?style=for-the-badge
 [contributors-url]: https://github.com/adh319/Lunox/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/adh319/Lunox.svg?style=for-the-badge
