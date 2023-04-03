@@ -55,7 +55,7 @@
 **Require: LavaLink v3.6.x (Recomended v3.6.2)**
 
 - [x]  **[LavaSrc](https://github.com/TopiSenpai/LavaSrc)**
-- Spotify 
+- Spotify
 - Deezer
 - Apple
 - Yandex
@@ -69,9 +69,6 @@
 - TikTok
 - PornHub
 - Soundgasm
-
-</p>
-</details>
 
 ## 📝 Installation
 
