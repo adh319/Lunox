@@ -16,7 +16,7 @@
     "google-search-url": "^0.1.8",
     "moment": "^2.29.4",
     "moment-duration-format": "^2.3.2",
-    "mongoose": "^6.10.4",
+    "mongoose": "^7.0.3",
     "node-capitalize": "^1.0.0",
     "node-cron": "^3.0.2",
     "node-fetch": "^2.6.9",
