@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 const { supportUrl } = require("../../../settings/config.js");
 
 module.exports.run = async (client, message) => {
