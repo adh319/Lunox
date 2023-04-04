@@ -21,6 +21,7 @@
 ## 📢 Feature
 - [x]  Slash Commands
 - [x]  Prefix Commands **[Owner Only]**
+- [x]  Dev/Maintenance Mode System **[Owner Only]**
 - [x]  Music System
 - [x]  Premium System
 - [x]  Custom Filters
@@ -34,8 +35,7 @@
 - [x] Coming Soon...!
 
 ## 🎵 Support Source
-- [x]  Youtube
-- [x]  Youtube Music
+- [x]  Youtube/Youtube Music
 - [x]  Spotify
 - [x]  SoundCloud
 - [x]  Twitch
@@ -54,13 +54,13 @@
 ## 🎶 More Audio Support Sources
 **Require: LavaLink v3.6.x (Recomended v3.6.2)**
 
-- [x]  **[LavaSrc](https://github.com/TopiSenpai/LavaSrc)**
+**[LavaSrc](https://github.com/TopiSenpai/LavaSrc)**
 - Spotify
 - Deezer
 - Apple
 - Yandex
 
-- [x]  **[skybot-lavalink-plugin](https://github.com/DuncteBot/skybot-lavalink-plugin)**
+**[skybot-lavalink-plugin](https://github.com/DuncteBot/skybot-lavalink-plugin)**
 - Mixcloud
 - Ocremix
 - Clyp
@@ -80,7 +80,7 @@ npm install
 
 ## 🚀 Configuration & Starting
 
-Rename `.env.example` to `.env` and fill out these values. You can find the details on `/src/settings/config.js`:
+Rename `.env.example` to `.env` and fill out these values. You can find the details on `/src/settings/config.js` and make configration there also:
 
 ```#########################################
 ## SEE THE DETAILS ON "/SRC/SETTINGS/CONFIG.JS" FILE ##
@@ -92,18 +92,18 @@ PREFIX =
 EMBED_COLOR = 
 OWNER_ID = 
 GUILD_LOGS = 
-LEAVE_TIMEOUT = 
+LEAVE_TIMEOUT = 60000
 
 #PORU DETAILS
-PLAY_SOURCE = 
-DEFAULT_SOURCE = 
+PLAY_SOURCE = ytmsearch
+DEFAULT_SOURCE = ytmsearch
 SPOTIFY_ID = 
 SPOTIFY_SECRET = 
-NODE_NAME = 
-NODE_HOST = 
-NODE_PORT = 
-NODE_PASSWORD = 
-NODE_SECURE = 
+NODE_NAME = Lunox
+NODE_HOST = localhost
+NODE_PORT = 2333
+NODE_PASSWORD = youshallnotpass
+NODE_SECURE = false
 
 #LINK DETAILS
 MONGO_URI = 

@@ -1,4 +1,5 @@
 const { EmbedBuilder } = require("discord.js");
+const { supportUrl } = require("../../../settings/config.js");
 
 module.exports.run = async (client, message) => {
     //Ignoring bot, system, dm and webhook messages
@@ -35,8 +36,17 @@ module.exports.run = async (client, message) => {
 
     if (!command) return;
 
+    const row = new ActionRowBuilder().addComponents(new ButtonBuilder().setLabel("Support").setURL(supportUrl).setStyle(ButtonStyle.Link));
+
+    if (client.dev.has(true) && message.author.id !== client.owner) {
+        return message.reply({
+            content: `\`❌\` | ${client.user} is under maintenance. Sorry for the inconvinience.\n\nThank You.`,
+            components: [row],
+        });
+    }
+
     console.log(
-        `[COMMAND] - ${command.name} executed by ${message.author.tag} | ${client.user.username} in ${message.guild.name} (${message.guild.id})`
+        `[COMMAND] - ${command.name} executed by ${message.author.tag} | ${client.user.username} in ${message.guild.name} (${message.guild.id})`,
     );
 
     //Default Permission
@@ -50,15 +60,14 @@ module.exports.run = async (client, message) => {
     }
 
     if (botMissingPermissions.length > 0)
-        return message.reply(
-            `\`❌\` | I don't have one of these permissions \`ViewChannel\`, \`SendMessages\`, \`EmbedLinks\`.\nPlease double check them in your server role & channel settings.`
-        );
+        return message.reply({
+            content: `\`❌\` | I don't have one of these permissions \`ViewChannel\`, \`SendMessages\`, \`EmbedLinks\`.\nPlease double check them in your server role & channel settings.`,
+            components: [row],
+        });
 
     //Check Owner
     if (command.owner && message.author.id !== client.owner) {
-        return message.reply({
-            content: `\`❌\` | Only my owner can use this command!`,
-        });
+        return message.reply({ content: `\`❌\` | Only my owner can use this command!` });
     }
 
     //Error handling
@@ -67,8 +76,6 @@ module.exports.run = async (client, message) => {
     } catch (error) {
         console.log(error);
 
-        await warning.setDescription(`\`❌\` | Something went wrong.`);
-
-        return message.edit({ embeds: [warning], components: [row] });
+        return message.reply({ content: `\`❌\` | Something went wrong.`, components: [row] });
     }
 };

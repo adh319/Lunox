@@ -11,17 +11,24 @@ module.exports.run = async (client, interaction) => {
 
         if (!command) return;
 
+        const row = new ActionRowBuilder().addComponents(
+            new ButtonBuilder().setLabel("Support").setURL(supportUrl).setStyle(ButtonStyle.Link),
+        );
+
+        if (client.dev.has(true) && interaction.user.id !== client.owner) {
+            return interaction.reply({
+                content: `\`❌\` | ${client.user} is under maintenance. Sorry for the inconvinience.\n\nThank You.`,
+                components: [row],
+                ephemeral: true,
+            });
+        }
+
         const msg_cmd = [
             `[COMMAND] ${command.name}`,
             `used by ${interaction.user.tag} from ${interaction.guild.name} (${interaction.guild.id})`,
         ];
 
         console.log(`${msg_cmd.join(" ")}`);
-
-        const warning = new EmbedBuilder().setColor(client.color).setTimestamp();
-        const row = new ActionRowBuilder().addComponents(
-            new ButtonBuilder().setLabel("Support").setURL(supportUrl).setStyle(ButtonStyle.Link)
-        );
 
         //Default Permission
         const botPermissions = ["ViewChannel", "SendMessages", "EmbedLinks"];
@@ -41,10 +48,12 @@ module.exports.run = async (client, interaction) => {
             });
         }
 
+        const warning = new EmbedBuilder().setColor(client.color).setTimestamp();
+
         //Check Bot Command Permissions
         if (!interaction.guild.members.cache.get(client.user.id).permissions.has(command.permissions.bot || [])) {
             await warning.setDescription(
-                `\`❌\` | I don't have permission \`${command.permissions.bot.join(", ")}\` to execute this command.`
+                `\`❌\` | I don't have permission \`${command.permissions.bot.join(", ")}\` to execute this command.`,
             );
 
             return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
@@ -53,7 +62,7 @@ module.exports.run = async (client, interaction) => {
         //Check User Permissions
         if (!interaction.member.permissions.has(command.permissions.user || [])) {
             await warning.setDescription(
-                `\`❌\` | You don't have permission \`${command.permissions.user.join(", ")}\` to execute this command.`
+                `\`❌\` | You don't have permission \`${command.permissions.user.join(", ")}\` to execute this command.`,
             );
 
             return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
@@ -94,8 +103,8 @@ module.exports.run = async (client, interaction) => {
             ) {
                 await warning.setDescription(
                     `\`❌\` | I don't have permission \`${command.permissions.channel.join(
-                        ", "
-                    )}\` to execute this command in this channel.`
+                        ", ",
+                    )}\` to execute this command in this channel.`,
                 );
 
                 return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
@@ -119,8 +128,8 @@ module.exports.run = async (client, interaction) => {
             ) {
                 await warning.setDescription(
                     `\`❌\` | I don't have permission \`${command.permissions.channel.join(
-                        ", "
-                    )}\` to execute this command in this channel.`
+                        ", ",
+                    )}\` to execute this command in this channel.`,
                 );
 
                 return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
