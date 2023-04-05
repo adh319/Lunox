@@ -71,7 +71,7 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 - Reddit
 - Getyarn
 - TikTok
-- PornHub
+- Po##Hub
 - Soundgasm
 
 ## 📝 Installation
