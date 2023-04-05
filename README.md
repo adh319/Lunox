@@ -32,7 +32,11 @@
 - [x]  And Many More...!
 
 ## 🖼️ Screenshots
-- [x] Coming Soon...!
+Here are some screenshots from my bot **(Screenshots may not look the same coz i had modify it on my bot)**.
+
+<p align="center">
+<img src="https://cdn.discordapp.com/attachments/1014342568554811443/1093098769907732500/image.png"/> <img src="https://cdn.discordapp.com/attachments/1014342568554811443/1093099116818612234/image.png"/>
+</p>
 
 ## 🎵 Support Source
 - [x]  Youtube/Youtube Music
