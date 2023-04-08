@@ -19,17 +19,17 @@
 [![MIT License][license-shield]][license-url]
 
 ## 📢 Feature
-- [x]  Slash Commands
-- [x]  Prefix Commands **[Owner Only]**
-- [x]  Dev/Maintenance Mode System **[Owner Only]**
-- [x]  Music System
-- [x]  Premium System
-- [x]  Custom Filters
-- [x]  24/7 Voice **[Make Sure You Read This [Note](https://github.com/adh319/Lunox/commit/b4880fb419d9136f96c90411e9b9c2c3c984b384)]**
-- [x]  AutoPlay **[YouTube Only]**
-- [x]  Clean UI
-- [x]  Easy to use
-- [x]  And Many More...!
+- ☑️ Slash Commands
+- ☑️ Prefix Commands **[Owner Only]**
+- ☑️ Dev/Maintenance Mode System **[Owner Only]**
+- ☑️ Music System
+- ☑️ Premium System
+- ☑️ Custom Filters
+- ☑️ 24/7 Voice **[Make Sure You Read This [Note](https://github.com/adh319/Lunox/commit/b4880fb419d9136f96c90411e9b9c2c3c984b384)]**
+- ☑️ AutoPlay **[YouTube Only]**
+- ☑️ Clean UI
+- ☑️ Easy to use
+- ☑️ And Many More...!
 
 ## 🖼️ Screenshots
 Here are some screenshots from my bot **(Screenshots may not look the same coz i had modify it on my bot)**.
@@ -39,13 +39,13 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 </p>
 
 ## 🎵 Support Source
-- [x]  Youtube/Youtube Music
-- [x]  Spotify
-- [x]  SoundCloud
-- [x]  Twitch
-- [x]  Bandcamp
-- [x]  Vimeo
-- [x]  Https **[Radio]**
+- ☑️ Youtube/Youtube Music
+- ☑️ Spotify
+- ☑️ SoundCloud
+- ☑️ Twitch
+- ☑️ Bandcamp
+- ☑️ Vimeo
+- ☑️ Https **[Radio]**
 
 ## 📌 Requirements
 
@@ -58,20 +58,20 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 ## 🎶 More Audio Support Sources
 **Require: LavaLink v3.6.x (Recomended v3.6.2)**
 
-**[LavaSrc](https://github.com/TopiSenpai/LavaSrc)**
+**☑️ [LavaSrc](https://github.com/TopiSenpai/LavaSrc)**
 - Spotify
 - Deezer
-- Apple
-- Yandex
+- Apple Music
+- Yandex Music
 
-**[skybot-lavalink-plugin](https://github.com/DuncteBot/skybot-lavalink-plugin)**
+**☑️ [skybot-lavalink-plugin](https://github.com/DuncteBot/skybot-lavalink-plugin)**
 - Mixcloud
 - Ocremix
 - Clyp
 - Reddit
 - Getyarn
 - TikTok
-- Po##Hub
+- Po**Hub
 - Soundgasm
 
 ## 📝 Installation
