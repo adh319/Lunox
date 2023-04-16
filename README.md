@@ -7,7 +7,8 @@
 </p>
 
 <p align="center"> 
-  <a href="https://discord.gg/kNdSkHchzH" target="_blank"> <img src="https://discordapp.com/api/guilds/1025846112399138917/widget.png?style=banner2"/> </a>
+  <a href="https://discord.gg/xhTVzbS5NU" target="_blank"> <img src="https://discordapp.com/api/guilds/1056011738950156359/widget.png?style=banner2"/> </a>
+  <a href="https://discord.gg/kNdSkHchzH" target="_blank"> <img src="https://discordapp.com/api/guilds/1025846112399138917/widget.png?style=banner2"/> </a>  
 </p>
 
 [![Version][version-shield]](version-url)
