@@ -8,7 +8,6 @@
 
 <p align="center"> 
   <a href="https://discord.gg/xhTVzbS5NU" target="_blank"> <img src="https://discordapp.com/api/guilds/1056011738950156359/widget.png?style=banner2"/> </a>
-  <a href="https://discord.gg/kNdSkHchzH" target="_blank"> <img src="https://discordapp.com/api/guilds/1025846112399138917/widget.png?style=banner2"/> </a>  
 </p>
 
 [![Version][version-shield]](version-url)
@@ -36,7 +35,7 @@
 Here are some screenshots from my bot **(Screenshots may not look the same coz i had modify it on my bot)**.
 
 <p align="center">
-<img src="https://cdn.discordapp.com/attachments/1014342568554811443/1093098769907732500/image.png"/>
+<img src="https://cdn.discordapp.com/attachments/1014342568554811443/1093098769907732500/image.png"/>  <img src="https://cdn.discordapp.com/attachments/1014342568554811443/1093099116818612234/image.png"/>
 </p>
 
 ## 🎵 Support Source
