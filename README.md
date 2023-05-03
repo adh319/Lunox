@@ -18,7 +18,11 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-## 📢 Feature
+# 📒 Table of Contents
+[Features](#📢-features) • [Screenshots](#🖼️-screenshots) • [Requirements](#📌-requirements) • [Installation](#📝-installation) • [Configuration & Starting](#🚀-configuration--starting) • [Changelogs](#📜-changelogs) • [License](#🔐-license) • [Credits](#🙏-credits) • [Support Me](#💝-support-me) • [Special Thanks](#🙏🏻-special-thanks) • [Contributors](#👥-contributors)
+#
+
+## 📢 Features
 - ☑️ Slash Commands
 - ☑️ Prefix Commands **[Owner Only]**
 - ☑️ Dev/Maintenance Mode System **[Owner Only]**
@@ -131,6 +135,20 @@ After installation & finished all needed configuration, you can start the bot by
 ## 🔐 Licensed
 
 Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/Lunox/blob/main/LICENSE) for more information.
+
+## 📜 Changelogs
+=========================
+#### v2.0.7
+- Removed "Lyrics" command
+- Added "Ban" command (Prefix)
+- Premium system expire date now counted from the time user redeemed it
+- Now support Lavalink regions
+- Fixed "247" command premium logic
+- Major changes on Premium system
+- Better logging
+- Many more... See [#9b4ee6b](https://github.com/Enour-Dev/Lunox/commit/9b4ee6bbb919195629bba1a2b14351d9324ceacd)
+
+=========================
 
 ## 💝 Support Me
 
