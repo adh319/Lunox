@@ -19,7 +19,7 @@
 [![MIT License][license-shield]][license-url]
 
 # 📒 Table of Contents
-[Features](#📢-features) • [Screenshots](#🖼️-screenshots) • [Requirements](#📌-requirements) • [Installation](#📝-installation) • [Configuration & Starting](#🚀-configuration--starting) • [Changelogs](#📜-changelogs) • [License](#🔐-license) • [Credits](#🙏-credits) • [Support Me](#💝-support-me) • [Special Thanks](#🙏🏻-special-thanks) • [Contributors](#👥-contributors)
+[Features](#-features) • [Screenshots](#-screenshots) • [Requirements](#-requirements) • [Installation](#-installation) • [Configuration & Starting](#-configuration--starting) • [Changelogs](#-changelogs) • [License](#-license) • [Credits](#-credits) • [Support Me](#-support-me) • [Special Thanks](#-special-thanks) • [Contributors](#-contributors)
 #
 
 ## 📢 Features
