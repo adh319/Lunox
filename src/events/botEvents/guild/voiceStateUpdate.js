@@ -28,7 +28,7 @@ module.exports.run = async (client, oldState, newState) => {
         await data.delete();
 
         console.log(`[INFO] 247 has been disabled from (${newState.guild.id || oldState.guild.id})`);
-    } // Disable this When 247 command settings premium is set to "false".
+    } // // Disable this "if" when 247 command settings premium is set to "false".
 
     if (data) return;
     //

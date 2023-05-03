@@ -33,16 +33,15 @@ module.exports = {
 
             return interaction.editReply({ embeds: [off] });
         } else if (!data) {
-            /// This will execute when premium settings is set to "true" [Disable code on line 56 to 66 to use this!!!]
             const user = await User.findOne({ Id: interaction.user.id });
 
-            let expired = user.premium.expiresAt; // this will make the command activated til the user premium expired
+            let expired = user.premium.expiresAt; // this will make the command activated til the user premium expired, Disable this if you set the 247 setting remium to false
 
             const newData = await Reconnect.create({
                 guild: player.guildId,
                 text: player.textChannel,
                 voice: player.voiceChannel,
-                time: expired,
+                time: expired, // Disable this if you set the 247 premium setting to false
             });
 
             await newData.save();
@@ -50,21 +49,6 @@ module.exports = {
             const on = new EmbedBuilder().setDescription(`\`🔵\` | 247 Mode has been: \`Enabled\``).setColor(client.color);
 
             return interaction.editReply({ embeds: [on] });
-            ///
-
-            /// This will execute when premium settings is set to "false" [Disable code on line 37 to 52 to use this!!!]
-            /*const newData = await Reconnect.create({
-                guild: player.guildId,
-                text: player.textId,
-                voice: player.voiceId,
-            });
-
-            await newData.save();
-
-            const on = new EmbedBuilder().setDescription(`\`🔵\` | 247 Mode has been: \`Enabled\``).setColor(client.color);
-
-            return interaction.editReply({ embeds: [on] });*/
-            ///
         }
     },
 };

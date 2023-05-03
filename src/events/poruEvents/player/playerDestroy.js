@@ -11,7 +11,7 @@ module.exports.run = async (client, player) => {
         await data.delete();
 
         console.log(`[INFO] 247 has been disabled from (${player.guildId})`);
-    } // Disable this When 247 command settings premium is set to "false".
+    } // Disable this "if" when 247 command settings premium is set to "false".
 
     if (player.state !== "DESTROYING" && data) {
         await client.poru.createConnection({

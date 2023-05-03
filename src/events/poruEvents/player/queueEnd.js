@@ -14,7 +14,7 @@ module.exports.run = async (client, player) => {
 
     if (data && Date.now() >= data.time) {
         await data.delete();
-    } // Disable this When 247 command settings premium is set to "false".
+    } // Disable this "if" when 247 command settings premium is set to "false".
 
     if (data) return;
     //
