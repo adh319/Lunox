@@ -4,7 +4,7 @@ const moment = require("moment");
 module.exports.run = async (client, guild) => {
     const channel = client.channels.cache.get(client.config.guildLogs);
 
-    let own = await guild?.fetchOwner();
+    let own = await guild.fetchOwner();
 
     const embed = new EmbedBuilder()
         .setAuthor({

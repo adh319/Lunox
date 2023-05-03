@@ -36,7 +36,7 @@ module.exports = {
             /// This will execute when premium settings is set to "true" [Disable code on line 56 to 66 to use this!!!]
             const user = await User.findOne({ Id: interaction.user.id });
 
-            let expired = Date.now() + user.premium.expiresAt; // this will make the command activated til the user premium expired
+            let expired = user.premium.expiresAt; // this will make the command activated til the user premium expired
 
             const newData = await Reconnect.create({
                 guild: player.guildId,

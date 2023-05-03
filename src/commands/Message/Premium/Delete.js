@@ -7,35 +7,49 @@ module.exports = {
     category: "Premium",
     aliases: ["premiumdelete"],
     owner: true,
-    run: async (client, message) => {
-        const mention = message.mentions.members.first();
+    run: async (client, message, args) => {
+        let id = args[0];
 
-        if (!mention) {
-            const embed = new EmbedBuilder().setDescription(`\`❌\` | Please mention user first.`).setColor(client.color);
+        if (!id) return message.reply({ content: "`❌` | Please provide a user ID." });
+
+        let REGEX = new RegExp(/^[0-9]+$/);
+
+        if (!REGEX.test(id)) {
+            const embed = new EmbedBuilder().setDescription(`\`❌\` | The ID must be a number.`).setColor(client.color);
 
             return message.reply({ embeds: [embed] });
         }
 
-        const data = await User.findOne({ Id: mention.id });
+        const user = client.premium.get(id);
 
-        if (data.isPremium) {
-            data.isPremium = false;
-            data.premium.redeemedBy = [];
-            data.premium.redeemedAt = null;
-            data.premium.expiresAt = null;
-            data.premium.plan = null;
+        if (!user) {
+            const embed = new EmbedBuilder()
+                .setDescription(`\`❌\` | \`${id}\` is not a premium user or not in my database.`)
+                .setColor(client.color);
 
-            const newUser = await data.save({ new: true }).catch(() => {});
-            client.premium.set(newUser.Id, newUser);
+            return message.reply({ embeds: [embed] });
+        }
+
+        const userData = await User.findOne({ Id: id });
+
+        if (userData.isPremium === true) {
+            userData.isPremium = false;
+            userData.premium.redeemedBy = [];
+            userData.premium.redeemedAt = null;
+            userData.premium.expiresAt = null;
+            userData.premium.plan = null;
+
+            const newUser = await userData.save();
+            client.premium.set(userData.Id, newUser);
 
             const embed = new EmbedBuilder()
-                .setDescription(`\`☑️\` | You've successfully remove ${mention} premium status.`)
+                .setDescription(`\`☑️\` | You've successfully remove \`${id}\` premium status.`)
                 .setColor(client.color);
 
             return message.reply({ embeds: [embed] });
         } else {
             const embed = new EmbedBuilder()
-                .setDescription(`\`❌\` | ${mention} premium status already removed or not a premium user.`)
+                .setDescription(`\`❌\` | \`${id}\` premium status already removed or not a premium user.`)
                 .setColor(client.color);
 
             return message.reply({ embeds: [embed] });

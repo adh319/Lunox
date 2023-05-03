@@ -3,21 +3,23 @@ const cron = require("node-cron");
 
 module.exports = async (client) => {
     cron.schedule("*/60 * * * * *", async () => {
-        await User.find({ isPremium: true }, async (err, users) => {
-            if (users && users.length) {
-                for (let user of users) {
-                    if (Date.now() >= user.premium.expiresAt) {
-                        user.isPremium = false;
-                        user.premium.redeemedBy = [];
-                        user.premium.redeemedAt = null;
-                        user.premium.expiresAt = null;
-                        user.premium.plan = null;
+        const users = await User.find({ isPremium: true });
 
-                        const newUser = await user.save({ new: true }).catch(() => {});
+        if (!users || !users.length) return;
 
-                        client.premium.set(newUser.Id, newUser);
-                    }
-                }
+        await users.forEach(async (user) => {
+            if (Date.now() >= user.premium.expiresAt) {
+                user.isPremium = false;
+                user.premium.redeemedBy = [];
+                user.premium.redeemedAt = null;
+                user.premium.expiresAt = null;
+                user.premium.plan = null;
+
+                const newUser = await user.save();
+
+                client.premium.set(user.Id, newUser);
+
+                console.log(`[DEBUG] Premium Expired for (${user.Id})`);
             }
         });
     });

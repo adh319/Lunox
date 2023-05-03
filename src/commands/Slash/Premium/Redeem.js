@@ -32,41 +32,111 @@ module.exports = {
     run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: true });
 
-        let member = await User.findOne({ Id: interaction.user.id });
-
         const input = interaction.options.getString("code");
-        const premium = await Code.findOne({ code: input.toUpperCase() });
+        const user = await User.findOne({ Id: interaction.user.id });
+        const code = await Code.findOne({ code: input.toUpperCase() });
 
-        if (member && member.isPremium) {
+        if (user && user.isPremium) {
             const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | You already a premium user.`);
 
             return interaction.editReply({ embeds: [embed] });
         }
 
-        if (premium) {
-            const expires = moment(premium.expiresAt).format("dddd, MMMM Do YYYY HH:mm:ss");
+        if (code) {
+            if (code.plan === "minutely") {
+                user.isPremium = true;
+                user.premium.redeemedBy.push(interaction.user);
+                user.premium.redeemedAt = Date.now();
+                user.premium.expiresAt = Date.now() + 300000;
+                user.premium.plan = code.plan;
 
-            member.isPremium = true;
-            member.premium.redeemedBy.push(interaction.user);
-            member.premium.redeemedAt = Date.now();
-            member.premium.expiresAt = premium.expiresAt;
-            member.premium.plan = premium.plan;
+                const newUser = await user.save();
+                client.premium.set(interaction.user.id, newUser);
+                await code.delete();
+            }
 
-            member = await member.save({ new: true });
-            client.premium.set(interaction.user.id, member);
-            await premium.deleteOne();
+            if (code.plan === "daily") {
+                user.isPremium = true;
+                user.premium.redeemedBy.push(interaction.user);
+                user.premium.redeemedAt = Date.now();
+                user.premium.expiresAt = Date.now() + 86400000;
+                user.premium.plan = code.plan;
+
+                const newUser = await user.save();
+                client.premium.set(interaction.user.id, newUser);
+                await code.delete();
+            }
+
+            if (code.plan === "weekly") {
+                user.isPremium = true;
+                user.premium.redeemedBy.push(interaction.user);
+                user.premium.redeemedAt = Date.now();
+                user.premium.expiresAt = Date.now() + 86400000 * 7;
+                user.premium.plan = code.plan;
+
+                const newUser = await user.save();
+                client.premium.set(interaction.user.id, newUser);
+                await code.delete();
+            }
+
+            if (code.plan === "monthly") {
+                user.isPremium = true;
+                user.premium.redeemedBy.push(interaction.user);
+                user.premium.redeemedAt = Date.now();
+                user.premium.expiresAt = Date.now() + 86400000 * 30;
+                user.premium.plan = code.plan;
+
+                const newUser = await user.save();
+                client.premium.set(interaction.user.id, newUser);
+                await code.delete();
+            }
+
+            if (code.plan === "yearly") {
+                user.isPremium = true;
+                user.premium.redeemedBy.push(interaction.user);
+                user.premium.redeemedAt = Date.now();
+                user.premium.expiresAt = Date.now() + 86400000 * 365;
+                user.premium.plan = code.plan;
+
+                const newUser = await user.save();
+                client.premium.set(interaction.user.id, newUser);
+                await code.delete();
+            }
+
+            if (code.plan === "lifetime") {
+                user.isPremium = true;
+                user.premium.redeemedBy.push(interaction.user);
+                user.premium.redeemedAt = Date.now();
+                user.premium.expiresAt = Date.now() + 86400000 * 365 * 100;
+                user.premium.plan = code.plan;
+
+                const newUser = await user.save();
+                client.premium.set(interaction.user.id, newUser);
+                await code.delete();
+            }
+
+            const expires = moment(user.premium.expiresAt).format("dddd, MMMM Do YYYY HH:mm:ss");
 
             const embed = new EmbedBuilder()
                 .setAuthor({ name: `Premium Redeemed!`, iconURL: client.user.displayAvatarURL() })
                 .setDescription(`Conratulations ${interaction.member}. You've successfully redeem premium code with the following details.`)
-                .addFields([
-                    { name: `\`👥\` • Redeemed By`, value: `\`\`\`${interaction.member.displayName}\`\`\``, inline: true },
-                    { name: `\`💠\` • Plan Type`, value: `\`\`\`${premium.plan}\`\`\``, inline: true },
-                    { name: `\`🕓\` • Expired Time`, value: `\`\`\`${expires}\`\`\``, inline: true },
-                ])
                 .setThumbnail(interaction.user.displayAvatarURL())
                 .setColor(client.color)
                 .setTimestamp();
+
+            if (user.premium.plan === "lifetime") {
+                embed.addFields([
+                    { name: `\`👥\` • Redeemed By`, value: `\`\`\`${interaction.member.displayName}\`\`\``, inline: true },
+                    { name: `\`💠\` • Plan Type`, value: `\`\`\`${user.premium.plan}\`\`\``, inline: true },
+                    { name: `\`🕓\` • Expired Time`, value: `\`\`\`Never\`\`\``, inline: false },
+                ]);
+            } else {
+                embed.addFields([
+                    { name: `\`👥\` • Redeemed By`, value: `\`\`\`${interaction.member.displayName}\`\`\``, inline: true },
+                    { name: `\`💠\` • Plan Type`, value: `\`\`\`${user.premium.plan}\`\`\``, inline: true },
+                    { name: `\`🕓\` • Expired Time`, value: `\`\`\`${expires}\`\`\``, inline: false },
+                ]);
+            }
 
             return interaction.editReply({ embeds: [embed] });
         } else {

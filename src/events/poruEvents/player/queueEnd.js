@@ -2,8 +2,6 @@ const { EmbedBuilder } = require("discord.js");
 const Reconnect = require("../../../settings/models/247.js");
 
 module.exports.run = async (client, player) => {
-    const data = await Reconnect.findOne({ guild: player.guildId });
-
     const channel = client.channels.cache.get(player.textChannel);
     if (!channel) return;
 
@@ -12,7 +10,12 @@ module.exports.run = async (client, player) => {
     if (player.message) await player.message.delete();
 
     // this will make the bot will not be disconneted/destroyed when queue end if 247 activated
-    if (data && Date.now() >= data.time) await data.delete(); // Enable this only When 247 command settings premium is set to true.
+    const data = await Reconnect.findOne({ guild: player.guildId });
+
+    if (data && Date.now() >= data.time) {
+        await data.delete();
+    } // Disable this When 247 command settings premium is set to "false".
+
     if (data) return;
     //
 

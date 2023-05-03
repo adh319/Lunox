@@ -44,10 +44,8 @@ module.exports = {
 
         if (choice === "display") {
             if (!Control) {
-                const Control = new GControl({
-                    guild: interaction.guild.id,
-                    playerControl: "enable",
-                });
+                const Control = new GControl({ guild: interaction.guild.id, playerControl: "enable" });
+
                 Control.save()
                     .then(() => {
                         const embed = new EmbedBuilder()
@@ -62,6 +60,7 @@ module.exports = {
                     });
             } else if (Control) {
                 Control.playerControl = "enable";
+
                 Control.save()
                     .then(() => {
                         const embed = new EmbedBuilder()
@@ -77,10 +76,8 @@ module.exports = {
             }
         } else if (choice === "hide") {
             if (!Control) {
-                const Control = new GControl({
-                    guild: interaction.guild.id,
-                    playerControl: "disable",
-                });
+                const Control = new GControl({ guild: interaction.guild.id, playerControl: "disable" });
+
                 Control.save()
                     .then(() => {
                         const embed = new EmbedBuilder()
@@ -95,6 +92,7 @@ module.exports = {
                     });
             } else if (Control) {
                 Control.playerControl = "disable";
+
                 Control.save()
                     .then(() => {
                         const embed = new EmbedBuilder()

@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const CreateReconnect = mongoose.Schema({
-    guild: { type: String, required: true, unique: true },
-    text: { type: String  },
-    voice: { type: String },
-    time: { type: Number },
+    guild: { type: String, required: true },
+    text: { type: String, default: null },
+    voice: { type: String, default: null },
+    time: { type: Number, default: null },
 });
 
 module.exports = mongoose.model("Reconnect", CreateReconnect);

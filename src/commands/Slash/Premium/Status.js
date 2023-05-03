@@ -31,7 +31,7 @@ module.exports = {
                 iconURL: client.user.displayAvatarURL({ dynamic: true }),
             })
             .setColor(client.color)
-            .setDescription(`Here are the details about your premium status of ${client.user}.`)
+            .setDescription(`Here are the details about your premium status.`)
             .setThumbnail(interaction.user.displayAvatarURL())
             .setFooter({ text: "Thank You" })
             .setTimestamp();
@@ -39,8 +39,8 @@ module.exports = {
         if (user.premium.plan === "lifetime") {
             embed.addFields([
                 { name: `\`💠\` • Plan:`, value: `\`\`\`${toOppositeCase(user.premium.plan)}\`\`\``, inline: true },
-                { name: `\`🕓\` • Expired:`, value: `\`\`\`Never\`\`\``, inline: true },
                 { name: `\`💎\` • Features:`, value: `\`\`\`Unlocked\`\`\``, inline: true },
+                { name: `\`🕓\` • Expired:`, value: `\`\`\`Never\`\`\``, inline: false },
             ]);
         } else {
             embed.addFields([
@@ -49,13 +49,13 @@ module.exports = {
 
             if (user.premium.expiresAt < Date.now()) {
                 embed.addFields([
-                    { name: `\`🕓\` • Expired:`, value: `\`\`\`Never\`\`\``, inline: true },
                     { name: `\`💎\` • Features:`, value: `\`\`\`Locked\`\`\``, inline: true },
+                    { name: `\`🕓\` • Expired:`, value: `\`\`\`Never\`\`\``, inline: false },
                 ]);
             } else {
                 embed.addFields([
-                    { name: `\`🕓\` • Expired:`, value: `\`\`\`${timeLeft}\`\`\``, inline: true },
                     { name: `\`💎\` • Features:`, value: `\`\`\`Unlocked\`\`\``, inline: true },
+                    { name: `\`🕓\` • Expired:`, value: `\`\`\`${timeLeft}\`\`\``, inline: false },
                 ]);
             }
         }

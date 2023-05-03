@@ -45,9 +45,7 @@ module.exports.run = async (client, message) => {
         });
     }
 
-    console.log(
-        `[COMMAND] - ${command.name} executed by ${message.author.tag} | ${client.user.username} in ${message.guild.name} (${message.guild.id})`,
-    );
+    console.log(`[PREFIX] ${command.name} used by ${message.author.tag} from ${message.guild.name} (${message.guild.id})`);
 
     //Default Permission
     const botPermissions = ["ViewChannel", "SendMessages", "EmbedLinks"];

@@ -3,8 +3,8 @@ const { mongoUri } = require("../../settings/config.js");
 
 module.exports = async (client) => {
     try {
-        await mongoose.set("strictQuery", false);
-        await mongoose.connect(mongoUri, {
+        mongoose.set("strictQuery", false);
+        mongoose.connect(mongoUri, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });

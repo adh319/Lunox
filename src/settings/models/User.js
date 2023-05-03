@@ -1,15 +1,13 @@
 const mongoose = require("mongoose");
 
-// The heart of the User, here is everything saved that the User does.
-// Such as Levels, Courses, Premium, Enrolled, XP, Leaderboard.
 const user = mongoose.Schema({
-    Id: { type: mongoose.SchemaTypes.String, required: true, unique: true },
-    isPremium: { type: mongoose.SchemaTypes.Boolean, default: false },
+    Id: { type: String, required: true },
+    isPremium: { type: Boolean, default: false },
     premium: {
-        redeemedBy: { type: mongoose.SchemaTypes.Array, default: null },
-        redeemedAt: { type: mongoose.SchemaTypes.Number, default: null },
-        expiresAt: { type: mongoose.SchemaTypes.Number, default: null },
-        plan: { type: mongoose.SchemaTypes.String, default: null },
+        redeemedBy: { type: Array, default: null },
+        redeemedAt: { type: Number, default: null },
+        expiresAt: { type: Number, default: null },
+        plan: { type: String, default: null },
     },
 });
 
