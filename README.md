@@ -86,7 +86,8 @@ npm install
 
 Rename `.env.example` to `.env` and fill out these values. You can find the details on `/src/settings/config.js` and make configration there also:
 
-```#########################################
+```
+#########################################
 ## SEE THE DETAILS ON "/SRC/SETTINGS/CONFIG.JS" FILE ##
 #########################################
 
@@ -108,6 +109,15 @@ NODE_HOST = localhost
 NODE_PORT = 2333
 NODE_PASSWORD = youshallnotpass
 NODE_SECURE = false
+NODE_REGIONS1 = us-central, us-east #Available regions to set ↴
+#singapore, sydney, japan, hongkong, india, us-central, us-east, us-south, us-west, brazil, russia, rotterdam, southafrica
+NODE_NAME = Lunox
+NODE_HOST = localhost
+NODE_PORT = 2333
+NODE_PASSWORD = youshallnotpass
+NODE_SECURE = false
+NODE_REGIONS2 = us-central, us-east #Available regions to set ↴
+#singapore, sydney, japan, hongkong, india, us-central, us-east, us-south, us-west, brazil, russia, rotterdam, southafrica
 
 #LINK DETAILS
 MONGO_URI = 
