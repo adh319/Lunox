@@ -104,18 +104,18 @@ PLAY_SOURCE = ytmsearch
 DEFAULT_SOURCE = ytmsearch
 SPOTIFY_ID = 
 SPOTIFY_SECRET = 
-NODE_NAME = Lunox
-NODE_HOST = localhost
-NODE_PORT = 2333
-NODE_PASSWORD = youshallnotpass
-NODE_SECURE = false
+NODE_NAME1 = Lunox
+NODE_HOST1 = localhost
+NODE_PORT1 = 2333
+NODE_PASSWORD1 = youshallnotpass
+NODE_SECURE1 = false
 NODE_REGIONS1 = us-central, us-east #Available regions to set ↴
 #singapore, sydney, japan, hongkong, india, us-central, us-east, us-south, us-west, brazil, russia, rotterdam, southafrica
-NODE_NAME = Lunox
-NODE_HOST = localhost
-NODE_PORT = 2333
-NODE_PASSWORD = youshallnotpass
-NODE_SECURE = false
+NODE_NAME2 = Lunox
+NODE_HOST2 = localhost
+NODE_PORT2 = 2333
+NODE_PASSWORD12= youshallnotpass
+NODE_SECURE2 = false
 NODE_REGIONS2 = us-central, us-east #Available regions to set ↴
 #singapore, sydney, japan, hongkong, india, us-central, us-east, us-south, us-west, brazil, russia, rotterdam, southafrica
 
