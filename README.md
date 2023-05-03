@@ -132,10 +132,6 @@ IMAGE_URL =
 ```
 After installation & finished all needed configuration, you can start the bot by either using `npm start` or `node src/sharder.js`.
 
-## 🔐 Licensed
-
-Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/Lunox/blob/main/LICENSE) for more information.
-
 ## 📜 Changelogs
 =========================
 #### v2.0.7
@@ -149,6 +145,10 @@ Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/L
 - Many more... See [#9b4ee6b](https://github.com/Enour-Dev/Lunox/commit/9b4ee6bbb919195629bba1a2b14351d9324ceacd)
 
 =========================
+
+## 🔐 Licensed
+
+Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/Lunox/blob/main/LICENSE) for more information.
 
 ## 💝 Support Me
 
