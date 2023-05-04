@@ -52,14 +52,6 @@ module.exports = {
                 return message.reply({ embeds: [embed] });
             }
         } else if (type === "disable") {
-            if (!user) {
-                const embed = new EmbedBuilder()
-                    .setDescription(`\`❌\` | \`${id}\` is not a banned user or not in my database.`)
-                    .setColor(client.color);
-
-                return message.reply({ embeds: [embed] });
-            }
-
             if (user.isBanned === false) {
                 const embed = new EmbedBuilder().setDescription(`\`❌\` | \`${id}\` is not banned.`).setColor(client.color);
 

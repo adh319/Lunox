@@ -33,7 +33,7 @@ module.exports.run = async (client, interaction) => {
 
         const userBan = await Ban.findOne({ userID: interaction.user.id });
 
-        if (userBan && userBan.isBanned === true) {
+        if (userBan && userBan.isBanned === true && interaction.user.id !== client.owner) {
             return interaction.reply({
                 content: `\`❌\` | You are banned from using ${client.user}, click the button support to appeal.`,
                 components: [row],

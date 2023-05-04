@@ -1,4 +1,5 @@
 const User = require("../../settings/models/User.js");
+const Ban = require("../../settings/models/Ban.js");
 
 module.exports = async (client) => {
     client.createInteraction = async function (interaction) {
@@ -10,6 +11,14 @@ module.exports = async (client) => {
             await newPremium.save();
 
             interaction.client.premium.set(interaction.user.id, newPremium);
+        }
+
+        const find_ban = await Ban.findOne({ userID: interaction.user.id });
+
+        if (!find_ban) {
+            const newBan = await Ban.create({ userID: interaction.user.id });
+
+            await newBan.save();
         }
     };
 
