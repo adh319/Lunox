@@ -13,13 +13,18 @@ module.exports.run = async (client, player) => {
         console.log(`[INFO] 247 has been disabled from (${player.guildId})`);
     } // Disable this "if" when 247 command settings premium is set to "false".
 
-    if (player.state !== "DESTROYING" && data) {
-        await client.poru.createConnection({
-            guildId: data.guild,
-            voiceChannel: data.voice,
-            textChannel: data.text,
-            deaf: true,
-        });
+    if (data) {
+        const voices = client.channels.cache.get(data.voice);
+
+        if (player.state !== "DESTROYING") {
+            await client.poru.createConnection({
+                guildId: data.guild,
+                voiceChannel: data.voice,
+                textChannel: data.text,
+                region: voices.rtcRegion || undefined,
+                deaf: true,
+            });
+        }
     }
     //
 

@@ -25,6 +25,7 @@ module.exports.run = async (client, node) => {
                 guildId: data.guild,
                 voiceChannel: data.voice,
                 textChannel: data.text,
+                region: voices.rtcRegion || undefined,
                 deaf: true,
             });
 

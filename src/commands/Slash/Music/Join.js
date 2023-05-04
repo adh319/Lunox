@@ -33,6 +33,7 @@ module.exports = {
                 guildId: interaction.guild.id,
                 voiceChannel: interaction.member.voice.channel.id,
                 textChannel: interaction.channel.id,
+                region: interaction.member.voice.channel.rtcRegion || undefined,
                 deaf: true,
             });
 
