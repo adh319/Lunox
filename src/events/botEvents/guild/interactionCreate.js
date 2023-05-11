@@ -6,8 +6,6 @@ module.exports.run = async (client, interaction) => {
     if (interaction.type === InteractionType.ApplicationCommand) {
         const command = client.slashCommands.get(interaction.commandName);
 
-        // Getting Premium User Database
-        let user = client.premium.get(interaction.user.id);
         await client.createInteraction(interaction);
 
         if (!command) return;
@@ -140,15 +138,6 @@ module.exports.run = async (client, interaction) => {
                         ", ",
                     )}\` to execute this command in this channel.`,
                 );
-
-                return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
-            }
-        }
-
-        // Premium User Check
-        if (command.settings.premium) {
-            if (user && !user.isPremium) {
-                warning.setDescription(`\`❌\` | You're not premium user!`);
 
                 return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
             }

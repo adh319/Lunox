@@ -12,10 +12,6 @@ module.exports.run = async (client, player) => {
     // this will make the bot will not be disconneted/destroyed when queue end if 247 activated
     const data = await Reconnect.findOne({ guild: player.guildId });
 
-    if (data && Date.now() >= data.time) {
-        await data.delete();
-    } // Disable this "if" when 247 command settings premium is set to "false".
-
     if (data) return;
     //
 

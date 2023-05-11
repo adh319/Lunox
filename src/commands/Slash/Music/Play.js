@@ -24,7 +24,6 @@ module.exports = {
         player: false,
         current: false,
         owner: false,
-        premium: false,
     },
     run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: false });
@@ -83,7 +82,7 @@ module.exports = {
                 .setDescription(
                     `\`☑️\` | **[${track.info.title ? track.info.title : "Unknown"}](${track.info.uri})** • \`${
                         track.info.isStream ? "LIVE" : formatDuration(track.info.length)
-                    }\` • ${track.info.requester}`
+                    }\` • ${track.info.requester}`,
                 );
 
             await interaction.editReply({ embeds: [embed] });

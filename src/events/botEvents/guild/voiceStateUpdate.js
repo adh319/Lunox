@@ -24,11 +24,6 @@ module.exports.run = async (client, oldState, newState) => {
 
     if (!data) data = await Reconnect.findOne({ guild: oldState.guild.id });
     // this will make the bot will not be disconneted/destroyed when lefted alone in voice channel if 247 activated.
-    if (data && Date.now() >= data.time) {
-        await data.delete();
-
-        console.log(`[INFO] 247 has been disabled from (${newState.guild.id || oldState.guild.id})`);
-    } // // Disable this "if" when 247 command settings premium is set to "false".
 
     if (data) return;
     //

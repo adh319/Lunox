@@ -7,12 +7,6 @@ module.exports.run = async (client, player) => {
     // If 247 activated, this will auto connect voice when bot disconnected/destoryed
     const data = await Reconnect.findOne({ guild: player.guildId });
 
-    if (data && Date.now() >= data.time) {
-        await data.delete();
-
-        console.log(`[INFO] 247 has been disabled from (${player.guildId})`);
-    } // Disable this "if" when 247 command settings premium is set to "false".
-
     if (data) {
         const voices = client.channels.cache.get(data.voice);
 

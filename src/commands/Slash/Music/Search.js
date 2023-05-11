@@ -25,7 +25,6 @@ module.exports = {
         player: false,
         current: false,
         owner: false,
-        premium: false,
     },
     run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: false });
@@ -75,7 +74,7 @@ module.exports = {
                 (r) =>
                     `\`${++n}.\` **[${r.info.title.length > 20 ? r.info.title.substr(0, 25) + "..." : r.info.title}](${r.info.uri})** • ${
                         r.info.author
-                    }`
+                    }`,
             )
             .join("\n");
 
@@ -147,7 +146,7 @@ module.exports = {
                         .setDescription(
                             `\`➕\` | **[${trackTitle ? trackTitle : "Unknown"}](${track.info.uri})** • \`${
                                 track.info.isStream ? "LIVE" : formatDuration(track.info.length)
-                            }\` • ${interaction.member}`
+                            }\` • ${interaction.member}`,
                         );
 
                     await message.edit({ embeds: [tplay], components: [] });

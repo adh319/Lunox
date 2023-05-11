@@ -7,7 +7,7 @@ module.exports = {
     permissions: {
         bot: [],
         channel: [],
-        user: [],
+        user: ["ManageGuild"],
     },
     settings: {
         inVc: true,
@@ -15,7 +15,6 @@ module.exports = {
         player: true,
         current: true,
         owner: false,
-        premium: false,
     },
     run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: true });

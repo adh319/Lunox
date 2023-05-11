@@ -1,6 +1,5 @@
 const { EmbedBuilder } = require("discord.js");
 const Reconnect = require("../../../settings/models/247.js");
-const User = require("../../../settings/models/User.js");
 
 module.exports = {
     name: "247",
@@ -17,7 +16,6 @@ module.exports = {
         player: true,
         current: false,
         owner: false,
-        premium: true,
     },
     run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: true });
@@ -33,15 +31,10 @@ module.exports = {
 
             return interaction.editReply({ embeds: [off] });
         } else if (!data) {
-            const user = await User.findOne({ Id: interaction.user.id });
-
-            let expired = user.premium.expiresAt; // this will make the command activated til the user premium expired, Disable this if you set the 247 setting remium to false
-
             const newData = await Reconnect.create({
                 guild: player.guildId,
                 text: player.textChannel,
                 voice: player.voiceChannel,
-                time: expired, // Disable this if you set the 247 premium setting to false
             });
 
             await newData.save();

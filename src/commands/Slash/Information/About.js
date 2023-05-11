@@ -17,7 +17,6 @@ module.exports = {
         player: false,
         current: false,
         owner: false,
-        premium: false,
     },
     run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: false });
@@ -40,7 +39,7 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setAuthor({ name: `${interaction.guild.members.me.displayName} Info!`, iconURL: interaction.guild.iconURL({ dynamic: true }) })
             .setDescription(
-                ` Hello **${interaction.member}**, I am **${client.user}**. A Rich Quality Discord Music Bot. Support  Spotify, SoundCloud, Apple Music & Others. Find out what can I do by using \`/help\` command.`
+                ` Hello **${interaction.member}**, I am **${client.user}**. A Rich Quality Discord Music Bot. Support  Spotify, SoundCloud, Apple Music & Others. Find out what can I do by using \`/help\` command.`,
             )
             .addFields([
                 { name: `\`🔱\` • Servers`, value: `\`\`\`Total: ${scount} servers\`\`\``, inline: true },

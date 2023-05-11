@@ -17,7 +17,6 @@ module.exports = {
         player: true,
         current: true,
         owner: false,
-        premium: false,
     },
     run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: false });
@@ -39,7 +38,9 @@ module.exports = {
                             ? track.info.title.substr(0, 22) + "..."
                             : track.info.title
                         : "Unknown"
-                }](${track.info.uri})** • \`${track.info.isStream ? "LIVE" : formatDuration(track.info.length)}\` • ${track.info.requester}`
+                }](${track.info.uri})** • \`${track.info.isStream ? "LIVE" : formatDuration(track.info.length)}\` • ${
+                    track.info.requester
+                }`,
         );
 
         const pages = lodash.chunk(queue, 10).map((x) => x.join("\n"));
@@ -53,7 +54,7 @@ module.exports = {
             .setDescription(
                 `**__Now Playing__**\n**[${npTitle}](${npSong.uri})** • \`${npDuration}\` • ${npSong.requester}\n\n**__Up Next__**\n${
                     pages[page] ? pages[page] : "Queue is empty"
-                }`
+                }`,
             )
             .setFooter({
                 text: `Total Queued • ${player.queue.length} tracks`,
@@ -80,7 +81,7 @@ module.exports = {
                         page = page - 1 < 0 ? pages.length - 1 : --page;
 
                         embed.setDescription(
-                            `**__Now Playing__**\n**[${npTitle}](${npSong.uri})** • \`${npDuration}\` • ${npSong.requester}\n\n**__Up Next__**\n${pages[page]}`
+                            `**__Now Playing__**\n**[${npTitle}](${npSong.uri})** • \`${npDuration}\` • ${npSong.requester}\n\n**__Up Next__**\n${pages[page]}`,
                         );
 
                         return msg.edit({ embeds: [embed], components: [row] });
@@ -96,7 +97,7 @@ module.exports = {
                         page = page + 1 >= pages.length ? 0 : ++page;
 
                         embed.setDescription(
-                            `**__Now Playing__**\n**[${npTitle}](${npSong.uri})** • \`${npDuration}\` • ${npSong.requester}\n\n**__Up Next__**\n${pages[page]}`
+                            `**__Now Playing__**\n**[${npTitle}](${npSong.uri})** • \`${npDuration}\` • ${npSong.requester}\n\n**__Up Next__**\n${pages[page]}`,
                         );
 
                         return msg.edit({ embeds: [embed], components: [row] });

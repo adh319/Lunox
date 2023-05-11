@@ -42,7 +42,6 @@ class MainClient extends Client {
         this.commands = new Collection();
         this.aliases = new Collection();
         this.slashCommands = new Collection();
-        this.premium = new Collection();
         this.dev = new Set();
 
         ["AntiCrash", "Database", "Events", "Commands", "Slash", "Poru"].forEach((handler) => {
