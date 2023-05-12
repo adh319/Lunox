@@ -27,7 +27,6 @@
 - ☑️ Prefix Commands **[Owner Only]**
 - ☑️ Dev/Maintenance Mode System **[Owner Only]**
 - ☑️ Music System
-- ☑️ Premium System
 - ☑️ Custom Filters
 - ☑️ 24/7 Voice **[Make Sure You Read This [Note](https://github.com/adh319/Lunox/commit/b4880fb419d9136f96c90411e9b9c2c3c984b384)]**
 - ☑️ AutoPlay **[YouTube Only]**
