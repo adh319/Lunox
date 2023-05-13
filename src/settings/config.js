@@ -8,6 +8,7 @@ module.exports = {
     owner: process.env.OWNER_ID || " ", // your bot Owners ID
     guildLogs: process.env.GUILD_LOGS || " ", // your server join left logs Channel ID
     leaveTimeout: process.env.LEAVE_TIMEOUT || "60000", // set leave TimeOut when bot was alone 1000 = 1sec
+    disableYouTube: parseBoolean(process.env.DISABLE_YOUTUBE || "false"), // ""true/false" | Enable/disable YouTube feature. Disabling this will make "autoplay" command useless!!!
 
     // PORU DETAILS
     playSource: process.env.PLAY_SOURCE || "ytmsearch", // recomended using "ytmsearch". You can change this to: "ytsearch" / "scsearch" / "spotify".

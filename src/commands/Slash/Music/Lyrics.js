@@ -27,8 +27,8 @@ module.exports = {
         premium: false,
     },
     run: async (client, interaction) => {
-		await interaction.deferReply({ ephemeral: false });
-		
+        await interaction.deferReply({ ephemeral: false });
+
         const player = client.poru.players.get(interaction.guild.id);
 
         const value = interaction.options.getString("search");
@@ -48,13 +48,11 @@ module.exports = {
                     const lyricSong = data.lyrics;
 
                     if (!lyricSong) {
-                        const lyricError = new EmbedBuilder()
-                            .setColor(client.color)
-                            .setDescription(`\`❌\` | Lyrics was not found.`);
+                        const lyricError = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Lyrics was not found.`);
 
                         return interaction.editReply({ embeds: [lyricError] });
                     }
-                    
+
                     const lyrics = lyricSong.length > 3905 ? lyricSong.substr(0, 3900) + "....." : lyricSong;
                     const titleSong = data.title;
                     const authorSong = data.author;
@@ -79,9 +77,7 @@ module.exports = {
         } catch (err) {
             console.log(err);
 
-            const lyricError = new EmbedBuilder()
-                .setColor(client.color)
-                .setDescription(`\`❌\` | Lyrics was not found.`);
+            const lyricError = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Lyrics was not found.`);
 
             return interaction.editReply({ embeds: [lyricError] });
         }

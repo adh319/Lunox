@@ -44,10 +44,9 @@ module.exports = {
             player.autoplay = true;
 
             if (ytUri) {
-                const source = client.config.playSource;
                 const identifier = currentsong.identifier;
                 const search = `https://music.youtube.com/watch?v=${identifier}&list=RD${identifier}`;
-                const res = await client.poru.resolve(search, source);
+                const res = await client.poru.resolve(search);
 
                 for (const track of res.tracks) {
                     track.info.requester = currentsong.requester;

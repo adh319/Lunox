@@ -1,5 +1,3 @@
-const { EmbedBuilder } = require("discord.js");
-
 module.exports = async (client) => {
     process.on("unhandledRejection", async (reason, promise) => {
         console.log("[AntiCrash] | [UnhandledRejection_Logs] | [start] : ===============");
