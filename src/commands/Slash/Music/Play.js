@@ -26,7 +26,7 @@ module.exports = {
         owner: false,
     },
     run: async (client, interaction) => {
-        await interaction.deferReply({ ephemeral: false });
+        const song = interaction.options.getString("query");
 
         let player = client.poru.players.get(interaction.guild.id);
 
@@ -36,8 +36,19 @@ module.exports = {
                 .setDescription(`\`❌\` | You must be on the same voice channel as mine to use this command.`)
                 .setTimestamp();
 
-            return interaction.editReply({ embeds: [embed] });
+            return interaction.reply({ embeds: [embed], ephemeral: true });
         }
+
+        await interaction.deferReply({ ephemeral: false });
+
+        // This will force the playSource config to be set as 'spotify' if the config.js or .env file has 'disableYouTube' set to 'true' and the playSource value you set in the config.js is one of the constants in the 'youtube' array below.
+        let source = client.config.playSource;
+
+        const youtube = ["youtube", "youtube_music", "ytsearch", "ytmsearch", "youtubemusic", "youtube music"];
+
+        if (client.config.disableYouTube === true && youtube.includes(source)) source = "spotify";
+        // This will not prevent the user to use a direct youtube url!!!
+        // if you want to pass a "return" response to the user when you disable youtube, do some searching on the internet for how to do that!!!
 
         if (!player) {
             player = await client.poru.createConnection({
@@ -48,9 +59,6 @@ module.exports = {
                 deaf: true,
             });
         }
-
-        const song = interaction.options.getString("query");
-        let source = client.config.playSource;
 
         const res = await client.poru.resolve(song, source); // <<== you can remove this "source" property for default ytsearch source. see config.js for details.
         const { loadType, tracks, playlistInfo } = res;

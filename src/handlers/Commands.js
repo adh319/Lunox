@@ -17,5 +17,5 @@ module.exports = (client) => {
         }
     });
 
-    console.log(`[INFO] ${client.commands.size} MessageCommands Loaded!`);
+    console.log(`[INFO] ${client.commands.size} Prefix Commands Loaded!`);
 };

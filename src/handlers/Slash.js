@@ -22,6 +22,6 @@ module.exports = (client) => {
     client.on("ready", async () => {
         await client.application.commands.set(data);
 
-        console.log(`[INFO] ${client.slashCommands.size} SlashCommands Loaded!`);
+        console.log(`[INFO] ${client.slashCommands.size} Slash Commands Loaded!`);
     });
 };

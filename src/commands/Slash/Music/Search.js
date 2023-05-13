@@ -27,12 +27,9 @@ module.exports = {
         owner: false,
     },
     run: async (client, interaction) => {
-        await interaction.deferReply({ ephemeral: false });
+        const query = interaction.options.getString("query");
 
         let player = client.poru.players.get(interaction.guild.id);
-
-        const query = interaction.options.getString("query");
-        const source = client.config.playSource;
 
         if (player && interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
             const warning = new EmbedBuilder()
@@ -45,11 +42,20 @@ module.exports = {
 
         if (/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/.test(query)) {
             const embed = new EmbedBuilder()
-                .setDescription(`\`❌\` | Please use </play:1055080810836938831> command for url search query.`)
+                .setDescription(`\`❌\` | Please use \`/play\` command for url search query.`)
                 .setColor(client.color);
 
             return interaction.reply({ embeds: [embed], ephemeral: true });
         }
+
+        await interaction.deferReply({ ephemeral: false });
+
+        // This will force the playSource config to be set as 'spotify' if the config.js or .env file has 'disableYouTube' set to 'true' and the playSource value you set in the config.js is one of the constants in the 'youtube' array below.
+        let source = client.config.playSource;
+
+        const youtube = ["youtube", "youtube_music", "ytsearch", "ytmsearch", "youtubemusic", "youtube music"];
+
+        if (client.config.disableYouTube === true && youtube.includes(source)) source = "spotify";
 
         if (!player) {
             player = await client.poru.createConnection({
