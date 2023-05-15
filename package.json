@@ -35,6 +35,6 @@
   },
   "homepage": "https://github.com/adh319/Lunox/#readme",
   "devDependencies": {
-    "node": "^18.16.0"
+    "node": "^19.8.1"
   }
 }
