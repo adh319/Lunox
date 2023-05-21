@@ -1,4 +1,5 @@
 require("dotenv").config();
+const { customFilter } = require("poru");
 
 module.exports = {
     // BOT DETAILS
@@ -11,33 +12,20 @@ module.exports = {
     disableYouTube: parseBoolean(process.env.DISABLE_YOUTUBE || "false"), // ""true/false" | Enable/disable YouTube feature. Disabling this will make "autoplay" command useless!!!
 
     // PORU DETAILS
-    playSource: process.env.PLAY_SOURCE || "ytmsearch", // recomended using "ytmsearch". You can change this to: "ytsearch" / "scsearch" / "spotify".
+    playSource: process.env.PLAY_SOURCE || "ytmsearch", // recomended using "ytmsearch". You can change this to: "ytsearch" / "ytmsearch" / "scsearch". More? Use Lavasrc plugin.
     poruOptions: {
-        defaultPlatform: process.env.DEFAULT_SOURCE || "ytmsearch", // recomended using "ytmsearch". You can change this to: "ytsearch" / "scsearch" / "spsearch (need Lavasrc plugin)".
-        clientID: process.env.SPOTIFY_ID || " ", // your Spotify Client ID
-        clientSecret: process.env.SPOTIFY_SECRET || " ", // your Spotify Client Secret
-        reconnectTries: 5, // total attemps to try if reconnect failed. you can change it to "Infinity" for unlimited attemps.
-        playlistLimit: 2, // 1 = 100 tracks
-        albumLimit: 2, // 1 = 50 tracks
-        artistLimit: 2, // 1 = 50 tracks
-        searchMarket: "us",
+        customFilter,
+        library: "discord.js", // This source made by using discord.js, so don't even try to change this thing :)
+        reconnectTries: Infinity, // total attemps to try if reconnect failed. you can change it to "Infinity" for unlimited attemps.
+        reconnectTimeout: 10000, // total time to try reconnect in ms. 1000 = 1sec
     },
     nodes: [
         {
-            name: process.env.NODE_NAME1 || "Lunox 01", // lavalink node name (anything you want)
-            host: process.env.NODE_HOST1 || "localhost", // lavalink host
-            port: parseInt(process.env.NODE_PORT1 || "2333"), //lavalink port
-            password: process.env.NODE_PASSWORD1 || "youshallnotpass", //lavalink pass/auth
-            secure: parseBoolean(process.env.NODE_SECURE1 || "false"), //lavalink secure "true/false"
-            regions: process.env.NODE_REGIONS1.split(", ") || ["singapore", "japan"], // available lavalink regions ["singapore", "sydney", "japan", "hongkong", "india", "us-central", "us-east", "us-south", "us-west", "brazil", "russia", "rotterdam", "southafrica"]
-        },
-        {
-            name: process.env.NODE_NAME2 || "Lunox 02", // lavalink node name (anything you want)
-            host: process.env.NODE_HOST2 || "localhost", // lavalink host
-            port: parseInt(process.env.NODE_PORT2 || "2333"), //lavalink port
-            password: process.env.NODE_PASSWORD2 || "youshallnotpass", //lavalink pass/auth
-            secure: parseBoolean(process.env.NODE_SECURE2 || "false"), //lavalink secure "true/false"
-            regions: process.env.NODE_REGIONS2.split(", ") || ["us-central", "us-east"], // available lavalink regions ["singapore", "sydney", "japan", "hongkong", "india", "us-central", "us-east", "us-south", "us-west", "brazil", "russia", "rotterdam", "southafrica"]
+            name: process.env.NODE_NAME || "Lunox 01", // lavalink node name (anything you want)
+            host: process.env.NODE_HOST || "localhost", // lavalink host
+            port: parseInt(process.env.NODE_PORT || "2333"), //lavalink port
+            password: process.env.NODE_PASSWORD || "youshallnotpass", //lavalink pass/auth
+            secure: parseBoolean(process.env.NODE_SECURE || "false"), //lavalink secure "true/false"
         },
     ],
 

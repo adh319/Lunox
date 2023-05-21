@@ -18,10 +18,8 @@ module.exports = {
         current: true,
         owner: false,
     },
-    run: async (client, interaction) => {
+    run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: false });
-
-        const player = client.poru.players.get(interaction.guild.id);
 
         const emoji = client.emoji.queue;
         const npSong = player.currentTrack.info;

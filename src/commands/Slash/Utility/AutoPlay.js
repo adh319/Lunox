@@ -19,8 +19,6 @@ module.exports = {
     run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: true });
 
-        const player = client.poru.players.get(interaction.guild.id);
-
         const currentsong = player.currentTrack.info;
 
         const ytUri = /^(https?:\/\/)?(www\.)?(m\.)?(music\.)?(youtube\.com|youtu\.?be)\/.+$/gi.test(currentsong.uri);
@@ -45,11 +43,7 @@ module.exports = {
             if (ytUri) {
                 const identifier = currentsong.identifier;
                 const search = `https://music.youtube.com/watch?v=${identifier}&list=RD${identifier}`;
-                const res = await client.poru.resolve(search);
-
-                for (const track of res.tracks) {
-                    track.info.requester = currentsong.requester;
-                }
+                const res = await client.poru.resolve({ query: search, source: "ytmsearch", requester: interaction.user });
 
                 await player.queue.add(res.tracks[Math.floor(Math.random() * res.tracks.length) ?? 1]);
 

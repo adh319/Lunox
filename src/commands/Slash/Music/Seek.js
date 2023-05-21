@@ -26,10 +26,8 @@ module.exports = {
         current: true,
         owner: false,
     },
-    run: async (client, interaction) => {
+    run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: true });
-
-        const player = client.poru.players.get(interaction.guild.id);
 
         const position = interaction.options.getNumber("seconds", true);
         const Duration = formatDuration(position * 1000);

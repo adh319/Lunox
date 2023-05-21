@@ -19,7 +19,7 @@ module.exports = {
         current: true,
         owner: false,
     },
-    run: async (client, interaction) => {
+    run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: false });
 
         const Control = await GControl.findOne({ guild: interaction.guild.id });
@@ -32,11 +32,9 @@ module.exports = {
             return interaction.editReply({ embeds: [ctrl] });
         }
 
-        const player = client.poru.players.get(interaction.guild.id);
         if (!player.currentTrack) return;
 
         try {
-            const sources = capital(player.currentTrack.info.sourceName);
             const Titles =
                 player.currentTrack.info.title.length > 20
                     ? player.currentTrack.info.title.substr(0, 20) + "..."
@@ -52,6 +50,15 @@ module.exports = {
             const currentTitle = player.currentTrack.info.title ? Titles : "Unknown";
             const Part = Math.floor((player.position / playerDuration) * 30);
             const Emoji = player.isPlaying ? "🕒 |" : "⏸ |";
+
+            let sources = null;
+
+            if (player.currentTrack.info.sourceName === "youtube") sources = "YouTube";
+            else if (player.currentTrack.info.sourceName === "soundcloud") sources = "SoundCloud";
+            else if (player.currentTrack.info.sourceName === "spotify") sources = "Spotify";
+            else if (player.currentTrack.info.sourceName === "apllemusic") sources = "Apple Music";
+            else if (player.currentTrack.info.sourceName === "bandcamp") sources = "Bandcamp";
+            else if (player.currentTrack.info.sourceName === "http") sources = "HTTP";
 
             const embed = new EmbedBuilder()
                 .setAuthor({

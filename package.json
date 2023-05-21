@@ -7,7 +7,6 @@
         "start": "node ./src/sharder.js"
     },
     "dependencies": {
-        "common-tags": "^1.8.2",
         "cpu-stat": "^2.0.1",
         "delay": "^5.0.0",
         "discord-hybrid-sharding": "^2.1.2",
@@ -19,7 +18,7 @@
         "mongoose": "^6.11.1",
         "node-capitalize": "^1.0.0",
         "node-fetch": "^2.6.11",
-        "poru": "github:adh319/poru",
+        "poru": "github:parasop/poru",
         "pretty-ms": "^7.0.1"
     },
     "author": "adh319",

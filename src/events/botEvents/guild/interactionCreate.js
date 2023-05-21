@@ -152,7 +152,7 @@ module.exports.run = async (client, interaction) => {
 
         //Error handling
         try {
-            command.run(client, interaction);
+            command.run(client, interaction, player);
         } catch (error) {
             console.log(error);
 

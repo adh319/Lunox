@@ -32,15 +32,13 @@ module.exports = {
         current: false,
         owner: false,
     },
-    run: async (client, interaction) => {
+    run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: true });
 
         function moveArrayElement(arr, fromIndex, toIndex) {
             arr.splice(toIndex, 0, arr.splice(fromIndex, 1)[0]);
             return arr;
         }
-
-        const player = client.poru.players.get(interaction.guild.id);
 
         const from = interaction.options.getNumber("song");
         const to = interaction.options.getNumber("position");

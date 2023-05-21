@@ -16,10 +16,8 @@ module.exports = {
         current: false,
         owner: false,
     },
-    run: async (client, interaction) => {
+    run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: true });
-
-        const player = client.poru.players.get(interaction.guild.id);
 
         if (!player.queue.length) {
             const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Queue is: \`Empty\``);

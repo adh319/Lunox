@@ -12,14 +12,10 @@ module.exports.run = async (client, player) => {
             const ytUri = /^(https?:\/\/)?(www\.)?(m\.)?(music\.)?(youtube\.com|youtu\.?be)\/.+$/gi.test(trackSearch.uri);
 
             if (ytUri) {
-                const source = client.config.playSource;
+                const playSource = client.config.playSource;
                 const identifier = trackSearch.identifier;
                 const search = `https://music.youtube.com/watch?v=${identifier}&list=RD${identifier}`;
-                const res = await client.poru.resolve(search, source);
-
-                for (const track of res.tracks) {
-                    track.info.requester = trackSearch.requester;
-                }
+                const res = await client.poru.resolve({ query: search, source: playSource, requester: trackSearch.requester });
 
                 await player.queue.add(res.tracks[Math.floor(Math.random() * res.tracks.length) ?? 2]);
             }

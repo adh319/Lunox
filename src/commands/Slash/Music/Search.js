@@ -26,10 +26,8 @@ module.exports = {
         current: false,
         owner: false,
     },
-    run: async (client, interaction) => {
+    run: async (client, interaction, player) => {
         const query = interaction.options.getString("query");
-
-        let player = client.poru.players.get(interaction.guild.id);
 
         if (player && interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
             const warning = new EmbedBuilder()
@@ -51,23 +49,13 @@ module.exports = {
         await interaction.deferReply({ ephemeral: false });
 
         // This will force the playSource config to be set as 'spotify' if the config.js or .env file has 'disableYouTube' set to 'true' and the playSource value you set in the config.js is one of the constants in the 'youtube' array below.
-        let source = client.config.playSource;
+        let playSource = client.config.playSource;
 
-        const youtube = ["youtube", "youtube_music", "ytsearch", "ytmsearch", "youtubemusic", "youtube music"];
+        const youtube = ["ytsearch", "ytmsearch"];
 
-        if (client.config.disableYouTube === true && youtube.includes(source)) source = "spotify";
+        if (client.config.disableYouTube === true && youtube.includes(playSource)) playSource = "spsearch";
 
-        if (!player) {
-            player = await client.poru.createConnection({
-                guildId: interaction.guild.id,
-                voiceChannel: interaction.member.voice.channel.id,
-                textChannel: interaction.channel.id,
-                region: interaction.member.voice.channel.rtcRegion || undefined,
-                deaf: true,
-            });
-        }
-
-        const res = await client.poru.resolve(query, source);
+        const res = await client.poru.resolve({ query: query, source: playSource });
         const { tracks } = res;
 
         const results = tracks.slice(0, 10);
@@ -118,10 +106,7 @@ module.exports = {
         await interaction.editReply({ embeds: [embed], components: [selection] }).then((message) => {
             let count = 0;
 
-            const selectMenuCollector = message.createMessageComponentCollector({
-                time: 30000,
-            });
-
+            const selectMenuCollector = message.createMessageComponentCollector({ time: 30000 });
             const toAdd = [];
 
             try {
@@ -134,13 +119,23 @@ module.exports = {
 
                     menu.deferUpdate();
 
+                    if (!player) {
+                        player = await client.poru.createConnection({
+                            guildId: interaction.guild.id,
+                            voiceChannel: interaction.member.voice.channel.id,
+                            textChannel: interaction.channel.id,
+                            deaf: true,
+                        });
+                    }
+
+                    if (player.state !== "CONNECTED") player.connect();
+
                     for (const value of menu.values) {
                         toAdd.push(tracks[value]);
                         count++;
                     }
 
                     for (const track of toAdd) {
-                        track.info.requester = interaction.member;
                         player.queue.add(track);
                     }
 
@@ -163,7 +158,7 @@ module.exports = {
                     if (!collected.size) {
                         const timed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Search was time out.`);
 
-                        await message.edit({ embeds: [timed], components: [] });
+                        return message.edit({ embeds: [timed], components: [] });
                     }
                 });
             } catch (e) {

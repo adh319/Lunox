@@ -25,10 +25,8 @@ module.exports = {
         current: true,
         owner: false,
     },
-    run: async (client, interaction) => {
+    run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: false });
-
-        const player = client.poru.players.get(interaction.guild.id);
 
         const value = interaction.options.getString("search");
 
@@ -55,8 +53,10 @@ module.exports = {
                     const lyrics = lyricSong.length > 3905 ? lyricSong.substr(0, 3900) + "....." : lyricSong;
                     const titleSong = data.title;
                     const authorSong = data.author;
+
                     const gSearch = { query: `${titleSong} by ${authorSong} lyrics` };
-                    const linkSong = client.gsearch.craft(gSearch).url;
+                    const gLink = client.gsearch.craft(gSearch).url;
+                    const urlSong = gLink.replace("http", "https");
 
                     const lyricEmbed = new EmbedBuilder()
                         .setAuthor({
@@ -64,7 +64,7 @@ module.exports = {
                             iconURL: client.user.displayAvatarURL({ dynamic: true }),
                         })
                         .setColor(client.color)
-                        .setDescription(`${lyrics}\n**[Click Here For More](${linkSong})**`)
+                        .setDescription(`${lyrics}\n**[Click Here For More](${urlSong})**`)
                         .setThumbnail(CurrentSong.image)
                         .setFooter({
                             text: `Requested by ${interaction.user.username}`,

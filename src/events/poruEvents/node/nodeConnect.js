@@ -15,17 +15,12 @@ module.exports.run = async (client, node) => {
             const channels = client.channels.cache.get(data.text);
             const voices = client.channels.cache.get(data.voice);
 
-            if (data && Date.now() >= data.time) {
-                await data.delete();
-            } // Disable this "if" when 247 command settings premium is set to "false".
-
-            if (!channels || !voices) return;
+            if (!channels || !voices || !data) return;
 
             await client.poru.createConnection({
                 guildId: data.guild,
                 voiceChannel: data.voice,
                 textChannel: data.text,
-                region: voices.rtcRegion || undefined,
                 deaf: true,
             });
 

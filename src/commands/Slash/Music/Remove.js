@@ -25,10 +25,9 @@ module.exports = {
         current: false,
         owner: false,
     },
-    run: async (client, interaction) => {
+    run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: true });
 
-        const player = client.poru.players.get(interaction.guild.id);
         const track = interaction.options.getNumber("position");
 
         if (track > player.queue.length) {

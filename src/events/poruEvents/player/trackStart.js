@@ -71,6 +71,7 @@ module.exports.run = async (client, player, track) => {
                 content: `\`❌\` | You must be on the same voice channel as mine to use this button.`,
                 ephemeral: true,
             });
+            return false;
         }
     };
 
@@ -250,7 +251,6 @@ module.exports.run = async (client, player, track) => {
             if (!player) {
                 collector.stop();
             } else {
-                const sources = capital(player.currentTrack.info.sourceName);
                 const Titles =
                     player.currentTrack.info.title.length > 20
                         ? player.currentTrack.info.title.substr(0, 20) + "..."
@@ -264,8 +264,17 @@ module.exports.run = async (client, player, track) => {
                 const playerDuration = player.currentTrack.info.isStream ? "LIVE" : trackDuration;
                 const currentAuthor = player.currentTrack.info.author ? Author : "Unknown";
                 const currentTitle = player.currentTrack.info.title ? Titles : "Unknown";
-                const Part = Math.floor((player.position / playerDuration) * 30);
+                const Part = Math.floor((player.position / trackDuration) * 30);
                 const Emoji = player.isPlaying ? "🕒 |" : "⏸ |";
+
+                let sources = "Unknown";
+
+                if (player.currentTrack.info.sourceName === "youtube") sources = "YouTube";
+                else if (player.currentTrack.info.sourceName === "soundcloud") sources = "SoundCloud";
+                else if (player.currentTrack.info.sourceName === "spotify") sources = "Spotify";
+                else if (player.currentTrack.info.sourceName === "applemusic") sources = "Apple Music";
+                else if (player.currentTrack.info.sourceName === "bandcamp") sources = "Bandcamp";
+                else if (player.currentTrack.info.sourceName === "http") sources = "HTTP";
 
                 const embed = new EmbedBuilder()
                     .setAuthor({

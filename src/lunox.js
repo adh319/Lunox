@@ -29,8 +29,11 @@ class MainClient extends Client {
         this.color = this.config.color;
         this.prefix = this.config.prefix;
         this.owner = this.config.owner;
+        this.commands = new Collection();
+        this.aliases = new Collection();
+        this.slashCommands = new Collection();
+        this.dev = new Set();
         this.gsearch = GSearch;
-        if (!this.token) this.token = this.config.token;
 
         this.poru = new Poru(this, this.config.nodes, this.config.poruOptions, {
             send: (guildId, payload) => {
@@ -39,10 +42,7 @@ class MainClient extends Client {
             },
         });
 
-        this.commands = new Collection();
-        this.aliases = new Collection();
-        this.slashCommands = new Collection();
-        this.dev = new Set();
+        if (!this.token) this.token = this.config.token;
 
         ["AntiCrash", "Database", "Events", "Commands", "Slash", "Poru"].forEach((handler) => {
             require(`./handlers/${handler}`)(this);

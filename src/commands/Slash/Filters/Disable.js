@@ -17,12 +17,14 @@ module.exports = {
         current: true,
         owner: false,
     },
-    run: async (client, interaction) => {
+    run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: true });
 
-        const player = client.poru.players.get(interaction.guild.id);
+       await player.node.rest.updatePlayer({
+            guildId: player.guildId,
+            data: { filters: {} },
+        });
 
-        await player.filters.clearFilters();
         await player.setVolume(100);
 
         const embed = new EmbedBuilder().setDescription(`\`☑️\` | Filters has been: \`Cleared\``).setColor(client.color);

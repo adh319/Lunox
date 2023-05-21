@@ -17,7 +17,7 @@ module.exports = {
         current: true,
         owner: false,
     },
-    run: async (client, interaction) => {
+    run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: true });
 
         const Control = await GControl.findOne({ guild: interaction.guild.id });
@@ -29,8 +29,6 @@ module.exports = {
                 .setDescription(`\`❌\` | You can't use this command as the player control was enable!`);
             return interaction.editReply({ embeds: [ctrl] });
         }
-
-        const player = client.poru.players.get(interaction.guild.id);
 
         if (player.isPaused) {
             await player.pause(false);

@@ -2,8 +2,8 @@ const { EmbedBuilder } = require("discord.js");
 const delay = require("delay");
 
 module.exports = {
-    name: "timescale",
-    description: "Set the current player filter to Timescale.",
+    name: "slowmode",
+    description: "Set the current player filter to Slowmode.",
     category: "Filters",
     permissions: {
         bot: [],
@@ -17,14 +17,12 @@ module.exports = {
         current: true,
         owner: false,
     },
-    run: async (client, interaction) => {
+    run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: true });
 
-        const player = client.poru.players.get(interaction.guild.id);
+        await player.filters.setSlowmode(true);
 
-        await player.filters.setTimescale(true);
-
-        const embed = new EmbedBuilder().setDescription(`\`🔩\` | Filter has been set to: \`Timescale\``).setColor(client.color);
+        const embed = new EmbedBuilder().setDescription(`\`🔩\` | Filter has been set to: \`Slowmode\``).setColor(client.color);
 
         await delay(2000);
         return interaction.editReply({ embeds: [embed] });

@@ -17,10 +17,8 @@ module.exports = {
         current: false,
         owner: false,
     },
-    run: async (client, interaction) => {
+    run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: true });
-
-        const player = client.poru.players.get(interaction.guild.id);
 
         let data = await Reconnect.findOne({ guild: interaction.guild.id });
 

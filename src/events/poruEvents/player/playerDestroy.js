@@ -8,14 +8,11 @@ module.exports.run = async (client, player) => {
     const data = await Reconnect.findOne({ guild: player.guildId });
 
     if (data) {
-        const voices = client.channels.cache.get(data.voice);
-
         if (player.state !== "DESTROYING") {
             await client.poru.createConnection({
                 guildId: data.guild,
                 voiceChannel: data.voice,
                 textChannel: data.text,
-                region: voices.rtcRegion || undefined,
                 deaf: true,
             });
         }
