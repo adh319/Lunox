@@ -16,7 +16,7 @@
 
 # 📒 Table of Contents
 
-[Features](#-features) • [Screenshots](#-screenshots) • [Requirements](#-requirements) • [Installation](#-installation) •
+[Features](#-features) • [Screenshots](#%EF%B8%8F-screenshots) • [Requirements](#-requirements) • [Installation](#-installation) •
 [Configuration & Starting](#-configuration--starting) • [License](#-license) • [Credits](#-credits) • [Support Me](#-support-me) •
 [Special Thanks](#-special-thanks) • [Contributors](#-contributors)
 
