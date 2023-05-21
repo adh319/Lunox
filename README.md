@@ -88,7 +88,7 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 ## 📝 Installation
 
 ```
-git clone https://github.com/Enour-Dev/Lunox.git
+git clone --single-branch --branch master https://github.com/Enour-Dev/Lunox.git
 cd Lunox
 npm install
 ```
