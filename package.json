@@ -9,7 +9,7 @@
   "dependencies": {
     "common-tags": "^1.8.2",
     "cpu-stat": "^2.0.1",
-    "delay": "^5.0.0",
+    "delay": "^6.0.0",
     "discord-hybrid-sharding": "^2.1.2",
     "discord.js": "^14.11.0",
     "dotenv": "^16.0.3",
