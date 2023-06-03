@@ -29,7 +29,7 @@ module.exports = {
             port: parseInt(process.env.NODE_PORT1 || "2333"), //lavalink port
             password: process.env.NODE_PASSWORD1 || "youshallnotpass", //lavalink pass/auth
             secure: parseBoolean(process.env.NODE_SECURE1 || "false"), //lavalink secure "true/false"
-            regions: process.env.NODE_REGIONS1.split(", ") || ["singapore", "japan"], // available lavalink regions ["singapore", "sydney", "japan", "hongkong", "india", "us-central", "us-east", "us-south", "us-west", "brazil", "russia", "rotterdam", "southafrica"]
+            //poru region system have some issues removed for now!
         },
         {
             name: process.env.NODE_NAME2 || "Lunox 02", // lavalink node name (anything you want)
