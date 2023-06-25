@@ -1,6 +1,6 @@
 {
     "name": "lunox",
-    "version": "2.0.8",
+    "version": "2.0.9",
     "description": "Lunox by @adh319#9370",
     "main": "sharder.js",
     "scripts": {
