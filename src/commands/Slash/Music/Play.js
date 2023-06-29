@@ -41,7 +41,7 @@ module.exports = {
         let playSource = client.config.playSource;
 
         const youtube = ["ytsearch", "ytmsearch"];
-        if (client.config.disableYouTube === true && youtube.includes(playSource)) playSource = "spsearch";
+        if (client.config.disableYouTube === true && youtube.includes(playSource)) playSource = "spsearch"; // You must have the Lavasrc plugin installed on your lavalink for this to work!!!
         // This will not prevent the user to use a direct youtube url!!!
         // if you want to pass a "return" response to the user when you disable youtube, do some searching on the internet for how to do that!!!
 

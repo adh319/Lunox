@@ -113,7 +113,7 @@ LEAVE_TIMEOUT = 60000 #Time in ms to leave the voice channel after the last user
 DISABLE_YOUTUBE = false #Enable or disable youtube feature "true/false". Disabling this will make "autoplay" command useless!!!
 
 #PORU DETAILS
-PLAY_SOURCE = ytmsearch #Default source to play the searched songs
+PLAY_SOURCE = ytmsearch #Default source to play the searched songs (ytmsearch, ytsearch, scsource). More? Use LavaSrc plugin
 NODE_NAME = Lunox #Name of the lavalink, could be anything
 NODE_HOST = localhost #Host of the lavalink
 NODE_PORT = 2333 #Port of the lavalink
