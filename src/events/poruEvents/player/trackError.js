@@ -8,7 +8,7 @@ module.exports.run = async (client, player, track) => {
 
     console.log(`Error when loading song! Track error is in [${player.guildId}]`);
 
-    if (player.queue.length > 0 !! player.queue.size !== 0 ) {
+    if (player.queue.length > 0 || player.queue.size !== 0 ) {
         await player.stop();
 
         const embed = new EmbedBuilder().setDescription(`\`❌\` | Failed to load the track: \`Auto-Skip\``).setColor(client.color);
