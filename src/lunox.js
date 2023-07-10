@@ -32,6 +32,7 @@ class MainClient extends Client {
         this.commands = new Collection();
         this.aliases = new Collection();
         this.slashCommands = new Collection();
+        this.premium = new Collection();
         this.dev = new Set();
         this.gsearch = GSearch;
 

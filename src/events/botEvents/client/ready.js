@@ -1,4 +1,5 @@
 const { ActivityType } = require("discord.js");
+const User = require("../../../settings/models/User.js");
 
 module.exports.run = async (client) => {
     await client.poru.init(client, {
@@ -7,7 +8,11 @@ module.exports.run = async (client) => {
         clientId: client.user.id,
     });
 
-    
+    const users = await User.find();
+
+    await users.forEach(async (user) => {
+        client.premium.set(user.Id, user);
+    });
 
     setInterval(async () => {
         const promises = [

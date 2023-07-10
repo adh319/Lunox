@@ -29,6 +29,7 @@
 -   ☑️ Prefix Commands **[Owner Only]**
 -   ☑️ Dev/Maintenance Mode System **[Owner Only]**
 -   ☑️ Music System
+-   ☑️ Configurable Premium System **[You can enable/disable it]** 
 -   ☑️ Custom Filters **[8D, EarRape, Nighcore, Slowmode, Vaporwave]** More? **[Deal With It]**
 -   ☑️ 24/7 Voice **[Make Sure You Read This [Note](https://github.com/adh319/Lunox/commit/b4880fb419d9136f96c90411e9b9c2c3c984b384)]**
 -   ☑️ AutoPlay **[YouTube Only]**
@@ -44,10 +45,11 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 <img src="https://cdn.discordapp.com/attachments/1014342568554811443/1093098769907732500/image.png"/>  <img src="https://cdn.discordapp.com/attachments/1014342568554811443/1093099116818612234/image.png"/>
 </p>
 
-## 🎵 Supported Source
+## 🎵 Supported Platforms
 
 -   ☑️ Youtube
 -   ☑️ Youtube Music
+-   ☑️ Spotify
 -   ☑️ SoundCloud
 -   ☑️ Twitch
 -   ☑️ Bandcamp
@@ -63,16 +65,16 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 -   Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
 -   LavaLink **[Guide](https://github.com/freyacodes/lavalink)**
 
-## 🎶 More Support Sources
+## 🎶 More Support Audio Platforms
 
 **Require: LavaLink v3.7.x (Recomended Latest Version)**
 
 **☑️ [LavaSrc](https://github.com/TopiSenpai/LavaSrc)**
 
--   Spotify
--   Deezer
--   Apple Music
--   Yandex Music
+-   Spotify [ spsearch ]
+-   Deezer [ dzsearch ]
+-   Apple Music [ amsearch ]
+-   Yandex Music [ ymsearch ]
 
 **☑️ [skybot-lavalink-plugin](https://github.com/DuncteBot/skybot-lavalink-plugin)**
 
@@ -82,7 +84,7 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 -   Reddit
 -   Getyarn
 -   TikTok
--   Po\*\*Hub
+-   Po\*nHub
 -   Soundgasm
 
 ## 📝 Installation
@@ -110,14 +112,17 @@ EMBED_COLOR = #Your bot embed color
 OWNER_ID = #Your discord id
 GUILD_LOGS = #Your guidl channel id for logs
 LEAVE_TIMEOUT = 60000 #Time in ms to leave the voice channel after the last user leaves
-DISABLE_YOUTUBE = false #Enable or disable youtube feature "true/false". Disabling this will make "autoplay" command useless!!!
+DISABLE_PREMIUM = false #Disable premium system
 
 #PORU DETAILS
-PLAY_SOURCE = ytmsearch #Default source to play the searched songs (ytmsearch, ytsearch, scsearch). More? Use LavaSrc plugin
+PLAY_SOURCE = ytmsearch #Default source to play the searched songs (ytmsearch, ytsearch, scsearch, or spotify). More? Use LavaSrc plugin
+SPOTIFY_ID = #Spotify client id
+SPOTIFY_SECRET = #Spotify client secret
 NODE_NAME = Lunox #Name of the lavalink, could be anything
 NODE_HOST = localhost #Host of the lavalink
 NODE_PORT = 2333 #Port of the lavalink
 NODE_PASSWORD = youshallnotpass #Password of the lavalink
+NODE_SECURE = false #If the lavalink is using ssl use "true"
 
 #LINK DETAILS
 MONGO_URI = #Your mongodb uri (mongodb+srv://<username>:<password>@<db_cluster_url>/<db_name>)

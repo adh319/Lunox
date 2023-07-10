@@ -25,6 +25,7 @@ module.exports = {
         player: false,
         current: false,
         owner: false,
+        premium: false,
     },
     run: async (client, interaction, player) => {
         const query = interaction.options.getString("query");
@@ -48,16 +49,9 @@ module.exports = {
 
         await interaction.deferReply({ ephemeral: false });
 
-        // This will force the playSource config to be set as 'spotify' if the config.js or .env file has 'disableYouTube' set to 'true' and the playSource value you set in the config.js is one of the constants in the 'youtube' array below.
         let playSource = client.config.playSource;
 
-        const youtube = ["ytsearch", "ytmsearch"];
-
-        if (client.config.disableYouTube === true && youtube.includes(playSource)) playSource = "spsearch"; // You must have the Lavasrc plugin installed on your lavalink for this to work!!!
-        // This will not prevent the user to use a direct youtube url!!!
-        // if you want to pass a "return" response to the user when you disable youtube, do some searching on the internet for how to do that!!!
-
-        const res = await client.poru.resolve({ query: query, source: playSource });
+        const res = await client.poru.resolve({ query: query, source: playSource, requester: interaction.user });
         const { tracks } = res;
 
         const results = tracks.slice(0, 10);
@@ -149,7 +143,7 @@ module.exports = {
                         .setDescription(
                             `\`➕\` | **[${trackTitle ? trackTitle : "Unknown"}](${track.info.uri})** • \`${
                                 track.info.isStream ? "LIVE" : formatDuration(track.info.length)
-                            }\` • ${interaction.member}`,
+                            }\` • ${interaction.user}`,
                         );
 
                     await message.edit({ embeds: [tplay], components: [] });

@@ -5,6 +5,7 @@ const Ban = require("../../../settings/models/Ban.js");
 module.exports.run = async (client, interaction) => {
     if (interaction.type === InteractionType.ApplicationCommand) {
         const command = client.slashCommands.get(interaction.commandName);
+        const user = client.premium.get(interaction.user.id);
 
         await client.createInteraction(interaction);
 
@@ -148,6 +149,15 @@ module.exports.run = async (client, interaction) => {
             warning.setDescription(`\`❌\` | Only my owner can use this command!`);
 
             return interaction.reply({ embeds: [warning], ephemeral: true });
+        }
+
+        //Check Premium
+        if (command.settings.premium) {
+            if (client.config.disablePremium === false && user && !user.isPremium) {
+                warning.setDescription(`\`❌\` | You're not premium user!`);
+
+                return interaction.reply({ embeds: [warning], components: [row], ephemeral: true });
+            }
         }
 
         //Error handling

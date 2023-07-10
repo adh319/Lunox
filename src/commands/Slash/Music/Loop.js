@@ -34,6 +34,7 @@ module.exports = {
         player: true,
         current: true,
         owner: false,
+        premium: false,
     },
     run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: true });
@@ -47,7 +48,7 @@ module.exports = {
                 .setDescription(`\`❌\` | You can't use this command as the player control was enable!`);
             return interaction.editReply({ embeds: [ctrl] });
         }
-        
+
         const input = interaction.options.getString("mode");
 
         if (input === "current") {

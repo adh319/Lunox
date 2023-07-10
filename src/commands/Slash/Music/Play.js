@@ -1,5 +1,6 @@
 const { ApplicationCommandOptionType, EmbedBuilder } = require("discord.js");
 const formatDuration = require("../../../structures/FormatDuration.js");
+const { config } = require("dotenv");
 
 module.exports = {
     name: "play",
@@ -24,8 +25,11 @@ module.exports = {
         player: false,
         current: false,
         owner: false,
+        premium: false,
     },
     run: async (client, interaction, player) => {
+        await interaction.deferReply({ ephemeral: false });
+
         const song = interaction.options.getString("query");
 
         if (player && interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
@@ -34,16 +38,10 @@ module.exports = {
                 .setDescription(`\`❌\` | You must be on the same voice channel as mine to use this command.`)
                 .setTimestamp();
 
-            return interaction.reply({ embeds: [embed], ephemeral: true });
+            return interaction.editReply({ embeds: [embed] });
         }
 
-        // This will force the playSource config to be set as 'spotify' if the config.js or .env file has 'disableYouTube' set to 'true' and the playSource value you set in the config.js is one of the constants in the 'youtube' array below.
         let playSource = client.config.playSource;
-
-        const youtube = ["ytsearch", "ytmsearch"];
-        if (client.config.disableYouTube === true && youtube.includes(playSource)) playSource = "spsearch"; // You must have the Lavasrc plugin installed on your lavalink for this to work!!!
-        // This will not prevent the user to use a direct youtube url!!!
-        // if you want to pass a "return" response to the user when you disable youtube, do some searching on the internet for how to do that!!!
 
         const res = await client.poru.resolve({ query: song, source: playSource, requester: interaction.user });
         const { loadType, tracks, playlistInfo } = res;
@@ -51,10 +49,8 @@ module.exports = {
         if (loadType === "LOAD_FAILED" || loadType === "NO_MATCHES") {
             const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Song was no found or Failed to load song!`);
 
-            return interaction.reply({ embeds: [embed], ephemeral: true });
+            return interaction.editReply({ embeds: [embed] });
         }
-
-        await interaction.deferReply({ ephemeral: false });
 
         if (!player) {
             player = await client.poru.createConnection({
@@ -77,6 +73,7 @@ module.exports = {
                 .setDescription(`\`☑️\` | **[${playlistInfo.name}](${song})** • \`${tracks.length}\` tracks • ${interaction.user}`);
 
             await interaction.editReply({ embeds: [embed] });
+
             if (!player.isPlaying && !player.isPaused) return player.play();
         } else if (loadType === "SEARCH_RESULT" || loadType === "TRACK_LOADED") {
             const track = tracks[0];
@@ -92,6 +89,7 @@ module.exports = {
                 );
 
             await interaction.editReply({ embeds: [embed] });
+
             if (!player.isPlaying && !player.isPaused) return player.play();
         }
     },

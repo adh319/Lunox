@@ -16,11 +16,12 @@ module.exports = {
         player: true,
         current: true,
         owner: false,
+        premium: false,
     },
     run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: true });
 
-       await player.node.rest.updatePlayer({
+        await player.node.rest.updatePlayer({
             guildId: player.guildId,
             data: { filters: {} },
         });

@@ -1,5 +1,11 @@
 require("dotenv").config();
 const { customFilter } = require("poru");
+const { Spotify } = require("poru-spotify");
+
+const spotify = new Spotify({
+    clientID: process.env.SPOTIFY_ID || " ",
+    clientSecret: process.env.SPOTIFY_SECRET || " ",
+});
 
 module.exports = {
     // BOT DETAILS
@@ -9,13 +15,14 @@ module.exports = {
     owner: process.env.OWNER_ID || " ", // your bot Owners ID
     guildLogs: process.env.GUILD_LOGS || " ", // your server join left logs Channel ID
     leaveTimeout: process.env.LEAVE_TIMEOUT || "60000", // set leave TimeOut when bot was alone 1000 = 1sec
-    disableYouTube: parseBoolean(process.env.DISABLE_YOUTUBE || "false"), // ""true/false" | Enable/disable YouTube feature. Disabling this will make "autoplay" command useless!!!
+    disablePremium: parseBoolean(process.env.DISABLE_PREMIUM || "false"), // disable premium command
 
     // PORU DETAILS
-    playSource: process.env.PLAY_SOURCE || "ytmsearch", // recomended using "ytmsearch". You can change this to: "ytsearch" / "ytmsearch" / "scsearch". More? Use Lavasrc plugin.
+    playSource: process.env.PLAY_SOURCE || "ytmsearch", // recomended using "ytmsearch" or "spotify". You can change this to: "ytsearch" / "ytmsearch" / "scsearch" / "spotify". More? Use Lavasrc plugin.
     poruOptions: {
         customFilter,
         library: "discord.js", // This source made by using discord.js, so don't even try to change this thing :)
+        plugins: [spotify],
         reconnectTries: Infinity, // total attemps to try if reconnect failed. you can change it to "Infinity" for unlimited attemps.
         reconnectTimeout: 10000, // total time to try reconnect in ms. 1000 = 1sec
     },
