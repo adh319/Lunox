@@ -31,7 +31,7 @@
 -   ☑️ Music System
 -   ☑️ Configurable Premium System **[You can enable/disable it]** 
 -   ☑️ Custom Filters **[8D, EarRape, Nighcore, Slowmode, Vaporwave]** More? **[Deal With It]**
--   ☑️ 24/7 Voice **[Make Sure You Read This [Note](https://github.com/adh319/Lunox/commit/b4880fb419d9136f96c90411e9b9c2c3c984b384)]**
+-   ☑️ 24/7 in Voice Channel
 -   ☑️ AutoPlay **[YouTube Only]**
 -   ☑️ Clean UI
 -   ☑️ Easy to use
@@ -59,17 +59,15 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 
 ## 📌 Requirements
 
--   Node.js v17 or higher **[Download](https://nodejs.org/en/download/)**
--   MongoDB v5.0.x or higher **[Download](https://www.mongodb.com/try/download/community-edition)**
--   Java 13+ or higher **[Download JDK13](http://www.mediafire.com/file/m6gk7aoq96db8g0/file)** (i used this version) for LAVALINK!
+-   Node.js v17 or higher
+-   MongoDB v5.0.x or higher
+-   Java 17 or higher
 -   Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
--   LavaLink **[Guide](https://github.com/freyacodes/lavalink)**
+-   LavaLink v3.7.x **[Guide](https://github.com/lavalink-devs/Lavalink)**
 
 ## 🎶 More Support Audio Platforms
 
-**Require: LavaLink v3.7.x (Recomended Latest Version)**
-
-**☑️ [LavaSrc](https://github.com/TopiSenpai/LavaSrc)**
+**☑️ [LavaSrc](https://github.com/topi314/LavaSrc)**
 
 -   Spotify [ spsearch ]
 -   Deezer [ dzsearch ]
@@ -136,12 +134,12 @@ After installation & finished all needed configuration, you can start the bot by
 
 ## 🔐 Licensed
 
-Distributed under the `MIT License`. See [`LICENSE`](https://github.com/Enour-Dev/Lunox/blob/main/LICENSE) for more information.
+Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/Lunox/blob/main/LICENSE) for more information.
 
 ## 💝 Support Me
 
 -   [Github Sponsor](https://github.com/sponsors/adh319)
--   [PayPal](https://paypal.me/dh319)
+-   [PayPal](https://paypal.me/LunoxBot)
 -   [Ko-Fi](https://ko-fi.com/adh319)
 
 Also make sure to give a **⭐** to this project if you like it 😉!
