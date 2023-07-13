@@ -42,7 +42,7 @@ module.exports = {
 
             const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`⏭️\` | Song skipped to position: \`${value}\``);
 
-            return interaction.editeReply({ embeds: [embed] });
+            return interaction.editReply({ embeds: [embed] });
         }
 
         await player.queue.splice(0, value - 1);
@@ -50,6 +50,6 @@ module.exports = {
 
         const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`⏭️\` | Song skipped to position: \`${value}\``);
 
-        return interaction.editeReply({ embeds: [embed] });
+        return interaction.editReply({ embeds: [embed] });
     },
 };
