@@ -29,7 +29,7 @@
 -   ☑️ Prefix Commands **[Owner Only]**
 -   ☑️ Dev/Maintenance Mode System **[Owner Only]**
 -   ☑️ Music System
--   ☑️ Configurable Premium System **[You can enable/disable it]** 
+-   ☑️ Configurable Premium System **[You can enable/disable it]**
 -   ☑️ Custom Filters **[8D, EarRape, Nighcore, Slowmode, Vaporwave]** More? **[Deal With It]**
 -   ☑️ 24/7 in Voice Channel
 -   ☑️ AutoPlay **[YouTube Only]**
@@ -41,7 +41,7 @@
 
 Here are some screenshots from my bot **(Screenshots may not look the same coz i had modify it on my bot)**.
 
-<p align="center">
+<p>
 <img src="https://cdn.discordapp.com/attachments/1014342568554811443/1093098769907732500/image.png"/>  <img src="https://cdn.discordapp.com/attachments/1014342568554811443/1093099116818612234/image.png"/>
 </p>
 
@@ -49,7 +49,7 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 
 -   ☑️ Youtube
 -   ☑️ Youtube Music
--   ☑️ Spotify
+-   ☑️ Spotify **[Link only]**
 -   ☑️ SoundCloud
 -   ☑️ Twitch
 -   ☑️ Bandcamp
@@ -60,7 +60,7 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 ## 📌 Requirements
 
 -   Node.js v17 or higher
--   MongoDB v5.0.x or higher
+-   MongoDB v5.0.x or higher **[For Local Database]**
 -   Java 17 or higher
 -   Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
 -   LavaLink v3.7.x **[Guide](https://github.com/lavalink-devs/Lavalink)**
@@ -124,9 +124,8 @@ NODE_SECURE = false #If the lavalink is using ssl use "true"
 
 #LINK DETAILS
 MONGO_URI = #Your mongodb uri (mongodb+srv://<username>:<password>@<db_cluster_url>/<db_name>)
-SUPPORT_URL = https://discord.gg/kNdSkHchzH #Your support server invite link
-VOTE_URL = https://top.gg/bot/1019954630551158934/vote #Your bot vote link
-INVITE_URL = https://discord.com/api/oauth2/authorize?client_id=1019954630551158934&permissions=843998162009&scope=bot%20applications.commands #Your bot invite link
+SUPPORT_URL = #Your support server invite link
+INVITE_URL = #Your bot invite link
 IMAGE_URL = #Any direct image link
 ```
 

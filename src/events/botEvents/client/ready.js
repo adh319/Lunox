@@ -26,7 +26,6 @@ module.exports.run = async (client) => {
         const members = results[1].reduce((acc, memberCount) => acc + memberCount, 0);
 
         const status = [
-            { type: ActivityType.Listening, name: "lunoxmusic.me" },
             { type: ActivityType.Playing, name: "/play" },
             { type: ActivityType.Watching, name: `${members} Users` },
             { type: ActivityType.Competing, name: `${servers} Servers` },

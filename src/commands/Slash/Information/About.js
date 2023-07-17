@@ -1,5 +1,5 @@
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require("discord.js");
-const { supportUrl, inviteUrl, voteUrl, imageUrl } = require("../../../settings/config.js");
+const { supportUrl, inviteUrl, imageUrl } = require("../../../settings/config.js");
 const ms = require("pretty-ms");
 
 module.exports = {
@@ -34,7 +34,6 @@ module.exports = {
 
         const row = new ActionRowBuilder()
             .addComponents(new ButtonBuilder().setLabel("Support").setURL(supportUrl).setStyle(ButtonStyle.Link))
-            .addComponents(new ButtonBuilder().setLabel("Vote").setURL(voteUrl).setStyle(ButtonStyle.Link))
             .addComponents(new ButtonBuilder().setLabel("Invite").setURL(inviteUrl).setStyle(ButtonStyle.Link));
 
         const embed = new EmbedBuilder()

@@ -49,10 +49,10 @@ module.exports = {
             const playerDuration = player.currentTrack.info.isStream ? "LIVE" : trackDuration;
             const currentAuthor = player.currentTrack.info.author ? Author : "Unknown";
             const currentTitle = player.currentTrack.info.title ? Titles : "Unknown";
-            const Part = Math.floor((player.position / playerDuration) * 30);
+            const Part = Math.floor((player.position / player.currentTrack.info.length) * 30);
             const Emoji = player.isPlaying ? "🕒 |" : "⏸ |";
 
-            let sources = null;
+            let sources = "Unknown";
 
             if (player.currentTrack.info.sourceName === "youtube") sources = "YouTube";
             else if (player.currentTrack.info.sourceName === "soundcloud") sources = "SoundCloud";
@@ -88,7 +88,7 @@ module.exports = {
             return interaction.editReply({ embeds: [embed] });
         } catch (error) {
             console.log(error);
-            return interaction.reply({ content: `\`❌\` | There isn't current playing song or song has been ended!`, ephemeral: true });
+            return interaction.reply({ content: `\`❌\` | Nothing is playing or song has been ended!`, ephemeral: true });
         }
     },
 };

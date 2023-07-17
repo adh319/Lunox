@@ -7,7 +7,7 @@ const {
     ButtonStyle,
 } = require("discord.js");
 const { readdirSync } = require("fs");
-const { supportUrl, inviteUrl, voteUrl, imageUrl } = require("../../../settings/config.js");
+const { supportUrl, inviteUrl, imageUrl } = require("../../../settings/config.js");
 
 module.exports = {
     name: "help",
@@ -31,7 +31,6 @@ module.exports = {
 
         const row2 = new ActionRowBuilder()
             .addComponents(new ButtonBuilder().setLabel("Support").setURL(supportUrl).setStyle(ButtonStyle.Link))
-            .addComponents(new ButtonBuilder().setLabel("Vote").setURL(voteUrl).setStyle(ButtonStyle.Link))
             .addComponents(new ButtonBuilder().setLabel("Invite").setURL(inviteUrl).setStyle(ButtonStyle.Link));
 
         const categories = readdirSync("./src/commands/Slash/");
@@ -116,7 +115,7 @@ module.exports = {
                             iconURL: interaction.guild.iconURL({ dynamic: true }),
                         })
                         .setDescription(
-                            `Help Command Menu was timed out, try using \`/help\` to show the help command menu again. Enjoying using **${client.user}**? Feel free to vote using Vote button below, it means a lot.\n\nThank You.`,
+                            `Help Command Menu was timed out, try using \`/help\` to show the help command menu again.\n\nThank You.`,
                         )
                         .setImage(imageUrl)
                         .setColor(client.color)

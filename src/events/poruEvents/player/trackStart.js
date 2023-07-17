@@ -264,12 +264,12 @@ module.exports.run = async (client, player, track) => {
                 const playerDuration = player.currentTrack.info.isStream ? "LIVE" : trackDuration;
                 const currentAuthor = player.currentTrack.info.author ? Author : "Unknown";
                 const currentTitle = player.currentTrack.info.title ? Titles : "Unknown";
-                const Part = Math.floor((player.position / trackDuration) * 30);
+                const Part = Math.floor((player.position / player.currentTrack.info.length) * 30);
                 const Emoji = player.isPlaying ? "🕒 |" : "⏸ |";
 
                 let sources = "Unknown";
 
-                if (player.currentTrack.info.sourceName === "youtube") sources = "YouTube";
+                if (player.currentTrack.info.sourceName === "youtube") sources = "Youtube";
                 else if (player.currentTrack.info.sourceName === "soundcloud") sources = "SoundCloud";
                 else if (player.currentTrack.info.sourceName === "spotify") sources = "Spotify";
                 else if (player.currentTrack.info.sourceName === "applemusic") sources = "Apple Music";

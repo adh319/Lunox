@@ -7,7 +7,7 @@ const {
     ButtonStyle,
 } = require("discord.js");
 const { readdirSync } = require("fs");
-const { supportUrl, inviteUrl, voteUrl, imageUrl } = require("../../../settings/config.js");
+const { supportUrl, inviteUrl, imageUrl } = require("../../../settings/config.js");
 
 module.exports = {
     name: "help",
@@ -18,7 +18,6 @@ module.exports = {
     run: async (client, message, args) => {
         const row2 = new ActionRowBuilder()
             .addComponents(new ButtonBuilder().setLabel("Support").setURL(supportUrl).setStyle(ButtonStyle.Link))
-            .addComponents(new ButtonBuilder().setLabel("Vote").setURL(voteUrl).setStyle(ButtonStyle.Link))
             .addComponents(new ButtonBuilder().setLabel("Invite").setURL(inviteUrl).setStyle(ButtonStyle.Link));
 
         if (!args[0]) {
@@ -32,7 +31,7 @@ module.exports = {
                 .setColor(client.color)
                 .setImage(imageUrl)
                 .setDescription(
-                    `Hello **${message.author}**, I'm **${client.user}**. A Rich Quality Discord Music Bot. Support  Spotify, SoundCloud, Apple Music & Others. Find out what I can do using menu selection below.`
+                    `Hello **${message.author}**, I'm **${client.user}**. A Rich Quality Discord Music Bot. Support  Spotify, SoundCloud, Apple Music & Others. Find out what I can do using menu selection below.`,
                 )
                 .setFooter({
                     text: `© ${client.user.username} | Total Commands: ${client.slashCommands.size}`,
@@ -49,7 +48,7 @@ module.exports = {
                     .setOptions(
                         categories.map((category) => {
                             return new StringSelectMenuOptionBuilder().setLabel(category).setValue(category);
-                        })
+                        }),
                     ),
             ]);
 
@@ -76,7 +75,7 @@ module.exports = {
                                     }:**\n${client.slashCommands
                                         .filter((c) => c.category === directory)
                                         .map((c) => `\`${c.name}\` : *${c.description}*`)
-                                        .join("\n")}`
+                                        .join("\n")}`,
                                 )
                                 .setColor(client.color)
                                 .setImage(imageUrl)
@@ -101,7 +100,7 @@ module.exports = {
                                 iconURL: message.guild.iconURL({ dynamic: true }),
                             })
                             .setDescription(
-                                `Help Command Menu was timed out, try using \`/help\` to show the help command menu again. Enjoying using **${client.user}**? Feel free to vote using Vote button below, it means a lot.\n\nThank You.`
+                                `Help Command Menu was timed out, try using \`/help\` to show the help command menu again.\n\nThank You.`,
                             )
                             .setImage(imageUrl)
                             .setColor(client.color)

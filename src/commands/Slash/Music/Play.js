@@ -1,6 +1,5 @@
 const { ApplicationCommandOptionType, EmbedBuilder } = require("discord.js");
 const formatDuration = require("../../../structures/FormatDuration.js");
-const { config } = require("dotenv");
 
 module.exports = {
     name: "play",
@@ -32,11 +31,10 @@ module.exports = {
 
         const song = interaction.options.getString("query");
 
+        const embed = new EmbedBuilder().setColor(client.color);
+
         if (player && interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) {
-            const embed = new EmbedBuilder()
-                .setColor(client.color)
-                .setDescription(`\`❌\` | You must be on the same voice channel as mine to use this command.`)
-                .setTimestamp();
+            embed.setDescription(`\`❌\` | You must be on the same voice channel as mine to use this command.`).setTimestamp();
 
             return interaction.editReply({ embeds: [embed] });
         }
@@ -47,7 +45,7 @@ module.exports = {
         const { loadType, tracks, playlistInfo } = res;
 
         if (loadType === "LOAD_FAILED" || loadType === "NO_MATCHES") {
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Song was no found or Failed to load song!`);
+            embed.setDescription(`\`❌\` | Song was no found or Failed to load song!`);
 
             return interaction.editReply({ embeds: [embed] });
         }
@@ -68,29 +66,23 @@ module.exports = {
                 player.queue.add(track);
             }
 
-            const embed = new EmbedBuilder()
-                .setColor(client.color)
-                .setDescription(`\`☑️\` | **[${playlistInfo.name}](${song})** • \`${tracks.length}\` tracks • ${interaction.user}`);
+            embed.setDescription(`\`☑️\` | **[${playlistInfo.name}](${song})** • \`${tracks.length}\` tracks • ${interaction.user}`);
 
-            await interaction.editReply({ embeds: [embed] });
-
-            if (!player.isPlaying && !player.isPaused) return player.play();
+            if (!player.isPlaying && !player.isPaused) player.play();
         } else if (loadType === "SEARCH_RESULT" || loadType === "TRACK_LOADED") {
             const track = tracks[0];
 
             player.queue.add(track);
 
-            const embed = new EmbedBuilder()
-                .setColor(client.color)
-                .setDescription(
-                    `\`☑️\` | **[${track.info.title ? track.info.title : "Unknown"}](${track.info.uri})** • \`${
-                        track.info.isStream ? "LIVE" : formatDuration(track.info.length)
-                    }\` • ${interaction.user}`,
-                );
+            embed.setDescription(
+                `\`☑️\` | **[${track.info.title ? track.info.title : "Unknown"}](${track.info.uri})** • \`${
+                    track.info.isStream ? "LIVE" : formatDuration(track.info.length)
+                }\` • ${interaction.user}`,
+            );
 
-            await interaction.editReply({ embeds: [embed] });
-
-            if (!player.isPlaying && !player.isPaused) return player.play();
+            if (!player.isPlaying && !player.isPaused) player.play();
         }
+
+        await interaction.editReply({ embeds: [embed] });
     },
 };

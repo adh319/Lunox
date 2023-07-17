@@ -22,7 +22,7 @@ module.exports = {
     poruOptions: {
         customFilter,
         library: "discord.js", // This source made by using discord.js, so don't even try to change this thing :)
-        plugins: [spotify],
+        plugins: [spotify], // Enable spotify link to be readable by poru without using LavaSrc plugin.
         reconnectTries: Infinity, // total attemps to try if reconnect failed. you can change it to "Infinity" for unlimited attemps.
         reconnectTimeout: 10000, // total time to try reconnect in ms. 1000 = 1sec
     },
@@ -40,7 +40,6 @@ module.exports = {
     mongoUri: process.env.MONGO_URI || " ", // your MongoDB Url
     supportUrl: process.env.SUPPORT_URL || "", // your Support Server Link
     inviteUrl: process.env.INVITE_URL || " ", // your Bot Invite Link
-    voteUrl: process.env.VOTE_URL || " ", // your Bot Vote Link [DONT FORGET TO VOTE MY BOT :)]
     imageUrl: process.env.IMAGE_URL || " ", // your Bot Banner Imange Link to use on "help" & "about" command
 };
 

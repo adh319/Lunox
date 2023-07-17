@@ -168,7 +168,7 @@ module.exports.run = async (client, interaction) => {
 
             warning.setDescription(`\`❌\` | Something went wrong.`);
 
-            return interaction.editReply({ embeds: [warning], components: [row], ephmeral: true });
+            return interaction.editReply({ embeds: [warning], components: [row] });
         }
     }
 };
