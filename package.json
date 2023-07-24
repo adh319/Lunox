@@ -37,6 +37,6 @@
   "devDependencies": {
     "@types/node-cron": "^3.0.8",
     "@types/voucher-code-generator": "^1.1.1",
-    "node": "^18.16.1"
+    "node": "^20.5.0"
   }
 }
