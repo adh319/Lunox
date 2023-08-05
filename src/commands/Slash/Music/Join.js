@@ -21,12 +21,22 @@ module.exports = {
         await interaction.deferReply({ ephemeral: false });
 
         if (player) {
-            const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | I already joined a voice channel.`);
+            const embed = new EmbedBuilder()
+                .setColor(client.color)
+                .setDescription(`\`❌\` | I am already in a voice channel.`);
 
             return interaction.editReply({ embeds: [embed] });
         }
 
-        if (!player) {
+        if (!interaction.member.voice.channel) {
+            const embed = new EmbedBuilder()
+                .setColor(client.color)
+                .setDescription(`\`❌\` | You need to be in a voice channel to use this command.`);
+
+            return interaction.editReply({ embeds: [embed] });
+        }
+
+        try {
             player = await client.poru.createConnection({
                 guildId: interaction.guild.id,
                 voiceChannel: interaction.member.voice.channel.id,
@@ -40,6 +50,13 @@ module.exports = {
             const embed = new EmbedBuilder()
                 .setColor(client.color)
                 .setDescription(`\`☑️\` | Joined to ${interaction.member.voice.channel.toString()}`);
+
+            return interaction.editReply({ embeds: [embed] });
+        } catch (error) {
+            console.error("Error while joining the voice channel:", error);
+            const embed = new EmbedBuilder()
+                .setColor(client.color)
+                .setDescription(`\`❌\` | An error occurred while joining the voice channel.`);
 
             return interaction.editReply({ embeds: [embed] });
         }
