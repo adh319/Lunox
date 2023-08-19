@@ -108,7 +108,7 @@ TOKEN = #Your bot token
 PREFIX = #Your bot prefix
 EMBED_COLOR = #Your bot embed color
 OWNER_ID = #Your discord id
-GUILD_LOGS = #Your guidl channel id for logs
+GUILD_LOGS = #Your guild channel id for logs
 LEAVE_TIMEOUT = 60000 #Time in ms to leave the voice channel after the last user leaves
 DISABLE_PREMIUM = false #Disable premium system
 
