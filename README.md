@@ -59,7 +59,7 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 
 ## 📌 Requirements
 
--   Node.js v17 or higher
+-   Node.js v18 or higher
 -   MongoDB v5.0.x or higher **[For Local Database]**
 -   Java 17 or higher
 -   Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
