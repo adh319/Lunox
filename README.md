@@ -59,7 +59,7 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 
 ## 📌 Requirements
 
--   Node.js v17 or higher
+-   Node.js v18 or higher
 -   MongoDB v5.0.x or higher **[For Local Database]**
 -   Java 17 or higher
 -   Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
@@ -108,7 +108,7 @@ TOKEN = #Your bot token
 PREFIX = #Your bot prefix
 EMBED_COLOR = #Your bot embed color
 OWNER_ID = #Your discord id
-GUILD_LOGS = #Your guidl channel id for logs
+GUILD_LOGS = #Your guild channel id for logs
 LEAVE_TIMEOUT = 60000 #Time in ms to leave the voice channel after the last user leaves
 DISABLE_PREMIUM = false #Disable premium system
 
