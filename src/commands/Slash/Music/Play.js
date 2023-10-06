@@ -39,9 +39,7 @@ module.exports = {
             return interaction.editReply({ embeds: [embed] });
         }
 
-        let playSource = client.config.playSource;
-
-        const res = await client.poru.resolve({ query: song, source: playSource, requester: interaction.user });
+        const res = await client.poru.resolve({ query: song, requester: interaction.user });
         const { loadType, tracks, playlistInfo } = res;
 
         if (loadType === "LOAD_FAILED" || loadType === "NO_MATCHES") {

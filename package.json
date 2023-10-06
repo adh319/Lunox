@@ -1,6 +1,6 @@
 {
   "name": "lunox",
-  "version": "2.1.5",
+  "version": "2.2.0",
   "description": "Lunox by @adh319#9370",
   "main": "sharder.js",
   "scripts": {
@@ -15,12 +15,14 @@
     "google-search-url": "^0.1.8",
     "moment": "^2.29.4",
     "moment-duration-format": "^2.3.2",
-    "mongoose": "^6.11.5",
+    "mongoose": "^7.5.4",
     "node-capitalize": "^1.0.0",
     "node-cron": "^3.0.2",
-    "node-fetch": "^2.6.13",
+    "node-fetch": "^2.7.0",
     "poru": "github:parasop/poru",
-    "poru-spotify": "^2.0.2",
+    "poru-applemusic": "github:parasop/poru-applemusic",
+    "poru-deezer": "github:parasop/poru-deezer",
+    "poru-spotify": "github:parasop/poru-spotify",
     "pretty-ms": "^7.0.1",
     "voucher-code-generator": "^1.3.0"
   },
@@ -33,10 +35,5 @@
   "bugs": {
     "url": "https://github.com/adh319/Lunox#issues"
   },
-  "homepage": "https://github.com/adh319/Lunox/#readme",
-  "devDependencies": {
-    "@types/node-cron": "^3.0.8",
-    "@types/voucher-code-generator": "^1.1.1",
-    "node": "^18.17.1"
-  }
+  "homepage": "https://github.com/adh319/Lunox/#readme"
 }

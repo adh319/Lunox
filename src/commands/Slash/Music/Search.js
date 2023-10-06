@@ -49,9 +49,7 @@ module.exports = {
 
         await interaction.deferReply({ ephemeral: false });
 
-        let playSource = client.config.playSource;
-
-        const res = await client.poru.resolve({ query: query, source: playSource, requester: interaction.user });
+        const res = await client.poru.resolve({ query: query, requester: interaction.user });
         const { tracks } = res;
 
         const results = tracks.slice(0, 10);

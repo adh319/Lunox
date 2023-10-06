@@ -1,10 +1,15 @@
 require("dotenv").config();
 const { customFilter } = require("poru");
+const { AppleMusic } = require("poru-applemusic");
+const { Deezer } = require("poru-deezer");
 const { Spotify } = require("poru-spotify");
 
+const applemusic = new AppleMusic({ contryCode: "us" }); // I dont know why its "contryCode" instead of "countryCode", ask paras for it xD.
+const deezer = new Deezer();
 const spotify = new Spotify({
     clientID: process.env.SPOTIFY_ID || " ",
     clientSecret: process.env.SPOTIFY_SECRET || " ",
+    clients: [{ clientID: process.env.SPOTIFY_ID || " ", clientSecret: process.env.SPOTIFY_SECRET || " " }], // its seem this is a bug from the plugin, so if u dont add this, it will throw an error.
 });
 
 module.exports = {
@@ -18,11 +23,11 @@ module.exports = {
     disablePremium: parseBoolean(process.env.DISABLE_PREMIUM || "false"), // disable premium command
 
     // PORU DETAILS
-    playSource: process.env.PLAY_SOURCE || "ytmsearch", // recomended using "ytmsearch" or "spotify". You can change this to: "ytsearch" / "ytmsearch" / "scsearch" / "spotify". More? Use Lavasrc plugin.
     poruOptions: {
         customFilter,
         library: "discord.js", // This source made by using discord.js, so don't even try to change this thing :)
-        plugins: [spotify], // Enable spotify link to be readable by poru without using LavaSrc plugin.
+        defaultPlatform: process.env.DEFAULT_PLATFORM || " ", // recomended using "ytmsearch". You can change this to: "ytsearch" / "ytmsearch" / "scsearch". More Audio Source? Use Lavasrc plugin.
+        plugins: [applemusic, deezer, spotify], // Enable applemusic/deezer/spotify LINK to be readable by poru without using LavaSrc plugin.
         reconnectTries: Infinity, // total attemps to try if reconnect failed. you can change it to "Infinity" for unlimited attemps.
         reconnectTimeout: 10000, // total time to try reconnect in ms. 1000 = 1sec
     },
