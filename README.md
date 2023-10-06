@@ -115,7 +115,7 @@ LEAVE_TIMEOUT = 60000 #Time in ms to leave the voice channel after the last user
 DISABLE_PREMIUM = false #Disable premium system
 
 #PORU DETAILS
-PLAY_SOURCE = ytmsearch #Default source to play the searched songs (ytmsearch, ytsearch, scsearch, or spotify). More? Use LavaSrc plugin
+DEFAULT_PLATFORM = ytmsearch #recomended using "ytmsearch". You can change this to: "ytsearch" / "ytmsearch" / "scsearch". More Audio Source? Use Lavasrc plugin.LavaSrc plugin
 SPOTIFY_ID = #Spotify client id
 SPOTIFY_SECRET = #Spotify client secret
 NODE_NAME = Lunox #Name of the lavalink, could be anything
