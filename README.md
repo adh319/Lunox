@@ -49,6 +49,8 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 
 -   ☑️ Youtube
 -   ☑️ Youtube Music
+-   ☑️ Apple Music **[Link only]**
+-   ☑️ Deezer **[Link only]**
 -   ☑️ Spotify **[Link only]**
 -   ☑️ SoundCloud
 -   ☑️ Twitch
