@@ -1,7 +1,6 @@
 const { Client, Collection, GatewayIntentBits, Partials } = require("discord.js");
 const { Poru } = require("poru");
 const { ClusterClient, getInfo } = require("discord-hybrid-sharding");
-const GSearch = require("google-search-url");
 
 class MainClient extends Client {
     constructor() {
@@ -34,7 +33,6 @@ class MainClient extends Client {
         this.slashCommands = new Collection();
         this.premium = new Collection();
         this.dev = new Set();
-        this.gsearch = GSearch;
 
         this.poru = new Poru(this, this.config.nodes, this.config.poruOptions, {
             send: (guildId, payload) => {

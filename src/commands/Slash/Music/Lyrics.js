@@ -31,55 +31,98 @@ module.exports = {
 
         const value = interaction.options.getString("search");
 
-        let song = value;
+        const currentSong = player.currentTrack.info;
+        const titles = currentSong.title.replace(/\(Official (Video|Audio|Music Video)\)/gi, "").trim();
+        const authors = currentSong.author.replace(/- Topic$/gi, "").trim();
 
-        const CurrentSong = player.currentTrack.info;
-        const titles = CurrentSong.title.replace("(Official Video)", "").replace("(Official Audio)", "");
-        const authors = CurrentSong.author.replace("- Topic", "");
+        const lyricEmbed = new EmbedBuilder().setColor(client.color);
 
-        if (!song && CurrentSong) song = `${titles} ${authors}`;
+        let lyricSong = null;
+        let lyricUrl = null;
+        let lyricThumbnail = null;
+        let lyricAuthor = null;
+        let lyricTitle = null;
 
         try {
-            await fetch(`https://some-random-api.com/others/lyrics?title=${song}`)
-                .then((res) => res.json())
-                .then((data) => {
-                    const lyricSong = data.lyrics;
+            if (value) {
+                await fetch(`https://weeb-api.vercel.app/genius?query=${value}`)
+                    .then((res) => res.json())
+                    .then(async (data) => {
+                        const url = data[0].url;
+                        const thumbnail = data[0].image;
+                        const author = data[0].artist;
+                        const title = data[0].title;
 
-                    if (!lyricSong) {
-                        const lyricError = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Lyrics was not found.`);
+                        await fetch(`https://weeb-api.vercel.app/lyrics?url=${url}`)
+                            .then((res) => res.json())
+                            .then((lyrics) => {
+                                lyricSong = lyrics.data;
+                            });
 
-                        return interaction.editReply({ embeds: [lyricError] });
-                    }
+                        lyricUrl = url;
+                        lyricThumbnail = thumbnail;
+                        lyricAuthor = author;
+                        lyricTitle = title;
+                    });
+            } else {
+                await fetch(`https://weeb-api.vercel.app/genius?query=${titles} ${authors}`)
+                    .then((res) => res.json())
+                    .then(async (data) => {
+                        const url = data[0].url;
+                        const thumbnail = data[0].image;
+                        const author = data[0].artist;
+                        const title = data[0].title;
 
-                    const lyrics = lyricSong.length > 3905 ? lyricSong.substr(0, 3900) + "....." : lyricSong;
-                    const titleSong = data.title;
-                    const authorSong = data.author;
+                        await fetch(`https://weeb-api.vercel.app/lyrics?url=${url}`)
+                            .then((res) => res.json())
+                            .then((lyrics) => {
+                                lyricSong = lyrics.data;
+                            });
 
-                    const gSearch = { query: `${titleSong} by ${authorSong} lyrics` };
-                    const gLink = client.gsearch.craft(gSearch).url;
-                    const urlSong = gLink.replace("http", "https");
-
-                    const lyricEmbed = new EmbedBuilder()
-                        .setAuthor({
-                            name: `${titleSong} by ${authorSong} lyrics`,
-                            iconURL: client.user.displayAvatarURL({ dynamic: true }),
-                        })
-                        .setColor(client.color)
-                        .setDescription(`${lyrics}\n**[Click Here For More](${urlSong})**`)
-                        .setThumbnail(CurrentSong.image)
-                        .setFooter({
-                            text: `Requested by ${interaction.user.username}`,
-                            iconURL: interaction.user.displayAvatarURL({ dynamic: true }),
-                        });
-
-                    return interaction.editReply({ embeds: [lyricEmbed] });
-                });
+                        lyricUrl = url;
+                        lyricThumbnail = thumbnail;
+                        lyricAuthor = author;
+                        lyricTitle = title;
+                    });
+            }
         } catch (err) {
-            console.log(err);
+            lyricEmbed.setDescription(`\`❌\` | No lyrics were found!`);
 
-            const lyricError = new EmbedBuilder().setColor(client.color).setDescription(`\`❌\` | Lyrics was not found.`);
-
-            return interaction.editReply({ embeds: [lyricError] });
+            return interaction.editReply({ embeds: [lyricEmbed], ephemeral: true });
         }
+
+        if (!lyricSong) {
+            lyricEmbed.setDescription(`\`❌\` | No lyrics were found!`);
+
+            return interaction.editReply({ embeds: [lyricEmbed], ephemeral: true });
+        }
+
+        if (value) {
+            if (lyricSong.length > 4096) {
+                lyricEmbed.setDescription(`${lyricSong.slice(0, 3900)}\n\n[Click for more](${lyricUrl})`);
+            } else {
+                lyricEmbed.setDescription(`${lyricSong}\n\n[Click for more](${lyricUrl})`);
+            }
+        } else {
+            if (lyricSong.length > 4096) {
+                lyricEmbed.setDescription(`${lyricSong.slice(0, 3900)}\n\n[Click for more](${lyricUrl})`);
+            } else {
+                lyricEmbed.setDescription(`${lyricSong}\n\n[Click for more](${lyricUrl})`);
+            }
+        }
+
+        lyricEmbed
+            .setAuthor({
+                name: `${lyricTitle} by ${lyricAuthor} Lyrics`,
+                iconURL: client.user.displayAvatarURL({ size: 2048, dynamic: true }),
+            })
+            .setThumbnail(lyricThumbnail)
+            .setFooter({
+                text: `Requested by ${interaction.user.tag}`,
+                iconURL: interaction.user.displayAvatarURL({ size: 2048, dynamic: true }),
+            })
+            .setTimestamp();
+
+        return interaction.editReply({ embeds: [lyricEmbed] });
     },
 };

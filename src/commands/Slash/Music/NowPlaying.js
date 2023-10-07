@@ -60,6 +60,7 @@ module.exports = {
             else if (player.currentTrack.info.sourceName === "apllemusic") sources = "Apple Music";
             else if (player.currentTrack.info.sourceName === "bandcamp") sources = "Bandcamp";
             else if (player.currentTrack.info.sourceName === "http") sources = "HTTP";
+            else if (player.currentTrack.info.sourceName === "deezer") sources = "Deezer";
 
             const embed = new EmbedBuilder()
                 .setAuthor({
