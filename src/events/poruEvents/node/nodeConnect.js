@@ -1,30 +1,30 @@
-const Reconnect = require("../../../settings/models/247.js");
+const Guild = require("../../../settings/models/Guild.js");
 
 module.exports.run = async (client, node) => {
     console.log(`[INFO] Node ${node.name} Ready!`);
 
     // This will auto reconnect when bot started or has been restarted
-    const maindata = await Reconnect.find();
+    const maindata = await Guild.find();
+    const status = maindata.filter((x) => x.reconnect.status === true);
 
-    if (maindata.length === 0) return;
+    console.log(`[INFO] Auto ReConnect found in ${status.length} servers!`);
 
     for (let data of maindata) {
         const index = maindata.indexOf(data);
+        const reconnect = data.reconnect;
 
         setTimeout(async () => {
-            const channels = client.channels.cache.get(data.text);
-            const voices = client.channels.cache.get(data.voice);
+            const channels = client.channels.cache.get(reconnect.text);
+            const voices = client.channels.cache.get(reconnect.voice);
 
-            if (!channels || !voices || !data) return;
+            if (!channels || !voices || reconnect.status === false) return;
 
             await client.poru.createConnection({
-                guildId: data.guild,
-                voiceChannel: data.voice,
-                textChannel: data.text,
+                guildId: data.Id,
+                voiceChannel: reconnect.voice,
+                textChannel: reconnect.text,
                 deaf: true,
             });
-
-            console.log(`[INFO] Auto ReConnect found in ${maindata.length} servers!`);
         }),
             index * 5000;
     }

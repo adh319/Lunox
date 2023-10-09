@@ -56,7 +56,7 @@ module.exports = {
                         await fetch(`https://weeb-api.vercel.app/lyrics?url=${url}`)
                             .then((res) => res.json())
                             .then((lyrics) => {
-                                lyricSong = lyrics.data;
+                                lyricSong = lyrics;
                             });
 
                         lyricUrl = url;
@@ -76,7 +76,7 @@ module.exports = {
                         await fetch(`https://weeb-api.vercel.app/lyrics?url=${url}`)
                             .then((res) => res.json())
                             .then((lyrics) => {
-                                lyricSong = lyrics.data;
+                                lyricSong = lyrics;
                             });
 
                         lyricUrl = url;

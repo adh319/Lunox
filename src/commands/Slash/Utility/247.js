@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require("discord.js");
-const Reconnect = require("../../../settings/models/247.js");
+const Guild = require("../../../settings/models/Guild.js");
 
 module.exports = {
     name: "247",
@@ -21,22 +21,27 @@ module.exports = {
     run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: true });
 
-        let data = await Reconnect.findOne({ guild: interaction.guild.id });
+        const data = await Guild.findOne({ Id: interaction.guild.id });
+        const reconnect = data.reconnect;
 
-        if (data) {
-            await data.delete();
+        if (reconnect.status === true) {
+            reconnect.status = false;
+            reconnect.voice = null;
+            reconnect.text = null;
+
+            await data.save();
 
             const off = new EmbedBuilder().setDescription(`\`🔴\` | 247 Mode has been: \`Disabled\``).setColor(client.color);
 
             return interaction.editReply({ embeds: [off] });
-        } else if (!data) {
-            const newData = await Reconnect.create({
-                guild: player.guildId,
-                text: player.textChannel,
-                voice: player.voiceChannel,
-            });
+        }
 
-            await newData.save();
+        if (reconnect.status === false) {
+            reconnect.status = true;
+            reconnect.voice = player.voiceChannel;
+            reconnect.text = interaction.channel.id;
+
+            await data.save();
 
             const on = new EmbedBuilder().setDescription(`\`🔵\` | 247 Mode has been: \`Enabled\``).setColor(client.color);
 

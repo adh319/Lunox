@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
-const premiumCode = mongoose.Schema({
+const CreateCode = mongoose.Schema({
     code: { type: String, default: null },
     plan: { type: String, default: null },
 });
 
-module.exports = mongoose.model("Code", premiumCode);
+module.exports = mongoose.model("Code", CreateCode);

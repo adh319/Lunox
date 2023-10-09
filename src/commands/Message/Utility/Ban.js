@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require("discord.js");
-const Ban = require("../../../settings/models/Ban.js");
+const User = require("../../../settings/models/User.js");
 
 module.exports = {
     name: "ban",
@@ -27,7 +27,7 @@ module.exports = {
 
         if (!typeMode.includes(type)) return message.reply({ content: "`❌` | Please provide a valid type. `enable` or `disable`." });
 
-        const user = await Ban.findOne({ userID: id });
+        const user = await User.findOne({ Id: id });
 
         if (!user) {
             const embed = new EmbedBuilder().setDescription(`\`❌\` | \`${id}\` is not in my database.`).setColor(client.color);
@@ -35,15 +35,17 @@ module.exports = {
             return message.reply({ embeds: [embed] });
         }
 
+        const status = user.status;
+
         if (type === "enable") {
-            if (user.isBanned === true) {
+            if (status.isBanned === true) {
                 const embed = new EmbedBuilder().setDescription(`\`❌\` | \`${id}\` is already banned.`).setColor(client.color);
 
                 return message.reply({ embeds: [embed] });
             } else {
-                user.isBanned = true;
-                user.bannedBy = message.author.id;
-                user.bannedAt = Date.now();
+                status.isBanned = true;
+                status.bannedBy = message.author.id;
+                status.bannedAt = Date.now();
 
                 await user.save();
 
@@ -52,14 +54,14 @@ module.exports = {
                 return message.reply({ embeds: [embed] });
             }
         } else if (type === "disable") {
-            if (user.isBanned === false) {
+            if (status.isBanned === false) {
                 const embed = new EmbedBuilder().setDescription(`\`❌\` | \`${id}\` is not banned.`).setColor(client.color);
 
                 return message.reply({ embeds: [embed] });
             } else {
-                user.isBanned = false;
-                user.bannedBy = null;
-                user.bannedAt = null;
+                status.isBanned = false;
+                status.bannedBy = null;
+                status.bannedAt = null;
 
                 await user.save();
 

@@ -20,8 +20,6 @@ module.exports = {
     run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: true });
 
-        if (player.message) await player.message.delete();
-
         await player.destroy();
 
         const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`👋\` | Player has been: \`Disconnected\``);

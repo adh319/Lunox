@@ -1,15 +1,13 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 const formatDuration = require("../../../structures/FormatDuration.js");
-const GControl = require("../../../settings/models/Control.js");
+const Guild = require("../../../settings/models/Guild.js");
 const capital = require("node-capitalize");
 
 module.exports.run = async (client, player, track) => {
-    let Control = await GControl.findOne({ guild: player.guildId });
+    const data = await Guild.findOne({ Id: player.guildId });
 
     // This is the default setting for button control
-    if (!Control) {
-        Control = await GControl.create({ guild: player.guildId, playerControl: "enable" });
-    }
+    const Control = data.playerControl;
 
     if (!player) return;
 
@@ -51,7 +49,7 @@ module.exports.run = async (client, player, track) => {
     const button2 = new ActionRowBuilder().addComponents(bShuffle, bVDown, bStop, bVUp, bInfo);
 
     // When set to "disable", button control won't show.
-    if (Control.playerControl === "disable") {
+    if (Control === "disable") {
         return client.channels.cache
             .get(player.textChannel)
             .send({ embeds: [Started] })
@@ -135,8 +133,6 @@ module.exports.run = async (client, player, track) => {
                 collector.stop();
             } else {
                 message.deferUpdate();
-
-                if (player.message) await player.message.delete();
 
                 await player.destroy();
             }

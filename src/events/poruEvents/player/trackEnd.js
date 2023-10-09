@@ -1,7 +1,7 @@
 module.exports.run = async (client, player) => {
     if (!player) return;
 
-    if (player.message) await player.message.delete();
+    if (player.message) await player.message.delete().catch((e) => {});
 
     if (!player.currentTrack) return;
 

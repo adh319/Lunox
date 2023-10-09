@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require("discord.js");
-const GControl = require("../../../settings/models/Control.js");
+const Guild = require("../../../settings/models/Guild.js");
 
 module.exports = {
     name: "skip",
@@ -21,10 +21,11 @@ module.exports = {
     run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: true });
 
-        const Control = await GControl.findOne({ guild: interaction.guild.id });
+        const data = await Guild.findOne({ Id: interaction.guild.id });
+        const control = data.playerControl;
 
         // When button control "enable", this will make command unable to use. You can delete this
-        if (Control.playerControl === "enable") {
+        if (control === "enable") {
             const ctrl = new EmbedBuilder()
                 .setColor(client.color)
                 .setDescription(`\`❌\` | You can't use this command as the player control was enable!`);

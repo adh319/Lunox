@@ -1,5 +1,5 @@
 const { EmbedBuilder, ApplicationCommandOptionType } = require("discord.js");
-const GControl = require("../../../settings/models/Control.js");
+const Guild = require("../../../settings/models/Guild.js");
 
 module.exports = {
     name: "control",
@@ -39,73 +39,41 @@ module.exports = {
     run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: true });
 
-        const Control = await GControl.findOne({ guild: interaction.guild.id });
         const choice = interaction.options.getString("mode");
 
+        let data = await Guild.findOne({ Id: interaction.guild.id });
+        const control = data.playerControl;
+
         if (choice === "display") {
-            if (!Control) {
-                const Control = new GControl({ guild: interaction.guild.id, playerControl: "enable" });
+            if (control === "enable") {
+                const embed = new EmbedBuilder().setDescription(`\`🔴\` | Control already set to: \`Enable\``).setColor(client.color);
 
-                Control.save()
-                    .then(() => {
-                        const embed = new EmbedBuilder()
-                            .setDescription(`\`🔵\` | Control has been set to: \`Enable\``)
-                            .setColor(client.color);
-
-                        interaction.editReply({ embeds: [embed] });
-                    })
-                    .catch((err) => {
-                        interaction.editReply(`An error occured while setting the player control mode!`);
-                        console.log(err);
-                    });
-            } else if (Control) {
-                Control.playerControl = "enable";
-
-                Control.save()
-                    .then(() => {
-                        const embed = new EmbedBuilder()
-                            .setDescription(`\`🔵\` | Control has been changed to: \`Enable\``)
-                            .setColor(client.color);
-
-                        interaction.editReply({ embeds: [embed] });
-                    })
-                    .catch((err) => {
-                        interaction.editReply(`An error occured while setting the player control mode!`);
-                        console.log(err);
-                    });
+                return interaction.editReply({ embeds: [embed] });
             }
-        } else if (choice === "hide") {
-            if (!Control) {
-                const Control = new GControl({ guild: interaction.guild.id, playerControl: "disable" });
 
-                Control.save()
-                    .then(() => {
-                        const embed = new EmbedBuilder()
-                            .setDescription(`\`🔴\` | Control has been set to: \`Disable\``)
-                            .setColor(client.color);
+            control = "enable";
 
-                        interaction.editReply({ embeds: [embed] });
-                    })
-                    .catch((err) => {
-                        interaction.editReply(`An error occured while setting the player control mode!`);
-                        console.log(err);
-                    });
-            } else if (Control) {
-                Control.playerControl = "disable";
+            await data.save();
 
-                Control.save()
-                    .then(() => {
-                        const embed = new EmbedBuilder()
-                            .setDescription(`\`🔴\` | Control has been changed to: \`Disable\``)
-                            .setColor(client.color);
+            const embed = new EmbedBuilder().setDescription(`\`🔵\` | Control has been set to: \`Enable\``).setColor(client.color);
 
-                        interaction.editReply({ embeds: [embed] });
-                    })
-                    .catch((err) => {
-                        interaction.editReply(`An error occured while setting the player control mode!`);
-                        console.log(err);
-                    });
+            return interaction.editReply({ embeds: [embed] });
+        }
+
+        if (choice === "hide") {
+            if (control === "disable") {
+                const embed = new EmbedBuilder().setDescription(`\`🔴\` | Control already set to: \`Disable\``).setColor(client.color);
+
+                return interaction.editReply({ embeds: [embed] });
             }
+
+            control = "disable";
+
+            await data.save();
+
+            const embed = new EmbedBuilder().setDescription(`\`🔵\` | Control has been set to: \`Disable\``).setColor(client.color);
+
+            return interaction.editReply({ embeds: [embed] });
         }
     },
 };

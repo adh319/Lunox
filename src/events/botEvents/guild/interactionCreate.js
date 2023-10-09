@@ -1,6 +1,6 @@
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, InteractionType } = require("discord.js");
 const { supportUrl } = require("../../../settings/config.js");
-const Ban = require("../../../settings/models/Ban.js");
+const User = require("../../../settings/models/User.js");
 
 module.exports.run = async (client, interaction) => {
     if (interaction.type === InteractionType.ApplicationCommand) {
@@ -30,9 +30,10 @@ module.exports.run = async (client, interaction) => {
 
         console.log(`${msg_cmd.join(" ")}`);
 
-        const userBan = await Ban.findOne({ userID: interaction.user.id });
+        const userBan = await User.findOne({ Id: interaction.user.id });
+        const statusBan = userBan.status;
 
-        if (userBan && userBan.isBanned === true && interaction.user.id !== client.owner) {
+        if (userBan && statusBan.isBanned === true && interaction.user.id !== client.owner) {
             return interaction.reply({
                 content: `\`❌\` | You are banned from using ${client.user}, click the button support to appeal.`,
                 components: [row],

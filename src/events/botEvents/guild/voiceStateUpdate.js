@@ -1,6 +1,6 @@
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField, EmbedBuilder } = require("discord.js");
 const { supportUrl, leaveTimeout } = require("../../../settings/config.js");
-const Reconnect = require("../../../settings/models/247.js");
+const Guild = require("../../../settings/models/Guild.js");
 
 module.exports.run = async (client, oldState, newState) => {
     const player = client.poru.players.get(newState.guild.id);
@@ -20,12 +20,11 @@ module.exports.run = async (client, oldState, newState) => {
     if (oldState.id === client.user.id) return;
     if (!oldState.guild.members.cache.get(client.user.id).voice.channelId) return;
 
-    let data = await Reconnect.findOne({ guild: newState.guild.id });
-
-    if (!data) data = await Reconnect.findOne({ guild: oldState.guild.id });
     // this will make the bot will not be disconneted/destroyed when lefted alone in voice channel if 247 activated.
+    const data = await Guild.findOne({ guild: newState.guild.id });
+    const reconnect = data.reconnect;
 
-    if (data) return;
+    if (reconnect.status === true) return;
     //
 
     const vcRoom = oldState.guild.members.me.voice.channel.id;
