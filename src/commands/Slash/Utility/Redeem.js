@@ -58,7 +58,7 @@ module.exports = {
 
                 const newUser = await user.save();
                 client.premium.set(interaction.user.id, newUser);
-                await code.delete();
+                await code.deleteOne();
             }
 
             if (code.plan === "daily") {
@@ -70,7 +70,7 @@ module.exports = {
 
                 const newUser = await user.save();
                 client.premium.set(interaction.user.id, newUser);
-                await code.delete();
+                await code.deleteOne();
             }
 
             if (code.plan === "weekly") {
@@ -82,7 +82,7 @@ module.exports = {
 
                 const newUser = await user.save();
                 client.premium.set(interaction.user.id, newUser);
-                await code.delete();
+                await code.deleteOne();
             }
 
             if (code.plan === "monthly") {
@@ -94,7 +94,7 @@ module.exports = {
 
                 const newUser = await user.save();
                 client.premium.set(interaction.user.id, newUser);
-                await code.delete();
+                await code.deleteOne();
             }
 
             if (code.plan === "yearly") {
@@ -106,7 +106,7 @@ module.exports = {
 
                 const newUser = await user.save();
                 client.premium.set(interaction.user.id, newUser);
-                await code.delete();
+                await code.deleteOne();
             }
 
             if (code.plan === "lifetime") {
@@ -118,7 +118,7 @@ module.exports = {
 
                 const newUser = await user.save();
                 client.premium.set(interaction.user.id, newUser);
-                await code.delete();
+                await code.deleteOne();
             }
 
             const expires = moment(user.premium.expiresAt).format("dddd, MMMM Do YYYY HH:mm:ss");
