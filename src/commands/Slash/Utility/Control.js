@@ -51,7 +51,7 @@ module.exports = {
                 return interaction.editReply({ embeds: [embed] });
             }
 
-            control = "enable";
+            data.playerControl = "enable";
 
             await data.save();
 
@@ -67,7 +67,7 @@ module.exports = {
                 return interaction.editReply({ embeds: [embed] });
             }
 
-            control = "disable";
+            data.playerControl = "disable";
 
             await data.save();
 
