@@ -2,9 +2,9 @@
   "name": "lunox",
   "version": "2.3.0",
   "description": "Lunox by @adh319#9370",
-  "main": "sharder.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node ./src/sharder.js"
+    "start": "node ./src/index.js"
   },
   "dependencies": {
     "cpu-stat": "^2.0.1",

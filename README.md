@@ -24,7 +24,7 @@
 
 ## 📢 Features
 
--   ☑️ Used Poru v4 Lavalink Client
+-   ☑️ Used Poru v4 Lavalink Client **[Latest]**
 -   ☑️ Slash Commands
 -   ☑️ Prefix Commands **[Owner Only]**
 -   ☑️ Dev/Maintenance Mode System **[Owner Only]**
@@ -90,7 +90,7 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 ## 📝 Installation
 
 ```
-git clone --single-branch --branch master https://github.com/Enour-Dev/Lunox.git
+git clone https://github.com/adh319/Lunox.git
 cd Lunox
 npm install
 ```
@@ -103,6 +103,7 @@ too (you choose):
 ```
 #########################################
 ## SEE THE DETAILS ON "/SRC/SETTINGS/CONFIG.JS" FILE ##
+## DON'T LEAVE ANY OPTION BELOW EMPTY ##
 #########################################
 
 #BOT DETAILS
@@ -131,7 +132,7 @@ INVITE_URL = #Your bot invite link
 IMAGE_URL = #Any direct image link
 ```
 
-After installation & finished all needed configuration, you can start the bot by either using `npm start` or `node src/sharder.js`.
+After installation & finished all needed configuration, you can start the bot by either using `npm start` or `node src/index.js`.
 
 ## 🔐 Licensed
 

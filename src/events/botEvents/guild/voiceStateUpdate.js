@@ -21,7 +21,7 @@ module.exports.run = async (client, oldState, newState) => {
     if (!oldState.guild.members.cache.get(client.user.id).voice.channelId) return;
 
     // this will make the bot will not be disconneted/destroyed when lefted alone in voice channel if 247 activated.
-    const data = await Guild.findOne({ guild: newState.guild.id });
+    const data = await Guild.findOne({ Id: newState.guild.id });
     const reconnect = data.reconnect;
 
     if (reconnect.status === true) return;

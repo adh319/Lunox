@@ -17,7 +17,7 @@ module.exports.run = async (client, message) => {
     }
 
     //remove prefix for owner
-    if (client.owner.includes(message.author.id) && !client.owner.includes(client.user.id) && !message.content.startsWith(prefix)) {
+    if (client.owner === message.author.id && client.owner !== client.user.id && !message.content.startsWith(prefix)) {
         prefix = "";
     }
 
