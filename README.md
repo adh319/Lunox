@@ -65,7 +65,7 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 -   MongoDB v5.0.x or higher **[For Local Database]**
 -   Java 17 or higher
 -   Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
--   LavaLink v3.7.x **[Guide](https://github.com/lavalink-devs/Lavalink)** **Currently Lavalink v4.0.0 Not Supported
+-   LavaLink v3.7.x **[Guide](https://github.com/lavalink-devs/Lavalink)** **Currently Lavalink v4.0.0 Not Supported*
 
 ## 🎶 More Support Audio Platforms
 
