@@ -4,10 +4,10 @@ const User = require("../../../settings/models/User.js");
 
 module.exports.run = async (client, interaction) => {
     if (interaction.type === InteractionType.ApplicationCommand) {
+        await client.createInteraction(interaction);
+
         const command = client.slashCommands.get(interaction.commandName);
         const user = client.premium.get(interaction.user.id);
-
-        await client.createInteraction(interaction);
 
         if (!command) return;
 
