@@ -22,8 +22,6 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
 
         const data = await Guild.findOne({ Id: interaction.guild.id });
-        if (!data) await client.createInteraction(interaction);
-
         const reconnect = data.reconnect;
 
         if (reconnect.status === true) {
