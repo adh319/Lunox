@@ -3,7 +3,7 @@
 </p>
 
 <p align="center"> 
-  <a href="https://ko-fi.com/adh319" target="_blank"> <img src="https://ko-fi.com/img/githubbutton_sm.svg"/> </a>
+  <a href="https://ko-fi.com/lunoxbot" target="_blank"> <img src="https://ko-fi.com/img/githubbutton_sm.svg"/> </a>
 </p>
 
 <p align="center"> 
@@ -14,11 +14,18 @@
 [![Watchers][watchers-shield]][watchers-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-# 📒 Table of Contents
+### 📒 Table of Contents
 
-[Features](#-features) • [Screenshots](#%EF%B8%8F-screenshots) • [Requirements](#-requirements) • [Installation](#-installation) •
-[Configuration & Starting](#-configuration--starting) • [License](#-license) • [Credits](#-credits) • [Support Me](#-support-me) •
-[Special Thanks](#-special-thanks) • [Contributors](#-contributors)
+-   [Features](#-features) 
+-   [Screenshots](#%EF%B8%8F-screenshots)
+-   [Requirements](#-requirements)
+-   [Installation](#-installation)
+-   [Configuration & Starting](#-configuration--starting)
+-   [License](#-license)
+-   [Credits](#-credits)
+-   [Support Me](#-support-me)
+-   [Special Thanks](#-special-thanks)
+-   [Contributors](#-contributors)
 
 #
 
@@ -142,7 +149,7 @@ Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/L
 
 -   [Github Sponsor](https://github.com/sponsors/adh319)
 -   [PayPal](https://paypal.me/LunoxBot)
--   [Ko-Fi](https://ko-fi.com/adh319)
+-   [Ko-Fi](https://ko-fi.com/lunoxbot)
 
 Also make sure to give a **⭐** to this project if you like it 😉!
 
