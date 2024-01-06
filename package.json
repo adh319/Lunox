@@ -18,7 +18,7 @@
     "node-capitalize": "^1.0.0",
     "node-cron": "^3.0.3",
     "node-fetch": "^2.7.0",
-    "poru": "github:parasop/poru",
+    "poru": "^4.5.0",
     "poru-applemusic": "github:parasop/poru-applemusic",
     "poru-deezer": "github:parasop/poru-deezer",
     "poru-spotify": "github:parasop/poru-spotify",
