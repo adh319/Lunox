@@ -21,8 +21,7 @@
 -   [Requirements](#-requirements)
 -   [Installation](#-installation)
 -   [Configuration & Starting](#-configuration--starting)
--   [License](#-license)
--   [Credits](#-credits)
+-   [License](#-licensed)
 -   [Support Me](#-support-me)
 -   [Special Thanks](#-special-thanks)
 -   [Contributors](#-contributors)
@@ -31,7 +30,7 @@
 
 ## 📢 Features
 
--   ☑️ Used Poru v4 Lavalink Client **[Latest]**
+-   ☑️ Used **[Poru](https://www.npmjs.com/package/poru) `v4.5.0`** Lavalink Client [
 -   ☑️ Slash Commands
 -   ☑️ Prefix Commands **[Owner Only]**
 -   ☑️ Dev/Maintenance Mode System **[Owner Only]**
@@ -68,22 +67,22 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 
 ## 📌 Requirements
 
--   Node.js v18 or higher
--   MongoDB v5.0.x or higher **[For Local Database]**
--   Java 17 or higher
 -   Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
--   LavaLink v3.7.x **[Guide](https://github.com/lavalink-devs/Lavalink)** **Currently Lavalink v4.0.0 Not Supported*
+-   Node.js **`v18`** or higher
+-   MongoDB **`v5.0.x`** or higher **[For Local Database]**
+-   Java **`v17`** or higher **[For Lavalink]**
+-   LavaLink **`v3.7.x` [Guide](https://github.com/lavalink-devs/Lavalink) [*Currently Lavalink `v4.x.x` Not Supported*]**
 
 ## 🎶 More Support Audio Platforms
 
-**☑️ [LavaSrc](https://github.com/topi314/LavaSrc)**
+**☑️ [LavaSrc](https://github.com/topi314/LavaSrc) `v3.2.x`**
 
 -   Spotify [ spsearch ]
 -   Deezer [ dzsearch ]
 -   Apple Music [ amsearch ]
 -   Yandex Music [ ymsearch ]
 
-**☑️ [skybot-lavalink-plugin](https://github.com/DuncteBot/skybot-lavalink-plugin)**
+**☑️ [skybot-lavalink-plugin](https://github.com/DuncteBot/skybot-lavalink-plugin) `v1.5.x`**
 
 -   Mixcloud
 -   Ocremix
