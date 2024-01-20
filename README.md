@@ -14,6 +14,12 @@
 [![Watchers][watchers-shield]][watchers-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
+
+<p align="center">
+  <strong>This Branch Only Supports Poru v4.5.0 & Lavalink v3</strong>
+</p>
+
+
 ### 📒 Table of Contents
 
 -   [Features](#-features) 
@@ -47,8 +53,8 @@
 
 Here are some screenshots from my bot **(Screenshots may not look the same coz i had modify it on my bot)**.
 
-<p>
-<img src="https://cdn.discordapp.com/attachments/1014342568554811443/1093098769907732500/image.png"/>  <img src="https://cdn.discordapp.com/attachments/1014342568554811443/1093099116818612234/image.png"/>
+<p align="center">
+  <img src="https://cdn.discordapp.com/attachments/1014342568554811443/1093098769907732500/image.png"/> <img   src="https://cdn.discordapp.com/attachments/1014342568554811443/1093099116818612234/image.png"/>
 </p>
 
 ## 🎵 Supported Platforms
