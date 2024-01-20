@@ -30,7 +30,7 @@
 
 ## 📢 Features
 
--   ☑️ Used **[Poru](https://www.npmjs.com/package/poru) `v4.5.0`** Lavalink Client [
+-   ☑️ Used **[Poru](https://www.npmjs.com/package/poru/v/4.5.0) `v4.5.0`** Lavalink Client
 -   ☑️ Slash Commands
 -   ☑️ Prefix Commands **[Owner Only]**
 -   ☑️ Dev/Maintenance Mode System **[Owner Only]**
