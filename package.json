@@ -14,7 +14,7 @@
     "dotenv": "^16.3.1",
     "moment": "^2.29.4",
     "moment-duration-format": "^2.3.2",
-    "mongoose": "^7.6.7",
+    "mongoose": "^8.1.0",
     "node-capitalize": "^1.0.0",
     "node-cron": "^3.0.3",
     "node-fetch": "^2.7.0",
