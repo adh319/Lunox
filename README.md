@@ -88,7 +88,7 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 -   Apple Music [ amsearch ]
 -   Yandex Music [ ymsearch ]
 
-**☑️ [skybot-lavalink-plugin](https://github.com/DuncteBot/skybot-lavalink-plugin) `v1.5.x`**
+**☑️ [skybot-lavalink-plugin](https://github.com/DuncteBot/skybot-lavalink-plugin) `v1.6.x`**
 
 -   Mixcloud
 -   Ocremix
