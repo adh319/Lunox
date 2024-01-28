@@ -309,6 +309,23 @@ module.exports.run = async (client, player, track) => {
 
                 return message.reply({ embeds: [embed], ephemeral: true });
             }
+        } else if (message.customId === 'filters') {
+                if (!player) {
+        collector.stop();
+    } else {
+        await message.deferUpdate()
+        const selectedFilter = message.values[0];
+
+        if (selectedFilter) {
+            if (selectedFilter === "clear") {
+    await player.node.rest.updatePlayer({
+            guildId: player.guildId,
+            data: { filters: {} },
+        });
+
+        await player.setVolume(100);
+     await message.followUp({ content: `☑️ Cleared All The Filters`, ephemeral: true });
+}
         }
     });
 };
