@@ -44,7 +44,18 @@ module.exports.run = async (client, player, track) => {
     const bStop = new ButtonBuilder().setCustomId("stop").setEmoji(emoji.stop).setStyle(ButtonStyle.Danger);
     const bVUp = new ButtonBuilder().setCustomId("volup").setEmoji(emoji.volup).setStyle(ButtonStyle.Secondary);
     const bInfo = new ButtonBuilder().setCustomId("info").setEmoji(emoji.info).setStyle(ButtonStyle.Secondary);
-
+    const select = new StringSelectMenuBuilder()
+    .setCustomId("filters")
+    .setPlaceholder("Click Here To Apply Filters!")
+    .addOptions(
+        new StringSelectMenuOptionBuilder().setLabel("Clear Filters").setDescription("Click To Reset All Filter.").setValue("clear").setEmoji('🗑️'),
+        new StringSelectMenuOptionBuilder().setLabel("8D Filter").setDescription("Click To Apply 8D Filter.").setValue("8d").setEmoji('🎶'),
+        new StringSelectMenuOptionBuilder().setLabel("Earrape Filter").setDescription("Click To Apply Earrape Filter.").setValue("earrape").setEmoji('🎶'),
+        new StringSelectMenuOptionBuilder().setLabel("Nightcore Filter").setDescription("Click To Apply Nightcore Filter.").setValue("nightcore").setEmoji('🎶'),
+        new StringSelectMenuOptionBuilder().setLabel("Slowmode Filter").setDescription("Click To Apply Slowmode Filter.").setValue("slowmode").setEmoji('🎶'),
+        new StringSelectMenuOptionBuilder().setLabel("Vaporwave Filter").setDescription("Click To Apply Vaporwave Filter.").setValue("vaporwave").setEmoji('🎶')
+        };
+    const select = new ActionRowBuilder().addComponents(select);
     const button = new ActionRowBuilder().addComponents(bReplay, bPrev, bPause, bSkip, bLoop);
     const button2 = new ActionRowBuilder().addComponents(bShuffle, bVDown, bStop, bVUp, bInfo);
 
