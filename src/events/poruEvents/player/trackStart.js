@@ -44,7 +44,18 @@ module.exports.run = async (client, player, track) => {
     const bStop = new ButtonBuilder().setCustomId("stop").setEmoji(emoji.stop).setStyle(ButtonStyle.Danger);
     const bVUp = new ButtonBuilder().setCustomId("volup").setEmoji(emoji.volup).setStyle(ButtonStyle.Secondary);
     const bInfo = new ButtonBuilder().setCustomId("info").setEmoji(emoji.info).setStyle(ButtonStyle.Secondary);
-
+    const filters = new StringSelectMenuBuilder()
+    .setCustomId("filters")
+    .setPlaceholder("Click Here To Apply Filters!")
+    .addOptions(
+        new StringSelectMenuOptionBuilder().setLabel("Clear Filters").setDescription("Click To Reset All Filter.").setValue("clear").setEmoji('🗑️'),
+        new StringSelectMenuOptionBuilder().setLabel("8D Filter").setDescription("Click To Apply 8D Filter.").setValue("8d").setEmoji('🎶'),
+        new StringSelectMenuOptionBuilder().setLabel("Earrape Filter").setDescription("Click To Apply Earrape Filter.").setValue("earrape").setEmoji('🎶'),
+        new StringSelectMenuOptionBuilder().setLabel("Nightcore Filter").setDescription("Click To Apply Nightcore Filter.").setValue("nightcore").setEmoji('🎶'),
+        new StringSelectMenuOptionBuilder().setLabel("Slowmode Filter").setDescription("Click To Apply Slowmode Filter.").setValue("slowmode").setEmoji('🎶'),
+        new StringSelectMenuOptionBuilder().setLabel("Vaporwave Filter").setDescription("Click To Apply Vaporwave Filter.").setValue("vaporwave").setEmoji('🎶')
+        };
+    const select = new ActionRowBuilder().addComponents(filters);
     const button = new ActionRowBuilder().addComponents(bReplay, bPrev, bPause, bSkip, bLoop);
     const button2 = new ActionRowBuilder().addComponents(bShuffle, bVDown, bStop, bVUp, bInfo);
 
@@ -52,13 +63,13 @@ module.exports.run = async (client, player, track) => {
     if (Control === "disable") {
         return client.channels.cache
             .get(player.textChannel)
-            .send({ embeds: [Started] })
+            .send({ embeds: [Started], components: [select] })
             .then((x) => (player.message = x));
     }
 
     const nplaying = await client.channels.cache
         .get(player.textChannel)
-        .send({ embeds: [Started], components: [button, button2] })
+        .send({ embeds: [Started], components: [select, button, button2] })
         .then((x) => (player.message = x));
 
     const filter = (message) => {
@@ -90,7 +101,7 @@ module.exports.run = async (client, player, track) => {
 
                 bLoop.setEmoji(emoji.loop.track).setStyle(ButtonStyle.Primary);
 
-                await nplaying.edit({ embeds: [Started], components: [button, button2] });
+                await nplaying.edit({ embeds: [Started], components: [select, button, button2] });
             } else if (player.loop === "TRACK") {
                 message.deferUpdate();
 
@@ -102,7 +113,7 @@ module.exports.run = async (client, player, track) => {
 
                 bLoop.setEmoji(emoji.loop.queue).setStyle(ButtonStyle.Success);
 
-                await nplaying.edit({ embeds: [Started], components: [button, button2] });
+                await nplaying.edit({ embeds: [Started], components: [select, button, button2] });
             } else if (player.loop === "QUEUE") {
                 message.deferUpdate();
 
@@ -114,7 +125,7 @@ module.exports.run = async (client, player, track) => {
 
                 bLoop.setEmoji(emoji.loop.none).setStyle(ButtonStyle.Secondary);
 
-                await nplaying.edit({ embeds: [Started], components: [button, button2] });
+                await nplaying.edit({ embeds: [Started], components: [select, button, button2] });
             }
         } else if (message.customId === "replay") {
             if (!player) {
@@ -151,7 +162,7 @@ module.exports.run = async (client, player, track) => {
 
                 bPause.setEmoji(emoji.pause).setStyle(ButtonStyle.Secondary);
 
-                await nplaying.edit({ embeds: [Started], components: [button, button2] });
+                await nplaying.edit({ embeds: [Started], components: [select, button, button2] });
             } else {
                 message.deferUpdate();
 
@@ -164,7 +175,7 @@ module.exports.run = async (client, player, track) => {
 
                 bPause.setEmoji(emoji.resume).setStyle(ButtonStyle.Primary);
 
-                await nplaying.edit({ embeds: [Started], components: [button, button2] });
+                await nplaying.edit({ embeds: [Started], components: [select, button, button2] });
             }
         } else if (message.customId === "skip") {
             if (!player) {
@@ -221,7 +232,7 @@ module.exports.run = async (client, player, track) => {
                     text: `Queue Left: ${player.queue.length} • Loop Mode: ${capital(player.loop)} • Volume: ${player.volume}%`,
                 });
 
-                await nplaying.edit({ embeds: [Started], components: [button, button2] });
+                await nplaying.edit({ embeds: [Started], components: [select, button, button2] });
             }
         } else if (message.customId === "volup") {
             if (!player) {
@@ -241,7 +252,7 @@ module.exports.run = async (client, player, track) => {
                     text: `Queue Left: ${player.queue.length} • Loop Mode: ${capital(player.loop)} • Volume: ${player.volume}%`,
                 });
 
-                await nplaying.edit({ embeds: [Started], components: [button, button2] });
+                await nplaying.edit({ embeds: [Started], components: [select, button, button2] });
             }
         } else if (message.customId === "info") {
             if (!player) {
@@ -298,6 +309,37 @@ module.exports.run = async (client, player, track) => {
 
                 return message.reply({ embeds: [embed], ephemeral: true });
             }
+        } else if (message.customId === "filters") {
+                if (!player) {
+        collector.stop();
+    } else {
+        await message.deferUpdate()
+        const selectedFilter = message.values[0];
+
+        if (selectedFilter) {
+            if (selectedFilter === "clear") {
+        await player.node.rest.updatePlayer({
+            guildId: player.guildId,
+            data: { filters: {} },
+        });
+        await player.setVolume(100);
+        await message.followUp({ content: "☑️ Cleared All The Filters", ephemeral: true });
+} else if (selectedFilter === "8d") {
+    await player.filters.set8D(true);
+    await message.followUp({ content: "☑️ 8D Filter Activated", ephemeral: true });
+} else if (selectedFilter === "earrape") {
+    await player.setVolume(500);
+    await message.followUp({ content: "☑️ Earrape Filter Activated", ephemeral: true });
+} else if (selectedFilter === "nightcore") {
+    await player.filters.setNightcore(true);
+    await message.followUp({ content: "☑️ Nightcore Filter Activated", ephemeral: true });
+} else if (selectedFilter === "slowmode") {
+    await player.filters.setSlowmode(true);
+    await message.followUp({ content: "☑️ Slowmode Filter Activated", ephemeral: true });
+} else if (selectedFilter === "vaporwave") {
+    await player.filters.setVaporwave(true);
+    await message.followUp({ content: "☑️ Vaporwave Filter Activated", ephemeral: true });
+};
         }
     });
 };
