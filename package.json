@@ -1,7 +1,7 @@
 {
   "name": "lunox",
-  "version": "2.3.0",
-  "description": "Lunox by @adh319#9370",
+  "version": "2.4.0",
+  "description": "Lunox by @adh319",
   "main": "src/index.js",
   "scripts": {
     "start": "node ./src/index.js"
@@ -11,10 +11,10 @@
     "delay": "^5.0.0",
     "discord-hybrid-sharding": "^2.1.4",
     "discord.js": "^14.14.1",
-    "dotenv": "^16.3.1",
-    "moment": "^2.29.4",
+    "dotenv": "^16.4.1",
+    "moment": "^2.30.1",
     "moment-duration-format": "^2.3.2",
-    "mongoose": "^7.6.7",
+    "mongoose": "^8.1.1",
     "node-capitalize": "^1.0.0",
     "node-cron": "^3.0.3",
     "node-fetch": "^2.7.0",
