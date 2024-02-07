@@ -121,7 +121,7 @@ too (you choose):
 #BOT DETAILS
 TOKEN = #Your bot token
 PREFIX = #Your bot prefix
-EMBED_COLOR = #Your bot embed color
+EMBED_COLOR = #Your bot embed color without "#"
 OWNER_ID = #Your discord id
 GUILD_LOGS = #Your guild channel id for logs
 LEAVE_TIMEOUT = 60000 #Time in ms to leave the voice channel after the last user leaves
