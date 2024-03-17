@@ -77,7 +77,7 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 -   Node.js **`v18`** or higher
 -   MongoDB **`v5.0.x`** or higher **[For Local Database]**
 -   Java **`v17`** or higher **[For Lavalink]**
--   LavaLink **`v3.7.x` [Guide](https://github.com/lavalink-devs/Lavalink) [*Currently Lavalink `v4.x.x` Not Supported*]**
+-   LavaLink **`v4.x.x` [Guide](https://github.com/lavalink-devs/Lavalink) [*Lavalink `v3.x.x` Not Supported*]**
 
 ## 🎶 More Support Audio Platforms
 
