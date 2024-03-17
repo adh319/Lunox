@@ -61,7 +61,6 @@ module.exports = {
 
         if (loadType === "playlist") {
             for (const track of tracks) {
-                track.info.requester = interaction.user;
                 player.queue.add(track);
             }
 
