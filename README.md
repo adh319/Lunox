@@ -16,7 +16,7 @@
 
 
 <p align="center">
-  <strong>This Branch Only Supports Poru v4.5.0 & Lavalink v3</strong>
+  <strong>This Branch Only Supports Poru v5.1.0 & Lavalink v4</strong>
 </p>
 
 
@@ -36,7 +36,7 @@
 
 ## 📢 Features
 
--   ☑️ Used **[Poru](https://www.npmjs.com/package/poru/v/4.5.0) `v4.5.0`** Lavalink Client
+-   ☑️ Used **[Poru](https://www.npmjs.com/package/poru/v/5.1.0) `v5.1.0`** Lavalink Client
 -   ☑️ Slash Commands
 -   ☑️ Prefix Commands **[Owner Only]**
 -   ☑️ Dev/Maintenance Mode System **[Owner Only]**
