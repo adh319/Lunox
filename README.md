@@ -16,7 +16,7 @@
 
 
 <p align="center">
-  <strong>This Branch Only Supports Poru v4.5.0 & Lavalink v3</strong>
+  <strong>This Branch Only Supports Poru v5.1.0 & Lavalink v4</strong>
 </p>
 
 
@@ -36,7 +36,7 @@
 
 ## 📢 Features
 
--   ☑️ Used **[Poru](https://www.npmjs.com/package/poru/v/4.5.0) `v4.5.0`** Lavalink Client
+-   ☑️ Used **[Poru](https://www.npmjs.com/package/poru/v/5.1.0) `v5.1.0`** Lavalink Client
 -   ☑️ Slash Commands
 -   ☑️ Prefix Commands **[Owner Only]**
 -   ☑️ Dev/Maintenance Mode System **[Owner Only]**
@@ -77,7 +77,7 @@ Here are some screenshots from my bot **(Screenshots may not look the same coz i
 -   Node.js **`v18`** or higher
 -   MongoDB **`v5.0.x`** or higher **[For Local Database]**
 -   Java **`v17`** or higher **[For Lavalink]**
--   LavaLink **`v3.7.x` [Guide](https://github.com/lavalink-devs/Lavalink) [*Currently Lavalink `v4.x.x` Not Supported*]**
+-   LavaLink **`v4.x.x` [Guide](https://github.com/lavalink-devs/Lavalink) [*Lavalink `v3.x.x` Not Supported*]**
 
 ## 🎶 More Support Audio Platforms
 
