@@ -13,7 +13,7 @@ module.exports.run = async (client, player) => {
     const data = await Guild.findOne({ Id: player.guildId });
     const reconnect = data.reconnect;
 
-    await player.destroy();
+    await player.stop();
 
     if (reconnect.status === true) return;
     //

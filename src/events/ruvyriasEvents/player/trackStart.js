@@ -120,7 +120,7 @@ module.exports.run = async (client, player, track) => {
             } else if (player.loop === "NONE") {
                 message.deferUpdate();
 
-                player.setLoop("TRACK");
+                player.setLoop("track");
 
                 Started.setFooter({
                     text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length} • Volume: ${player.volume}%`,
@@ -129,7 +129,7 @@ module.exports.run = async (client, player, track) => {
                 bLoop.setEmoji(emoji.loop.track).setStyle(ButtonStyle.Primary);
 
                 await nplaying.edit({ embeds: [Started], components: [menu, button, button2] });
-            } else if (player.loop === "TRACK") {
+            } else if (player.loop === "track") {
                 message.deferUpdate();
 
                 player.setLoop("QUEUE");
@@ -172,7 +172,7 @@ module.exports.run = async (client, player, track) => {
             } else {
                 message.deferUpdate();
 
-                await player.destroy();
+                await player.stop();
             }
         } else if (message.customId === "pause") {
             if (!player) {
@@ -214,7 +214,7 @@ module.exports.run = async (client, player, track) => {
             } else {
                 message.deferUpdate();
 
-                await player.stop();
+                await player.skip();
             }
         } else if (message.customId === "prev") {
             if (!player) {
@@ -227,7 +227,7 @@ module.exports.run = async (client, player, track) => {
                 message.deferUpdate();
 
                 await player.queue.unshift(player.previousTrack);
-                await player.stop();
+                await player.skip();
             }
         } else if (message.customId === "shuffle") {
             if (!player) {

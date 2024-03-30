@@ -7,7 +7,7 @@ module.exports = {
     aliases: ["node"],
     owner: true,
     run: async (client, message) => {
-        const nodes = client.poru.leastUsedNodes;
+        const nodes = client.ruvyrias.leastUsedNodes;
 
         const embed = new EmbedBuilder()
             .setAuthor({

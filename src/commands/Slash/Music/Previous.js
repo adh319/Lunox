@@ -39,7 +39,7 @@ module.exports = {
         }
 
         await player.queue.unshift(player.previousTrack);
-        await player.stop();
+        await player.skip();
 
         const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`⏮️\` | Song has been: \`Previoused\``);
 

@@ -78,7 +78,7 @@ module.exports.run = async (client, interaction) => {
         }
 
         // Check Player & Current Playing
-        let player = client.poru.players.get(interaction.guild.id);
+        let player = client.ruvyrias.players.get(interaction.guild.id);
         //Player check
         if (command.settings.player && !player) {
             warning.setDescription(`\`❌\` | There isn't player exists for this server.`);

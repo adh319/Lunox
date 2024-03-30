@@ -53,14 +53,14 @@ module.exports = {
         const input = interaction.options.getString("mode");
 
         if (input === "current") {
-            if (player.loop === "TRACK") {
+            if (player.loop === "track") {
                 await player.setLoop("NONE");
 
                 const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`🔂\` | Loop mode has been: \`Disabled\``);
 
                 return interaction.editReply({ embeds: [embed] });
             } else {
-                await player.setLoop("TRACK");
+                await player.setLoop("track");
 
                 const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`🔂\` | Loop mode has been set to: \`Current\``);
 

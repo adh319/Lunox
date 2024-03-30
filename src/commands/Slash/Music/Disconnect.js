@@ -20,7 +20,7 @@ module.exports = {
     run: async (client, interaction, player) => {
         await interaction.deferReply({ ephemeral: true });
 
-        await player.destroy();
+        await player.stop()
 
         const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`👋\` | Player has been: \`Disconnected\``);
 

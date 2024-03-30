@@ -38,7 +38,7 @@ module.exports = {
         }
 
         if (value === 1) {
-            await player.stop();
+            await player.skip();
 
             const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`⏭️\` | Song skipped to position: \`${value}\``);
 
@@ -46,7 +46,7 @@ module.exports = {
         }
 
         await player.queue.splice(0, value - 1);
-        await player.stop();
+        await player.skip();
 
         const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`⏭️\` | Song skipped to position: \`${value}\``);
 

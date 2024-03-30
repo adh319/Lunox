@@ -37,7 +37,7 @@ module.exports = {
 
             return interaction.editReply({ embeds: [embed] });
         } else {
-            await player.stop();
+            await player.skip();
 
             const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`⏭️\` | Song has been: \`Skipped\``);
 

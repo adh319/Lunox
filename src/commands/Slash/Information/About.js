@@ -22,7 +22,7 @@ module.exports = {
     run: async (client, interaction) => {
         await interaction.deferReply({ ephemeral: false });
 
-        const playingPlayers = client.poru.leastUsedNodes[0].stats.players;
+        const playingPlayers = client.ruvyrias.leastUsedNodes[0].stats.players;
         let uptime = await client.uptime;
 
         let scount = client.guilds.cache.size;

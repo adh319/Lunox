@@ -49,7 +49,7 @@ module.exports = {
 
         await interaction.deferReply({ ephemeral: false });
 
-        const res = await client.poru.resolve({ query: query, requester: interaction.user });
+        const res = await client.ruvyrias.resolve({ query: query, requester: interaction.user });
         const { tracks } = res;
 
         const results = tracks.slice(0, 10);
@@ -114,7 +114,7 @@ module.exports = {
                     menu.deferUpdate();
 
                     if (!player) {
-                        player = await client.poru.createConnection({
+                        player = await client.ruvyrias.createConnection({
                             guildId: interaction.guild.id,
                             voiceChannel: interaction.member.voice.channel.id,
                             textChannel: interaction.channel.id,

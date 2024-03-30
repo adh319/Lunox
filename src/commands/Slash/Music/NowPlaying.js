@@ -1,7 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
 const formatDuration = require("../../../structures/FormatDuration.js");
 const Guild = require("../../../settings/models/Guild.js");
-const capital = require("node-capitalize");
 
 module.exports = {
     name: "nowplaying",

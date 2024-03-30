@@ -19,7 +19,7 @@ module.exports.run = async (client, node) => {
 
             if (!channels || !voices || reconnect.status === false) return;
 
-            await client.poru.createConnection({
+            await client.ruvyrias.createConnection({
                 guildId: data.Id,
                 voiceChannel: reconnect.voice,
                 textChannel: reconnect.text,

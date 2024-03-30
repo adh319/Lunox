@@ -39,17 +39,18 @@ module.exports = {
             return interaction.editReply({ embeds: [embed] });
         }
 
-        const res = await client.poru.resolve({ query: song, requester: interaction.user });
+        const res = await client.ruvyrias.resolve({ query: song, requester: interaction.user });
         const { loadType, tracks, playlistInfo } = res;
+        console.log(res)
 
-        if (loadType === "LOAD_FAILED" || loadType === "NO_MATCHES") {
+        if (loadType === "error" || loadType === "empty") {
             embed.setDescription(`\`❌\` | Song was no found or Failed to load song!`);
 
             return interaction.editReply({ embeds: [embed] });
         }
 
         if (!player) {
-            player = await client.poru.createConnection({
+            player = await client.ruvyrias.createConnection({
                 guildId: interaction.guild.id,
                 voiceChannel: interaction.member.voice.channel.id,
                 textChannel: interaction.channel.id,
@@ -59,7 +60,7 @@ module.exports = {
 
         if (player.state !== "CONNECTED") player.connect();
 
-        if (loadType === "PLAYLIST_LOADED") {
+        if (loadType === "playlist") {
             for (const track of tracks) {
                 player.queue.add(track);
             }
@@ -67,7 +68,7 @@ module.exports = {
             embed.setDescription(`\`☑️\` | **[${playlistInfo.name}](${song})** • \`${tracks.length}\` tracks • ${interaction.user}`);
 
             if (!player.isPlaying && !player.isPaused) player.play();
-        } else if (loadType === "SEARCH_RESULT" || loadType === "TRACK_LOADED") {
+        } else if (loadType === "search" || loadType === "track") {
             const track = tracks[0];
 
             player.queue.add(track);

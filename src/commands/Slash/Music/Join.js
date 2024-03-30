@@ -27,7 +27,7 @@ module.exports = {
         }
 
         if (!player) {
-            player = await client.poru.createConnection({
+            player = await client.ruvyrias.createConnection({
                 guildId: interaction.guild.id,
                 voiceChannel: interaction.member.voice.channel.id,
                 textChannel: interaction.channel.id,

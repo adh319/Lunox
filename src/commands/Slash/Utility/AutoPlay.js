@@ -44,7 +44,7 @@ module.exports = {
             if (ytUri) {
                 const identifier = currentsong.identifier;
                 const search = `https://music.youtube.com/watch?v=${identifier}&list=RD${identifier}`;
-                const res = await client.poru.resolve({ query: search, source: "ytmsearch", requester: interaction.user });
+                const res = await client.ruvyrias.resolve({ query: search, source: "ytmsearch", requester: interaction.user });
 
                 await player.queue.add(res.tracks[Math.floor(Math.random() * res.tracks.length) ?? 1]);
 

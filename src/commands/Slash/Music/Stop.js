@@ -32,7 +32,7 @@ module.exports = {
             return interaction.editReply({ embeds: [ctrl] });
         }
 
-        await player.destroy();
+        await player.stop()
 
         const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`👋\` | Player has been: \`Disconnected\``);
 

@@ -3,10 +3,10 @@ const { supportUrl, leaveTimeout } = require("../../../settings/config.js");
 const Guild = require("../../../settings/models/Guild.js");
 
 module.exports.run = async (client, oldState, newState) => {
-    const player = client.poru.players.get(newState.guild.id);
+    const player = client.ruvyrias.players.get(newState.guild.id);
     if (!player) return;
 
-    if (!newState.guild.members.cache.get(client.user.id).voice.channelId) player.destroy();
+    if (!newState.guild.members.cache.get(client.user.id).voice.channelId) player.stop()
 
     if (newState.channelId && newState.channel.type == "GUILD_STAGE_VOICE" && newState.guild.members.me.voice.suppress) {
         if (
@@ -40,9 +40,9 @@ module.exports.run = async (client, oldState, newState) => {
             const vcMembers = oldState.guild.members.me.voice.channel?.members.size;
 
             if (!vcMembers || vcMembers === 1) {
-                const newPlayer = client.poru.players.get(newState.guild.id);
+                const newPlayer = client.ruvyrias.players.get(newState.guild.id);
 
-                newPlayer ? await player.destroy() : oldState.guild.members.me.voice.channel.leave();
+                newPlayer ? await player.stop() : oldState.guild.members.me.voice.channel.leave();
 
                 const row = new ActionRowBuilder().addComponents(
                     new ButtonBuilder().setLabel("Support").setURL(supportUrl).setStyle(ButtonStyle.Link),

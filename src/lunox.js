@@ -1,5 +1,5 @@
 const { Client, Collection, GatewayIntentBits, Partials } = require("discord.js");
-const { Poru } = require("poru");
+const { Ruvyrias } = require("ruvyrias");
 const { ClusterClient, getInfo } = require("discord-hybrid-sharding");
 
 class MainClient extends Client {
@@ -34,7 +34,7 @@ class MainClient extends Client {
         this.premium = new Collection();
         this.dev = new Set();
 
-        this.poru = new Poru(this, this.config.nodes, this.config.poruOptions, {
+        this.ruvyrias = new Ruvyrias(this, this.config.nodes, this.config.RuvyriasOptions, {
             send: (guildId, payload) => {
                 const guild = this.guilds.cache.get(guildId);
                 if (guild) guild.shard.send(payload);
@@ -43,7 +43,7 @@ class MainClient extends Client {
 
         if (!this.token) this.token = this.config.token;
 
-        ["AntiCrash", "Database", "Events", "Commands", "Slash", "Poru"].forEach((handler) => {
+        ["AntiCrash", "Database", "Events", "Commands", "Slash", "Ruvyrias"].forEach((handler) => {
             require(`./handlers/${handler}`)(this);
         });
 

@@ -11,13 +11,13 @@ module.exports.run = async (client, player, track) => {
     if (player.message) await player.message.delete().catch((e) => {});
 
     if (player.queue.length > 0 || player.queue.size !== 0) {
-        await player.stop();
+        await player.skip();
 
         const embed = new EmbedBuilder().setDescription(`\`❌\` | Failed to load the track: \`Auto-Skip\``).setColor(client.color);
 
         return channel.send({ embeds: [embed] });
     } else {
-        await player.destroy();
+        await player.stop();
 
         const embed = new EmbedBuilder().setDescription(`\`❌\` | Failed to load the track: \`Auto-Stop\``).setColor(client.color);
 

@@ -13,5 +13,5 @@ updates:
       - dependency-name: "node-fetch"
       - dependency-name: "mongoose"
         versions: ["7.x.x"]
-      - dependency-name: "poru"
+      - dependency-name: "ruvyrias"
       - dependency-name: "pretty-ms"
