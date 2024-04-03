@@ -89,7 +89,7 @@ module.exports = {
                                     directory.slice(0, 1).toUpperCase() + directory.slice(1)
                                 }:**\n${client.slashCommands
                                     .filter((c) => c.category === directory)
-                                    .map((c) => `\`${c.name}\` : *${c.description}*`)
+                                    .map((c) => `\`/${c.name}\` : *${c.description}*`)
                                     .join("\n")}`,
                             )
                             .setColor(client.color)
