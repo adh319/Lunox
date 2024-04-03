@@ -41,7 +41,6 @@ module.exports = {
 
         const res = await client.ruvyrias.resolve({ query: song, requester: interaction.user });
         const { loadType, tracks, playlistInfo } = res;
-        console.log(res)
 
         if (loadType === "error" || loadType === "empty") {
             embed.setDescription(`\`❌\` | Song was no found or Failed to load song!`);
