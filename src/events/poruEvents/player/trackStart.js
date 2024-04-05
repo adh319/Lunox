@@ -29,7 +29,7 @@ module.exports.run = async (client, player, track) => {
             name: `Now Playing`,
             iconURL: "https://cdn.discordapp.com/attachments/1014342568554811443/1025740239236517908/music-disc.gif",
         })
-        .setThumbnail(track.info.image)
+        .setThumbnail(track.currentTrack.info.artworkUrl)
         .setDescription(`**[${trackTitle}](${track.info.uri})**`)
         .addFields([
             { name: `Author:`, value: `${trackAuthor}`, inline: true },
