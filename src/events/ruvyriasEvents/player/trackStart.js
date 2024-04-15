@@ -120,7 +120,7 @@ module.exports.run = async (client, player, track) => {
             } else if (player.loop === "NONE") {
                 message.deferUpdate();
 
-                player.setLoop("track");
+                player.setLoop("TRACK");
 
                 Started.setFooter({
                     text: `Loop Mode: ${capital(player.loop)} • Queue Left: ${player.queue.length} • Volume: ${player.volume}%`,
