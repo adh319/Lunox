@@ -18,7 +18,7 @@
     "node-cron": "^3.0.3",
     "node-fetch": "^2.7.0",
     "pretty-ms": "^7.0.1",
-    "ruvyrias": "^1.3.0",
+    "ruvyrias": "^1.3.6",
     "voucher-code-generator": "^1.3.0"
   },
   "author": "adh319",
