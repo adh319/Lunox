@@ -33,11 +33,11 @@ module.exports = {
     },
     nodes: [
         {
-            name: " ", // lavalink node name (anything you want)
-            host: " ", // lavalink host
-            port: parseInt(" "), //lavalink port
-            password: " ", //lavalink pass/auth
-            secure: parseBoolean("false"), //lavalink secure "true/false"
+            name: process.env.NODE_NAME || " ", // lavalink node name (anything you want)
+            host: process.env.NODE_HOST || " ", // lavalink host
+            port: parseInt(process.env.NODE_PORT || "2333"), //lavalink port
+            password: process.env.NODE_PASSWORD || " ", //lavalink pass/auth
+            secure: parseBoolean(process.env.NODE_SECURE || "false"), //lavalink secure "true/false"
         },
     ],
 
