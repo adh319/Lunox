@@ -53,7 +53,7 @@ module.exports = {
         const input = interaction.options.getString("mode");
 
         if (input === "current") {
-            if (player.loop === "track") {
+            if (player.loop === "TRACK") {
                 await player.setLoop("NONE");
 
                 const embed = new EmbedBuilder().setColor(client.color).setDescription(`\`🔂\` | Loop mode has been: \`Disabled\``);
