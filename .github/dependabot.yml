@@ -11,7 +11,3 @@ updates:
       interval: "weekly"
     ignore:
       - dependency-name: "node-fetch"
-      - dependency-name: "mongoose"
-        versions: ["7.x.x"]
-      - dependency-name: "poru"
-      - dependency-name: "pretty-ms"

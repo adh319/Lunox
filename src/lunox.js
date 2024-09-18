@@ -1,6 +1,6 @@
 const { Client, Collection, GatewayIntentBits, Partials } = require("discord.js");
-const { Poru } = require("poru");
 const { ClusterClient, getInfo } = require("discord-hybrid-sharding");
+const { Rainlink, Library } = require("rainlink");
 
 class MainClient extends Client {
     constructor() {
@@ -34,16 +34,16 @@ class MainClient extends Client {
         this.premium = new Collection();
         this.dev = new Set();
 
-        this.poru = new Poru(this, this.config.nodes, this.config.poruOptions, {
-            send: (guildId, payload) => {
-                const guild = this.guilds.cache.get(guildId);
-                if (guild) guild.shard.send(payload);
-            },
+        this.manager = new Rainlink({
+            nodes: this.config.rainlinkNodes,
+            library: new Library.DiscordJS(this),
+            plugins: this.config.rainlinkPlugins,
+            options: this.config.rainlinkOptions,
         });
 
         if (!this.token) this.token = this.config.token;
 
-        ["AntiCrash", "Database", "Events", "Commands", "Slash", "Poru"].forEach((handler) => {
+        ["antiCrash", "database", "events", "commands", "rainlink"].forEach((handler) => {
             require(`./handlers/${handler}`)(this);
         });
 
