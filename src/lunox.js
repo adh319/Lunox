@@ -25,14 +25,7 @@ class MainClient extends Client {
 
         this.config = require("./settings/config.js");
         this.emoji = require("./settings/emoji.js");
-        this.color = this.config.color;
-        this.prefix = this.config.prefix;
-        this.owner = this.config.owner;
-        this.commands = new Collection();
-        this.aliases = new Collection();
-        this.slashCommands = new Collection();
-        this.premium = new Collection();
-        this.dev = new Set();
+        this.slash = new Collection();
 
         this.manager = new Rainlink({
             nodes: this.config.rainlinkNodes,

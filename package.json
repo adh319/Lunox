@@ -17,11 +17,10 @@
     "mongoose": "^8.6.3",
     "node-cron": "^3.0.3",
     "pretty-ms": "^9.1.0",
-    "rainlink": "^1.1.0",
+    "rainlink": "^1.2.2",
     "rainlink-apple": "^1.0.5",
     "rainlink-deezer": "^1.0.8",
-    "rainlink-spotify": "^1.0.5",
-    "voucher-code-generator": "^1.3.0"
+    "rainlink-spotify": "^1.0.5"
   },
   "devDependencies": {
     "@types/node-cron": "^3.0.11",
