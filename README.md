@@ -38,7 +38,7 @@
 -   Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
 -   Node.js **`v18`** or higher
 -   MongoDB **`v5.x`** or higher **[For local database]**
--   LavaLink **[Guide](https://lavalink.dev/)**
+-   Lavalink **[Guide](https://lavalink.dev/)**
 -   Java **`v18`** or higher **[For Lavalink]**
 
 ## 🚀 Configuration & Installation
