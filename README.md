@@ -3,6 +3,10 @@
 </p>
 
 <p align="center"> 
+  A simple yet powerful Discord music bot using the Lavalink client and Discord.js v14.
+</p>
+
+<p align="center"> 
   <a href="https://ko-fi.com/enourdev" target="_blank"> <img src="https://ko-fi.com/img/githubbutton_sm.svg"/> </a>
 </p>
 
@@ -12,18 +16,18 @@
 
 [![Version][version-shield]](version-url) [![MIT License][license-shield]][license-url] [![Contributors][contributors-shield]][contributors-url] [![Stargazers][stars-shield]][stars-url] [![Forks][forks-shield]][forks-url] [![Watchers][watchers-shield]][watchers-url] [![Issues][issues-shield]][issues-url]
 
-## 📢 Main Features
+### `📢` Main Features
 
 -   ☑️ Used **[Rainlink](https://www.npmjs.com/package/rainlink)** Lavalink client
 -   ☑️ Support Lavalink v3 and v4
 -   ☑️ Slash sommands
--   ☑️ Prefix commands **[Dev-onlycommands]**
+-   ☑️ Prefix commands **[Dev-only commands]**
 -   ☑️ Clean UI
 -   ☑️ Better performance
 -   ☑️ Easy to use
 -   ☑️ And more...!
 
-## 🎵 Supported Platforms
+### `🎵` Supported Platforms
 
 -   ☑️ Youtube
 -   ☑️ Youtube Music
@@ -33,15 +37,15 @@
 -   ☑️ SoundCloud
 -   ☑️ And more...!
 
-## 📌 Requirements
+### `📌` Requirements
 
--   Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
+-   Discord Bot Token **[[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)]**
 -   Node.js **`v18`** or higher
 -   MongoDB **`v5.x`** or higher **[For local database]**
--   Lavalink **[Guide](https://lavalink.dev/)**
+-   Lavalink **[[Guide](https://lavalink.dev/)]**
 -   Java **`v18`** or higher **[For Lavalink]**
 
-## 🚀 Configuration & Installation
+### `🚀` Configuration & Installation
 
 `1.` Clone the repository.
 
@@ -96,24 +100,19 @@ rainlinkNodes: [
 ],
 ```
 
-`5.` Go to `./src/settings/emoji.js`, open the file and fill out the emoji variables. `4.` Start the bot by running.
+`5.` Go to `./src/settings/emoji.js`, open the file and fill out the emoji variables.
+
+`6.` Start the bot by running.
 
 ```
 npm start
 ```
 
-## 🙏🏻 Special Thanks
-
--   [Parasop](https://github.com/parasop)
--   [Adivise](https://github.com/Adivise)
--   [RainyXeon](https://github.com/RainyXeon)
--   [Appu](https://github.com/appujet)
-
-## 🔐 Licensed
+### `🔐` Licensed
 
 Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/Lunox/blob/main/LICENSE) for more information.
 
-## 👥 Contributors
+### `👥` Contributors
 
 <a href="https://github.com/adh319/Lunox/graphs/contributors">
   <img src="https://contributors-img.web.app/image?repo=adh319/Lunox" />
