@@ -1,7 +1,9 @@
-name: "Bug report"
-description: "Report incorrect or unexpected behavior of the Music Bot"
-labels: "Type: bug"
-assignees: []
+name: Bug Report
+description: Report incorrect or unexpected behavior.
+title: "[Bug]: "
+labels: ["bug"]
+assignees:
+  - adh319
 body:
 - type: markdown
   attributes:
