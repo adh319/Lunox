@@ -3,172 +3,117 @@
 </p>
 
 <p align="center"> 
-  <a href="https://ko-fi.com/lunoxbot" target="_blank"> <img src="https://ko-fi.com/img/githubbutton_sm.svg"/> </a>
+  <a href="https://ko-fi.com/enourdev" target="_blank"> <img src="https://ko-fi.com/img/githubbutton_sm.svg"/> </a>
 </p>
 
 <p align="center"> 
   <a href="https://discord.gg/xhTVzbS5NU" target="_blank"> <img src="https://discordapp.com/api/guilds/1056011738950156359/widget.png?style=banner2"/> </a>
 </p>
 
-[![Version][version-shield]](version-url) [![Contributors][contributors-shield]][contributors-url] [![Forks][forks-shield]][forks-url]
-[![Watchers][watchers-shield]][watchers-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+[![Version][version-shield]](version-url) [![MIT License][license-shield]][license-url] [![Contributors][contributors-shield]][contributors-url] [![Stargazers][stars-shield]][stars-url] [![Forks][forks-shield]][forks-url] [![Watchers][watchers-shield]][watchers-url] [![Issues][issues-shield]][issues-url]
 
+## 📢 Main Features
 
-<p align="center">
-  <strong>This Branch Only Supports Poru v4.5.0 & Lavalink v3</strong>
-</p>
-
-
-### 📒 Table of Contents
-
--   [Features](#-features) 
--   [Screenshots](#%EF%B8%8F-screenshots)
--   [Requirements](#-requirements)
--   [Installation](#-installation)
--   [Configuration & Starting](#-configuration--starting)
--   [License](#-licensed)
--   [Support Me](#-support-me)
--   [Special Thanks](#-special-thanks)
--   [Contributors](#-contributors)
-
-#
-
-## 📢 Features
-
--   ☑️ Used **[Poru](https://www.npmjs.com/package/poru/v/4.5.0) `v4.5.0`** Lavalink Client
--   ☑️ Slash Commands
--   ☑️ Prefix Commands **[Owner Only]**
--   ☑️ Dev/Maintenance Mode System **[Owner Only]**
--   ☑️ Music System
--   ☑️ Configurable Premium System **[You can enable/disable it]**
--   ☑️ Custom Filters **[8D, EarRape, Nighcore, Slowmode, Vaporwave]** More? **[Deal With It]**
--   ☑️ 24/7 in Voice Channel
--   ☑️ AutoPlay **[YouTube Only]**
+-   ☑️ Used **[Rainlink](https://www.npmjs.com/package/rainlink)** Lavalink client
+-   ☑️ Support Lavalink v3 and v4
+-   ☑️ Slash sommands
+-   ☑️ Prefix commands **[Dev-onlycommands]**
 -   ☑️ Clean UI
+-   ☑️ Better performance
 -   ☑️ Easy to use
--   ☑️ And Many More...!
-
-## 🖼️ Screenshots
-
-Here are some screenshots from my bot **(Screenshots may not look the same coz i had modify it on my bot)**.
-
-<p align="center">
-  <img src="https://cdn.discordapp.com/attachments/1014342568554811443/1093098769907732500/image.png"/> <img   src="https://cdn.discordapp.com/attachments/1014342568554811443/1093099116818612234/image.png"/>
-</p>
+-   ☑️ And more...!
 
 ## 🎵 Supported Platforms
 
 -   ☑️ Youtube
 -   ☑️ Youtube Music
--   ☑️ Apple Music **[Link only]**
--   ☑️ Deezer **[Link only]**
--   ☑️ Spotify **[Link only]**
+-   ☑️ Apple Music
+-   ☑️ Deezer
+-   ☑️ Spotify
 -   ☑️ SoundCloud
--   ☑️ Twitch
--   ☑️ Bandcamp
--   ☑️ Vimeo
--   ☑️ Local Files
--   ☑️ Https **[Radio]**
+-   ☑️ And more...!
 
 ## 📌 Requirements
 
 -   Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
 -   Node.js **`v18`** or higher
--   MongoDB **`v5.0.x`** or higher **[For Local Database]**
--   Java **`v17`** or higher **[For Lavalink]**
--   LavaLink **`v3.7.x` [Guide](https://github.com/lavalink-devs/Lavalink) [*Currently Lavalink `v4.x.x` Not Supported*]**
+-   MongoDB **`v5.x`** or higher **[For local database]**
+-   LavaLink **[Guide](https://lavalink.dev/)**
+-   Java **`v18`** or higher **[For Lavalink]**
 
-## 🎶 More Support Audio Platforms
+## 🚀 Configuration & Installation
 
-**☑️ [LavaSrc](https://github.com/topi314/LavaSrc) `v3.2.x`**
-
--   Spotify [ spsearch ]
--   Deezer [ dzsearch ]
--   Apple Music [ amsearch ]
--   Yandex Music [ ymsearch ]
-
-**☑️ [skybot-lavalink-plugin](https://github.com/DuncteBot/skybot-lavalink-plugin) `v1.5.x`**
-
--   Mixcloud
--   Ocremix
--   Clyp
--   Reddit
--   Getyarn
--   TikTok
--   Po\*nHub
--   Soundgasm
-
-## 📝 Installation
+`1.` Clone the repository.
 
 ```
 git clone https://github.com/adh319/Lunox.git
-cd Lunox
+```
+
+`2.` Open the Lunox folder then run
+
+```
 npm install
 ```
 
-## 🚀 Configuration & Starting
-
-Rename `.env.example` to `.env` and fill out these values. You can find the details on `/src/settings/config.js` and make configration there
-too (you choose):
+`3.` Rename `.env.example` to `.env` and fill out these variables according to yours.
 
 ```
 #########################################
-## SEE THE DETAILS ON "/SRC/SETTINGS/CONFIG.JS" FILE ##
-## DON'T LEAVE ANY OPTION BELOW EMPTY ##
+# ALL THE DETAILS BELOW SHOULD BE FILLED #
 #########################################
 
-#BOT DETAILS
-TOKEN = #Your bot token
-PREFIX = #Your bot prefix
-EMBED_COLOR = #Your bot embed color without "#"
-OWNER_ID = #Your discord id
-GUILD_LOGS = #Your guild channel id for logs
-LEAVE_TIMEOUT = 60000 #Time in ms to leave the voice channel after the last user leaves
-DISABLE_PREMIUM = false #Disable premium system
+# GENERAL DETAILS
+TOKEN =  # Your bot token
+PREFIX = ! # Prefix of the bot
+OWNER =  # Your Discord user Id
+DEV =  # Your Discord Id & Your developer Discord user Id (separated by comma "," if more than one) [Example: 393798172591259651, 393798172591259651]
+EMBED_COLOR = 5865F2 # Embed color, example: FFFFFF (without #)
+LEAVE_TIMEOUT = 60000 # Set leave TimeOut when bot was alone or not playing
+MIN_VOLUME = 1 # Minimum volume
+MAX_VOLUME = 100 # Maximum volume
+MONGO_URI =  # Your MongoDB URI
+GENIUS_API_KEY =  # Your genius api key
+SUPPORT_SERVER_URL = https://discord.gg/kNdSkHchzH # Support server url
 
-#PORU DETAILS
-DEFAULT_PLATFORM = ytmsearch #recomended using "ytmsearch". You can change this to: "ytsearch" / "ytmsearch" / "scsearch". More Audio Source? Use Lavasrc plugin.LavaSrc plugin
-SPOTIFY_ID = #Spotify client id
-SPOTIFY_SECRET = #Spotify client secret
-NODE_NAME = Lunox #Name of the lavalink, could be anything
-NODE_HOST = localhost #Host of the lavalink
-NODE_PORT = 2333 #Port of the lavalink
-NODE_PASSWORD = youshallnotpass #Password of the lavalink
-NODE_SECURE = false #If the lavalink is using ssl use "true"
-
-#LINK DETAILS
-MONGO_URI = #Your mongodb uri (mongodb+srv://<username>:<password>@<db_cluster_url>/<db_name>)
-SUPPORT_URL = #Your support server invite link
-INVITE_URL = #Your bot invite link
-IMAGE_URL = #Any direct image link
+# RAINLINK DETAILS
+DEFAULT_SEARCH_ENGINE = spotify # Default search engine. Available engines: youtubeMusic, youtube, soundcloud, spotify, deezer and apple
+SPOTIFY_CLIENT_ID =  # Your spotify client id
+SPOTIFY_CLIENT_SECRET =  # Your spotify client secret
 ```
 
-After installation & finished all needed configuration, you can start the bot by either using `npm start` or `node src/index.js`.
+`4.` Go to `./src/settings/config.js`, open the file and fill out these config options value.
 
-## 🔐 Licensed
+```js
+rainlinkNodes: [
+    {
+        name: "Lunox",
+        host: "localhost",
+        port: 2333,
+        auth: "youshallnotpass",
+        secure: false,
+        driver: "lavalink/v4/koinu", // Available drivers based on your Lavalink version: https://github.com/RainyXeon/Rainlink/?tab=readme-ov-file#-drivers
+    },
+],
+```
 
-Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/Lunox/blob/main/LICENSE) for more information.
+`5.` Go to `./src/settings/emoji.js`, open the file and fill out the emoji variables. `4.` Start the bot by running.
 
-## 💝 Support Me
-
--   [Github Sponsor](https://github.com/sponsors/adh319)
--   [PayPal](https://paypal.me/LunoxBot)
--   [Ko-Fi](https://ko-fi.com/lunoxbot)
-
-Also make sure to give a **⭐** to this project if you like it 😉!
+```
+npm start
+```
 
 ## 🙏🏻 Special Thanks
 
 -   [Parasop](https://github.com/parasop)
 -   [Adivise](https://github.com/Adivise)
 -   [RainyXeon](https://github.com/RainyXeon)
--   [Blacky](https://github.com/brblacky)
+-   [Appu](https://github.com/appujet)
+
+## 🔐 Licensed
+
+Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/Lunox/blob/main/LICENSE) for more information.
 
 ## 👥 Contributors
-
-I really appreciated if you guys can contribute to this project. So don't hesitate to make a pull request if you guys has any suggestions,
-fixing bugs or want to add more features.
 
 <a href="https://github.com/adh319/Lunox/graphs/contributors">
   <img src="https://contributors-img.web.app/image?repo=adh319/Lunox" />

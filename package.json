@@ -1,6 +1,6 @@
 {
   "name": "lunox",
-  "version": "2.4.0",
+  "version": "3.0.0",
   "description": "Lunox by @adh319",
   "main": "src/index.js",
   "scripts": {
@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "axios": "^1.7.7",
-    "cpu-stat": "^2.0.1",
     "discord-hybrid-sharding": "^2.2.0",
     "discord.js": "^14.16.2",
     "dotenv": "^16.4.5",
+    "google-search-url": "^0.1.8",
+    "llyrics": "^1.1.7",
+    "lodash": "^4.17.21",
     "moment": "^2.30.1",
     "mongoose": "^8.6.3",
     "node-cron": "^3.0.3",
@@ -20,7 +22,8 @@
     "rainlink": "^1.2.2",
     "rainlink-apple": "^1.0.5",
     "rainlink-deezer": "^1.0.8",
-    "rainlink-spotify": "^1.0.5"
+    "rainlink-spotify": "^1.0.5",
+    "rainlink-voice": "^1.0.1"
   },
   "devDependencies": {
     "@types/node-cron": "^3.0.11",
