@@ -1,6 +1,9 @@
 name: "Feature request"
-description: "Suggest an idea for this projec"
-labels: 'Type: enhancement'
+description: "Suggest an idea to this repo"
+title: "[Feature Request]: "
+labels: ["enhancement"]
+assignees:
+  - adh319
 body:
 - type: markdown
   attributes:
