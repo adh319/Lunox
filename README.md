@@ -19,8 +19,8 @@
 ### `📢` Main Features
 
 -   ☑️ Used **[Rainlink](https://www.npmjs.com/package/rainlink)** Lavalink client
--   ☑️ Support Lavalink v3 and v4
--   ☑️ Slash sommands
+-   ☑️ Supports Lavalink v3 and v4
+-   ☑️ Slash commands
 -   ☑️ Prefix commands **[Dev-only commands]**
 -   ☑️ Clean UI
 -   ☑️ Better performance
@@ -69,20 +69,20 @@ npm install
 # GENERAL DETAILS
 TOKEN =  # Your bot token
 PREFIX = ! # Prefix of the bot
-OWNER =  # Your Discord user Id
-DEV =  # Your Discord Id & Your developer Discord user Id (separated by comma "," if more than one) [Example: 393798172591259651, 393798172591259651]
+OWNER =  # Your Discord user ID
+DEV =  # Your Discord ID & Your developer Discord user ID (separated by comma "," if more than one) [Example: 393798172591259651, 393798172591259651]
 EMBED_COLOR = 5865F2 # Embed color, example: FFFFFF (without #)
-LEAVE_TIMEOUT = 60000 # Set leave TimeOut when bot was alone or not playing
+LEAVE_TIMEOUT = 60000 # Set leave timeout when bot was alone or not playing
 MIN_VOLUME = 1 # Minimum volume
 MAX_VOLUME = 100 # Maximum volume
 MONGO_URI =  # Your MongoDB URI
-GENIUS_API_KEY =  # Your genius api key
+GENIUS_API_KEY =  # Your Genius API key
 SUPPORT_SERVER_URL = https://discord.gg/kNdSkHchzH # Support server url
 
 # RAINLINK DETAILS
-DEFAULT_SEARCH_ENGINE = spotify # Default search engine. Available engines: youtubeMusic, youtube, soundcloud, spotify, deezer and apple
-SPOTIFY_CLIENT_ID =  # Your spotify client id
-SPOTIFY_CLIENT_SECRET =  # Your spotify client secret
+DEFAULT_SEARCH_ENGINE = youtubeMusic # Default search engine. Available engines: youtubeMusic, youtube, soundcloud, spotify, deezer and apple
+SPOTIFY_CLIENT_ID =  # Your Spotify client ID
+SPOTIFY_CLIENT_SECRET =  # Your Spotify client secret
 ```
 
 `4.` Go to `./src/settings/config.js`, open the file and fill out these config options value.
@@ -95,7 +95,7 @@ rainlinkNodes: [
         port: 2333,
         auth: "youshallnotpass",
         secure: false,
-        driver: "lavalink/v4/koinu", // Available drivers based on your Lavalink version: https://github.com/RainyXeon/Rainlink/?tab=readme-ov-file#-drivers
+        driver: "lavalink/v4/koinu", // Available drivers based on your Lavalink version: https://github.com/RainyXeon/Rainlink#-drivers
     },
 ],
 ```

@@ -18,7 +18,9 @@ module.exports = async (client, interaction) => {
         const command = client.slash.get(interaction.commandName);
         if (!command) return;
 
-        console.log(`[Slash] [${command.name}] | (${interaction.user.username})[${interaction.user.id}] | ${interaction.guild.name} [${interaction.guildId}]`);
+        console.log(
+            `[Slash] [${command.name}] | (${interaction.user.username})[${interaction.user.id}] | ${interaction.guild.name} [${interaction.guildId}]`,
+        );
 
         const botPermissions = ["ViewChannel", "SendMessages", "EmbedLinks", "ReadMessageHistory"];
         const botMissingPermissions = [];

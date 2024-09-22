@@ -10,7 +10,7 @@ module.exports = {
     prefix: process.env.PREFIX || "!", // your default prefix
     owner: process.env.OWNER || " ", // your Discord user Id & developer user Id
     dev: process.env.DEV.split(",") || [" "], // your Discord user Id & developer user Id
-    embedColor: process.env.EMBED_COLOR || "FFFFFF", // your embeded hex color
+    embedColor: process.env.EMBED_COLOR || "5865F2", // your embeded hex color
     leaveTimeout: parseInt(process.env.LEAVE_TIMEOUT) || 60000, // leave timeout in milliseconds
     minVolume: parseInt(process.env.MIN_VOLUME) || 1, // min volume
     maxVolume: parseInt(process.env.MAX_VOLUME) || 100, // max volume
@@ -54,9 +54,8 @@ module.exports = {
             port: 2333,
             auth: "youshallnotpass",
             secure: false,
-            driver: "lavalink/v4/koinu", // Available drivers: https://github.com/RainyXeon/Rainlink/?tab=readme-ov-file#-drivers
+            driver: "lavalink/v4/koinu", // Available drivers based on your Lavalink version: https://github.com/RainyXeon/Rainlink#-drivers
         },
-        // You can add more nodes by following the example above
     ],
 };
 
