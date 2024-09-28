@@ -16,7 +16,7 @@ module.exports = {
     devOnly: false,
     run: async (client, interaction, player) => {
         const embed = new EmbedBuilder().setColor(client.config.embedColor);
-        const track = player.queue.isEmpty() ? player.queue.current : player.queue[player.queue.size - 1];
+        const track = player.queue.isEmpty ? player.queue.current : player.queue[player.queue.size - 1];
 
         if (!isYoutube(track)) {
             embed.setDescription(
