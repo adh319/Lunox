@@ -26,14 +26,9 @@ module.exports = {
             return message.reply({ embeds: [embed] });
         }
 
-        const userData = client.data.get(`userData_${user.id}`);
+        let userData = client.data.get(`userData_${user.id}`);
 
-        if (userData) {
-            userData.ban = {
-                status: true,
-                reason: reason || "No reason provided",
-            };
-        } else {
+        if (!userData) {
             const newUserData = await client.userData.findOneAndUpdate(
                 { id: user.id },
                 { $set: { ban: { status: true, reason: reason || "No reason provided" } } },
@@ -42,7 +37,17 @@ module.exports = {
             const { _id, __v, ...data } = newUserData.toObject();
 
             client.data.set(`userData_${user.id}`, data);
+
+            userData = client.data.get(`userData_${user.id}`);
         }
+
+        if (userData.ban.status) {
+            embed.setDescription(`User ${user.username} is already banned.`);
+
+            return message.reply({ embeds: [embed] });
+        }
+
+        userData.ban = { status: true, reason: reason || "No reason provided" };
 
         embed.setDescription(`User ${user.username} has been banned.`).setFooter({ text: `Reason: ${reason || "No reason provided"}` });
 
