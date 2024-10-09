@@ -21,7 +21,7 @@
     "pretty-ms": "^9.1.0",
     "rainlink": "^1.2.5",
     "rainlink-apple": "^1.0.5",
-    "rainlink-deezer": "^1.0.10",
+    "rainlink-deezer": "^1.0.8",
     "rainlink-spotify": "^1.0.5",
     "rainlink-voice": "^1.0.1"
   },
