@@ -11,7 +11,7 @@ module.exports = {
         updateEmbed(page);
 
         if (pages.length <= 1) {
-            return response.reply({ embeds: [embed] });
+            return response.editReply({ embeds: [embed] });
         } else {
             const pageEmoji = client.emoji.page;
             const buttons = {
@@ -22,7 +22,7 @@ module.exports = {
                 last: new ButtonBuilder().setCustomId("last").setEmoji(pageEmoji.last).setStyle(ButtonStyle.Secondary),
             };
             const row = new ActionRowBuilder().addComponents(Object.values(buttons));
-            const msg = await response.reply({ embeds: [embed], components: [row] });
+            const msg = await response.editReply({ embeds: [embed], components: [row] });
             const collector = msg.createMessageComponentCollector({ time: 60000 });
 
             collector.on("collect", async (button) => {
@@ -32,7 +32,7 @@ module.exports = {
                         .setColor(client.config.embedColor)
                         .setDescription(`You are not allowed to use this button.`);
 
-                    return button.reply({ embeds: [embedDenied], ephemeral: true });
+                    return button.editReply({ embeds: [embedDenied], ephemeral: true });
                 }
 
                 button.deferUpdate();
