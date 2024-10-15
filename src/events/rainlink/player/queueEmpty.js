@@ -4,7 +4,7 @@ module.exports = async (client, player) => {
     if (player.message) player.message.delete().catch((e) => {});
 
     const channel = await client.channels.cache.get(player.textId);
-    const isAutoplayEnabled = player.data.get("autoplay", player.guildId);
+    const isAutoplayEnabled = client.data.get("autoplay", player.guildId);
 
     if (isAutoplayEnabled) {
         const track = player.queue.previous[0];
