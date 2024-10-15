@@ -35,9 +35,7 @@ module.exports = {
             client.data.set("autoplay", player.guildId);
             embed.setDescription(`Autoplay mode is now \`enabled\``);
         }
-
-        embed.setDescription(`Autoplay mode is now ${autoplay ? "`enabled`" : "`disabled`"}.`);
-
+        
         return interaction.reply({ embeds: [embed], ephemeral: true });
     },
 };
