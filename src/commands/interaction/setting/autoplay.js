@@ -30,12 +30,14 @@ module.exports = {
 
         if (autoplay) {
             client.data.delete("autoplay", player.guildId);
+
             embed.setDescription(`Autoplay mode is now \`disabled\``);
         } else {
             client.data.set("autoplay", player.guildId);
+
             embed.setDescription(`Autoplay mode is now \`enabled\``);
         }
-        
+
         return interaction.reply({ embeds: [embed], ephemeral: true });
     },
 };
