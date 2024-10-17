@@ -110,7 +110,10 @@ npm start
 
 ### `🔐` Licensed
 
-Distributed under the `MIT License`. See [`LICENSE`](https://github.com/adh319/Lunox/blob/main/LICENSE) for more information.
+Distributed under the [`MIT License`](https://github.com/adh319/Lunox/blob/main/LICENSE). You are free to use, and modify the code. However, you must provide attribution by linking back to the original repository and include this copyright notice:
+```
+© 2024 adh319@github. This project is available under the MIT License.You must include proper attribution by linking to the original GitHub repository: https://github.com/adh319/Lunox.
+```
 
 ### `👥` Contributors
 
