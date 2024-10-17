@@ -114,7 +114,7 @@ Below is a list of Discord bots that are using this source code. If you want you
 
 | No. | Bot Name           | Invite Link                                   | Support Server                                 |
 |-----|--------------------|-----------------------------------------------|------------------------------------------------|
-| 1   | Jive Bot  | [Invite Link](https://discord.com/oauth2/authorize?client_id=1019954630551158934)   | [Jive Corner](https://discord.gg/kNdSkHchzH)  |
+| 1   | Jive  | [Invite Link](https://discord.com/oauth2/authorize?client_id=1019954630551158934)   | [Jive Corner](https://discord.gg/kNdSkHchzH)  |
 | 2   |   |    |   |
 | 3   |   |    |   |
 | 4   |   |    |   |
