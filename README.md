@@ -108,6 +108,17 @@ rainlinkNodes: [
 npm start
 ```
 
+### `🤖` Bots Using This Source Code
+
+Below is a list of Discord bots that are using this source code. If you want your bots to be listed here, **`edit this table`** and make a pull request with the following format:
+
+| No. | Bot Name           | Invite Link                                   | Support Server                                 |
+|-----|--------------------|-----------------------------------------------|------------------------------------------------|
+| 1   | Jive Bot  | [Invite Link](https://discord.com/oauth2/authorize?client_id=1019954630551158934)   | [Jive Corner](https://discord.gg/kNdSkHchzH)  |
+| 2   |   |    |   |
+| 3   |   |    |   |
+| 4   |   |    |   |
+
 ### `🔐` Licensed
 
 Distributed under the [`MIT License`](https://github.com/adh319/Lunox/blob/main/LICENSE). You are free to use, and modify the code. However, you must provide attribution by linking back to the original repository and include this copyright notice:
