@@ -27,7 +27,7 @@ module.exports = async (client, oldState, newState) => {
     const isBotAlone =
         oldState.guild.members.me.voice?.channel && oldState.guild.members.me.voice.channel.members.filter((m) => !m.user.bot).size === 0;
 
-    const isNotPlaying = !oldStatePlayer.playing && !oldStatePlayer.queue.currennt;
+    const isNotPlaying = !oldStatePlayer.playing && !oldStatePlayer.queue.current;
 
     if (oldStatePlayer.voiceId || oldState.guild.members.me.voice.channelId === oldState.channelId) {
         if (isBotAlone || isNotPlaying) {
