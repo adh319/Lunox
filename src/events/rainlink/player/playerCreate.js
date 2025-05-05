@@ -1,4 +1,6 @@
 module.exports = async (client, player) => {
+    if (!player) return;
+
     const guild = await client.guilds.cache.get(player.guildId);
     const guildData = client.data.get(`guildData_${guild.id}`);
 

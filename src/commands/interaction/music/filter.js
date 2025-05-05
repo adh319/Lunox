@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, MessageFlags } = require("discord.js");
 
 module.exports = {
     name: "filter",
@@ -26,6 +26,7 @@ module.exports = {
                 { name: "treblebass", value: "treblebass" },
                 { name: "vaporwave", value: "vaporwave" },
                 { name: "vibrato", value: "vibrato" },
+                // For additional options, check the official RainlinkFilter documentation here: https://docs-rainlinkjs.vercel.app/classes/RainlinkFilter.html#set
             ],
         },
     ],
@@ -45,7 +46,6 @@ module.exports = {
         const currentVolume = player.volume;
 
         player.filter.set(mode);
-        player.setVolume(currentVolume);
 
         if (mode === "clear") {
             embed.setDescription(`Filter has been cleared.`);
@@ -53,7 +53,9 @@ module.exports = {
             embed.setDescription(`Filter has been set to: \`${mode}\``);
         }
 
-        return interaction.reply({ embeds: [embed], ephemeral: true });
+        player.setVolume(currentVolume);
+
+        return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
     },
 };
 

@@ -19,6 +19,7 @@ module.exports = async (client, node) => {
                 voiceId: voice.id,
                 textId: text.id,
                 shardId: guild.shardId,
+                volume: client.config.defaultVolume,
                 deaf: true,
             });
         }, index * 5000),

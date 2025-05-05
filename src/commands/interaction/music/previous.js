@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, MessageFlags } = require("discord.js");
 
 module.exports = {
     name: "previous",
@@ -20,14 +20,14 @@ module.exports = {
         if (!player.queue.previous) {
             embed.setDescription(`Previous song not found.`);
 
-            return interaction.reply({ embeds: [embed], ephemeral: true });
+            return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
         }
 
         player.previous();
 
         embed.setDescription(`Playing the previous song.`);
 
-        return interaction.reply({ embeds: [embed], ephemeral: true });
+        return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
     },
 };
 

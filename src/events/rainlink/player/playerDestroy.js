@@ -1,4 +1,6 @@
 module.exports = async (client, player) => {
+    if (!player) return;
+
     const guild = await client.guilds.cache.get(player.guildId);
 
     console.debug(`[DEBUG] Player destroyed from [${guild.name}] (${guild.id})`);
@@ -24,6 +26,7 @@ module.exports = async (client, player) => {
             voiceId: voice.id,
             textId: text.id,
             shardId: guild.shardId,
+            volume: client.config.defaultVolume,
             deaf: true,
         });
     }

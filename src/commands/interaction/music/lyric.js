@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, MessageFlags } = require("discord.js");
 const { find } = require("llyrics");
 const gsearch = require("google-search-url");
 
@@ -35,7 +35,7 @@ module.exports = {
         if (!lyricText) {
             embed.setDescription(`No lyrics found for: \`${trackTitle} - ${trackArtist}\``);
 
-            return interaction.reply({ embeds: [embed], ephemeral: true });
+            return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
         }
 
         if (lyricText.length <= 4096) {

@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, MessageFlags } = require("discord.js");
 
 module.exports = {
     name: "join",
@@ -20,19 +20,20 @@ module.exports = {
         if (player) {
             embed.setDescription(`Already joined a voice channel.`);
 
-            return interaction.reply({ embeds: [embed], ephemeral: true });
+            return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
         } else {
             player = await client.rainlink.create({
                 guildId: interaction.guildId,
                 textId: interaction.channelId,
                 voiceId: interaction.member.voice.channelId,
                 shardId: interaction.guild.shardId,
+                volume: client.config.defaultVolume,
                 deaf: true,
             });
 
             embed.setDescription(`Joined ${interaction.member.voice.channel}.`);
 
-            return interaction.reply({ embeds: [embed], ephemeral: true });
+            return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
         }
     },
 };

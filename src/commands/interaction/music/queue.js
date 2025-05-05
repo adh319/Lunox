@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, MessageFlags } = require("discord.js");
 const { createPage } = require("../../../functions/createPage.js");
 const { convertTime } = require("../../../functions/timeFormat.js");
 
@@ -23,7 +23,7 @@ module.exports = {
         if (player.queue.isEmpty) {
             embed.setDescription(`The queue is empty.`);
 
-            return interaction.reply({ embeds: [embed], ephemeral: true });
+            return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
         }
 
         const queueList = player.queue.map((track, index) => {

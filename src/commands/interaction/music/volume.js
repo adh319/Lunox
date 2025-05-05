@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, MessageFlags } = require("discord.js");
 const { minVolume, maxVolume } = require("../../../settings/config.js");
 
 module.exports = {
@@ -32,14 +32,14 @@ module.exports = {
         if (!value) {
             embed.setDescription(`Current volume: \`${player.volume}%\``);
 
-            return interaction.reply({ embeds: [embed], ephemeral: true });
+            return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
         }
 
         player.setVolume(value);
 
         embed.setDescription(`Volume has been set to: \`${value}%\``);
 
-        return interaction.reply({ embeds: [embed], ephemeral: true });
+        return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
     },
 };
 

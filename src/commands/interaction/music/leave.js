@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, MessageFlags } = require("discord.js");
 
 module.exports = {
     name: "leave",
@@ -19,7 +19,7 @@ module.exports = {
 
         const embed = new EmbedBuilder().setColor(client.config.embedColor).setDescription(`Leaving voice channel...`);
 
-        return interaction.reply({ embeds: [embed], ephemeral: true });
+        return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
     },
 };
 

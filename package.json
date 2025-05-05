@@ -1,6 +1,6 @@
 {
   "name": "lunox",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Lunox by @adh319",
   "main": "src/index.js",
   "scripts": {
@@ -8,31 +8,40 @@
     "format": "prettier -w ./src"
   },
   "dependencies": {
-    "axios": "^1.7.7",
-    "discord-hybrid-sharding": "^2.2.3",
-    "discord.js": "^14.16.3",
-    "dotenv": "^16.4.5",
+    "axios": "^1.9.0",
+    "discord-hybrid-sharding": "^2.2.6",
+    "discord.js": "^14.19.3",
+    "dotenv": "^16.5.0",
     "google-search-url": "^0.1.8",
     "llyrics": "^1.1.7",
     "lodash": "^4.17.21",
     "moment": "^2.30.1",
-    "mongoose": "^8.7.0",
+    "mongoose": "^8.14.1",
     "node-cron": "^3.0.3",
-    "pretty-ms": "^9.1.0",
-    "rainlink": "^1.2.5",
-    "rainlink-apple": "^1.0.5",
-    "rainlink-deezer": "^1.0.10",
-    "rainlink-spotify": "^1.0.5",
+    "pretty-ms": "^9.2.0",
+    "rainlink": "^1.2.7",
     "rainlink-voice": "^1.0.1"
   },
   "devDependencies": {
     "@types/node-cron": "^3.0.11",
-    "prettier": "^3.3.3"
+    "prettier": "^3.5.3"
   },
   "keywords": [
     "discord",
     "bot",
-    "lunox"
+    "lunox",
+    "music",
+    "music bot",
+    "discord bot",
+    "discord.js",
+    "discord music bot",
+    "discord.js music bot",
+    "lavalink",
+    "lavalink bot",
+    "lavalink discord bot",
+    "lavalink music bot",
+    "lavalink discord.js",
+    "lavalink discord.js music bot"
   ],
   "author": "adh319",
   "license": "MIT",

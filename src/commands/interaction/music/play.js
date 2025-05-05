@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, MessageFlags } = require("discord.js");
 const { convertTime } = require("../../../functions/timeFormat.js");
 
 module.exports = {
@@ -29,16 +29,16 @@ module.exports = {
         if (player && player.voiceId !== interaction.member.voice.channelId) {
             embed.setDescription(`You must be in the same voice channel as the bot.`);
 
-            return interaction.reply({ embeds: [embed], ephemeral: true });
+            return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
         }
 
         const query = interaction.options.getString("query");
-        const result = await client.rainlink.search(query, { requester: interaction.member });
+        const result = await client.rainlink.search(query, { requester: interaction.member, sourceID: client.config.lavalinkSource });
 
         if (result.type === "EMPTY" || result.type === "ERROR" || !result.tracks.length) {
             embed.setDescription(`No results found for your query.`);
 
-            return interaction.reply({ embeds: [embed], ephemeral: true });
+            return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
         }
 
         if (!player) {
@@ -47,6 +47,7 @@ module.exports = {
                 textId: interaction.channelId,
                 voiceId: interaction.member.voice.channelId,
                 shardId: interaction.guild.shardId,
+                volume: client.config.defaultVolume,
                 deaf: true,
             });
         }

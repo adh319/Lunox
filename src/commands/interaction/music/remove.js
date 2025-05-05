@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, MessageFlags } = require("discord.js");
 
 module.exports = {
     name: "remove",
@@ -28,7 +28,7 @@ module.exports = {
         if (player.queue.isEmpty) {
             embed.setDescription(`The queue is empty.`);
 
-            return interaction.reply({ embeds: [embed], ephemeral: true });
+            return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
         }
 
         const position = interaction.options.getInteger("position");
@@ -36,14 +36,14 @@ module.exports = {
         if (position > player.queue.size) {
             embed.setDescription(`Position is greater than the total songs in the queue.`);
 
-            return interaction.reply({ embeds: [embed], ephemeral: true });
+            return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
         }
 
         player.queue.remove(position - 1);
 
         embed.setDescription(`Removed song position: \`${position}\``);
 
-        return interaction.reply({ embeds: [embed], ephemeral: true });
+        return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
     },
 };
 

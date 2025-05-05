@@ -1,9 +1,9 @@
 const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
-    name: "ban",
-    aliases: ["block"],
-    description: "Ban a user",
+    name: "unban",
+    aliases: ["unblock"],
+    description: "Unban a user",
     category: "dev",
     permissions: {
         bot: [],
@@ -18,7 +18,6 @@ module.exports = {
     run: async (client, message, player, args) => {
         const embed = new EmbedBuilder().setColor(client.config.embedColor);
         const user = message.mentions.users.first() || client.users.cache.get(args[0]);
-        const reason = args.slice(1).join(" ");
 
         if (!user) {
             embed.setDescription(`User not found. Please mention a user or provide a valid user ID.`);
@@ -41,15 +40,15 @@ module.exports = {
             userData = client.data.get(`userData_${user.id}`);
         }
 
-        if (userData.ban.status) {
-            embed.setDescription(`User ${user.username} is already banned.\n\`\`\`Reason: ${userData.ban.reason}\`\`\``);
+        if (!userData.ban.status) {
+            embed.setDescription(`User ${user.username} is not banned.`);
 
             return message.reply({ embeds: [embed] });
         }
 
-        userData.ban = { status: true, reason: reason || "No reason provided" };
+        userData.ban = { status: false, reason: null };
 
-        embed.setDescription(`User ${user.username} has been banned.\n\`\`\`Reason: ${reason || "No reason provided"}\`\`\``);
+        embed.setDescription(`User ${user.username} has been unbanned.`);
 
         return message.reply({ embeds: [embed] });
     },

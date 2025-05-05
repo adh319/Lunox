@@ -1,4 +1,4 @@
-const { PermissionsBitField } = require("discord.js");
+const { PermissionsBitField, MessageFlags } = require("discord.js");
 
 module.exports = {
     permissions: async (client, response, command, embed, player, args) => {
@@ -6,7 +6,7 @@ module.exports = {
             if (!response.guild.members.me.permissions.has(command.permissions.bot || [])) {
                 embed.setDescription(`The bot doesn't have permission \`${command.permissions.bot.join(", ")}\` to execute this command.`);
 
-                return response.reply({ embeds: [embed], ephemeral: true });
+                return response.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
             }
         }
 
@@ -14,7 +14,7 @@ module.exports = {
             if (!response.member.permissions.has(command.permissions.user || [])) {
                 embed.setDescription(`You don't have permission \`${command.permissions.user.join(", ")}\` to execute this command.`);
 
-                return response.reply({ embeds: [embed], ephemeral: true });
+                return response.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
             }
         }
 
@@ -22,7 +22,7 @@ module.exports = {
             if (!response.member.voice.channel) {
                 embed.setDescription(`You need to join a voice channel first.`);
 
-                return response.reply({ embeds: [embed], ephemeral: true });
+                return response.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
             }
 
             if (
@@ -31,7 +31,7 @@ module.exports = {
             ) {
                 embed.setDescription(`The bot doesn't have permission \`Connect\` in your voice channel.`);
 
-                return response.reply({ embeds: [embed], ephemeral: true });
+                return response.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
             }
 
             if (
@@ -40,7 +40,7 @@ module.exports = {
             ) {
                 embed.setDescription(`The bot doesn't have permission \`Speak\` in your voice channel.`);
 
-                return response.reply({ embeds: [embed], ephemeral: true });
+                return response.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
             }
 
             if (response.member.voice.channel.type === 13) {
@@ -50,7 +50,7 @@ module.exports = {
                 ) {
                     embed.setDescription(`The bot doesn't have permission \`Request To Speak\` in your stage channel.`);
 
-                    return response.reply({ embeds: [embed], ephemeral: true });
+                    return response.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
                 }
 
                 if (
@@ -59,7 +59,7 @@ module.exports = {
                 ) {
                     embed.setDescription(`The bot doesn't have permission \`Priority Speaker\` in your stage channel.`);
 
-                    return response.reply({ embeds: [embed], ephemeral: true });
+                    return response.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
                 }
             }
         }
@@ -68,13 +68,13 @@ module.exports = {
             if (!player) {
                 embed.setDescription(`There is no player in this server.`);
 
-                return response.reply({ embeds: [embed], ephemeral: true });
+                return response.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
             }
 
             if (player.voiceId !== response.member.voice.channelId) {
                 embed.setDescription(`You need to join the same voice channel as the bot.`);
 
-                return response.reply({ embeds: [embed], ephemeral: true });
+                return response.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
             }
         }
 
@@ -82,7 +82,7 @@ module.exports = {
             if (!player.queue.current) {
                 embed.setDescription(`There is no song currently playing in this server.`);
 
-                return response.reply({ embeds: [embed], ephemeral: true });
+                return response.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
             }
         }
 
@@ -90,7 +90,7 @@ module.exports = {
             if (!client.config.dev.includes(response.member.id) && client.config.owner !== response.member.id) {
                 embed.setDescription(`This command only available for developers.`);
 
-                return response.reply({ embeds: [embed], ephemeral: true });
+                return response.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
             }
         }
 

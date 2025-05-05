@@ -1,4 +1,4 @@
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require("discord.js");
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, MessageFlags } = require("discord.js");
 const { convertTime } = require("../../../functions/timeFormat.js");
 
 module.exports = async (client, player, track) => {
@@ -16,7 +16,7 @@ module.exports = async (client, player, track) => {
         .setThumbnail(track.artworkUrl)
         .setDescription(`**[${trackTitle} - ${trackAuthor}](${track.uri})**`)
         .setFields(
-            { name: "Duration", value: `\`${convertTime(track.duration)}\``, inline: true },
+            { name: "Duration", value: `\`${trackDuration}\``, inline: true },
             { name: "Requested by", value: `${track.requester}`, inline: true },
             { name: "Source", value: `${capitalize(track.source)}`, inline: true },
         );
@@ -51,14 +51,14 @@ module.exports = async (client, player, track) => {
         if (!message.member.voice.channel || player.voiceId !== message.member.voice.channelId) {
             embed.setDescription(`You must be in the same voice channel as the bot.`);
 
-            return message.reply({ embeds: [embed], ephemeral: true });
+            return message.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
         }
 
         // Prevent user from using buttons if they are not the requester
         if (message.user.id !== track.requester.id) {
             embed.setDescription(`Only the requester can use this button.`);
 
-            return message.reply({ embeds: [embed], ephemeral: true });
+            return message.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
         }
 
         switch (message.customId) {
@@ -85,7 +85,7 @@ module.exports = async (client, player, track) => {
                 if (!player.queue.previous.length) {
                     embed.setDescription(`Previous song not found.`);
 
-                    return message.reply({ embeds: [embed], ephemeral: true });
+                    return message.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
                 }
 
                 message.deferUpdate();
@@ -96,7 +96,7 @@ module.exports = async (client, player, track) => {
                 if (player.queue.isEmpty && !client.data.get("autoplay", player.guildId)) {
                     embed.setDescription(`Queue is empty. Skip not possible.`);
 
-                    return message.reply({ embeds: [embed], ephemeral: true });
+                    return message.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
                 }
 
                 message.deferUpdate();
@@ -122,24 +122,24 @@ module.exports = async (client, player, track) => {
                         break;
                 }
 
-                return message.reply({ embeds: [embed], ephemeral: true });
+                return message.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
             case "shuffle":
                 if (player.queue.isEmpty) {
                     embed.setDescription(`Queue is empty. Shuffle not possible.`);
 
-                    return message.reply({ embeds: [embed], ephemeral: true });
+                    return message.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
                 }
 
                 player.queue.shuffle();
 
                 embed.setDescription(`Queue has been shuffled.`);
 
-                return message.reply({ embeds: [embed], ephemeral: true });
+                return message.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
             case "voldown":
                 if (player.volume <= client.config.minVolume) {
                     embed.setDescription(`Volume cannot be set below \`${client.config.minVolume}%\`.`);
 
-                    return message.reply({ embeds: [embed], ephemeral: true });
+                    return message.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
                 }
 
                 const volumeDown = player.volume - 10;
@@ -148,12 +148,12 @@ module.exports = async (client, player, track) => {
 
                 embed.setDescription(`Volume has been set to \`${volumeDown}%\`.`);
 
-                return message.reply({ embeds: [embed], ephemeral: true });
+                return message.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
             case "volup":
                 if (player.volume >= client.config.maxVolume) {
                     embed.setDescription(`Volume cannot be set above \`${client.config.maxVolume}%\`.`);
 
-                    return message.reply({ embeds: [embed], ephemeral: true });
+                    return message.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
                 }
 
                 const volumeUp = player.volume + 10;
@@ -162,7 +162,7 @@ module.exports = async (client, player, track) => {
 
                 embed.setDescription(`Volume has been set to \`${volumeUp}%\`.`);
 
-                return message.reply({ embeds: [embed], ephemeral: true });
+                return message.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
             case "stop":
                 message.deferUpdate();
 

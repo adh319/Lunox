@@ -1,6 +1,8 @@
 const { EmbedBuilder } = require("discord.js");
 
 module.exports = async (client, player) => {
+    if (!player) return;
+
     if (player.message) player.message.delete().catch((e) => {});
 
     const channel = await client.channels.cache.get(player.textId);

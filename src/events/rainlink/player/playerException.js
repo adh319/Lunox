@@ -1,6 +1,8 @@
 const { EmbedBuilder } = require("discord.js");
 
 module.exports = async (client, player, data) => {
+    if (!player) return;
+
     const guild = await client.guilds.cache.get(player.guildId);
 
     console.error(`[ERROR] Player got an exception from ${guild.name} (${guild.id})`, data);

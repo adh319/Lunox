@@ -1,4 +1,4 @@
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require("discord.js");
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, MessageFlags } = require("discord.js");
 
 module.exports = {
     createPage: async (client, response, embed, pages) => {
@@ -32,7 +32,7 @@ module.exports = {
                         .setColor(client.config.embedColor)
                         .setDescription(`You are not allowed to use this button.`);
 
-                    return button.reply({ embeds: [embedDenied], ephemeral: true });
+                    return button.reply({ embeds: [embedDenied], flags: [MessageFlags.Ephemeral] });
                 }
 
                 button.deferUpdate();

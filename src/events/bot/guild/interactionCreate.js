@@ -1,4 +1,4 @@
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, InteractionType } = require("discord.js");
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, InteractionType, MessageFlags } = require("discord.js");
 const { createDataGuild, createDataUser } = require("../../../functions/createData.js");
 const { permissions } = require("../../../functions/getPermission.js");
 
@@ -32,13 +32,13 @@ module.exports = async (client, interaction) => {
         if (botMissingPermissions.length > 0) {
             const content = `The bot doesn't have one of these permissions \`${botMissingPermissions.join(", ")}\`.\nPlease double check them in your server role & channel settings.`;
 
-            return interaction.reply({ content: content, components: [row], ephemeral: true });
+            return interaction.reply({ content: content, components: [row], flags: [MessageFlags.Ephemeral] });
         }
 
         if (userData && userData.ban.status) {
             embed.setDescription(`You have been banned from using the bot.\n\`\`\`${userData.ban.reason}\`\`\``);
 
-            return interaction.reply({ embeds: [embed], components: [row], ephemeral: true });
+            return interaction.reply({ embeds: [embed], components: [row], flags: [MessageFlags.Ephemeral] });
         }
 
         const maintenance = client.data.get("maintenance");
@@ -46,7 +46,7 @@ module.exports = async (client, interaction) => {
         if (maintenance && !client.config.dev.includes(interaction.user.id) && client.config.owner !== interaction.user.id) {
             embed.setDescription(`The bot is currently under maintenance. Please try again later.`);
 
-            return interaction.reply({ embeds: [embed], components: [row], ephemeral: true });
+            return interaction.reply({ embeds: [embed], components: [row], flags: [MessageFlags.Ephemeral] });
         }
 
         let player = client.rainlink.players.get(interaction.guildId);

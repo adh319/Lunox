@@ -3,9 +3,7 @@ module.exports = {
         const hours = Math.floor(duration / 3600000);
         const minutes = Math.floor((duration % 3600000) / 60000);
         const seconds = Math.floor((duration % 60000) / 1000);
-
         const formatTime = (time) => (time < 10 ? `0${time}` : time);
-
         const formattedHours = formatTime(hours);
         const formattedMinutes = formatTime(minutes);
         const formattedSeconds = formatTime(seconds);
