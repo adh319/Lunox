@@ -18,32 +18,32 @@
 
 ### `📢` Main Features
 
--   ☑️ Used **[Rainlink](https://www.npmjs.com/package/rainlink)** Lavalink client
--   ☑️ Supports Lavalink v3 and v4
--   ☑️ Slash commands
--   ☑️ Prefix commands **[Dev-only commands]**
--   ☑️ Clean UI
--   ☑️ Better performance
--   ☑️ Easy to use
--   ☑️ And more...!
+- ☑️ Used **[Rainlink](https://www.npmjs.com/package/rainlink)** Lavalink client
+- ☑️ Supports Lavalink v3 and v4
+- ☑️ Slash commands
+- ☑️ Prefix commands **[Dev-only commands]**
+- ☑️ Clean UI
+- ☑️ Better performance
+- ☑️ Easy to use
+- ☑️ And more...!
 
 ### `🎵` Supported Platforms
 
--   ☑️ Youtube
--   ☑️ Youtube Music
--   ☑️ Apple Music
--   ☑️ Deezer
--   ☑️ Spotify
--   ☑️ SoundCloud
--   ☑️ And more...!
+- ☑️ Youtube
+- ☑️ Youtube Music
+- ☑️ Apple Music
+- ☑️ Deezer
+- ☑️ Spotify
+- ☑️ SoundCloud
+- ☑️ And more...!
 
 ### `📌` Requirements
 
--   Discord Bot Token **[[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)]**
--   Node.js **`v18`** or higher
--   MongoDB **`v5.x`** or higher **[For local database]**
--   Lavalink **[[Guide](https://lavalink.dev/)]**
--   Java **`v18`** or higher **[For Lavalink]**
+- Discord Bot Token **[[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)]**
+- Node.js **`v18`** or higher
+- MongoDB **`v5.x`** or higher **[For local database]**
+- Lavalink **[[Guide](https://lavalink.dev/)]**
+- Java **`v18`** or higher **[For Lavalink]**
 
 ### `🚀` Configuration & Installation
 
@@ -87,7 +87,7 @@ SPOTIFY_CLIENT_ID =  #Your Spotify client ID
 SPOTIFY_CLIENT_SECRET =  #Your Spotify client secret
 ```
 
-`4.` Go to `./src/settings/config.js`, open the file and fill out these config options value.
+`4.` Go to `./src/settings/config.js`, open the file and change the values according your Lavalink server details.
 
 ```js
 rainlinkNodes: [
@@ -102,7 +102,7 @@ rainlinkNodes: [
 ],
 ```
 
-`5.` Go to `./src/settings/emoji.js`, open the file and fill out the emoji variables.
+`5.` Go to `./src/settings/emoji.js`, open the file and fill out the emoji values.
 
 `6.` Start the bot by running.
 
@@ -114,16 +114,17 @@ npm start
 
 Below is a list of Discord bots that are using this source code. If you want your bots to be listed here, **`edit this table`** and make a pull request with the following format:
 
-| No. | Bot Name           | Invite Link                                   | Support Server                                 |
-|-----|--------------------|-----------------------------------------------|------------------------------------------------|
-| 1   | Jive  | [Invite Link](https://discord.com/oauth2/authorize?client_id=1019954630551158934)   | [Jive Corner](https://discord.gg/kNdSkHchzH)  |
-| 2   |   |    |   |
-| 3   |   |    |   |
-| 4   |   |    |   |
+| No. | Bot Name | Invite Link | Support Server |
+| --- | --- | --- | --- |
+| 1 | Jive | [Invite Link](https://discord.com/oauth2/authorize?client_id=1019954630551158934) | [Jive Corner](https://discord.gg/kNdSkHchzH) |
+| 2 |  |  |  |
+| 3 |  |  |  |
+| 4 |  |  |  |
 
 ### `🔐` Licensed
 
 Distributed under the [`MIT License`](https://github.com/adh319/Lunox/blob/main/LICENSE). You are free to use, and modify the code. However, you must provide attribution by linking back to the original repository and include this copyright notice:
+
 ```
 © 2024 adh319@github. This project is available under the MIT License.You must include proper attribution by linking to the original GitHub repository: https://github.com/adh319/Lunox.
 ```
