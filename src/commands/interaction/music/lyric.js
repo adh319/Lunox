@@ -31,13 +31,13 @@ module.exports = {
         const trackArtist = formatText(track.author);
         const lyricText = await lyricFind(client, trackTitle, trackArtist);
         const loadingEmbed = new EmbedBuilder().setColor(client.config.embedColor).setDescription(`Please wait...!`);
-        const ladingMsg = await interaction.reply({ embeds: [loadingEmbed] });
+        const loadingMsg = await interaction.reply({ embeds: [loadingEmbed] });
 
         if (!lyricText) {
             embed.setDescription(`No lyrics found. Please try again later.`);
 
-            if (ladingMsg) {
-                return ladingMsg.edit({ embeds: [embed] });
+            if (loadingMsg) {
+                return loadingMsg.edit({ embeds: [embed] });
             } else {
                 return interaction.reply({ embeds: [embed] });
             }
@@ -52,8 +52,8 @@ module.exports = {
                 .setThumbnail(track.artworkUrl)
                 .setDescription(lyricText);
 
-            if (ladingMsg) {
-                return ladingMsg.edit({ embeds: [embed] });
+            if (loadingMsg) {
+                return loadingMsg.edit({ embeds: [embed] });
             } else {
                 return interaction.reply({ embeds: [embed] });
             }
@@ -71,8 +71,8 @@ module.exports = {
                 new ButtonBuilder().setURL(lyricUrl.replace("http:", "https:")).setLabel("Full Lyrics").setStyle(ButtonStyle.Link),
             );
 
-            if (ladingMsg) {
-                return ladingMsg.edit({ embeds: [embed], components: [lyricButton] });
+            if (loadingMsg) {
+                return loadingMsg.edit({ embeds: [embed], components: [lyricButton] });
             } else {
                 return interaction.editReply({ embeds: [embed], components: [lyricButton] });
             }
