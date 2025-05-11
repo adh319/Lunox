@@ -5,8 +5,7 @@ module.exports = {
     // GENERAL DETAILS
     token: process.env.TOKEN || " ", // your bot token
     prefix: process.env.PREFIX || "!", // your default prefix
-    owner: process.env.OWNER || " ", // your Discord user Id & developer user Id
-    dev: process.env.DEV.split(",") || [" "], // your Discord user Id & developer user Id
+    dev: [" "], // your Discord user Id & developer user Id
     embedColor: process.env.EMBED_COLOR || "5865F2", // your embeded hex color
     leaveTimeout: parseInt(process.env.LEAVE_TIMEOUT) || 60000, // leave timeout in milliseconds
     defaultVolume: parseInt(process.env.DEFAULT_VOLUME) || 100, // Default volume when bot joins a voice channel

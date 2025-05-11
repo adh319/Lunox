@@ -16,9 +16,9 @@ module.exports = async (client, player, track) => {
         .setThumbnail(track.artworkUrl)
         .setDescription(`**[${trackTitle} - ${trackAuthor}](${track.uri})**`)
         .setFields(
+            { name: "Source", value: `${capitalize(track.source)}`, inline: true },
             { name: "Duration", value: `\`${trackDuration}\``, inline: true },
             { name: "Requested by", value: `${track.requester}`, inline: true },
-            { name: "Source", value: `${capitalize(track.source)}`, inline: true },
         );
 
     const button = new ActionRowBuilder().addComponents(

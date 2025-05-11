@@ -72,7 +72,7 @@ module.exports = async (client, message) => {
 
     const maintenance = client.data.get("maintenance");
 
-    if (maintenance && !client.config.dev.includes(message.author.id) && client.config.owner !== message.author.id) {
+    if (maintenance && !client.config.dev.includes(message.author.id)) {
         embed.setDescription(`The bot is currently under maintenance. Please try again later.`);
 
         return message.reply({ embeds: [embed] });

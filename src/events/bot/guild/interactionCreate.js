@@ -43,7 +43,7 @@ module.exports = async (client, interaction) => {
 
         const maintenance = client.data.get("maintenance");
 
-        if (maintenance && !client.config.dev.includes(interaction.user.id) && client.config.owner !== interaction.user.id) {
+        if (maintenance && !client.config.dev.includes(interaction.user.id)) {
             embed.setDescription(`The bot is currently under maintenance. Please try again later.`);
 
             return interaction.reply({ embeds: [embed], components: [row], flags: [MessageFlags.Ephemeral] });

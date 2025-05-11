@@ -1,4 +1,4 @@
-const { EmbedBuilder, MessageFlags } = require("discord.js");
+const { EmbedBuilder, MessageFlags, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 const { find } = require("llyrics");
 const gsearch = require("google-search-url");
 
@@ -18,7 +18,6 @@ module.exports = {
     devOnly: false,
     run: async (client, interaction, player) => {
         const embed = new EmbedBuilder().setColor(client.config.embedColor);
-        const formatString = (str, maxLength) => (str.length > maxLength ? str.substr(0, maxLength - 3) + "..." : str);
         const formatText = (text) =>
             text
                 .replace(/\(.*?\)/gi, "")
@@ -31,27 +30,37 @@ module.exports = {
         const trackTitle = formatText(track.title);
         const trackArtist = formatText(track.author);
         const lyricText = await lyricFind(client, trackTitle, trackArtist);
+        const loadingEmbed = new EmbedBuilder().setColor(client.config.embedColor).setDescription(`Please wait...!`);
+        const ladingMsg = await interaction.reply({ embeds: [loadingEmbed] });
 
         if (!lyricText) {
-            embed.setDescription(`No lyrics found for: \`${trackTitle} - ${trackArtist}\``);
+            embed.setDescription(`No lyrics found. Please try again later.`);
 
-            return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
+            if (ladingMsg) {
+                return ladingMsg.edit({ embeds: [embed] });
+            } else {
+                return interaction.reply({ embeds: [embed] });
+            }
         }
 
         if (lyricText.length <= 4096) {
             embed
                 .setAuthor({
-                    name: `${formatString(trackTitle, 30)} - ${formatString(trackArtist, 25)} Lyrics`,
+                    name: `${client.user.username} Lyrics`,
                     iconURL: client.user.displayAvatarURL(),
                 })
                 .setThumbnail(track.artworkUrl)
                 .setDescription(lyricText);
 
-            return interaction.reply({ embeds: [embed] });
+            if (ladingMsg) {
+                return ladingMsg.edit({ embeds: [embed] });
+            } else {
+                return interaction.reply({ embeds: [embed] });
+            }
         } else {
             embed
                 .setAuthor({
-                    name: `${formatString(trackTitle, 30)} - ${formatString(trackArtist, 25)} Lyrics`,
+                    name: `${client.user.username} Lyrics`,
                     iconURL: client.user.displayAvatarURL(),
                 })
                 .setThumbnail(track.artworkUrl)
@@ -59,10 +68,14 @@ module.exports = {
 
             const lyricUrl = gsearch.craft({ query: `${trackTitle} ${trackArtist} lyrics` }).url;
             const lyricButton = new ActionRowBuilder().addComponents(
-                new ButtonBuilder().setURL(lyricUrl.replace("http", "https")).setLabel("Full Lyrics").setStyle(ButtonStyle.Link),
+                new ButtonBuilder().setURL(lyricUrl.replace("http:", "https:")).setLabel("Full Lyrics").setStyle(ButtonStyle.Link),
             );
 
-            return interaction.reply({ embeds: [embed], components: [lyricButton] });
+            if (ladingMsg) {
+                return ladingMsg.edit({ embeds: [embed], components: [lyricButton] });
+            } else {
+                return interaction.editReply({ embeds: [embed], components: [lyricButton] });
+            }
         }
     },
 };
@@ -72,7 +85,7 @@ async function lyricFind(client, title, author) {
         song: title,
         artist: author,
         geniusApiKey: client.config.geniusApiKey,
-        engine: "genius",
+        engine: "youtube",
         forceSearch: true,
     });
 

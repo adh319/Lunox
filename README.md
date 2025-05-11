@@ -3,7 +3,7 @@
 </p>
 
 <p align="center"> 
-  A simple yet powerful Discord music bot using the Lavalink client and Discord.js v14.
+  A simple yet powerful Discord music bot built with the Lavalink client and Discord.js v14.
 </p>
 
 <p align="center"> 
@@ -16,80 +16,89 @@
 
 [![Version][version-shield]](version-url) [![MIT License][license-shield]][license-url] [![Contributors][contributors-shield]][contributors-url] [![Stargazers][stars-shield]][stars-url] [![Forks][forks-shield]][forks-url] [![Watchers][watchers-shield]][watchers-url] [![Issues][issues-shield]][issues-url]
 
+---
+
 ### `📢` Main Features
 
-- ☑️ Used **[Rainlink](https://www.npmjs.com/package/rainlink)** Lavalink client
+- ☑️ Built with **[Rainlink](https://www.npmjs.com/package/rainlink)** Lavalink client
 - ☑️ Supports Lavalink v3 and v4
-- ☑️ Slash commands
-- ☑️ Prefix commands **[Dev-only commands]**
+- ☑️ Slash command support
+- ☑️ Prefix commands (**dev-only**)
 - ☑️ Clean UI
-- ☑️ Better performance
-- ☑️ Easy to use
-- ☑️ And more...!
+- ☑️ Optimized performance
+- ☑️ Beginner-friendly
+- ☑️ And much more!
+
+---
 
 ### `🎵` Supported Platforms
 
-- ☑️ Youtube
-- ☑️ Youtube Music
-- ☑️ Apple Music
-- ☑️ Deezer
-- ☑️ Spotify
+- ☑️ YouTube & YouTube Music
 - ☑️ SoundCloud
-- ☑️ And more...!
+- ☑️ Apple Music ([LavaSrc Plugin Required](https://github.com/topi314/LavaSrc))
+- ☑️ Deezer ([LavaSrc Plugin Required](https://github.com/topi314/LavaSrc))
+- ☑️ Spotify ([LavaSrc Plugin Required](https://github.com/topi314/LavaSrc))
+- ☑️ And more!
+
+---
 
 ### `📌` Requirements
 
-- Discord Bot Token **[[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)]**
+- Discord Bot Token ([Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot))
 - Node.js **`v18`** or higher
-- MongoDB **`v5.x`** or higher **[For local database]**
-- Lavalink **[[Guide](https://lavalink.dev/)]**
-- Java **`v18`** or higher **[For Lavalink]**
+- MongoDB **`v5.x`** or higher (for local databases)
+- Lavalink ([Guide](https://lavalink.dev/))
+- Java **`v18`** or higher (for Lavalink)
+
+---
 
 ### `🚀` Configuration & Installation
 
-`1.` Clone the repository.
+**1.** Clone the repository:
 
-```
+```bash
 git clone https://github.com/adh319/Lunox.git
 ```
 
-`2.` Open the Lunox folder then run
+`2.` Open the Lunox folder and install dependencies:
 
 ```
 npm install
 ```
 
-`3.` Rename `.env.example` to `.env` and fill out these variables according to yours.
+`3.` Rename `.env.example` to `.env` and configure the environment variables:
 
 ```
 #########################################
-# ALL THE DETAILS BELOW SHOULD BE FILLED #
+#         FILL IN ALL DETAILS BELOW     #
 #########################################
 
-# GENERAL DETAILS
-TOKEN =  #Your bot token
-PREFIX = ! #Prefix of the bot
-OWNER =  #Your Discord user ID
-DEV =  #Your Discord ID & Your developer Discord user ID (separated by comma "," if more than one) [Example: 393798172591259651, 393798172591259651]
-EMBED_COLOR = 5865F2 #Embed color, example: FFFFFF (without #)
-LEAVE_TIMEOUT = 60000 #Set leave timeout when bot was alone or not playing
-DEFAULT_VOLUME = 100 #Default volume when bot joins a voice channel
-MIN_VOLUME = 1 #Minimum volume
-MAX_VOLUME = 100 #Maximum volume
-MONGO_URI =  #Your MongoDB URI
-GENIUS_API_KEY =  #Your Genius API key
-SUPPORT_SERVER_URL = https://discord.gg/kNdSkHchzH #Support server url
+# GENERAL CONFIGURATION
+TOKEN = # Your bot token
+PREFIX = ! # Bot prefix
+EMBED_COLOR = 5865F2 # Embed color (hex format, without #)
+LEAVE_TIMEOUT = 60000 # Time (in ms) before the bot leaves when alone/not playing
+DEFAULT_VOLUME = 100 # Default volume when bot joins a voice channel
+MIN_VOLUME = 1 # Minimum volume level
+MAX_VOLUME = 100 # Maximum volume level
+MONGO_URI = # Your MongoDB connection URI
+GENIUS_API_KEY = # Your Genius API key
+SUPPORT_SERVER_URL = "https://discord.gg/kNdSkHchzH" # Your Discord support server URL
 
-# RAINLINK DETAILS
-LAVALINK_SOURCE = sp #Available Lavalink sources, based on the sources you've enabled in your Lavalink configuration. For example, if you enable the Spotify source, then "sp" will refer to "spsearch". Will be used if "sourceID" option is provided in the play command.
-DEFAULT_SEARCH_ENGINE = youtubeMusic #Default search engine. Available engines: youtubeMusic, youtube, & soundcloud.
-SPOTIFY_CLIENT_ID =  #Your Spotify client ID
-SPOTIFY_CLIENT_SECRET =  #Your Spotify client secret
+# RAINLINK CONFIGURATION
+LAVALINK_SOURCE = yt # Based on enabled sources in Lavalink config, see ./src/settings/config.js for more details
+DEFAULT_SEARCH_ENGINE = youtubeMusic # Available options: youtubeMusic, youtube, soundcloud
+SPOTIFY_CLIENT_ID = # Your Spotify Client ID
+SPOTIFY_CLIENT_SECRET = # Your Spotify Client Secret
 ```
 
-`4.` Go to `./src/settings/config.js`, open the file and change the values according your Lavalink server details.
+`4.` Edit your Lavalink node settings & dev ID(s) in ./src/settings/config.js:
 
 ```js
+// line 8
+dev: [""], // Your Discord user ID(s), e.g. ["123456789012345678"]
+
+// line 32
 rainlinkNodes: [
     {
         name: "Lunox",
@@ -97,14 +106,14 @@ rainlinkNodes: [
         port: 2333,
         auth: "youshallnotpass",
         secure: false,
-        driver: "lavalink/v4/koinu", // Available drivers based on your Lavalink version: https://github.com/RainyXeon/Rainlink#-drivers
+        driver: "lavalink/v4/koinu", // Driver depends on your Lavalink version
     },
 ],
 ```
 
-`5.` Go to `./src/settings/emoji.js`, open the file and fill out the emoji values.
+`5.` Open `./src/settings/emoji.js` and configure custom emojis.
 
-`6.` Start the bot by running.
+`6.` Start the bot:
 
 ```
 npm start
@@ -112,21 +121,22 @@ npm start
 
 ### `🤖` Bots Using This Source Code
 
-Below is a list of Discord bots that are using this source code. If you want your bots to be listed here, **`edit this table`** and make a pull request with the following format:
+If you're using this source code and want your bot listed below, submit a pull request by editing the table with your details:
 
 | No. | Bot Name | Invite Link | Support Server |
 | --- | --- | --- | --- |
-| 1 | Jive | [Invite Link](https://discord.com/oauth2/authorize?client_id=1019954630551158934) | [Jive Corner](https://discord.gg/kNdSkHchzH) |
-| 2 |  |  |  |
-| 3 |  |  |  |
-| 4 |  |  |  |
+| `1` | Jive | [Invite Link](https://discord.com/oauth2/authorize?client_id=1019954630551158934) | [Jive Corner](https://discord.gg/kNdSkHchzH) |
+| `2` |  |  |  |
+| `3` |  |  |  |
+| `4` |  |  |  |
 
-### `🔐` Licensed
+### `🔐` License
 
-Distributed under the [`MIT License`](https://github.com/adh319/Lunox/blob/main/LICENSE). You are free to use, and modify the code. However, you must provide attribution by linking back to the original repository and include this copyright notice:
+This project is licensed under the [`MIT License`](https://github.com/adh319/Lunox/blob/main/LICENSE). You are free to use and modify the code, but must include proper attribution:
 
 ```
-© 2024 adh319@github. This project is available under the MIT License.You must include proper attribution by linking to the original GitHub repository: https://github.com/adh319/Lunox.
+© 2024 adh319@github. This project is available under the MIT License.
+You must include proper attribution by linking to the original GitHub repository: https://github.com/adh319/Lunox.
 ```
 
 ### `👥` Contributors
