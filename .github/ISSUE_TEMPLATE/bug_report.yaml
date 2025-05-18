@@ -36,9 +36,10 @@ body:
     label: "Nodejs version"
   validations:
     required: true
-    required: true
 - type: textarea
   id: error-logs
   attributes:
     label: "Errors / Logs"
     placeholder: "<!-- Paste your logs here -->"
+  validations:
+    required: true
