@@ -36,6 +36,7 @@ body:
     label: "Nodejs version"
   validations:
     required: true
+    required: true
 - type: textarea
   id: error-logs
   attributes:
