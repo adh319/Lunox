@@ -87,7 +87,7 @@ module.exports = {
         }
 
         if (command.devOnly) {
-            if (!client.config.dev.includes(response.member.id) && client.config.owner !== response.member.id) {
+            if (!client.config.dev.includes(response.member.id)) {
                 embed.setDescription(`This command only available for developers.`);
 
                 return response.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
