@@ -11,7 +11,7 @@
     "axios": "^1.9.0",
     "discord-hybrid-sharding": "^2.2.6",
     "discord.js": "^14.19.3",
-    "dotenv": "^16.5.0",
+    "dotenv": "^17.0.1",
     "google-search-url": "^0.1.8",
     "llyrics": "^1.1.7",
     "lodash": "^4.17.21",
