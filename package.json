@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "^1.9.0",
-    "discord-hybrid-sharding": "^2.2.6",
+    "discord-hybrid-sharding": "^3.0.0",
     "discord.js": "^14.19.3",
     "dotenv": "^17.0.0",
     "google-search-url": "^0.1.8",
