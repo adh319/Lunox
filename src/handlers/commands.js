@@ -20,7 +20,7 @@ module.exports = (client) => {
             }
         });
 
-        client.on("ready", async () => {
+        client.on("clietReady", async () => {
             await client.application.commands.set(data);
 
             console.log(`[INFO] ${client.slash.size} Slash commands loaded`);

@@ -1,5 +1,5 @@
 const { VoicePlugin } = require("rainlink-voice");
-require("dotenv").config();
+require("dotenv").config({ path: "./.env", quiet: true });
 
 module.exports = {
     // GENERAL DETAILS

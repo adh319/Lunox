@@ -1,5 +1,5 @@
 const { ClusterManager } = require("discord-hybrid-sharding"); //imports the sharding manager
-require("dotenv").config();
+require("dotenv").config({path: "./.env", quiet: true}); // loads the .env file
 
 const manager = new ClusterManager(`${__dirname}/clients/manager.js`, {
     totalShards: "auto", // you can set to every number you want but for save mode, use "auto" option
