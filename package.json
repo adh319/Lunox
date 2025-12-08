@@ -16,7 +16,7 @@
     "llyrics": "^1.3.1",
     "lodash": "^4.17.21",
     "moment": "^2.30.1",
-    "mongoose": "^8.20.1",
+    "mongoose": "^9.0.1",
     "node-cron": "^4.2.1",
     "pretty-ms": "^9.3.0",
     "rainlink": "^1.2.7",
