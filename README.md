@@ -126,7 +126,7 @@ If you're using this source code and want your bot listed below, submit a pull r
 | No. | Bot Name | Invite Link | Support Server |
 | --- | --- | --- | --- |
 | `1` | Jive | [Invite Link](https://discord.com/oauth2/authorize?client_id=1019954630551158934) | [Jive Corner](https://discord.gg/kNdSkHchzH) |
-| `2` |  |  |  |
+| `2` | Xyro | [Invite Link](https://discord.com/api/oauth2/authorize?client_id=1448697407973097522&permissions=8&scope=bot%20applications.commands) | [Xyro](https://discord.gg/qAM6X6jjqy) |
 | `3` |  |  |  |
 | `4` |  |  |  |
 
