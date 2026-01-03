@@ -1,3 +1,5 @@
+const Logger = require("../utils/logger");
+
 module.exports = {
     createDataGuild: async (client, guild) => {
         try {
@@ -10,7 +12,7 @@ module.exports = {
 
             if (!client.data.has(`guildData_${guild.id}`)) client.data.set(`guildData_${guild.id}`, data);
         } catch (error) {
-            console.error("Error creating data:", error);
+            Logger.error("Error creating guild data:", error);
         }
     },
 
@@ -27,7 +29,7 @@ module.exports = {
 
             if (!client.data.has(`userData_${user.id}`)) client.data.set(`userData_${user.id}`, data);
         } catch (error) {
-            console.error("Error creating data:", error);
+            Logger.error("Error creating user data:", error);
         }
     },
 };

@@ -1,6 +1,7 @@
 const { ClusterManager } = require("discord-hybrid-sharding"); //imports the sharding manager
-require("dotenv").config({path: "./.env", quiet: true}); // loads the .env file
-const {token} = require("./settings/config.js")
+const Logger = require("./utils/logger");
+require("dotenv").config({ path: "./.env", quiet: true }); // loads the .env file
+const { token } = require("./settings/config.js");
 
 const manager = new ClusterManager(`${__dirname}/clients/manager.js`, {
     totalShards: "auto", // you can set to every number you want but for save mode, use "auto" option
@@ -10,7 +11,7 @@ const manager = new ClusterManager(`${__dirname}/clients/manager.js`, {
     token: process.env.TOKEN || token, // put token in .env file or put it in /src/settings/config.js
 });
 
-manager.on("clusterCreate", (cluster) => console.log(`[INFO] Launched cluster ${cluster.id}`));
+manager.on("clusterCreate", (cluster) => Logger.info(`Launched cluster ${cluster.id}`));
 manager.spawn({ timeout: -1 });
 
 /**

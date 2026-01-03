@@ -60,7 +60,7 @@ module.exports = async (client, message) => {
     if (!command) command = client.prefix.get(client.aliases.get(cmd));
     if (!command) return;
 
-    console.log(
+    Logger.info(
         `[PREFIX] [${command.name}] | (${message.author.username})[${message.author.id}] | (${message.guild.name})[${message.guildId}]`,
     );
 

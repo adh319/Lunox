@@ -1,9 +1,11 @@
+const Logger = require("../../../utils/logger");
+
 module.exports = async (client, player) => {
     if (!player) return;
 
     const guild = await client.guilds.cache.get(player.guildId);
 
-    console.debug(`[DEBUG] Player destroyed from [${guild.name}] (${guild.id})`);
+    Logger.debug(`Player destroyed from [${guild.name}] (${guild.id})`);
 
     if (player.message) player.message.delete().catch((e) => {});
 

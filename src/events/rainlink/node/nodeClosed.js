@@ -1,5 +1,7 @@
+const Logger = require("../../../utils/logger");
+
 module.exports = (client, node) => {
-    console.warn(`[WARN] Node ${node.options.name} closed`);
+    Logger.warn(`Node ${node.options.name} closed`);
 };
 
 /**

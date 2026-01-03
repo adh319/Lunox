@@ -1,6 +1,7 @@
 const { EmbedBuilder } = require("discord.js");
 const { createPage } = require("../../../functions/createPage.js");
 const lodash = require("lodash");
+const Logger = require("../../../utils/logger");
 
 module.exports = {
     name: "lavalink",
@@ -64,7 +65,7 @@ module.exports = {
 
             return createPage(client, message, embed, pages);
         } catch (error) {
-            console.error(error);
+            Logger.error("Failed to fetch Lavalink node information:", error);
             embed.setDescription(`An error occurred while fetching the Lavalink node information.`);
 
             return message.reply({ embeds: [embed] });

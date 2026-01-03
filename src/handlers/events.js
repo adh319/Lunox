@@ -1,4 +1,5 @@
 const { readdirSync } = require("fs");
+const Logger = require("../utils/logger");
 
 module.exports = (client) => {
     try {
@@ -13,9 +14,9 @@ module.exports = (client) => {
             }
         });
 
-        console.log("[INFO] Bot events loaded");
+        Logger.info("Bot events loaded");
     } catch (error) {
-        console.error(error);
+        Logger.error("Failed to load bot events:", error);
     }
 };
 

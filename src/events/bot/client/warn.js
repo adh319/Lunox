@@ -1,5 +1,7 @@
+const Logger = require("../../../utils/logger");
+
 module.exports = async (client) => {
-    console.warn(`[WARN] Warned ${client.user.tag} (${client.user.id})`);
+    Logger.warn(`Warned ${client.user.tag} (${client.user.id})`);
 };
 
 /**

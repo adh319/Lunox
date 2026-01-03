@@ -1,5 +1,7 @@
+const Logger = require("../../../utils/logger");
+
 module.exports = async (client, id) => {
-    console.warn(`[WARN] Shard ${id} reconnecting`);
+    Logger.warn(`Shard ${id} reconnecting`);
 };
 
 /**

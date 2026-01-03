@@ -1,5 +1,7 @@
+const Logger = require("../../../utils/logger");
+
 module.exports = async (client, error, id) => {
-    console.error(`[ERROR] Shard ${id} error`, error);
+    Logger.error(`Shard ${id} error`, error);
 };
 
 /**

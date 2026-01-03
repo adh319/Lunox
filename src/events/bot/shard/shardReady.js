@@ -1,5 +1,7 @@
+const Logger = require("../../../utils/logger");
+
 module.exports = async (client, id) => {
-    console.log(`[INFO] Shard ${id} ready`);
+    Logger.info(`Shard ${id} ready`);
 };
 
 /**

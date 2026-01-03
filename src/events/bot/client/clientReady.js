@@ -1,5 +1,6 @@
 const { ActivityType } = require("discord.js");
 const emojiConfig = require("../../../settings/emoji.js");
+const Logger = require("../../../utils/logger");
 
 module.exports = async (client) => {
     await emojiConfig(client);
@@ -43,7 +44,7 @@ module.exports = async (client) => {
         client.user.setPresence(presenceOptions);
     }, 5000);
 
-    console.log(`[INFO] ${client.user.username} is ready with ${await client.guilds.cache.size} server`);
+    Logger.info(`${client.user.username} is ready with ${await client.guilds.cache.size} server`);
 };
 
 /**

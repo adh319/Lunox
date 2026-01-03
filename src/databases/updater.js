@@ -1,4 +1,5 @@
 const cron = require("node-cron");
+const Logger = require("../utils/logger");
 
 module.exports = async (client) => {
     const updateSettings = async (items, settingMap, dataModel, type) => {
@@ -17,7 +18,7 @@ module.exports = async (client) => {
             const users = await client.userData.find();
             await updateSettings(users, client.data, client.userData, "userData");
         } catch (error) {
-            console.error("An error occurred while updating the database:", error);
+            Logger.error("An error occurred while updating the database:", error);
         }
     });
 };

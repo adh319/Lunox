@@ -1,6 +1,7 @@
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, InteractionType, MessageFlags } = require("discord.js");
 const { createDataGuild, createDataUser } = require("../../../functions/createData.js");
 const { permissions } = require("../../../functions/getPermission.js");
+const Logger = require("../../../utils/logger");
 
 module.exports = async (client, interaction) => {
     if (!interaction.guild || interaction.user.bot) return;
@@ -18,7 +19,7 @@ module.exports = async (client, interaction) => {
         const command = client.slash.get(interaction.commandName);
         if (!command) return;
 
-        console.log(
+        Logger.info(
             `[Slash] [${command.name}] | (${interaction.user.username})[${interaction.user.id}] | ${interaction.guild.name} [${interaction.guildId}]`,
         );
 

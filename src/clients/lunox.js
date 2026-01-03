@@ -45,7 +45,7 @@ class MainClient extends Client {
         this.cluster = new ClusterClient(this);
     }
 
-    connect() {
+    async connect() {
         return super.login(this.token);
     }
 }

@@ -1,23 +1,25 @@
+const Logger = require("../utils/logger");
+
 module.exports = async () => {
     process.on("unhandledRejection", async (reason, promise) => {
-        console.error("[Anticrash] | [UnhandledRejection_Logs] | [start] : ===============");
-        console.error("Unhandled Rejection at:", promise, "reason:", reason);
-        console.error("[Anticrash] | [UnhandledRejection_Logs] | [end] : ===============");
+        Logger.anticrash("UnhandledRejection_Logs", "[start] : ===============");
+        Logger.error("Unhandled Rejection at:", promise, "reason:", reason);
+        Logger.anticrash("UnhandledRejection_Logs", "[end] : ===============");
     });
 
     process.on("uncaughtException", async (err, origin) => {
-        console.error("[Anticrash] | [UncaughtException_Logs] | [Start] : ===============");
-        console.error(`Uncaught exception: ${err}\n` + `Exception origin: ${origin}`);
-        console.error("[Anticrash] | [UncaughtException_Logs] | [End] : ===============");
+        Logger.anticrash("UncaughtException_Logs", "[Start] : ===============");
+        Logger.error(`Uncaught exception: ${err}\n` + `Exception origin: ${origin}`);
+        Logger.anticrash("UncaughtException_Logs", "[End] : ===============");
     });
 
     process.on("uncaughtExceptionMonitor", async (err, origin) => {
-        console.error("[Anticrash] | [UncaughtExceptionMonitor_Logs] | [Start] : ===============");
-        console.error(`Uncaught exception monitor: ${err}\n` + `Exception origin: ${origin}`);
-        console.error("[Anticrash] | [UncaughtExceptionMonitor_Logs] | [End] : ===============");
+        Logger.anticrash("UncaughtExceptionMonitor_Logs", "[Start] : ===============");
+        Logger.error(`Uncaught exception monitor: ${err}\n` + `Exception origin: ${origin}`);
+        Logger.anticrash("UncaughtExceptionMonitor_Logs", "[End] : ===============");
     });
 
-    console.log("[INFO] Anticrash events loaded");
+    Logger.info("Anticrash events loaded");
 };
 
 /**

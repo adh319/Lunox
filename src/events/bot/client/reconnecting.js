@@ -1,5 +1,7 @@
+const Logger = require("../../../utils/logger");
+
 module.exports = async (client) => {
-    console.warn(`[WARN] Reconnecting ${client.user.tag} (${client.user.id})`);
+    Logger.warn(`Reconnecting ${client.user.tag} (${client.user.id})`);
 };
 
 /**

@@ -97,7 +97,7 @@ module.exports = {
         try {
             command.run(client, response, player, args);
         } catch (error) {
-            console.error(error);
+            Logger.error("Failed to execute command:", error);
         }
     },
 };

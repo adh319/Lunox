@@ -1,11 +1,12 @@
 const { EmbedBuilder } = require("discord.js");
+const Logger = require("../../../utils/logger");
 
 module.exports = async (client, player, track, message) => {
     if (!player) return;
 
     const guild = await client.guilds.cache.get(player.guildId);
 
-    console.error(`[ERROR] Song error from ${guild.name} (${guild.id})`, message);
+    Logger.error(`Song error from ${guild.name} (${guild.id})`, message);
 
     if (player.message) player.message.delete().catch((e) => {});
 

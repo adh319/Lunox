@@ -1,11 +1,12 @@
 const { EmbedBuilder } = require("discord.js");
+const Logger = require("../../../utils/logger");
 
 module.exports = async (client, player) => {
     if (!player) return;
 
     const guild = await client.guilds.cache.get(player.guildId);
 
-    console.error(`[ERROR] Song got stuck from ${guild.name} (${guild.id})`);
+    Logger.error(`Song got stuck from ${guild.name} (${guild.id})`);
 
     if (player.message) player.message.delete().catch((e) => {});
 

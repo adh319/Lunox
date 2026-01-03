@@ -1,5 +1,7 @@
+const Logger = require("../../../utils/logger");
+
 module.exports = (client, node, error) => {
-    console.error(`[ERROR] Node ${node.options.name} error`, error);
+    Logger.error(`Node ${node.options.name} error`, error);
 };
 
 /**

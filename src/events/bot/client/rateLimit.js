@@ -1,5 +1,7 @@
+const Logger = require("../../../utils/logger");
+
 module.exports = async (client, info) => {
-    console.WARN(`[WARN] Rate limited, sleeping for ${0} seconds`);
+    Logger.warn(`Rate limited, sleeping for ${0} seconds`);
 };
 
 /**

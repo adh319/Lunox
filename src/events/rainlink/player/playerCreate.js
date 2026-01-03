@@ -1,3 +1,5 @@
+const Logger = require("../../../utils/logger");
+
 module.exports = async (client, player) => {
     if (!player) return;
 
@@ -5,9 +7,9 @@ module.exports = async (client, player) => {
     const guildData = client.data.get(`guildData_${guild.id}`);
 
     if (guildData.reconnect.status) {
-        console.debug(`[DEBUG] Player reconnected to [${guild.name}] (${guild.id})`);
+        Logger.debug(`Player reconnected to [${guild.name}] (${guild.id})`);
     } else {
-        console.debug(`[DEBUG] Player created in [${guild.name}] (${guild.id})`);
+        Logger.debug(`Player created in [${guild.name}] (${guild.id})`);
     }
 };
 

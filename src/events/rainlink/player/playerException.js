@@ -1,11 +1,12 @@
 const { EmbedBuilder } = require("discord.js");
+const Logger = require("../../../utils/logger");
 
 module.exports = async (client, player, data) => {
     if (!player) return;
 
     const guild = await client.guilds.cache.get(player.guildId);
 
-    console.error(`[ERROR] Player got an exception from ${guild.name} (${guild.id})`, data);
+    Logger.error(`Player got an exception from ${guild.name} (${guild.id})`, data);
 
     if (player.message) player.message.delete().catch((e) => {});
 

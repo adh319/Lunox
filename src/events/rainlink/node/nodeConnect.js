@@ -1,10 +1,12 @@
+const Logger = require("../../../utils/logger");
+
 module.exports = async (client, node) => {
-    console.log(`[INFO] Node ${node.options.name} ready`);
+    Logger.info(`Node ${node.options.name} ready`);
 
     const guildDatas = await client.guildData.find();
     const reconnects = guildDatas.filter((x) => x.reconnect.status);
 
-    console.log(`[INFO] Auto reconnect found in ${reconnects.length} servers`);
+    Logger.info(`Auto reconnect found in ${reconnects.length} servers`);
 
     reconnects.forEach((guildData, index) =>
         setTimeout(async () => {
