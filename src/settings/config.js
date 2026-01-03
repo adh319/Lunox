@@ -12,7 +12,6 @@ module.exports = {
     minVolume: parseInt(process.env.MIN_VOLUME) || 1, // min volume
     maxVolume: parseInt(process.env.MAX_VOLUME) || 100, // max volume
     mongoUri: process.env.MONGO_URI || " ", // your MongoDB Uri
-    geniusApiKey: process.env.GENIUS_API_KEY || " ", // your genius api key
     supportServerUrl: process.env.SUPPORT_SERVER_URL || " ", // your support server url
 
     // RAINLINK DETAILS

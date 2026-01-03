@@ -3,9 +3,17 @@
   "version": "3.0.2",
   "description": "Lunox by @adh319",
   "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "npm@10.9.0",
   "scripts": {
     "start": "node ./src/index.js",
-    "format": "prettier -w ./src"
+    "format": "prettier -w .",
+    "format:check": "prettier -c ."
   },
   "dependencies": {
     "axios": "^1.13.2",
@@ -44,7 +52,10 @@
     "lavalink discord.js",
     "lavalink discord.js music bot"
   ],
-  "author": "adh319",
+  "author": {
+    "name": "adh319",
+    "url": "https://github.com/adh319"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",

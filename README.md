@@ -3,31 +3,52 @@
 </p>
 
 <p align="center"> 
-  A simple yet powerful Discord music bot built with the Lavalink client and Discord.js v14.
-</p>
-
-<p align="center"> 
-  <a href="https://ko-fi.com/enourdev" target="_blank"> <img src="https://ko-fi.com/img/githubbutton_sm.svg"/> </a>
+  Shard-ready Discord music bot powered by Rainlink, Lavalink, and Discord.js v14.
 </p>
 
 <p align="center"> 
   <a href="https://discord.gg/xhTVzbS5NU" target="_blank"> <img src="https://discordapp.com/api/guilds/1056011738950156359/widget.png?style=banner2"/> </a>
 </p>
 
+<p align="center">
+
 [![Version][version-shield]](version-url) [![MIT License][license-shield]][license-url] [![Contributors][contributors-shield]][contributors-url] [![Stargazers][stars-shield]][stars-url] [![Forks][forks-shield]][forks-url] [![Watchers][watchers-shield]][watchers-url] [![Issues][issues-shield]][issues-url]
 
----
+[![Node Version][node-shield]](#-requirements) [![Discord.js][discordjs-shield]](https://discord.js.org/#/docs/discord.js/main/general/welcome) [![Rainlink][rainlink-shield]](https://www.npmjs.com/package/rainlink)
 
+</p>
+
+
+### `🧭` Table of Contents
+
+- [Main Features](#-main-features)
+- [Command Overview](#-command-overview)
+- [Supported Platforms](#-supported-platforms)
+- [Requirements](#-requirements)
+- [Configuration & Installation](#-configuration--installation)
+- [Support the Project](#-support-the-project)
+- [Bots Using This Source Code](#-bots-using-this-source-code)
+- [License](#-license)
+- [Contributors](#-contributors)
+
+---
 ### `📢` Main Features
 
-- ☑️ Built with **[Rainlink](https://www.npmjs.com/package/rainlink)** Lavalink client
-- ☑️ Supports Lavalink v3 and v4
-- ☑️ Slash command support
-- ☑️ Prefix commands (**dev-only**)
-- ☑️ Clean UI
-- ☑️ Optimized performance
-- ☑️ Beginner-friendly
-- ☑️ And much more!
+- ☑️ Rainlink-powered Lavalink client with v3/v4 drivers and voice-specific plugin out of the box
+- ☑️ Full Discord.js v14 slash command set plus dev-only prefix commands for ops/maintenance
+- ☑️ Interactive Now Playing controller (pause/resume, volume up/down, loop, shuffle, previous, skip, stop)
+- ☑️ Rich music controls: play/playlist, queue paging, loop (song/queue/off), seek, skip, previous, remove, clear, shuffle, volume bounds
+- ☑️ Audio extras: 8D/bass/nightcore/vaporwave and more filters; autoplay (YouTube) and 24/7 stay-in-voice toggle
+- ☑️ Resilient UX: inactivity auto-leave with configurable timeout, reconnect/keep-alive mode, anti-crash listeners, maintenance lock, per-user bans
+- ☑️ Mongo-backed guild/user state (reconnect targets, bans) with periodic sync to the database
+- ☑️ Ready-to-configure embeds/emojis, Genius lyrics lookup, and minimal onboarding defaults
+
+### `🎛️` Command Overview
+
+- General: `/help`, `/ping`
+- Music: `/play`, `/queue`, `/skip`, `/previous`, `/pause`, `/resume`, `/stop`, `/seek`, `/remove`, `/clear`, `/shuffle`, `/loop`, `/filter`, `/volume`, `/join`, `/leave`, `/lyric`
+- Settings: `/247` (stay in VC), `/autoplay`
+- Dev (prefix, gated): `ban`, `unban`, `maintenance`, `lavalink`
 
 ---
 
@@ -119,6 +140,26 @@ rainlinkNodes: [
 npm start
 ```
 
+### 💖 Support the Project
+
+If you find Lunox useful, consider supporting continued development:
+
+<p align="center">
+  <a href="https://github.com/sponsors/adh319">
+    <img src="https://img.shields.io/badge/GitHub_Sponsors-Support-ea4aaa?style=for-the-badge&logo=github-sponsors" alt="GitHub Sponsors"/>
+  </a>
+  <a href="https://paypal.me/LunoxBot">
+    <img src="https://img.shields.io/badge/PayPal-Donate-00457C?style=for-the-badge&logo=paypal" alt="PayPal"/>
+  </a>
+  <a href="https://ko-fi.com/lunoxbot">
+    <img src="https://img.shields.io/badge/Ko--fi-Support-FF5E5B?style=for-the-badge&logo=ko-fi" alt="Ko-fi"/>
+  </a>
+</p>
+
+- **GitHub Sponsors** — [https://github.com/sponsors/adh319](https://github.com/sponsors/adh319)
+- **PayPal** — [https://paypal.me/LunoxBot](https://paypal.me/LunoxBot)
+- **Ko-fi** — [https://ko-fi.com/lunoxbot](https://ko-fi.com/lunoxbot)
+
 ### `🤖` Bots Using This Source Code
 
 If you're using this source code and want your bot listed below, submit a pull request by editing the table with your details:
@@ -158,4 +199,8 @@ You must include proper attribution by linking to the original GitHub repository
 [issues-url]: https://github.com/adh319/Lunox/issues
 [license-shield]: https://img.shields.io/github/license/adh319/Lunox.svg?style=for-the-badge
 [license-url]: https://github.com/adh319/Lunox/blob/main/LICENSE
+[version-url]: https://github.com/adh319/Lunox/blob/main/package.json
+[node-shield]: https://img.shields.io/badge/Node-18%2B-43853d?logo=node.js&logoColor=white&style=for-the-badge
+[discordjs-shield]: https://img.shields.io/badge/discord.js-v14-5865F2?logo=discord&logoColor=white&style=for-the-badge
+[rainlink-shield]: https://img.shields.io/badge/Lavalink%20Client-Rainlink-00bcd4?style=for-the-badge
 [spon-img]: https://media.discordapp.net/attachments/979364157541462066/982734017671606322/Vultr_Logo_Download_Vector.png

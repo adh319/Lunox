@@ -29,7 +29,7 @@ module.exports = {
         const track = player.queue.current;
         const trackTitle = formatText(track.title);
         const trackArtist = formatText(track.author);
-        const lyricText = await lyricFind(client, trackTitle, trackArtist);
+        const lyricText = await lyricFind(trackTitle, trackArtist);
         const loadingEmbed = new EmbedBuilder().setColor(client.config.embedColor).setDescription(`Please wait...!`);
         const loadingMsg = await interaction.reply({ embeds: [loadingEmbed] });
 
@@ -80,15 +80,13 @@ module.exports = {
     },
 };
 
-async function lyricFind(client, title, author) {
+async function lyricFind(title, author) {
     const response = await find({
         song: title,
         artist: author,
-        geniusApiKey: client.config.geniusApiKey,
         engine: "youtube",
         forceSearch: true,
     });
-
     const lyricSong = response.lyrics;
 
     return lyricSong;
