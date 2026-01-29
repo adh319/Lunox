@@ -1,6 +1,6 @@
 # Lunox Discord Music Bot - Docker Compose
 # Includes: Lunox Bot and MongoDB
-# Note: Lavalink server must be configured separately in src/settings/config.js
+# Requires: External Lavalink server (configure via LAVALINK_* env vars)
 
 services:
   # ================================
@@ -23,6 +23,13 @@ services:
       - MAX_VOLUME=${MAX_VOLUME:-100}
       - MONGO_URI=mongodb://mongodb:27017/lunox
       - SUPPORT_SERVER_URL=${SUPPORT_SERVER_URL}
+      # Lavalink Connection
+      - LAVALINK_NAME=${LAVALINK_NAME:-Lunox}
+      - LAVALINK_HOST=${LAVALINK_HOST:-host.docker.internal}
+      - LAVALINK_PORT=${LAVALINK_PORT:-2333}
+      - LAVALINK_PASSWORD=${LAVALINK_PASSWORD:-youshallnotpass}
+      - LAVALINK_SECURE=${LAVALINK_SECURE:-false}
+      - LAVALINK_DRIVER=${LAVALINK_DRIVER:-lavalink/v4/koinu}
       # Rainlink Configuration
       - LAVALINK_SOURCE=${LAVALINK_SOURCE:-yt}
       - DEFAULT_SEARCH_ENGINE=${DEFAULT_SEARCH_ENGINE:-youtubeMusic}
