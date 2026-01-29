@@ -30,12 +30,12 @@ module.exports = {
     rainlinkPlugins: [new VoicePlugin()], // rainlink plugins, to add more plugins, just add them to the array. Available plugins: https://github.com/RainyXeon/Rainlink/#-plugins
     rainlinkNodes: [
         {
-            name: "Lunox",
-            host: "localhost",
-            port: 2333,
-            auth: "youshallnotpass",
-            secure: false,
-            driver: "lavalink/v4/koinu", // Available drivers based on your Lavalink version: https://github.com/RainyXeon/Rainlink#-drivers
+            name: process.env.LAVALINK_NAME || "Lunox",
+            host: process.env.LAVALINK_HOST || "localhost",
+            port: parseInt(process.env.LAVALINK_PORT) || 2333,
+            auth: process.env.LAVALINK_PASSWORD || "youshallnotpass",
+            secure: parseBoolean(process.env.LAVALINK_SECURE),
+            driver: process.env.LAVALINK_DRIVER || "lavalink/v4/koinu", // Available drivers based on your Lavalink version: https://github.com/RainyXeon/Rainlink#-drivers
         },
     ],
 };
