@@ -1,0 +1,69 @@
+# Lunox Discord Music Bot - Docker Compose
+# Includes: Lunox Bot and MongoDB
+# Note: Lavalink server must be configured separately in src/settings/config.js
+
+services:
+  # ================================
+  # Lunox Discord Bot
+  # ================================
+  lunox:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lunox-bot
+    restart: unless-stopped
+    environment:
+      # General Configuration
+      - TOKEN=${TOKEN}
+      - PREFIX=${PREFIX:-!}
+      - EMBED_COLOR=${EMBED_COLOR:-5865F2}
+      - LEAVE_TIMEOUT=${LEAVE_TIMEOUT:-60000}
+      - DEFAULT_VOLUME=${DEFAULT_VOLUME:-100}
+      - MIN_VOLUME=${MIN_VOLUME:-1}
+      - MAX_VOLUME=${MAX_VOLUME:-100}
+      - MONGO_URI=mongodb://mongodb:27017/lunox
+      - SUPPORT_SERVER_URL=${SUPPORT_SERVER_URL}
+      # Rainlink Configuration
+      - LAVALINK_SOURCE=${LAVALINK_SOURCE:-yt}
+      - DEFAULT_SEARCH_ENGINE=${DEFAULT_SEARCH_ENGINE:-youtubeMusic}
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - lunox-network
+
+  # ================================
+  # MongoDB Database
+  # ================================
+  mongodb:
+    image: mongo:7
+    container_name: lunox-mongodb
+    restart: unless-stopped
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=lunox
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - lunox-network
+
+# ================================
+# Networks
+# ================================
+networks:
+  lunox-network:
+    driver: bridge
+
+# ================================
+# Volumes
+# ================================
+volumes:
+  mongodb_data:
+    driver: local
