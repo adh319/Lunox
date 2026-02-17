@@ -33,12 +33,13 @@ module.exports = {
         }
 
         const query = interaction.options.getString("query");
+        const msg = await interaction.reply({ embeds: [embed.setDescription(`Searching for \`${query}\``)] });
         const result = await client.rainlink.search(query, { requester: interaction.member, sourceID: client.config.lavalinkSource });
 
         if (result.type === "EMPTY" || result.type === "ERROR" || !result.tracks.length) {
             embed.setDescription(`No results found for your query.`);
 
-            return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
+            if (msg) return msg.edit({ embeds: [embed] });
         }
 
         if (!player) {
@@ -66,8 +67,7 @@ module.exports = {
             embed.setDescription(`Added **[${trackTitle} - ${trackAuthor}](${track.uri})** - \`${convertTime(track.duration)}\`.`);
         }
 
-        await interaction.reply({ embeds: [embed] });
-
+        if (msg) await msg.edit({ embeds: [embed] });
         if (!player.playing) return player.play();
     },
 };

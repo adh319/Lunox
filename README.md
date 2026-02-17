@@ -16,7 +16,6 @@
 
 </p>
 
-
 ### `🧭` Table of Contents
 
 - [Main Features](#-main-features)
@@ -30,6 +29,7 @@
 - [Contributors](#-contributors)
 
 ---
+
 ### `📢` Main Features
 
 - ☑️ Rainlink-powered Lavalink client with v3/v4 drivers and voice-specific plugin out of the box
@@ -52,8 +52,8 @@
 
 ### `🎵` Supported Platforms
 
-- ☑️ YouTube & YouTube Music
 - ☑️ SoundCloud
+- ☑️ YouTube & YouTube Music ([Youtube Plugin Required](https://github.com/lavalink-devs/youtube-source))
 - ☑️ Apple Music ([LavaSrc Plugin Required](https://github.com/topi314/LavaSrc))
 - ☑️ Deezer ([LavaSrc Plugin Required](https://github.com/topi314/LavaSrc))
 - ☑️ Spotify ([LavaSrc Plugin Required](https://github.com/topi314/LavaSrc))
@@ -67,7 +67,7 @@
 - Node.js **`v18`** or higher
 - MongoDB **`v5.x`** or higher (for local databases)
 - Lavalink ([Guide](https://lavalink.dev/))
-- Java **`v18`** or higher (for Lavalink)
+- Java **`v17`** or higher (for Lavalink)
 
 ---
 
@@ -168,6 +168,10 @@ If you're using this source code and want your bot listed below, submit a pull r
 | `2` | Xyvo | [Invite Link](https://discord.com/api/oauth2/authorize?client_id=1448697407973097522&permissions=8&scope=bot%20applications.commands) | [Xyvo](https://discord.gg/vGjcnBjVyY) |
 | `3` |  |  |  |
 | `4` |  |  |  |
+
+### `🚀` Jive Bot Source Code
+
+**Jive bot source code is now available for purchase!** If you're interested in obtaining the source code for Jive, which is more powerful with better features and code structure, please visit the [Enour Dev](https://discord.gg/xhTVzbS5NU) Discord server for more details.
 
 ### `🔐` License
 

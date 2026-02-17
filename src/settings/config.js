@@ -34,7 +34,7 @@ module.exports = {
             host: process.env.LAVALINK_HOST || "localhost",
             port: parseInt(process.env.LAVALINK_PORT) || 2333,
             auth: process.env.LAVALINK_PASSWORD || "youshallnotpass",
-            secure: parseBoolean(process.env.LAVALINK_SECURE),
+            secure: parseBoolean(process.env.LAVALINK_SECURE || "false"),
             driver: process.env.LAVALINK_DRIVER || "lavalink/v4/koinu", // Available drivers based on your Lavalink version: https://github.com/RainyXeon/Rainlink#-drivers
         },
     ],

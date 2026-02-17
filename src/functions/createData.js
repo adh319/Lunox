@@ -6,7 +6,7 @@ module.exports = {
             const guildData = await client.guildData.findOneAndUpdate(
                 { id: guild.id },
                 { $setOnInsert: { id: guild.id } },
-                { upsert: true, new: true },
+                { upsert: true, returnDocument: "after" },
             );
             const { _id, __v, ...data } = guildData.toObject();
 
@@ -23,7 +23,7 @@ module.exports = {
             const userData = await client.userData.findOneAndUpdate(
                 { id: user.id },
                 { $setOnInsert: { id: user.id } },
-                { upsert: true, new: true },
+                { upsert: true, returnDocument: "after" },
             );
             const { _id, __v, ...data } = userData.toObject();
 
