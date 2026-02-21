@@ -105,9 +105,9 @@ npm start
 
 ### Prefix Commands (Developer / Ops)
 
-- `ban`, `unban`, `maintenance`, `lavalink`
+- `ban`, `unban`, `maintenance`, `lavalink`, `eval`, `restart`
 - Loaded from `src/commands/message/dev`
-- Intended for developer/admin use only
+- Intended for developer/admin use only (requires your Discord user ID in `dev` array in `src/settings/config.js`)
 
 ---
 
