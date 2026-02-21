@@ -34,8 +34,6 @@
 - [Bots Using This Source Code](#-bots-using-this-source-code)
 - [License](#-license)
 
----
-
 ## `⚡` Quick Start
 
 1. Clone and install:
@@ -67,8 +65,6 @@ Copy-Item .env.example .env
 npm start
 ```
 
----
-
 ## `📢` Main Features
 
 - ☑️ Discord.js v14 + `discord-hybrid-sharding` architecture (auto shard/cluster mode)
@@ -83,8 +79,6 @@ npm start
 - ☑️ Lyrics lookup for current song (`/lyric`)
 - ☑️ Auto-leave timeout when inactive/alone (configurable)
 
----
-
 ## `📌` Requirements
 
 - Node.js **18+ (LTS)** ([Download / Docs](https://nodejs.org/en/download))
@@ -92,8 +86,6 @@ npm start
 - Lavalink server ([Lavalink Docs](https://lavalink.dev/getting-started/))
 - Java **17+ (LTS)** ([OpenJDK Downloads](https://adoptium.net/temurin/releases/?version=17)) (if you run your own Lavalink)
 - Discord bot token ([Discord Developer Portal Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html))
-
----
 
 ## `🎛️` Command Overview
 
@@ -108,8 +100,6 @@ npm start
 - `ban`, `unban`, `maintenance`, `lavalink`, `eval`, `restart`
 - Loaded from `src/commands/message/dev`
 - Intended for developer/admin use only (requires your Discord user ID in `dev` array in `src/settings/config.js`)
-
----
 
 ## `🔧` Environment Variables
 
@@ -153,8 +143,6 @@ Create a `.env` file from `.env.example`.
 >
 > - Spotify/Apple/Deezer/Others source support depends on your Lavalink plugins and Lavalink server configuration.
 
----
-
 ## `⚙️` Configuration Notes
 
 ### 1) Developer IDs
@@ -187,8 +175,6 @@ Examples:
 > Use only IDs supported by your Lavalink server/plugins.
 >
 > LavaSrc reference (supported URLs & queries): [https://github.com/topi314/LavaSrc?tab=readme-ov-file#supported-urls-and-queries](https://github.com/topi314/LavaSrc?tab=readme-ov-file#supported-urls-and-queries)
-
----
 
 ## `🚀` Installation (Local)
 
@@ -226,8 +212,6 @@ Copy-Item .env.example .env
 npm start
 ```
 
----
-
 ## `🐳` Installation (Docker)
 
 This repository includes:
@@ -252,8 +236,6 @@ docker compose up -d --build
 docker compose down
 ```
 
----
-
 ## `🔐` Permissions Needed
 
 At minimum, ensure the bot can:
@@ -270,8 +252,6 @@ For stage channels, also allow:
 - `RequestToSpeak`
 - `PrioritySpeaker`
 
----
-
 ## `🧪` Troubleshooting
 
 - **Bot offline**: verify `TOKEN` and intents in Discord Developer Portal
@@ -280,26 +260,6 @@ For stage channels, also allow:
 - **Leaves VC too quickly**: increase `LEAVE_TIMEOUT` or enable `/247`
 - **No DB persistence**: verify `MONGO_URI` connectivity
 - **Missing debug output**: set `DEBUG=true`
-
----
-
-## `🤝` Contributing
-
-Contributions are welcome.
-
-- Read [CONTRIBUTING.md](CONTRIBUTING.md) for contribution flow and standards.
-- Open an issue before major changes.
-- Keep pull requests focused and clearly described.
-
----
-
-## `👥` Contributors
-
-<a href="https://github.com/adh319/Lunox/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=adh319/Lunox" />
-</a>
-
----
 
 ## 💖 Support the Project
 
@@ -321,8 +281,6 @@ If you find Lunox useful, consider supporting continued development:
 - **PayPal** — [https://paypal.me/LunoxBot](https://paypal.me/LunoxBot)
 - **Ko-fi** — [https://ko-fi.com/lunoxbot](https://ko-fi.com/lunoxbot)
 
----
-
 ## `🤖` Bots Using This Source Code
 
 If you're using this source code and want your bot listed below, submit a pull request by editing the table with your details:
@@ -334,7 +292,19 @@ If you're using this source code and want your bot listed below, submit a pull r
 | `3` |  |  |  |
 | `4` |  |  |  |
 
----
+## `🤝` Contributing
+
+Contributions are welcome.
+
+- Read [CONTRIBUTING.md](CONTRIBUTING.md) for contribution flow and standards.
+- Open an issue before major changes.
+- Keep pull requests focused and clearly described.
+
+## `👥` Contributors
+
+<a href="https://github.com/adh319/Lunox/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=adh319/Lunox" />
+</a>
 
 ## `🔐` License
 
@@ -346,8 +316,6 @@ You are free to use and modify the code, but include attribution to the original
 © 2024 adh319@github. This project is available under the MIT License.
 You must include proper attribution by linking to: https://github.com/adh319/Lunox
 ```
-
----
 
 <p align="center">
   <b>Made by adh319</b><br/>
