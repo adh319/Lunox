@@ -316,7 +316,7 @@ You are free to use and modify the code, but include attribution to the original
 © 2024 adh319@github. This project is available under the MIT License.
 You must include proper attribution by linking to: https://github.com/adh319/Lunox
 ```
-
+---
 <p align="center">
   <b>Made by adh319</b><br/>
   <sub>Lunox Discord Music Bot • Built for Excellence</sub>
