@@ -1,8 +1,12 @@
 {
-	"printWidth": 140,
-	"trailingComma": "all",
-	"singleQuote": false,
-	"useTabs": false,
-	"tabWidth": 4,
-	"proseWrap": "never"
+    "printWidth": 140,
+    "trailingComma": "all",
+    "tabWidth": 4,
+    "proseWrap": "never",
+    "objectWrap": "preserve",
+    "semi": true,
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "endOfLine": "lf",
+    "quoteProps": "as-needed"
 }
