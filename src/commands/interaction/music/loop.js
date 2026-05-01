@@ -2,18 +2,18 @@ const { EmbedBuilder, MessageFlags } = require("discord.js");
 
 module.exports = {
     name: "loop",
-    description: "Toggle loop mode",
+    description: "Toggle loop mode (off/track/queue)",
     category: "music",
     options: [
         {
             name: "mode",
-            description: "Set loop mode",
+            description: "Loop mode",
             type: 3,
-            required: true,
+            required: false,
             choices: [
-                { name: "off", value: "none" },
-                { name: "song", value: "song" },
-                { name: "queue", value: "queue" },
+                { name: "Off", value: "off" },
+                { name: "Track", value: "track" },
+                { name: "Queue", value: "queue" },
             ],
         },
     ],
@@ -29,21 +29,29 @@ module.exports = {
     devOnly: false,
     run: async (client, interaction, player) => {
         const embed = new EmbedBuilder().setColor(client.config.embedColor);
-        const mode = interaction.options.getString("mode");
+        const modeArg = interaction.options.getString("mode");
 
-        switch (mode) {
-            case "none":
-                embed.setDescription(`Loop mode has been set to \`off\`.`);
-                break;
-            case "song":
-                embed.setDescription(`Loop mode has been set to \`song\`.`);
-                break;
-            case "queue":
-                embed.setDescription(`Loop mode has been set to \`queue\`.`);
-                break;
+        const modeMap = { off: "off", track: "track", queue: "queue" };
+        const emojis = { off: "➖", track: "🔂", queue: "🔁" };
+        const descriptions = {
+            off: "Loop has been **disabled**.",
+            track: "Loop mode set to **Track** - will repeat current song.",
+            queue: "Loop mode set to **Queue** - will repeat entire queue.",
+        };
+
+        let newMode;
+        if (modeArg) {
+            newMode = modeMap[modeArg];
+        } else {
+            const current = player.queue.repeatMode;
+            const cycle = ["off", "track", "queue"];
+            const idx = cycle.indexOf(current);
+            newMode = cycle[(idx + 1) % cycle.length];
         }
 
-        player.setLoop(mode);
+        player.queue.setRepeatMode(newMode);
+
+        embed.setDescription(`${emojis[newMode]} ${descriptions[newMode]}`);
 
         return interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
     },
@@ -51,9 +59,6 @@ module.exports = {
 
 /**
  * Project: Lunox
- * Author: adh319
- * Company: EnourDev
- * This code is the property of EnourDev and may not be reproduced or
- * modified without permission. For more information, contact us at
- * https://discord.gg/xhTVzbS5NU
+ * Author: downyJR
+ * Copyright © 2024 downyJR. Licensed under MIT.
  */
