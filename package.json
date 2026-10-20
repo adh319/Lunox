@@ -23,7 +23,7 @@
         "moment": "^2.30.1",
         "mongoose": "^9.2.1",
         "node-cron": "^4.2.1",
-        "pretty-ms": "^9.3.0",
+        "pretty-ms": "^10.0.0",
         "rainlink": "^1.2.7",
         "rainlink-voice": "^1.0.1"
     },
